@@ -86,3 +86,6 @@ exclude:
   - CNAME
 
 theme: jekyll-theme-cayman
+
+# Enable pagination
+paginate: 5
