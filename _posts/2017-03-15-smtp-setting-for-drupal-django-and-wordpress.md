@@ -4,22 +4,6 @@ title: SMTP setting for Drupal, Django, and WordPress
 date: 2017-03-15T10:52:58+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=413
-permalink: /2017/03/15/smtp-setting-for-drupal-django-and-wordpress/
-categories:
-  - develop tools
-  - drupal
-  - php
-  - python
-  - Uncategorized
-tags:
-  - django
-  - drupal
-  - mail
-  - php
-  - python
-  - smtp
-  - wordpress
 ---
 Drupal, Django, and WordPress are using localhost as SMTP server by default. But there is a way to use another SMTP server to send email.
 

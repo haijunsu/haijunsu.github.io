@@ -4,10 +4,6 @@ title: Enabling Secure LDAP on Windows Server 2012 Domain Controllers
 date: 2017-04-06T09:53:09+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=334
-permalink: /2017/04/06/enabling-secure-ldap-on-windows-server-2012-domain-controllers/
-categories:
-  - Uncategorized
 ---
 <blockquote data-secret="oscMdgGQCH" class="wp-embedded-content">
   <p>

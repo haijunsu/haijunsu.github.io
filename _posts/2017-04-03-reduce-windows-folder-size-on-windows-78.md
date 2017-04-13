@@ -4,28 +4,24 @@ title: Reduce windows folder size on windows 7/8
 date: 2017-04-03T00:19:05+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=462
-permalink: /2017/04/03/reduce-windows-folder-size-on-windows-78/
-categories:
-  - Windows
-tags:
-  - folder
-  - large
-  - reduce
-  - size
-  - windows
 ---
 The following command will uninstall all previous versions of components without the scheduled task’s 30-day grace period:
 
-<pre class="prettyprint">DISM.exe /online /Cleanup-Image /StartComponentCleanup</pre>
+```bash
+DISM.exe /online /Cleanup-Image /StartComponentCleanup
+```
 
 The following command will remove files needed for uninstallation of service packs. You won’t be able to uninstall any currently installed service packs after running this command:
 
-<pre class="prettyprint">DISM.exe /online /Cleanup-Image /SPSuperseded</pre>
+```bash
+DISM.exe /online /Cleanup-Image /SPSuperseded
+```
 
 The following command will remove all old versions of every component. You won’t be able to uninstall any currently installed service packs or updates after this completes:
 
-<pre class="prettyprint">DISM.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase</pre>
+```bash
+DISM.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
+```
 
 Source:[ https://superuser.com/questions/669193/why-is-windows-folder-so-big-in-windows-8-1](https://superuser.com/questions/669193/why-is-windows-folder-so-big-in-windows-8-1)
 

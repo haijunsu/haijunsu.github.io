@@ -4,16 +4,6 @@ title: Active Directory and Active Directory Domain services ports
 date: 2017-03-31T11:23:09+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=456
-permalink: /2017/03/31/active-directory-and-active-directory-domain-services-ports/
-categories:
-  - Windows
-  - Windows 2012
-tags:
-  - Active
-  - Directory
-  - port
-  - windows
 ---
 &nbsp;
 

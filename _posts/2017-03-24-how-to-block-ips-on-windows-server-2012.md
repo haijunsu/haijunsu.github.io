@@ -4,16 +4,6 @@ title: How to block IPs on Windows Server 2012
 date: 2017-03-24T11:02:36+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=427
-permalink: /2017/03/24/how-to-block-ips-on-windows-server-2012/
-categories:
-  - Windows
-  - Windows 2012
-tags:
-  - block ip
-  - firewall
-  - ip
-  - windows
 ---
 Open Windows Firewall with Advanced Security
 

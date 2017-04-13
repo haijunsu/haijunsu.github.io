@@ -4,16 +4,6 @@ title: 'Enabling Secure LDAP on Windows Server 2012 Domain Controllers: Configur
 date: 2017-04-05T13:33:16+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=473
-permalink: /2017/04/05/enabling-secure-ldap-on-windows-server-2012-domain-controllers-configuration/
-categories:
-  - Windows
-  - Windows 2012
-tags:
-  - "2012"
-  - LDAP
-  - secure
-  - windows
 ---
 Installing Enterprice Root CA
 

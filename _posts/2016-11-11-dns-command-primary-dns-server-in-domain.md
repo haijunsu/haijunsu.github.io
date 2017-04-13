@@ -4,28 +4,26 @@ title: Dns command, primary DNS server in domain
 date: 2016-11-11T13:31:39+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=167
-permalink: /2016/11/11/dns-command-primary-dns-server-in-domain/
-categories:
-  - Windows
-  - Windows 2012
-tags:
-  - dns
-  - windows
 ---
 To change DNS from command line: **_dnscmd_**
 
 List all A type records:
 
-<pre class="prettyprint">&gt; dnscmd &lt;dns-server&gt; /EnumRecords &lt;your domain&gt; . /type A</pre>
+```bash
+&gt; dnscmd &lt;dns-server&gt; /EnumRecords &lt;your domain&gt; . /type A
+```
 
 Add a A type record:
 
-<pre class="prettyprint">&gt; dnscmd &lt;dns-server&gt; /RecordAdd &lt;your domain&gt; docker01 A 192.168.1.235</pre>
+```bash
+&gt; dnscmd &lt;dns-server&gt; /RecordAdd &lt;your domain&gt; docker01 A 192.168.1.235
+```
 
 More information for dnscmd:
 
-<pre class="prettyprint">&gt; dnscmd /help</pre>
+```bash
+&gt; dnscmd /help
+```
 
 Set the primary DNS server in domain and auto update other DNS servers. Assume the primary DNS server is dns.my.ads.
 

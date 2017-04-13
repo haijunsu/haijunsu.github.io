@@ -4,39 +4,49 @@ title: Install nodejs on ubuntu
 date: 2016-12-01T15:42:29+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=283
-permalink: /2016/12/01/install-nodejs-on-ubuntu/
-categories:
-  - nodejs
-tags:
-  - nodejs
-  - pm2
-  - ubuntu
 ---
-Installing nodejs<!--?prettify linenums=true?-->
+Installing nodejs
 
-<pre class="prettyprint">sudo apt install nodejs
-sudo apt-get install npm</pre>
+```bash
+sudo apt install nodejs
 
-Installing pm2<!--?prettify linenums=true?-->
+sudo apt-get install npm
+```
 
-<pre class="prettyprint">sudo npm install pm2@latest -g
+Installing pm2
+
+```bash
+sudo npm install pm2@latest -g
+
 cd /usr/bin
-sudo ln -s nodejs node</pre>
+
+sudo ln -s nodejs node
+```
 
 Create user to run nodejs
 
-<pre class="prettyprint">sudo useradd nodeuser
+```bash
+sudo useradd nodeuser
+
 sudo passwd nodeuser
+
 sudo addgroup nodejs
-sudo adduser nodeuser nodejs</pre>
 
-Using pm2 to start nodejs app<!--?prettify linenums=true?-->
+sudo adduser nodeuser nodejs
+```
 
-<pre class="prettyprint">pm2 start hello.js</pre>
+Using pm2 to start nodejs app
+
+```bash
+pm2 start hello.js
+```
 
 Using pm2 to autostart nodejs apps
 
-<pre class="prettyprint">sudo env PATH=$PATH:/usr/local/bin pm2 startup -u nodeuser
+```bash
+sudo env PATH=$PATH:/usr/local/bin pm2 startup -u nodeuser
+
 sudo su -c "chmod +x /etc/init.d/pm2-init.sh && update-rc.d pm2-init.sh defaults"
-pm2 save</pre>
+
+pm2 save
+```

@@ -4,18 +4,6 @@ title: Windows account event ids
 date: 2017-03-31T11:27:10+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=458
-permalink: /2017/03/31/windows-account-event-ids/
-categories:
-  - Windows
-  - Windows 2012
-tags:
-  - account
-  - event
-  - log
-  - login
-  - logon
-  - windows
 ---
 The event ids for “Audit logon events” and “Audit account logon events”:
 

@@ -4,15 +4,6 @@ title: Drupal security modules
 date: 2017-02-08T16:12:30+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=360
-permalink: /2017/02/08/drupal-security-modules/
-categories:
-  - develop tools
-  - drupal
-tags:
-  - drupal
-  - drush
-  - security
 ---
 Base security modules for drupal:
 

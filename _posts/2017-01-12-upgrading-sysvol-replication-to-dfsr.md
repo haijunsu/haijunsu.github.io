@@ -4,21 +4,6 @@ title: Upgrading SYSVOL replication to DFSR
 date: 2017-01-12T15:39:03+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=342
-permalink: /2017/01/12/upgrading-sysvol-replication-to-dfsr/
-categories:
-  - Windows
-  - Windows 2012
-tags:
-  - DFSR
-  - FRS
-  - migrate
-  - migration
-  - SYSVOL
-  - upgrade
-  - upgrading
-  - windows 2003
-  - windows 2012
 ---
 <span style="font-weight: 400;">Server manager → Tools → Active directory Domains and Trusts</span>
 

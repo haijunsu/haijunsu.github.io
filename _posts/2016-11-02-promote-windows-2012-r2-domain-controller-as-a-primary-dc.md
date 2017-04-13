@@ -4,13 +4,6 @@ title: Promote Windows 2012 R2 Domain Controller as a Primary DC
 date: 2016-11-02T10:09:23+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=27
-permalink: /2016/11/02/promote-windows-2012-r2-domain-controller-as-a-primary-dc/
-categories:
-  - Windows
-  - Windows 2012
-tags:
-  - Windows Domain Controller 2012 Primary promote
 ---
 Run operations on **the new Domain Controller server**.
 
@@ -48,11 +41,18 @@ Click right button on Root (Active Directory Domains and Trusts [win2012 server 
 
 <span style="font-weight: 400;">Check status in command prompt window (example output. Win2012 server name is CC-DC2.cc01.adlan):</span>
 
-<pre class="prettyprint">&gt; netdom query fsmo
+```bash
+&gt; netdom query fsmo
+
 Schema master				CC-DC2.cc01.adlan
+
 Domain naming master			CC-DC2.cc01.adlan
+
 PDC					CC-DC2.cc01.adlan
+
 RID pool manager			CC-DC2.cc01.adlan
-Infrastructure master		        CC-DC2.cc01.adlan</pre>
+
+Infrastructure master		        CC-DC2.cc01.adlan
+```
 
 &nbsp;

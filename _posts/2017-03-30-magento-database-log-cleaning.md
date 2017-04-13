@@ -4,32 +4,36 @@ title: Magento database log cleaning
 date: 2017-03-30T11:35:15+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=449
-permalink: /2017/03/30/magento-database-log-cleaning/
-categories:
-  - Magento
-tags:
-  - clean
-  - database
-  - log
-  - Magento
 ---
 Log tables:
 
-<pre class="prettyprint">log_customer
+```bash
+log_customer
+
 log_visitor
+
 log_visitor_info
+
 log_url
+
 log_url_info
+
 log_quote
+
 report_viewed_product_index
+
 report_compared_product_index
+
 report_event
-catalog_compare_item</pre>
+
+catalog_compare_item
+```
 
 **Cleaned by script:**
 
-<pre class="prettyprint">php -f shell/log.php clean</pre>
+```bash
+php -f shell/log.php clean
+```
 
 **Cleaned by Magento Admin (By default, it is disabled.):**
 

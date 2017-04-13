@@ -4,10 +4,6 @@ title: 'Self Service password (PHP, LDAP, and  Windows AD)'
 date: 2017-04-06T09:53:21+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=311
-permalink: /2017/04/06/self-service-password-php-ldap-and-windows-ad/
-categories:
-  - Uncategorized
 ---
 Reference:
   

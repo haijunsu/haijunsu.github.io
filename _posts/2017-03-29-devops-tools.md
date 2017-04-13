@@ -4,13 +4,6 @@ title: DevOps tools
 date: 2017-03-29T09:52:49+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=442
-permalink: /2017/03/29/devops-tools/
-categories:
-  - develop tools
-tags:
-  - devops
-  - tools
 ---
 Tools in release:
   

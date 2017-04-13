@@ -4,17 +4,6 @@ title: How to logout remote windows user on Windows 2012
 date: 2016-11-03T14:38:35+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=67
-permalink: /2016/11/03/how-to-logout-remote-windows-user-on-windows-2012/
-categories:
-  - Windows
-  - Windows 2012
-tags:
-  - logout
-  - remote
-  - user
-  - windows
-  - windows 2012
 ---
 Use the Task Manager to logout user&#8217;s session
 

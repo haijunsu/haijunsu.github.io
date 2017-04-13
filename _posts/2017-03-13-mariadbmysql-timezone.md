@@ -4,27 +4,24 @@ title: MariaDB/Mysql Timezone
 date: 2017-03-13T10:33:35+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=407
-permalink: /2017/03/13/mariadbmysql-timezone/
-categories:
-  - database
-  - MariaDB
-  - MySql
-tags:
-  - mariadb
-  - mysql
-  - timezone
 ---
 By default, mysql timezone value is system. It causes Python application error. After changed timezone to UTC, problem is solved.
 
-<pre class="prettyprint">mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
-</pre>
+```bash
+mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
+
+
+```
 
 Change my.cnf
 
-<pre class="prettyprint">[mysqld] 
+```bash
+[mysqld] 
+
 default_time_zone=UTC
-</pre>
+
+
+```
 
 Restart Mysql
 

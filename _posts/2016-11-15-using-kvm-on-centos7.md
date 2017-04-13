@@ -4,15 +4,6 @@ title: Using KVM on CentOS7
 date: 2016-11-15T15:06:13+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=183
-permalink: /2016/11/15/using-kvm-on-centos7/
-categories:
-  - CentOS
-  - Linux
-tags:
-  - centos
-  - KVM
-  - linux
 ---
 1. Install CentOS7 with Virtualization Host feature
   
@@ -20,82 +11,143 @@ tags:
 
 The Virtualization Host doesn&#8217;t install the virt-install and virt-manager. Run the following command to install them.
 
-<pre class="prettyprint">$ sudo yum install virt-install virt-manager</pre>
+```bash
+$ sudo yum install virt-install virt-manager
+```
 
 Also you can install KVM by following command if you didn&#8217;t install Virtualization Host feature.
 
-<pre class="prettyprint">$ sudo yum install kvm virt-manager libvirt virt-install qemu-kvm xauth dejavu-lgc-sans-fonts
-</pre>
+```bash
+$ sudo yum install kvm virt-manager libvirt virt-install qemu-kvm xauth dejavu-lgc-sans-fonts
+
+
+```
 
 2. check kvm module installation
 
-<pre class="prettyprint">$ lsmod|grep kvm
+```bash
+$ lsmod|grep kvm
+
 kvm_intel             162153  110
-kvm                   525409  1 kvm_intel</pre>
+
+kvm                   525409  1 kvm_intel
+```
 
 3. Setup X server and run virt-manager
 
-<pre class="prettyprint">$ DISPLAY=149.4.68.230:0.0
+```bash
+$ DISPLAY=149.4.68.230:0.0
+
 $ export DISPLAY
-$ sudo virt-manager</pre>
 
-5. KVM cli examples<!--?prettify linenums=true?-->
+$ sudo virt-manager
+```
 
-<pre class="prettyprint">// check cpu info
-$ egrep -c '(vmx|svm)' /proc/cpuinfo</pre>
+5. KVM cli examples
 
-<pre class="prettyprint">// list templates
-$ osinfo-query os</pre>
+```bash
+// check cpu info
 
-<pre class="prettyprint">// list VMs
+$ egrep -c '(vmx|svm)' /proc/cpuinfo
+```
+
+```bash
+// list templates
+
+$ osinfo-query os
+```
+
+```bash
+// list VMs
+
 $ sudo virsh --connect qemu:///system list
+
 $ sudo virsh --connect qemu:///system list --all
-</pre>
 
-<!--?prettify linenums=true?-->
 
-<pre class="prettyprint">// show guest infomration
+```
+
+
+
+```bash
+// show guest infomration
+
 $ sudo virsh dominfo Fedora24
+
 Id:             -
+
 Name:           Fedora24
+
 UUID:           d1e8dd90-54fb-46ee-92af-dad8ec914b2e
+
 OS Type:        hvm
+
 State:          shut off
+
 CPU(s):         2
+
 Max memory:     4194304 KiB
+
 Used memory:    0 KiB
+
 Persistent:     yes
+
 Autostart:      disable
+
 Managed save:   no
+
 Security model: selinux
+
 Security DOI:   0
-</pre>
 
-<!--?prettify linenums=true?-->
 
-<pre class="prettyprint">// shutdown
+```
+
+
+
+```bash
+// shutdown
+
 $ sudo virsh --connect qemu:///system shutdown Fedora24
+
 // force stop
+
 $ sudo virsh --connect qemu:///system destroy Fedora24
+
 // start
+
 $ sudo virsh --connect qemu:///system start Fedora24
-</pre>
 
-<!--?prettify linenums=true?-->
 
-<pre class="prettyprint">// delete guest
+```
+
+
+
+```bash
+// delete guest
+
 $ sudo virsh --connect qemu:///system destroy Fedora24
+
 $ sudo virsh --connect qemu:///system undefine Fedora24
+
 $ sudo rm -f /var/lib/libvirt/images/Fedora24.img
+
 $ sudo virsh pool-refresh default
-</pre>
 
-<!--?prettify linenums=true?-->6. Autostart guest
 
-<pre class="prettyprint">// autostart guest
+```
+
+6. Autostart guest
+
+```bash
+// autostart guest
+
 $ sudo virsh --connect qemu:///system autostart Fedora24
+
 $ sudo virsh --connect qemu:///system dominfo Fedora24|grep Auto
-</pre>
+
+
+```
 
 Set auto start from GUI
 

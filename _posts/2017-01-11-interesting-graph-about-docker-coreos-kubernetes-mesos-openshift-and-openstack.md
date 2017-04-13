@@ -4,17 +4,6 @@ title: Interesting graph about Docker, CoreOS, Kubernetes, Mesos, OpenShift, and
 date: 2017-01-11T09:56:08+00:00
 author: Navy Su
 layout: post
-guid: http://navysu.x10host.com/?p=337
-permalink: /2017/01/11/interesting-graph-about-docker-coreos-kubernetes-mesos-openshift-and-openstack/
-categories:
-  - Linux
-tags:
-  - CoreOS
-  - docker
-  - Kubernetes
-  - Mesos
-  - OpenShift
-  - OpenStack
 ---
 All those technologies are about cloud.
 
