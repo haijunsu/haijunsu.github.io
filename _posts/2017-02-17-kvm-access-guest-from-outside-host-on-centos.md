@@ -21,9 +21,9 @@ The best way is to create another bridge for guest.
 
   1. create new bridge xml file (routeNetwork.xml)
   
-    </p> 
+     
     
-    ```bash
+```bash
 &lt;network&gt;
 
   &lt;name&gt;examplenetwork&lt;/name&gt;
@@ -39,11 +39,11 @@ The best way is to create another bridge for guest.
 
   2. create new bridge
     
-    ```bash
+```bash
 # virsh net-create routeNetwork.xml
 ```
 
-  3. edit the bridge to enable dhcp (I think if we define DHCP at the first step, no need this one. If we don&#8217;t do this step, the persistent state is no. Not sure what the impact is.) ```bash
+  3. edit the bridge to enable dhcp (I think if we define DHCP at the first step, no need this one. If we don&#8217;t do this step, the persistent state is no. Not sure what the impact is.)```bash
 # virsh net-edit routenetwork
 
 
@@ -75,13 +75,13 @@ The best way is to create another bridge for guest.
 
   4. Set the bridge autostart
     
-    ```bash
+```bash
 # virsh net-autostart routenetwork
 ```
 
   5. Check virtual networks
     
-    ```bash
+```bash
 # virsh net-list
 
  Name                 State      Autostart     Persistent
@@ -97,13 +97,13 @@ The best way is to create another bridge for guest.
 
   6. add masquerade to firewalld
     
-    ```bash
+```bash
 # firewall-cmd --permanent --add-masquerade
 ```
 
   7. change guest network type 
     
-    ```bash
+```bash
 # virsh --connect qemu:///system
 
 virsh # edit &lt;VM's name&gt;
@@ -130,7 +130,7 @@ virsh # edit &lt;VM's name&gt;
   8. shutdown and start the guest again
   9. add route on your router
     
-    ```bash
+```bash
 # sudo route -n add 10.10.120.0/24 &lt;host ip&gt;
 ```
     

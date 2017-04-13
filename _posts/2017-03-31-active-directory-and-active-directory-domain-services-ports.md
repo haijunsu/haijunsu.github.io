@@ -352,7 +352,7 @@ layout: post
     <td data-th="
          AD and AD DS Usage
         ">
-      DHCP</p> 
+      DHCP 
       
       <div class="alert">
         <div class="contentTableWrapper">

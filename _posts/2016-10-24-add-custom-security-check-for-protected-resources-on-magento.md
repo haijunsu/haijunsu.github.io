@@ -23,9 +23,9 @@ Assume catalog needs be protected for register customer and there is an url &#82
 
   1. Modify templete &#8216;page/html/head.phtml&#8217; and add following code
   
-    </p> 
+     
     
-    ```bash
+```bash
 &lt;?php
 
     //check security contents
@@ -37,9 +37,9 @@ Assume catalog needs be protected for register customer and there is an url &#82
 
   2. Create a new file &#8216;page/html/security.phtml&#8217; with the following contents
   
-    </p> 
+     
     
-    ```bash
+```bash
 &lt;?php
 
     // check security content

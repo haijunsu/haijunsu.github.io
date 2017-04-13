@@ -8,7 +8,7 @@ layout: post
 <blockquote data-secret="oscMdgGQCH" class="wp-embedded-content">
   <p>
     <a href="https://www.petri.com/enable-secure-ldap-windows-server-2008-2012-dc-configuration">Enabling Secure LDAP on Windows Server 2008/2012 Domain Controllers: Configuration</a>
-  </p>
+  
 </blockquote>
 
 
