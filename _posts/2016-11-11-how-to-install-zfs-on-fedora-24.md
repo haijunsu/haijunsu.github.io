@@ -16,8 +16,6 @@ pub  2048R/F14AB620 2013-03-21 ZFS on Linux &lt;zfs@zfsonlinux.org&gt;
 
     sub  2048R/99685629 2013-03-21
 
-
-
 $ sudo dnf install kernel-devel zfs
 ```
 
@@ -27,7 +25,6 @@ Run in error with the command:
 $ sudo modprobe zfs
 
 modprobe: FATAL: Module zfs not found in directory /lib/modules/4.5.5-300.fc24.x86_64
-
 
 ```
 
@@ -40,8 +37,6 @@ spl, 0.6.5.8: added
 
 zfs, 0.6.5.8: added
 
-
-
 $ sudo dkms install spl/0.6.5.8
 
 Error! echo
@@ -49,8 +44,6 @@ Error! echo
 Your kernel headers for kernel 4.5.5-300.fc24.x86_64 cannot be found at
 
 /lib/modules/4.5.5-300.fc24.x86_64/build or /lib/modules/4.5.5-300.fc24.x86_64/source.
-
-
 
 $ sudo dnf info kernel-header*
 
@@ -90,23 +83,13 @@ Description : Kernel-headers includes the C header files that specify the interf
 
             : glibc package.
 
-
-
 $ sudo dnf install kernel-devel-$(uname -r)
-
-
 
 $ sudo dkms install spl/0.6.5.8
 
-
-
 $ sudo dkms install zfs/0.6.5.8
 
-
-
 $ sudo modprobe zfs
-
-
 
 $ sudo lsmod |grep zfs
 
@@ -121,13 +104,6 @@ zcommon                49152  1 zfs
 znvpair                77824  2 zfs,zcommon
 
 spl                    98304  3 zfs,zcommon,znvpair
-
-
-
-
-
-
-
 
 ```
 

@@ -10,18 +10,13 @@ layout: post
 ```bash
 uname -a  // Show hostname, current version, current release
 
-
-
 uname -v  //Show current version
-
-
 
 uname -r  // Show current release
 ```
 
 2.How can you check a system&#8217;s current IP address?
   
-
 
 ```bash
 ifconfig
@@ -68,7 +63,6 @@ top
 
 htop
 
-
 ```
 
 8. Dealing with Mounts
@@ -79,7 +73,6 @@ ls /mnt
 mount &lt;device/network drive&gt; &lt;mount point&gt;
 
 /etc/fstab
-
 
 ```
 

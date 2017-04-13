@@ -10,7 +10,6 @@ layout: post
 ```bash
 $ sudo hostnamectl set-hostname --static "YOUR-HOSTNAME-HERE"
 
-
 ```
 
 If the hostname cannot be saved on Fedora after reboot, using the following command to fix it.
@@ -19,7 +18,6 @@ If the hostname cannot be saved on Fedora after reboot, using the following comm
 
 ```bash
 $ sudo restorecon -v /etc/hostname
-
 
 ```
 
@@ -30,11 +28,7 @@ $ sudo vi /etc/sysconfig/network
 
 HOSTNAME=myserver.domain.com
 
-
-
 $ sudo vi /etc/hosts
-
-
 
 $ sudo vi /etc/hostname
 ```

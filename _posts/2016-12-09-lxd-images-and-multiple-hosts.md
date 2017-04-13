@@ -22,7 +22,6 @@ lxc remote add &lt;server alias&gt; &lt;ip address or DNS&gt;
 And after that, use all the same command as above but prefixing the container and images name with the remote host like:
   
 
-
 ```bash
 lxc exec host-a:first -- apt-get update
 ```

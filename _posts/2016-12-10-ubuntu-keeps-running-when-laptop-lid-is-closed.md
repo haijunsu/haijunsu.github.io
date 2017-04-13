@@ -16,8 +16,6 @@ HandleLidSwitch=ignore
 
 ...
 
-
-
 $ sudo service systemd-logind restart
 ```
 
@@ -34,12 +32,9 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash consoleblank=0"
 
 ...
 
-
-
 $ sudo update-grub
 
 $ sudo shutdown -r now
-
 
 ```
 
@@ -54,11 +49,8 @@ GRUB_CMDLINE_LINUX_DEFAULT="quiet splash consoleblank=60"
 
 ...
 
-
-
 $ sudo update-grub
 
 $ sudo shutdown -r now
-
 
 ```

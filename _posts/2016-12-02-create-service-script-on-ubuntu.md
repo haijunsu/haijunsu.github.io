@@ -22,23 +22,17 @@ case "$1" in
 
     ;;
 
-
-
   (stop)
 
     # stop app command here
 
     ;;
 
-
-
   (restart)
 
     # restart app command here
 
     ;;
-
-
 
   (*)
 
@@ -62,8 +56,6 @@ $ sudo vi /etc/systemd/myservice.service
 
 Description=Job that runs the my application
 
-
-
 [Service]
 
 User=testuser
@@ -78,12 +70,9 @@ ExecStop=&lt;path&gt;myservice.sh stop
 
 ExecReload=&lt;path&gt;myservice.sh restart
 
-
-
 [Install]
 
 WantedBy=multi-user.target
-
 
 ```
 

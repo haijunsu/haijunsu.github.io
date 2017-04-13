@@ -8,7 +8,6 @@ layout: post
 Add static route on windows is very easy. Run command prompt as Administrator.
   
 
-
 ```bash
 route -p add 10.10.120.0 mask 255.255.255.0 192.168.0.1
 ```
@@ -104,7 +103,6 @@ default            192.168.15.254     UGScI           0        0     en2
 
 169.254            link#5             UCSI            0        0     en1
 
-
 ```
     
     Add more routing paths:
@@ -121,7 +119,6 @@ iso@isoAir:/dev$ sudo networksetup -getadditionalroutes “Ethernet Pantalla Tra
 172.16.0.0 255.240.0.0 10.1.36.1
 
 192.168.0.0 255.255.0.0 10.1.36.1
-
 
 ```
     

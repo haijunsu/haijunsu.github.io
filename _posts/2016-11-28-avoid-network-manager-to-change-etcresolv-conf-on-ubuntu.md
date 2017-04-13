@@ -22,5 +22,4 @@ nameserver 192.168.0.2
 
 search &lt;your domain name&gt;
 
-
 ```

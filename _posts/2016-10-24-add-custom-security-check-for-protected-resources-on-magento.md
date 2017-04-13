@@ -70,7 +70,6 @@ Assume catalog needs be protected for register customer and there is an url &#82
 Get request information for test purpose:
   
 
-
 ```bash
 &lt;?php
 
@@ -91,7 +90,6 @@ Get request information for test purpose:
     echo "&lt;br /&gt;";
 
 ?&gt;
-
 
 ```
 

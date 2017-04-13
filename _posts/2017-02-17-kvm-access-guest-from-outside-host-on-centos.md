@@ -8,12 +8,10 @@ layout: post
 For default virbr0, it provides a way to help guest to access host (VM<&#8211;>host). But the guest cannot be accessed from outside host. But we can use the following commands to enable it temporally.
   
 
-
 ```bash
 # iptables -D  FORWARD -o virbr0 -j REJECT --reject-with icmp-port-unreachable
 
 # iptables -D  FORWARD -i virbr0 -j REJECT --reject-with icmp-port-unreachable
-
 
 ```
 
@@ -45,8 +43,6 @@ The best way is to create another bridge for guest.
 
   3. edit the bridge to enable dhcp (I think if we define DHCP at the first step, no need this one. If we don&#8217;t do this step, the persistent state is no. Not sure what the impact is.)```bash
 # virsh net-edit routenetwork
-
-
 
 &lt;network&gt;
 
@@ -92,7 +88,6 @@ The best way is to create another bridge for guest.
 
  routenetwork         active     yes           yes
 
-
 ```
 
   6. add masquerade to firewalld
@@ -123,7 +118,6 @@ virsh # edit &lt;VM's name&gt;
 &lt;/interface&gt;
 
 ...
-
 
 ```
 

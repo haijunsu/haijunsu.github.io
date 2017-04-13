@@ -32,7 +32,6 @@ $ docker run --read-only debian touch x
 
 touch: cannot touch 'x': Read-only file system
 
-
 ```
 
 3. Set Volumes to read-only/Use Data Volume Containers
@@ -42,10 +41,7 @@ $ docker run -v $(pwd)/secrets:/secrets:ro debian touch /secrets/x
 
 touch: cannot touch '/secrets/x': Read-only file system
 
-
-
 $ docker run --volumes-from my-secret-container myimage
-
 
 ```
 
@@ -56,7 +52,6 @@ $ docker run --cap-drop SETUID --cap-drop SETGID myimage
 
 $ docker run --cap-drop ALL --cap-add ...
 
-
 ```
 
 5. Set CPUSHARES
@@ -66,14 +61,12 @@ $ docker run -d myimage
 
 $ docker run -d -c 512 myimage
 
-
 ```
 
 6. Set Memory limits
 
 ```bash
 $ docker run -m 512m myimage
-
 
 ```
 
@@ -86,14 +79,11 @@ $ docker run debian \
 
    find / -perm +6000 -type f -exec ls -ld {} \; 2&gt; dev/null
 
-
-
 // to defang them
 
 FROM debian:wheezy
 
 RUN find / -perm +6000 -type f -exec chmod a-x {}; \; || true
-
 
 ```
 
@@ -111,7 +101,6 @@ $ scalock
 $ twistlock
 
 $ clair
-
 
 ```
 

@@ -24,23 +24,15 @@ sudo vi /etc/samba/smb.conf
 ```bash
 [global]
 
-
-
 ## Browsing/Identification ###
-
-
 
 # Change this to the workgroup/NT-domain name your Samba server will part of
 
 #   workgroup = GROUP
 
-
-
 # server string is the equivalent of the NT Description field
 
   server string = %h server (Samba, Ubuntu)
-
-
 
         security = ads
 
@@ -102,8 +94,6 @@ sudo klist
 
 sudo net ads join -k
 
-
-
 OR
 
 sudo net ads join -U Admin@MYDOMAIN.COM
@@ -112,10 +102,8 @@ sudo net ads join -U Admin@MYDOMAIN.COM
 Setup Authentication
   
 
-
 ```bash
 sudo vi /etc/nsswitch.conf
-
 
 ```
 
@@ -128,7 +116,6 @@ group:          compat winbind
 
 shadow:         compat
 
-
 ```
 
 Restart Winbind
@@ -136,36 +123,29 @@ Restart Winbind
 ```bash
 sudo service winbind restart
 
-
 ```
 
 PAM Configuration
   
 
-
 ```bash
 sudo pam-auth-update
-
 
 ```
 
 Create Home directory
   
 
-
 ```bash
 sudo mkdir /home/MYDOMAIN
-
 
 ```
 
 Add sudo users
   
 
-
 ```bash
 sudo vi /etc/sudoers.d/MYDOMAIN
-
 
 ```
 
@@ -176,18 +156,15 @@ sudo vi /etc/sudoers.d/MYDOMAIN
 
 %adgroup        ALL=(ALL) NOPASSWD: ALL
 
-
 ```
 
 Test
   
 
-
 ```bash
 wbinfo -u
 
 wbinfo -g
-
 
 ```
 

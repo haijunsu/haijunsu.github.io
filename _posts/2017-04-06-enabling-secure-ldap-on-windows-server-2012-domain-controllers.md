@@ -11,8 +11,6 @@ layout: post
   
 </blockquote>
 
-
-
 http://gregtechnobabble.blogspot.com/2012/11/enabling-ldap-ssl-in-windows-2012-part-1.html
 
 &nbsp;

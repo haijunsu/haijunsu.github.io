@@ -26,5 +26,4 @@ $ sudo vi /etc/crontab
 
 00 19  * * * root letsencrypt renew
 
-
 ```

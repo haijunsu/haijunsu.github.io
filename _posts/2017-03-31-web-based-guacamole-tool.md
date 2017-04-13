@@ -12,8 +12,6 @@ Create database for Guacamole: (DB name is **guacamole_db**)
 ```bash
 $ mysql -u root -p
 
-
-
 mysql&gt; create database <strong>guacamole_db</strong>;
 
 mysql&gt; grant all privileges on <strong>guacamole_db</strong>.* to guacamole_user@localhost identified by 'secure password';
@@ -25,8 +23,6 @@ Initializing the MySQL database
 
 ```bash
 $ docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --mysql &gt; initdb.sql
-
-
 
 $ mysql -u guacamole_user -p <strong>guacamole_db</strong> &lt; initdb.sql
 ```
@@ -84,8 +80,6 @@ Behind apache proxy:
 
 &lt;/Location&gt;
 
-
-
 &lt;Location /guacamole/websocket-tunnel&gt;
 
     Order allow,deny
@@ -97,6 +91,5 @@ Behind apache proxy:
     ProxyPassReverse ws://HOSTNAME:8080/guacamole/websocket-tunnel
 
 &lt;/Location&gt;
-
 
 ```

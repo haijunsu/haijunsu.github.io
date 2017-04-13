@@ -43,13 +43,9 @@ Example virtual host #1
 
     ProxyPreserveHost On
 
-
-
     ProxyPass "/" "http://192.168.0.0:8080/"
 
     ProxyPassReverse "/" "http://192.168.0.1:8080/"
-
-
 
 &lt;/VirtualHost&gt;
 ```
@@ -63,8 +59,6 @@ Example virtual host #2
 
     ProxyPreserveHost On
 
-
-
     ProxyPass "/subdir/" "http://192.168.0.221:8000/"
 
     ProxyPassReverse "/subdir/" "http://192.168.0.221:8000/"
@@ -77,8 +71,6 @@ Example virtual host #2
 
      &lt;/Location&gt;
 
-
-
 &lt;/VirtualHost&gt;
 ```
 
@@ -88,8 +80,6 @@ Example virtual host #3 (Don&#8217;t proxy /static)
 &lt;VirtualHost *:80&gt;
 
     ServerName localhost
-
-
 
     ProxyPreserveHost On
 
@@ -137,8 +127,6 @@ Example load balancing #1
 
 &lt;/Proxy&gt;
 
-
-
 ProxyPass "/images/"  "balancer://myset/"
 
 ProxyPassReverse "/images/"  "balancer://myset/"
@@ -156,8 +144,6 @@ Example load balancing #2 (www3 handles 3 times traffic and timeout is 1)
     ProxySet lbmethod=bytraffic
 
 &lt;/Proxy&gt;
-
-
 
 ProxyPass "/images"  "balancer://myset/"
 
@@ -181,8 +167,6 @@ Example failove
     <span class="kwd">ProxySet</span><span class="pln"> lbmethod</span><span class="pun">=</span><span class="pln">byrequests
 
 </span><span class="pun">&lt;/</span><span class="tag">Proxy</span><span class="pun">&gt;</span>
-
-
 
 <span class="kwd">ProxyPass</span> <span class="str">"/images/"</span>  <span class="str">"balancer://myset/"</span>
 

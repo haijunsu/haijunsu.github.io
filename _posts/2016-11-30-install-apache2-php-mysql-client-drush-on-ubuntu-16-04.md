@@ -10,14 +10,12 @@ Install mysql-client
 ```bash
 sudo apt install mysql-client
 
-
 ```
 
 Install php7
 
 ```bash
 sudo apt install php php-xml php-gd php-curl php-mcrypt php-mbstring php7.0-mbstring php-gettext php-mysql
-
 
 ```
 

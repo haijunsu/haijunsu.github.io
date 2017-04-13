@@ -13,7 +13,6 @@ Fix steps:
 ```bash
 $ lpstat -s
 
-
 ```
     
     Output likes the following:
@@ -23,12 +22,10 @@ $ lpstat -s
 ```bash
 device for Canon_iR_ADV_4245: smb://my-windows-printer-server/Canon_iR_ADV_4245
 
-
 ```
     
 ```bash
 $ sudo lpadmin -p &lt;printer name&gt; -o auth-info-required=&lt;Your username&gt;,&lt;Your password&gt;
-
 
 ```
 

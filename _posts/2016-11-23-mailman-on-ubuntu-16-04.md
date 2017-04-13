@@ -118,7 +118,6 @@ sudo newaliases
 
 sudo /etc/init.d/postfix restart
 
-
 ```
 
 Create mailman list
@@ -131,8 +130,6 @@ $ sudo newlist mailman mailmanadm@mydomain.com
   Initial mailman password:
 
   To finish creating your mailing list, you must edit your /etc/aliases (orequivalent) file by adding the following lines, and possibly running the `newaliases' program:
-
-
 
   ## mailman mailing list
 
@@ -155,8 +152,6 @@ $ sudo newlist mailman mailmanadm@mydomain.com
   mailman-subscribe:    "|/var/lib/mailman/mail/mailman subscribe mailman"
 
   mailman-unsubscribe:  "|/var/lib/mailman/mail/mailman unsubscribe mailman"
-
-
 
   Hit enter to notify mailman owner...
 ```
@@ -187,8 +182,6 @@ $ vi ~/members
 user1@mydomain.com
 
 user2@mydomain.com
-
-
 
 $ sudo /var/lib/mailman/bin/add_members -r ~/members -w y -a y mailman
 ```

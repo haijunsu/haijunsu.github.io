@@ -10,7 +10,6 @@ By default, mysql timezone value is system. It causes Python application error. 
 ```bash
 mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
 
-
 ```
 
 Change my.cnf
@@ -19,7 +18,6 @@ Change my.cnf
 [mysqld] 
 
 default_time_zone=UTC
-
 
 ```
 

@@ -20,7 +20,6 @@ Also you can install KVM by following command if you didn&#8217;t install Virtua
 ```bash
 $ sudo yum install kvm virt-manager libvirt virt-install qemu-kvm xauth dejavu-lgc-sans-fonts
 
-
 ```
 
 2. check kvm module installation
@@ -64,10 +63,7 @@ $ sudo virsh --connect qemu:///system list
 
 $ sudo virsh --connect qemu:///system list --all
 
-
 ```
-
-
 
 ```bash
 // show guest infomration
@@ -100,10 +96,7 @@ Security model: selinux
 
 Security DOI:   0
 
-
 ```
-
-
 
 ```bash
 // shutdown
@@ -118,10 +111,7 @@ $ sudo virsh --connect qemu:///system destroy Fedora24
 
 $ sudo virsh --connect qemu:///system start Fedora24
 
-
 ```
-
-
 
 ```bash
 // delete guest
@@ -134,7 +124,6 @@ $ sudo rm -f /var/lib/libvirt/images/Fedora24.img
 
 $ sudo virsh pool-refresh default
 
-
 ```
 
 6. Autostart guest
@@ -145,7 +134,6 @@ $ sudo virsh pool-refresh default
 $ sudo virsh --connect qemu:///system autostart Fedora24
 
 $ sudo virsh --connect qemu:///system dominfo Fedora24|grep Auto
-
 
 ```
 

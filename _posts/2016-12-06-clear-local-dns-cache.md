@@ -14,14 +14,12 @@ sudo killall -HUP mDNSResponder
 On Mac OSX 10.10.0 – 10.10.3
   
 
-
 ```bash
 sudo discoveryutil mdnsflushcache
 ```
 
 On Mac OSX 10.5 – 10.6
   
-
 
 ```bash
 sudo dscacheutil -flushcache
@@ -30,14 +28,12 @@ sudo dscacheutil -flushcache
 On Windows
   
 
-
 ```bash
 ipconfig /flushdns
 ```
 
 On Linux
   
-
 
 ```bash
 /etc/init.d/named restart

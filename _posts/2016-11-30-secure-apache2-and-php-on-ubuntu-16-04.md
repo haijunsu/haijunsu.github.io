@@ -12,25 +12,17 @@ $ sudo vi /etc/apache2/sites-available/000-security.conf
 
 # Secure apache website
 
-
-
 # Disable Trace HTTP Request
 
 TraceEnable off
-
-
 
 # Disable Signature
 
 ServerSignature Off
 
-
-
 # Disable Banner
 
 ServerTokens Prod
-
-
 
 # If enabled ssl (sudo a2enmod ssl)
 
@@ -38,19 +30,13 @@ ServerTokens Prod
 
 # SSLProtocol -ALL +TLSv1
 
-
-
 # Disable Null and Weak Ciphers
 
 # SSLCipherSuite ALL:!aNULL:!ADH:!eNULL:!LOW:!EXP:RC4+RSA:+HIGH:+MEDIUM
 
-
-
 # Disable Directory Listing
 
 Options all -Indexes
-
-
 
 # If enabled headers (sudo a2enmod headers)
 

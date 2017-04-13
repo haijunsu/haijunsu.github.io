@@ -6,71 +6,48 @@ author: Navy Su
 layout: post
 ---
 
-
 ```bash
 " Don't try to be vi compatible
 
 set nocompatible
 
-
-
 " Helps force plugins to load correctly when it is turned back on below
 
 filetype off
 
-
-
 " TODO: Load plugins here (pathogen or vundle)
-
-
 
 " Turn on syntax highlighting
 
 syntax on
 
-
-
 " For plugins to load correctly
 
 filetype plugin indent on
-
-
 
 " TODO: Pick a leader key
 
 " let mapleader = ","
 
-
-
 " Security
 
 set modelines=0
-
-
 
 " Show line numbers
 
 set number
 
-
-
 " Show file stats
 
 set ruler
-
-
 
 " Blink cursor on error instead of beeping (grr)
 
 set visualbell
 
-
-
 " Encoding
 
 set encoding=utf-8
-
-
 
 " Whitespace
 
@@ -90,8 +67,6 @@ set expandtab
 
 set noshiftround
 
-
-
 " Cursor motion
 
 set scrolloff=3
@@ -102,41 +77,29 @@ set matchpairs+=&lt;:&gt; " use % to jump between pairs
 
 runtime! macros/matchit.vim
 
-
-
 " Move up/down editor lines
 
 nnoremap j gj
 
 nnoremap k gk
 
-
-
 " Allow hidden buffers
 
 set hidden
-
-
 
 " Rendering
 
 set ttyfast
 
-
-
 " Status bar
 
 set laststatus=2
-
-
 
 " Last line
 
 set showmode
 
 set showcmd
-
-
 
 " Searching
 
@@ -156,8 +119,6 @@ set showmatch
 
 map &lt;leader&gt;&lt;space&gt; :let @/=''&lt;cr&gt; " clear search
 
-
-
 " Remap help key.
 
 inoremap &lt;F1&gt; &lt;ESC&gt;:set invfullscreen&lt;CR&gt;a
@@ -166,17 +127,11 @@ nnoremap &lt;F1&gt; :set invfullscreen&lt;CR&gt;
 
 vnoremap &lt;F1&gt; :set invfullscreen&lt;CR&gt;
 
-
-
 " Textmate holdouts
-
-
 
 " Formatting
 
 map &lt;leader&gt;q gqip
-
-
 
 " Visualize tabs and newlines
 
@@ -189,8 +144,6 @@ set listchars=tab:▸\ ,eol:¬
 " Or use your leader key + l to toggle on/off
 
 map &lt;leader&gt;l :set list!&lt;CR&gt; " Toggle tabs and EOL
-
-
 
 " Color scheme (terminal)
 
@@ -207,8 +160,6 @@ map &lt;leader&gt;l :set list!&lt;CR&gt; " Toggle tabs and EOL
 " in ~/.vim/colors/ and uncomment:
 
 " colorscheme solarized
-
-
 
 " python mode plugin
 

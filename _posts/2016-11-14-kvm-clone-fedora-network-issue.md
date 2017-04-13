@@ -12,8 +12,6 @@ $ sudo systemctl restart network
 
 Job for network.service failed because the control process exited with error code. See "systemctl status network.service" and "journalctl -xe" for details.
 
-
-
 $ journalctl -xe
 
 ...
@@ -25,7 +23,6 @@ Nov 14 15:59:07 localhost network[1389]: Bringing up interface ens3:  Error: Con
 Nov 14 15:59:07 localhost network[1389]: [FAILED]
 
 ...
-
 
 ```
 
@@ -39,7 +36,6 @@ Delete old network profile. (ex. old interface is ens3)
 
 ```bash
 $ sudo rm /etc/sysconfig/network-scripts/ifcfg-ens3
-
 
 ```
 

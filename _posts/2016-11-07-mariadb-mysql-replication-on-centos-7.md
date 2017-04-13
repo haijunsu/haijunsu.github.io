@@ -25,7 +25,6 @@ server-id=101<br />
 ` 
   
 
-
 ```bash
 sudo systemctl restart mariadb
 ```
@@ -43,15 +42,9 @@ Your MariaDB connection id is 4
 
 Server version: 10.1.14-MariaDB MariaDB Server
 
-
-
 Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
-
-
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-
 
 # create user (set any password for 'password' section)
 
@@ -103,15 +96,9 @@ Your MariaDB connection id is 4
 
 Server version: 10.1.14-MariaDB MariaDB Server
 
-
-
 Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
-
-
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-
 
 # lock all tables
 
@@ -135,8 +122,6 @@ MariaDB [(none)]&gt; show master status;
 
 1 row in set (0.00 sec)
 
-
-
 # remain the window above and open the another window and execute dump
 
 [root@www ~]# mysqldump -u root -p --all-databases --lock-all-tables --events &gt; mysql_dump.sql 
@@ -157,12 +142,10 @@ Bye
 
 $&gt; scp mysql_dump.sql node01.srv.world:/tmp/ 
 
-
 ```
 
 5. Restore database on salve node
   
-
 
 ```bash
 mysql -u root -p &lt; /tmp/mysql_dump.sql
@@ -170,7 +153,6 @@ mysql -u root -p &lt; /tmp/mysql_dump.sql
 
 6. Configure replica information on slave node:
   
-
 
 ```bash
 mysql -u root -p 
@@ -183,15 +165,9 @@ Your MariaDB connection id is 5
 
 Server version: 10.0.19-MariaDB-log MariaDB Server
 
-
-
 Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
 
-
-
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-
 
 MariaDB [(none)]&gt; change master to 
 
@@ -327,21 +303,13 @@ Your MariaDB connection id is 402
 
 Server version: 10.1.18-MariaDB MariaDB Server
 
-
-
 Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
-
-
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-
 
 MariaDB [(none)]&gt; create database testreplica;
 
 Query OK, 1 row affected (0.01 sec)
-
-
 
 MariaDB [(none)]&gt; use testreplica;
 
@@ -351,13 +319,9 @@ MariaDB [testreplica]&gt; create table test_table( id int, name varchar(30) );
 
 Query OK, 0 rows affected (0.02 sec)
 
-
-
 MariaDB [testreplica]&gt; insert into test_table values (1, 'test name');
 
 Query OK, 1 row affected (0.00 sec)
-
-
 
 MariaDB [testreplica]&gt; select * from test_table;
 
@@ -385,23 +349,15 @@ Your MariaDB connection id is 6
 
 Server version: 10.1.18-MariaDB MariaDB Server
 
-
-
 Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
-
-
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-
 
 MariaDB [(none)]&gt; use testreplica;
 
 Reading table information for completion of table and column names
 
 You can turn off this feature to get a quicker startup with -A
-
-
 
 Database changed
 

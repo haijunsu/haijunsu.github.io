@@ -26,21 +26,13 @@ Your MariaDB connection id is 732
 
 Server version: 10.1.19-MariaDB MariaDB Server
 
-
-
 Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
-
-
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
-
-
 
 MariaDB [(none)]&gt;STOP SLAVE IO_THREAD;
 
 Query OK, 0 rows affected (0.01 sec)
-
-
 
 MariaDB [(none)]&gt; SHOW PROCESSLIST;
 
@@ -82,11 +74,7 @@ MariaDB [(none)]&gt; change master to
 
     -&gt; master_password='password';     # replication ID's password
 
-
-
 MariaDB [(none)]&gt; start slave;
-
-
 
 MariaDB [(none)]&gt; show slave status\G
 ```

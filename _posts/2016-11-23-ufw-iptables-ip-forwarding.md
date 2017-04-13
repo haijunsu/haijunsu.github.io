@@ -30,7 +30,6 @@ net.ipv4.ip_forward=1
 
 net.ipv6.conf.default.forwarding=1
 
-
 ```
 
 Execute the sysctl command to enable the new settings in the configuration file:
@@ -56,13 +55,9 @@ if [ -f ${FLAG} ]; then
 
 fi
 
-
-
 #sample iptables rules
 
 iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -o ppp0 -j MASQUERADE
-
-
 
 touch ${FLAG}
 

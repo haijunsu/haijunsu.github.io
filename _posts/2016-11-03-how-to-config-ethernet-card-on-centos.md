@@ -16,5 +16,4 @@ After modify items, restart the network service
 ```bash
 sudo service network restart
 
-
 ```

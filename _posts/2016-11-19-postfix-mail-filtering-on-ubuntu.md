@@ -14,7 +14,6 @@ $ sudo dpkg-reconfigure postfix
 
 $ sudo postconf -e 'home_mailbox = Maildir/'
 
-
 ```
 
 Test mail
@@ -32,8 +31,6 @@ data
 
 Subject: My first mail for my domain
 
-
-
 Hi,
 
 Are you there?
@@ -45,7 +42,6 @@ Admin
 . (and Enter In a new Line)
 
 quit
-
 
 ```
 
@@ -78,7 +74,6 @@ $ sudo adduser clamav amavis
 
 $ sudo adduser amavis clamav
 
-
 ```
 
 ```bash
@@ -90,7 +85,6 @@ ENABLED=1
 
 ...
 
-
 ```
 
 ```bash
@@ -98,13 +92,9 @@ $ sudo systemctl start spamassassin.service
 
 use strict;
 
-
-
 # You can modify this file to re-enable SPAM checking through spamassassin
 
 # and to re-enable antivirus checking.
-
-
 
 #
 
@@ -114,15 +104,9 @@ use strict;
 
 #
 
-
-
 @bypass_virus_checks_maps = (
 
    \%bypass_virus_checks, \@bypass_virus_checks_acl, \$bypass_virus_checks_re);
-
-
-
-
 
 #
 
@@ -132,13 +116,9 @@ use strict;
 
 #
 
-
-
 @bypass_spam_checks_maps = (
 
    \%bypass_spam_checks, \@bypass_spam_checks_acl, \$bypass_spam_checks_re);
-
-
 
 1;  # insure a defined return
 ```
@@ -147,8 +127,6 @@ use strict;
 sudo vi /etc/amavis/conf.d/20-debian_defaults
 
 ...
-
-
 
 $sa_spam_subject_tag = '***SPAM*** ';
 
@@ -176,10 +154,7 @@ $final_spam_destiny       = D_DISCARD;
 
 ...
 
-
 ```
-
-
 
 ```bash
 $ sudo vi /etc/amavis/conf.d/50-user
@@ -191,19 +166,13 @@ $ sudo vi /etc/amavis/conf.d/50-user
 ...
 ```
 
-
-
 ```bash
 sudo systemctl restart amavis.service
 ```
 
-
-
 ```bash
 sudo postconf -e 'content_filter = smtp-amavis:[127.0.0.1]:10024'
 ```
-
-
 
 ```bash
 sudo vi  /etc/postfix/master.cf
@@ -219,8 +188,6 @@ smtp-amavis     unix    -       -       -       -       2       smtp
         -o disable_dns_lookups=yes
 
         -o max_use=20
-
-
 
 127.0.0.1:10025 inet    n       -       -       -       -       smtpd
 
@@ -261,8 +228,6 @@ smtp-amavis     unix    -       -       -       -       2       smtp
         -o receive_override_options=no_header_body_checks,no_unknown_recipient_checks,no_milters
 ```
 
-
-
 ```bash
 ...
 
@@ -290,20 +255,15 @@ cleanup   unix  n       -       y       -       0       cleanup
 
 ...
 
-
 ```
-
-
 
 ```bash
 sudo systemctl restart postfix.service
-
 
 ```
 
 Testing
   
-
 
 ```bash
 $ telnet localhost 10024
@@ -316,12 +276,10 @@ Escape character is '^]'.
 
 220 [127.0.0.1] ESMTP amavisd-new service ready
 
-
 ```
 
 Checked /var/log/mail.log and found errors
   
-
 
 ```bash
 Nov 21 14:26:36 mail-tiqc amavis[705]: (00705-01) (!)run_av (ClamAV-clamd) FAILED - unexpected , output="/var/lib/amavis/tmp/amavis-20161121T142636-00705-g5ZqbF_3/parts: lstat() failed: Permission denied. ERROR\n"
@@ -329,7 +287,6 @@ Nov 21 14:26:36 mail-tiqc amavis[705]: (00705-01) (!)run_av (ClamAV-clamd) FAILE
 Nov 21 14:26:36 mail-tiqc amavis[705]: (00705-01) (!)ClamAV-clamd av-scanner FAILED: CODE(0x4bde0d0) unexpected , output="/var/lib/amavis/tmp/amavis-20161121T142636-00705-g5ZqbF_3/parts: lstat() failed: Permission denied. ERROR\n" at (eval 100) line 905.
 
 Nov 21 14:26:36 mail-tiqc amavis[705]: (00705-01) (!)WARN: all primary virus scanners failed, considering backups
-
 
 ```
 

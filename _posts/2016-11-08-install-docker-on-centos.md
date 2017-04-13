@@ -8,7 +8,6 @@ layout: post
 1. Add docker yum repository
   
 
-
 ```bash
 $ sudo yum update
 
@@ -28,47 +27,37 @@ gpgkey=https://yum.dockerproject.org/gpg
 
 EOF
 
-
 ```
 
 2. Install docker package
   
 
-
 ```bash
 $ sudo yum install docker-engine
-
 
 ```
 
 3. Enable docker service
   
 
-
 ```bash
 $ sudo systemctl enable docker.service
-
 
 ```
 
 4. Start docker deamon
   
 
-
 ```bash
 $ sudo systemctl start docker
-
 
 ```
 
 5. Verify docker installation
   
 
-
 ```bash
 $ sudo docker run --rm hello-world
-
-
 
  Unable to find image 'hello-world:latest' locally
 
@@ -80,13 +69,9 @@ $ sudo docker run --rm hello-world
 
  Status: Downloaded newer image for hello-world:latest
 
-
-
  Hello from Docker!
 
  This message shows that your installation appears to be working correctly.
-
-
 
  To generate this message, Docker took the following steps:
 
@@ -102,30 +87,22 @@ $ sudo docker run --rm hello-world
 
      to your terminal.
 
-
-
  To try something more ambitious, you can run an Ubuntu container with:
 
   $ docker run -it ubuntu bash
-
-
 
  Share images, automate workflows, and more with a free Docker Hub account:
 
   https://hub.docker.com
 
-
-
  For more examples and ideas, visit:
 
   https://docs.docker.com/engine/userguide/
-
 
 ```
 
 6. Try ubuntu bash
   
-
 
 ```bash
 $ docker run -it ubuntu bash
@@ -146,16 +123,13 @@ shm                                                                             
 
 root@118120c1d392:/# exit (exit ubuntu and stop the container, # Ctrl+p, Ctrl+q key to back to Host's console)
 
-
 ```
 
 7. Add user to docker group
   
 
-
 ```bash
 $ sudo usermod -aG docker `whoami`
-
 
 ```
 
@@ -163,7 +137,6 @@ $ sudo usermod -aG docker `whoami`
   
 9. cleanup test code
   
-
 
 ```bash
 $ docker ps -all
@@ -204,12 +177,10 @@ Deleted: sha256:dafccc932aece6c4914ca049df6539b75145ee2cf51f76e8d129aade450c87c3
 
 Deleted: sha256:c854e44a1a5a22c9344c90f68ef6e07fd479e8ce1030fe141e3236887f1a4920
 
-
 ```
 
 10. Configure zfs for Docker
   
-
 
 ```bash
 $ sudo zpool create -f zpool-docker /dev/xvdb
@@ -234,16 +205,13 @@ $ sudo zfs list -t -all
 
  zpool-docker/docker  19K    3.84G    19K  /var/lib/docker
 
-
 ```
 
 11. Configure docker storage driver
   
 
-
 ```bash
 sudo vi /etc/default/docker
-
 
 ```
 
@@ -254,16 +222,13 @@ DOCKER_OPTS="-D --storage-driver=zfs"<br />
 12. Restart docker
   
 
-
 ```bash
 $ sudo systemctl restart docker
-
 
 ```
 
 13. Check docker info
   
-
 
 ```bash
 $ docker info
@@ -345,8 +310,5 @@ WARNING: bridge-nf-call-ip6tables is disabled
 Insecure Registries:
 
  127.0.0.0/8
-
-
-
 
 ```

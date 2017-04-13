@@ -14,10 +14,7 @@ Solution: Create /etc/dhcp/dhclient.conf
 ```bash
 $ sudo vi /etc/dhcp/dhclient.conf
 
-
-
 send dhcp-client-identifier = hardware;
-
 
 ```
 

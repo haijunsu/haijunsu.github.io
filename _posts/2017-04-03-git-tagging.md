@@ -28,7 +28,6 @@ $ git show &lt;tab name&gt;
 Sharing Tags:
   
 
-
 ```bash
 $ git push origin &lt;tag name&gt;
 

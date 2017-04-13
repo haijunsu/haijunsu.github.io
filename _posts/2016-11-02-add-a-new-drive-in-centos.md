@@ -20,19 +20,13 @@ $ sudo fdisk /dev/sdb
 
 Welcome to fdisk (util-linux 2.23.2).
 
-
-
 Changes will remain in memory only, until you decide to write them.
 
 Be careful before using the write command.
 
-
-
 Device does not contain a recognized partition table
 
 Building a new DOS disklabel with disk identifier 0x59179040.
-
-
 
 WARNING: The size of this disk is 36.0 TB (35997194649600 bytes).
 
@@ -42,23 +36,15 @@ larger than (2199023255040 bytes) for 512-byte sectors. Use parted(1) and GUID
 
 partition table format (GPT).
 
-
-
-
-
 The device presents a logical sector size that is smaller than
 
 the physical sector size. Aligning to a physical sector (or optimal
 
 I/O) size boundary is recommended, or performance may be impacted.
 
-
-
 Command (m for help): g
 
 Building a new GPT disklabel (GUID: FEA1CC8D-685D-4B70-B533-3D758B387762)
-
-
 
 Command (m for help): n
 
@@ -70,11 +56,7 @@ Last sector, +sectors or +size{K,M,G,T,P} (2048-70307020766, default 70307020766
 
 Created partition 1
 
-
-
 Command (m for help): p
-
-
 
 Disk /dev/sdb: 35997.2 GB, 35997194649600 bytes, 70307020800 sectors
 
@@ -86,26 +68,17 @@ I/O size (minimum/optimal): 4096 bytes / 4096 bytes
 
 Disk label type: gpt
 
-
-
-
-
 #         Start          End    Size  Type            Name
 
  1         2048  70307020766   32.8T  Linux filesyste
-
-
 
 Command (m for help): w
 
 The partition table has been altered!
 
-
-
 Calling ioctl() to re-read partition table.
 
 Syncing disks.
-
 
 ```
 
@@ -155,8 +128,6 @@ Superblock backups stored on blocks:
 	102400000, 214990848, 512000000, 550731776, 644972544, 1934917632,
 
 	2560000000, 3855122432, 5804752896
-
-
 
 Allocating group tables: done
 

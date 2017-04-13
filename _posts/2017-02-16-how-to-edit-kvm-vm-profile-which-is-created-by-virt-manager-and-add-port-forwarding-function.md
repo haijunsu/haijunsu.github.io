@@ -14,14 +14,12 @@ Virt-manager hides some functions such as port-forwarding. We can edit the VM pr
 List all VMs in virsh envrionment
   
 
-
 ```bash
 virsh # list --all
 ```
 
 Edit VM&#8217;s profile
   
-
 
 ```bash
 virsh # edit &lt;VM's name&gt;
@@ -58,7 +56,6 @@ new:
 
 Add port-forwarding arguments before tag </domain>
   
-
 
 ```bash
 &lt;qemu:commandline&gt;

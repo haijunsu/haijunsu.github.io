@@ -16,11 +16,7 @@ There are two ways to change them.
 
 { % block title %}{{ title }} | Your website title here { % endblock %}
 
-
-
 { % block branding %}
-
-
 
 &lt;h1 id="site-name"&gt;
 
@@ -45,7 +41,6 @@ There are two ways to change them.
 ADMIN_SITE_HEADER = "My shiny new administration"
 
 ...
-
 
 ```
         

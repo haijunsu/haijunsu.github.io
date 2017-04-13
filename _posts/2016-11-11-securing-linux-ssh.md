@@ -12,27 +12,19 @@ $ sudo vi /etc/ssh/sshd_config
 
 Port 2345 # Change the port as you want 
 
-
-
 # Disable protocol 1
 
 # Protocol 2,1
 
 Protocol 2
 
-
-
 # Prevent root logins:
 
 PermitRootLogin no
 
-
-
 # Limit user logins:
 
 AllowUsers alice bob
-
-
 
 # Disable password authentication forcing use of keys
 
