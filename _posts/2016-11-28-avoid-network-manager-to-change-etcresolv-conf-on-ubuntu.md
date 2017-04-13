@@ -20,6 +20,6 @@ nameserver 192.168.0.1
 
 nameserver 192.168.0.2
 
-search &lt;your domain name&gt;
+search <your domain name>
 
 ```

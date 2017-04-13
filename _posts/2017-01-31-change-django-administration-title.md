@@ -18,11 +18,11 @@ There are two ways to change them.
 
 { % block branding %}
 
-&lt;h1 id="site-name"&gt;
+<h1 id="site-name">
 
-    &lt;a href="{ % url 'admin:index' %}"&gt;Your website title here&lt;/a&gt;
+    <a href="{ % url 'admin:index' %}">Your website title here</a>
 
-&lt;/h1&gt;
+</h1>
 
 { % endblock %}
 

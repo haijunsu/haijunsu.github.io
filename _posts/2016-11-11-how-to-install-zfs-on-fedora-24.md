@@ -10,7 +10,7 @@ $ sudo dnf install http://download.zfsonlinux.org/fedora/zfs-release$(rpm -E %di
 
 $ gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux
 
-pub  2048R/F14AB620 2013-03-21 ZFS on Linux &lt;zfs@zfsonlinux.org&gt;
+pub  2048R/F14AB620 2013-03-21 ZFS on Linux <zfs@zfsonlinux.org>
 
     Key fingerprint = C93A FFFD 9F3F 7B03 C310  CEB6 A9D5 A1C0 F14A B620
 

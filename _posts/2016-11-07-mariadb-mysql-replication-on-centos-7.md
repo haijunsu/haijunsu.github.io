@@ -32,7 +32,7 @@ sudo systemctl restart mariadb
 2. create user on master node:
 
 ```bash
-$&gt; mysql -u root -p 
+$> mysql -u root -p 
 
 Enter password:
 
@@ -48,15 +48,15 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 # create user (set any password for 'password' section)
 
-MariaDB [(none)]&gt; grant replication slave on *.* to replica@'%' identified by 'password'; 
+MariaDB [(none)]> grant replication slave on *.* to replica@'%' identified by 'password'; 
 
 Query OK, 0 rows affected (0.00 sec)
 
-MariaDB [(none)]&gt; flush privileges; 
+MariaDB [(none)]> flush privileges; 
 
 Query OK, 0 rows affected (0.00 sec)
 
-MariaDB [(none)]&gt; exit
+MariaDB [(none)]> exit
 
 Bye
 ```
@@ -86,7 +86,7 @@ sudo systemctl restart mariadb
 4. Dump databases on master node:
 
 ```bash
-$&gt; mysql -u root -p 
+$> mysql -u root -p 
 
 Enter password:
 
@@ -102,13 +102,13 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 # lock all tables
 
-MariaDB [(none)]&gt; flush tables with read lock; 
+MariaDB [(none)]> flush tables with read lock; 
 
 Query OK, 0 rows affected (0.00 sec)
 
 # show status (remember File, Position value)
 
-MariaDB [(none)]&gt; show master status; 
+MariaDB [(none)]> show master status; 
 
 +------------------+----------+--------------+------------------+
 
@@ -124,23 +124,23 @@ MariaDB [(none)]&gt; show master status;
 
 # remain the window above and open the another window and execute dump
 
-[root@www ~]# mysqldump -u root -p --all-databases --lock-all-tables --events &gt; mysql_dump.sql 
+[root@www ~]# mysqldump -u root -p --all-databases --lock-all-tables --events > mysql_dump.sql 
 
 Enter password:
 
 # back to the remained window and unlock
 
-MariaDB [(none)]&gt; unlock tables; 
+MariaDB [(none)]> unlock tables; 
 
 Query OK, 0 rows affected (0.00 sec)
 
-MariaDB [(none)]&gt; exit
+MariaDB [(none)]> exit
 
 Bye
 
 # transfer the dump to Slave Host
 
-$&gt; scp mysql_dump.sql node01.srv.world:/tmp/ 
+$> scp mysql_dump.sql node01.srv.world:/tmp/ 
 
 ```
 
@@ -148,7 +148,7 @@ $&gt; scp mysql_dump.sql node01.srv.world:/tmp/
   
 
 ```bash
-mysql -u root -p &lt; /tmp/mysql_dump.sql
+mysql -u root -p < /tmp/mysql_dump.sql
 ```
 
 6. Configure replica information on slave node:
@@ -169,29 +169,29 @@ Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]&gt; change master to 
+MariaDB [(none)]> change master to 
 
-    -&gt; master_host='10.0.0.31',     # Master Hosts's IP
+    -> master_host='10.0.0.31',     # Master Hosts's IP
 
-    -&gt; master_user='replica',     # replication ID
+    -> master_user='replica',     # replication ID
 
-    -&gt; master_password='password',     # replication ID's password
+    -> master_password='password',     # replication ID's password
 
-    -&gt; master_log_file='mysql-bin.000002',     # File value confirmed on Master
+    -> master_log_file='mysql-bin.000002',     # File value confirmed on Master
 
-    -&gt; master_log_pos=327;     # Position value confirmed on Master
+    -> master_log_pos=327;     # Position value confirmed on Master
 
 Query OK, 0 rows affected (0.24 sec)
 
 # start replication
 
-MariaDB [(none)]&gt; start slave;
+MariaDB [(none)]> start slave;
 
 Query OK, 0 rows affected (0.00 sec)
 
 # show status
 
-MariaDB [(none)]&gt; show slave status\G
+MariaDB [(none)]> show slave status\G
 
 *************************** 1. row ***************************
 
@@ -295,7 +295,7 @@ Master_SSL_Verify_Server_Cert: No
 7. Test your result on master node
 
 ```bash
-$&gt; mysql -u root -p
+$> mysql -u root -p
 
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 
@@ -307,23 +307,23 @@ Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]&gt; create database testreplica;
+MariaDB [(none)]> create database testreplica;
 
 Query OK, 1 row affected (0.01 sec)
 
-MariaDB [(none)]&gt; use testreplica;
+MariaDB [(none)]> use testreplica;
 
 Database changed
 
-MariaDB [testreplica]&gt; create table test_table( id int, name varchar(30) );
+MariaDB [testreplica]> create table test_table( id int, name varchar(30) );
 
 Query OK, 0 rows affected (0.02 sec)
 
-MariaDB [testreplica]&gt; insert into test_table values (1, 'test name');
+MariaDB [testreplica]> insert into test_table values (1, 'test name');
 
 Query OK, 1 row affected (0.00 sec)
 
-MariaDB [testreplica]&gt; select * from test_table;
+MariaDB [testreplica]> select * from test_table;
 
 +------+-----------+
 
@@ -341,7 +341,7 @@ MariaDB [testreplica]&gt; select * from test_table;
 8. Test on salve node
 
 ```bash
-$&gt; mysql
+$> mysql
 
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 
@@ -353,7 +353,7 @@ Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]&gt; use testreplica;
+MariaDB [(none)]> use testreplica;
 
 Reading table information for completion of table and column names
 
@@ -361,7 +361,7 @@ You can turn off this feature to get a quicker startup with -A
 
 Database changed
 
-MariaDB [testreplica]&gt; select * from test_table;
+MariaDB [testreplica]> select * from test_table;
 
 +------+-----------+
 

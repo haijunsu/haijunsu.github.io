@@ -25,7 +25,7 @@ device for Canon_iR_ADV_4245: smb://my-windows-printer-server/Canon_iR_ADV_4245
 ```
     
 ```bash
-$ sudo lpadmin -p &lt;printer name&gt; -o auth-info-required=&lt;Your username&gt;,&lt;Your password&gt;
+$ sudo lpadmin -p <printer name> -o auth-info-required=<Your username>,<Your password>
 
 ```
 

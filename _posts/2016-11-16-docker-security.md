@@ -77,7 +77,7 @@ $ docker run -m 512m myimage
 
 $ docker run debian \
 
-   find / -perm +6000 -type f -exec ls -ld {} \; 2&gt; dev/null
+   find / -perm +6000 -type f -exec ls -ld {} \; 2> dev/null
 
 // to defang them
 

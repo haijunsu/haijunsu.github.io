@@ -22,17 +22,17 @@ The best way is to create another bridge for guest.
      
     
 ```bash
-&lt;network&gt;
+<network>
 
-  &lt;name&gt;examplenetwork&lt;/name&gt;
+  <name>examplenetwork</name>
 
-  &lt;bridge name="virbr100" /&gt;
+  <bridge name="virbr100" />
 
-  &lt;forward mode="route" /&gt;
+  <forward mode="route" />
 
-  &lt;ip address="10.10.120.1" netmask="255.255.255.0" /&gt;
+  <ip address="10.10.120.1" netmask="255.255.255.0" />
 
-&lt;/network&gt;
+</network>
 ```
 
   2. create new bridge
@@ -44,29 +44,29 @@ The best way is to create another bridge for guest.
   3. edit the bridge to enable dhcp (I think if we define DHCP at the first step, no need this one. If we don&#8217;t do this step, the persistent state is no. Not sure what the impact is.)```bash
 # virsh net-edit routenetwork
 
-&lt;network&gt;
+<network>
 
-  &lt;name&gt;routenetwork&lt;/name&gt;
+  <name>routenetwork</name>
 
-  &lt;uuid&gt;62b9b9a9-2865-466c-9a3d-ab003441bc8b&lt;/uuid&gt;
+  <uuid>62b9b9a9-2865-466c-9a3d-ab003441bc8b</uuid>
 
-  &lt;forward mode='route'/&gt;
+  <forward mode='route'/>
 
-  &lt;bridge name='virbr100' stp='on' delay='0'/&gt;
+  <bridge name='virbr100' stp='on' delay='0'/>
 
-  &lt;mac address='52:54:00:cc:3b:aa'/&gt;
+  <mac address='52:54:00:cc:3b:aa'/>
 
-  &lt;ip address='10.10.120.1' netmask='255.255.255.0'&gt;
+  <ip address='10.10.120.1' netmask='255.255.255.0'>
 
-    &lt;dhcp&gt;
+    <dhcp>
 
-      &lt;range start='10.10.120.128' end='10.10.120.254'/&gt;
+      <range start='10.10.120.128' end='10.10.120.254'/>
 
-    &lt;/dhcp&gt;
+    </dhcp>
 
-  &lt;/ip&gt;
+  </ip>
 
-&lt;/network&gt;
+</network>
 ```
 
   4. Set the bridge autostart
@@ -101,21 +101,21 @@ The best way is to create another bridge for guest.
 ```bash
 # virsh --connect qemu:///system
 
-virsh # edit &lt;VM's name&gt;
+virsh # edit <VM's name>
 
 ...
 
-&lt;interface type='bridge'&gt;
+<interface type='bridge'>
 
-  &lt;mac address='52:54:00:ea:98:1a'/&gt;
+  <mac address='52:54:00:ea:98:1a'/>
 
-  &lt;source bridge='virbr100'/&gt;
+  <source bridge='virbr100'/>
 
-  &lt;model type='e1000'/&gt;
+  <model type='e1000'/>
 
-  &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
+  <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
 
-&lt;/interface&gt;
+</interface>
 
 ...
 
@@ -125,7 +125,7 @@ virsh # edit &lt;VM's name&gt;
   9. add route on your router
     
 ```bash
-# sudo route -n add 10.10.120.0/24 &lt;host ip&gt;
+# sudo route -n add 10.10.120.0/24 <host ip>
 ```
     
     Now the guest can access from your network via it ip 10.10.120.x.
@@ -138,31 +138,31 @@ virsh # edit &lt;VM's name&gt;
           <code class="command">virsh net-list</code> — list virtual networks
         </li>
         <li>
-          <code class="command">virsh net-autostart &lt;em class="replaceable">&lt;code>[network name]</code></em></code> — Autostart a network specified as [network name]
+          <code class="command">virsh net-autostart <em class="replaceable"><code>[network name]</code></em></code> — Autostart a network specified as [network name]
         </li>
         <li>
-          <code class="command">virsh net-create &lt;em class="replaceable">&lt;code>[XML file]</code></em></code> — Generates and starts a new network using a preexisting XML file
+          <code class="command">virsh net-create <em class="replaceable"><code>[XML file]</code></em></code> — Generates and starts a new network using a preexisting XML file
         </li>
         <li>
-          <code class="command">virsh net-define &lt;em class="replaceable">&lt;code>[XML file]</code></em></code> — Generates a new network from a preexisting XML file without starting it
+          <code class="command">virsh net-define <em class="replaceable"><code>[XML file]</code></em></code> — Generates a new network from a preexisting XML file without starting it
         </li>
         <li>
-          <code class="command">virsh net-destroy &lt;em class="replaceable">&lt;code>[network name]</code></em></code> — Destroy a network specified as [network name]
+          <code class="command">virsh net-destroy <em class="replaceable"><code>[network name]</code></em></code> — Destroy a network specified as [network name]
         </li>
         <li>
-          <code class="command">virsh net-name &lt;em class="replaceable">&lt;code>[network UUID]</code></em></code> — Convert a specified [network UUID] to a network name
+          <code class="command">virsh net-name <em class="replaceable"><code>[network UUID]</code></em></code> — Convert a specified [network UUID] to a network name
         </li>
         <li>
-          <code class="command">virsh net-uuid &lt;em class="replaceable">&lt;code>[network name</code></em></code> — Convert a specified [network name] to a network UUID
+          <code class="command">virsh net-uuid <em class="replaceable"><code>[network name</code></em></code> — Convert a specified [network name] to a network UUID
         </li>
         <li>
-          <code class="command">virsh net-start &lt;em class="replaceable">&lt;code>[name of an inactive network]</code></em></code> — Starts a previously undefined inactive network
+          <code class="command">virsh net-start <em class="replaceable"><code>[name of an inactive network]</code></em></code> — Starts a previously undefined inactive network
         </li>
         <li>
-          <code class="command">virsh net-undefine &lt;em class="replaceable">&lt;code>[name of an inactive network]</code></em></code> — Undefine an inactive network
+          <code class="command">virsh net-undefine <em class="replaceable"><code>[name of an inactive network]</code></em></code> — Undefine an inactive network
         </li>
         <li>
-          <code class="command">virsh net-dumpxml &lt;em class="replaceable">&lt;code>[network name]</code></em></code> — Dump network as xml file
+          <code class="command">virsh net-dumpxml <em class="replaceable"><code>[network name]</code></em></code> — Dump network as xml file
         </li>
       </ul>
     </div>

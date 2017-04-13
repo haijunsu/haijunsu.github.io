@@ -30,11 +30,11 @@ Copyright (c) 2000, 2016, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]&gt;STOP SLAVE IO_THREAD;
+MariaDB [(none)]>STOP SLAVE IO_THREAD;
 
 Query OK, 0 rows affected (0.01 sec)
 
-MariaDB [(none)]&gt; SHOW PROCESSLIST;
+MariaDB [(none)]> SHOW PROCESSLIST;
 
 +----+-------------+-----------+------+---------+------+-----------------------------------------------------------------------------+------------------+----------+
 
@@ -54,29 +54,29 @@ MariaDB [(none)]&gt; SHOW PROCESSLIST;
 On all slave servers
 
 ```bash
-MariaDB [(none)]&gt; STOP SLAVE;
+MariaDB [(none)]> STOP SLAVE;
 ```
 
 On Slave 1
 
 ```bash
-MariaDB [(none)]&gt; RESET MASTER;
+MariaDB [(none)]> RESET MASTER;
 ```
 
 On other slave servers
 
 ```bash
-MariaDB [(none)]&gt; change master to 
+MariaDB [(none)]> change master to 
 
-    -&gt; master_host='10.0.0.31',     # IP of Slave 1
+    -> master_host='10.0.0.31',     # IP of Slave 1
 
-    -&gt; master_user='replica',     # replication ID
+    -> master_user='replica',     # replication ID
 
-    -&gt; master_password='password';     # replication ID's password
+    -> master_password='password';     # replication ID's password
 
-MariaDB [(none)]&gt; start slave;
+MariaDB [(none)]> start slave;
 
-MariaDB [(none)]&gt; show slave status\G
+MariaDB [(none)]> show slave status\G
 ```
 
 Reference: <a href="https://dev.mysql.com/doc/refman/5.7/en/replication-solutions-switch.html" target="_blank">https://dev.mysql.com/doc/refman/5.7/en/replication-solutions-switch.html</a>

@@ -10,26 +10,26 @@ List available tags:
 ```bash
 $ git tag
 
-$ git tag -l &lt;tag name&gt;
+$ git tag -l <tag name>
 ```
 
 Creating tags:
 
 ```bash
-$ git tag -a &lt;tag name&gt; -m &lt;comment&gt;
+$ git tag -a <tag name> -m <comment>
 ```
 
 Show tag data:
 
 ```bash
-$ git show &lt;tab name&gt;
+$ git show <tab name>
 ```
 
 Sharing Tags:
   
 
 ```bash
-$ git push origin &lt;tag name&gt;
+$ git push origin <tag name>
 
 $ git push origin --tags  // share all tags
 ```
@@ -37,5 +37,5 @@ $ git push origin --tags  // share all tags
 Checking out tags:
 
 ```bash
-$ git checkout -b &lt;branchname&gt; &lt;tag name&gt;
+$ git checkout -b <branchname> <tag name>
 ```

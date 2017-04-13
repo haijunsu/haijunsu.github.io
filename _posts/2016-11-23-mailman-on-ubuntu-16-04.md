@@ -201,13 +201,13 @@ sudo ./mmsitepass
 Change list passoword
 
 ```bash
-sudo ./change_pw -l &lt;list name&gt; -p &lt;new password&gt;
+sudo ./change_pw -l <list name> -p <new password>
 ```
 
 Discard pending post
 
 ```bash
-sudo ./discard /var/lib/mailman/data/heldmsg-&lt;list name&gt;-&lt;msg number&gt;.pck
+sudo ./discard /var/lib/mailman/data/heldmsg-<list name>-<msg number>.pck
 ```
 
 Reference: <a href="https://help.ubuntu.com/community/Mailman" target="_blank"> https://help.ubuntu.com/community/Mailman</a>

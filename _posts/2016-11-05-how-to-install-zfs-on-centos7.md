@@ -54,7 +54,7 @@ $ ls /dev/vd*
 
 /dev/vda  /dev/vda1  /dev/vda2  /dev/vdb  /dev/vdb1  /dev/vdb9
 
-$ sudo zpool create -f &lt;pool name&gt; /dev/vdb
+$ sudo zpool create -f <pool name> /dev/vdb
 
 ```
 
@@ -65,7 +65,7 @@ $ ls /dev/vd*
 
 /dev/vda  /dev/vda1  /dev/vda2  /dev/vdb  /dev/vdb1  /dev/vdb9 /dev/vdc
 
-$ sudo zpool add&lt;pool name&gt; /dev/vdc
+$ sudo zpool add<pool name> /dev/vdc
 
 ```
 

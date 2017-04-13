@@ -11,7 +11,7 @@ layout: post
 ```bash
 $ sudo yum update
 
-$ sudo tee /etc/yum.repos.d/docker.repo &lt;&lt;-'EOF'
+$ sudo tee /etc/yum.repos.d/docker.repo <<-'EOF'
 
 [dockerrepo]
 

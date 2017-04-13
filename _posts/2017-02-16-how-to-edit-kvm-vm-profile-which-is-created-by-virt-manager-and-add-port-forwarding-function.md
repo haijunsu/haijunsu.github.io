@@ -22,16 +22,16 @@ Edit VM&#8217;s profile
   
 
 ```bash
-virsh # edit &lt;VM's name&gt;
+virsh # edit <VM's name>
 ```
 
 Add qemu namespace 
 
 ```bash
 old:
-&lt;domain type='kvm'&gt;
+<domain type='kvm'>
 new:
-&lt;domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'&gt;
+<domain type='kvm' xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'>
 
 ```
 
@@ -39,18 +39,18 @@ Change network type from network to user
 
 ```bash
 old:
-   &lt;interface type='network'&gt;
-      &lt;mac address='xx:xx:xx:xx:xx:xx'/&gt;
-      &lt;model type='e1000'/&gt;
-      &lt;source network='default'/&gt;
-      &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
-    &lt;/interface&gt;
+   <interface type='network'>
+      <mac address='xx:xx:xx:xx:xx:xx'/>
+      <model type='e1000'/>
+      <source network='default'/>
+      <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+    </interface>
 new:
-  &lt;interface type='user'&gt;
-    &lt;mac address='xx:xx:xx:xx:xx:xx'/&gt;
-    &lt;model type='e1000'/&gt;
-    &lt;address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/&gt;
-  &lt;/interface&gt;
+  <interface type='user'>
+    <mac address='xx:xx:xx:xx:xx:xx'/>
+    <model type='e1000'/>
+    <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
+  </interface>
 
 ```
 
@@ -58,11 +58,11 @@ Add port-forwarding arguments before tag </domain>
   
 
 ```bash
-&lt;qemu:commandline&gt;
-    &lt;qemu:arg value='-redir'/&gt;
-    &lt;qemu:arg value='tcp:2001::3389'/&gt;
-    &lt;qemu:arg value='-redir'/&gt;
-    &lt;qemu:arg value='tcp:2002::80'/&gt;
-&lt;/qemu:commandline&gt;
+<qemu:commandline>
+    <qemu:arg value='-redir'/>
+    <qemu:arg value='tcp:2001::3389'/>
+    <qemu:arg value='-redir'/>
+    <qemu:arg value='tcp:2002::80'/>
+</qemu:commandline>
 ```
 

@@ -26,13 +26,13 @@ Assume catalog needs be protected for register customer and there is an url &#82
      
     
 ```bash
-&lt;?php
+<?php
 
     //check security contents
 
-    echo $this-&gt;getLayout()-&gt;createBlock('core/template')-&gt;setTemplate('page/html/security.phtml')-&gt;toHtml();
+    echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/security.phtml')->toHtml();
 
-?&gt;
+?>
 ```
 
   2. Create a new file &#8216;page/html/security.phtml&#8217; with the following contents
@@ -40,23 +40,23 @@ Assume catalog needs be protected for register customer and there is an url &#82
      
     
 ```bash
-&lt;?php
+<?php
 
     // check security content
 
-    if (("catalog" === Mage::app()-&gt;getRequest()-&gt;getModuleName()) || (0 === strpos(Mage::app()-&gt;getRequest()-&gt;getRequestUri(), '/secure/url'))) {
+    if (("catalog" === Mage::app()->getRequest()->getModuleName()) || (0 === strpos(Mage::app()->getRequest()->getRequestUri(), '/secure/url'))) {
 
-        if (!($this-&gt;helper('customer')-&gt;isLoggedIn())){
+        if (!($this->helper('customer')->isLoggedIn())){
 
-?&gt;
+?>
 
-            &lt;script type="text/javascript"&gt;
+            <script type="text/javascript">
 
-                  window.location.href = "&lt;?php echo $this-&gt;getUrl('customer/account/login')?&gt;";
+                  window.location.href = "<?php echo $this->getUrl('customer/account/login')?>";
 
-            &lt;/script&gt;
+            </script>
 
-&lt;?php
+<?php
 
             die();
 
@@ -64,32 +64,32 @@ Assume catalog needs be protected for register customer and there is an url &#82
 
     }
 
-?&gt;
+?>
 ```
 
 Get request information for test purpose:
   
 
 ```bash
-&lt;?php
+<?php
 
-    echo Mage::app()-&gt;getRequest()-&gt;getModuleName();
+    echo Mage::app()->getRequest()->getModuleName();
 
-    echo "&lt;br /&gt;";
+    echo "<br />";
 
-    echo Mage::app()-&gt;getRequest()-&gt;getControllerName();
+    echo Mage::app()->getRequest()->getControllerName();
 
-    echo "&lt;br /&gt;";
+    echo "<br />";
 
-    echo Mage::app()-&gt;getRequest()-&gt;getActionName();
+    echo Mage::app()->getRequest()->getActionName();
 
-    echo "&lt;br /&gt;";
+    echo "<br />";
 
-    echo Mage::app()-&gt;getRequest()-&gt;getRequestUri();
+    echo Mage::app()->getRequest()->getRequestUri();
 
-    echo "&lt;br /&gt;";
+    echo "<br />";
 
-?&gt;
+?>
 
 ```
 

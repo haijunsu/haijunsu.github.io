@@ -30,7 +30,7 @@ sudo a2enmod rewrite
 Install drush
 
 ```bash
-$ php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" &gt; drush
+$ php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > drush
 
 $ php drush core-status
 

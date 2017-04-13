@@ -37,7 +37,7 @@ sudo systemctl restart apache2
 Example virtual host #1
 
 ```bash
-&lt;VirtualHost *:80&gt;
+<VirtualHost *:80>
 
     ServerName localhost
 
@@ -47,13 +47,13 @@ Example virtual host #1
 
     ProxyPassReverse "/" "http://192.168.0.1:8080/"
 
-&lt;/VirtualHost&gt;
+</VirtualHost>
 ```
 
 Example virtual host #2
 
 ```bash
-&lt;VirtualHost *:80&gt;
+<VirtualHost *:80>
 
     ServerName localhost
 
@@ -63,21 +63,21 @@ Example virtual host #2
 
     ProxyPassReverse "/subdir/" "http://192.168.0.221:8000/"
 
-     &lt;Location "/subdir"&gt;
+     <Location "/subdir">
 
          ProxyPassReverse    /
 
          ProxyHTMLURLMap     / /subdir/
 
-     &lt;/Location&gt;
+     </Location>
 
-&lt;/VirtualHost&gt;
+</VirtualHost>
 ```
 
 Example virtual host #3 (Don&#8217;t proxy /static)
 
 ```bash
-&lt;VirtualHost *:80&gt;
+<VirtualHost *:80>
 
     ServerName localhost
 
@@ -89,19 +89,19 @@ Example virtual host #3 (Don&#8217;t proxy /static)
 
     Alias /static/ /var/www/html/static/
 
-    &lt;Directory /var/www/html/static&gt;
+    <Directory /var/www/html/static>
 
         Require all granted
 
-    &lt;/Directory&gt;
+    </Directory>
 
-    &lt;Location /static&gt;
+    <Location /static>
 
         ProxyPass "!"
 
-    &lt;/Location&gt;
+    </Location>
 
-&lt;/VirtualHost&gt;
+</VirtualHost>
 ```
 
 Enable load balancing:
@@ -117,7 +117,7 @@ sudo systemctl restart apache2
 Example load balancing #1
 
 ```bash
-&lt;Proxy balancer://myset&gt;
+<Proxy balancer://myset>
 
     BalancerMember http://www2.example.com:8080
 
@@ -125,7 +125,7 @@ Example load balancing #1
 
     ProxySet lbmethod=bytraffic
 
-&lt;/Proxy&gt;
+</Proxy>
 
 ProxyPass "/images/"  "balancer://myset/"
 
@@ -135,7 +135,7 @@ ProxyPassReverse "/images/"  "balancer://myset/"
 Example load balancing #2 (www3 handles 3 times traffic and timeout is 1)
 
 ```bash
-&lt;Proxy balancer://myset&gt;
+<Proxy balancer://myset>
 
     BalancerMember http://www2.example.com:8080
 
@@ -143,7 +143,7 @@ Example load balancing #2 (www3 handles 3 times traffic and timeout is 1)
 
     ProxySet lbmethod=bytraffic
 
-&lt;/Proxy&gt;
+</Proxy>
 
 ProxyPass "/images"  "balancer://myset/"
 
@@ -152,7 +152,7 @@ ProxyPassReverse "/images"  "balancer://myset/"
 
 Example failove
 
-<pre class="prettyprint lang-config prettyprinted"><span class="pun">&lt;</span><span class="tag">Proxy</span><span class="pln"> balancer</span><span class="pun">://</span><span class="pln">myset</span><span class="pun">&gt;</span>
+<pre class="prettyprint lang-config prettyprinted"><span class="pun"><</span><span class="tag">Proxy</span><span class="pln"> balancer</span><span class="pun">://</span><span class="pln">myset</span><span class="pun">></span>
 
     <span class="kwd">BalancerMember</span><span class="pln"> http</span><span class="pun">://</span><span class="pln">www2</span><span class="pun">.</span><span class="pln">example</span><span class="pun">.</span><span class="pln">com</span><span class="pun">:</span><span class="lit">8080</span>
 
@@ -166,7 +166,7 @@ Example failove
 
     <span class="kwd">ProxySet</span><span class="pln"> lbmethod</span><span class="pun">=</span><span class="pln">byrequests
 
-</span><span class="pun">&lt;/</span><span class="tag">Proxy</span><span class="pun">&gt;</span>
+</span><span class="pun"></</span><span class="tag">Proxy</span><span class="pun">></span>
 
 <span class="kwd">ProxyPass</span> <span class="str">"/images/"</span>  <span class="str">"balancer://myset/"</span>
 
@@ -175,23 +175,23 @@ Example failove
 
 Balancer Manager (Don&#8217;t enable it in production)
 
-<pre class="prettyprint lang-config prettyprinted"><span class="pun">&lt;</span><span class="tag">Location</span> <span class="str">"/balancer-manager"</span><span class="pun">&gt;</span>
+<pre class="prettyprint lang-config prettyprinted"><span class="pun"><</span><span class="tag">Location</span> <span class="str">"/balancer-manager"</span><span class="pun">></span>
 
     <span class="kwd">SetHandler</span><span class="pln"> balancer-manager
 
     </span><span class="kwd">Require</span><span class="pln"> host localhost
 
-</span><span class="pun">&lt;/</span><span class="tag">Location</span><span class="pun">&gt;</span>
+</span><span class="pun"></</span><span class="tag">Location</span><span class="pun">></span>
 ```
 
 Controlling access proxy
 
 ```bash
-&lt;Proxy "*"&gt;
+<Proxy "*">
 
   Require ip 192.168.0
 
-&lt;/Proxy&gt;
+</Proxy>
 ```
 
 Reference:

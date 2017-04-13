@@ -26,7 +26,7 @@ Use the following command to run container
   
 
 ```bash
-docker run -d -v myHomeVolume:/home/wwwuser --name myapps &lt;image&gt;
+docker run -d -v myHomeVolume:/home/wwwuser --name myapps <image>
 ```
 
 TO backup the data, taring all files at &#8216;/var/lib/docker/volumes/myHomeVolume/_data&#8217; with root.

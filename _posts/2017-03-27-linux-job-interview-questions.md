@@ -35,15 +35,15 @@ df -ah
 4. How dow you manage services on a system?
 
 ```bash
-service &lt;service name&gt; status
+service <service name> status
 
-systemctl status &lt;service name&gt;
+systemctl status <service name>
 ```
 
 5. How would you check the size of a directory&#8217;s contents on disk?
 
 ```bash
-du -sh &lt;directory name&gt;
+du -sh <directory name>
 ```
 
 6. How would you check for open ports on a Linux machine?
@@ -57,7 +57,7 @@ sudo netstat  -tulpn
 7. How do you check CPU usage for a process?
 
 ```bash
-ps aux |grep &lt;process name&gt; 
+ps aux |grep <process name> 
 
 top
 
@@ -70,7 +70,7 @@ htop
 ```bash
 ls /mnt
 
-mount &lt;device/network drive&gt; &lt;mount point&gt;
+mount <device/network drive> <mount point>
 
 /etc/fstab
 
@@ -79,9 +79,9 @@ mount &lt;device/network drive&gt; &lt;mount point&gt;
 9. How do you look up something you don&#8217;t know?
 
 ```bash
-man &lt;command&gt;
+man <command>
 
-&lt;command&gt; --h
+<command> --h
 
 google
 ```

@@ -73,7 +73,7 @@ set scrolloff=3
 
 set backspace=indent,eol,start
 
-set matchpairs+=&lt;:&gt; " use % to jump between pairs
+set matchpairs+=<:> " use % to jump between pairs
 
 runtime! macros/matchit.vim
 
@@ -117,21 +117,21 @@ set smartcase
 
 set showmatch
 
-map &lt;leader&gt;&lt;space&gt; :let @/=''&lt;cr&gt; " clear search
+map <leader><space> :let @/=''<cr> " clear search
 
 " Remap help key.
 
-inoremap &lt;F1&gt; &lt;ESC&gt;:set invfullscreen&lt;CR&gt;a
+inoremap <F1> <ESC>:set invfullscreen<CR>a
 
-nnoremap &lt;F1&gt; :set invfullscreen&lt;CR&gt;
+nnoremap <F1> :set invfullscreen<CR>
 
-vnoremap &lt;F1&gt; :set invfullscreen&lt;CR&gt;
+vnoremap <F1> :set invfullscreen<CR>
 
 " Textmate holdouts
 
 " Formatting
 
-map &lt;leader&gt;q gqip
+map <leader>q gqip
 
 " Visualize tabs and newlines
 
@@ -143,7 +143,7 @@ set listchars=tab:▸\ ,eol:¬
 
 " Or use your leader key + l to toggle on/off
 
-map &lt;leader&gt;l :set list!&lt;CR&gt; " Toggle tabs and EOL
+map <leader>l :set list!<CR> " Toggle tabs and EOL
 
 " Color scheme (terminal)
 

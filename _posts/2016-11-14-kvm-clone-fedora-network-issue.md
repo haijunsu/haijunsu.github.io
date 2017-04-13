@@ -16,7 +16,7 @@ $ journalctl -xe
 
 ...
 
-Nov 14 15:59:07 localhost NetworkManager[818]: &lt;info>  [1479157147.5419] audit: op="connection-activate" uuid="123dd488-4e5a-3420-952d-c6e63dff7c21"
+Nov 14 15:59:07 localhost NetworkManager[818]: <info>  [1479157147.5419] audit: op="connection-activate" uuid="123dd488-4e5a-3420-952d-c6e63dff7c21"
 
 Nov 14 15:59:07 localhost network[1389]: Bringing up interface ens3:  Error: Connection activation failed: No suitable device found for this connect
 

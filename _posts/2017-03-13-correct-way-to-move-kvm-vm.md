@@ -11,7 +11,7 @@ I have a problem to do live migration between two host computers via virt manage
   2. dump guest configuration as xml
     
 ```bash
-virsh dumpxml VMNAME &gt; domxml.xml
+virsh dumpxml VMNAME > domxml.xml
 ```
 
   3. copy the guest images to another server with same path

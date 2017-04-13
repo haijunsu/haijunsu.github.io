@@ -8,7 +8,7 @@ layout: post
   1. Stop lxc container
     
 ```bash
-$ sudo lxc-stop -n &lt;container&gt;
+$ sudo lxc-stop -n <container>
 ```
 
   2. Archive lxc container. DON&#8217;T forget the option **_&#8216;&#8211;numeric-owner&#8217;._** **The &#8216;&#8211;numeric-owner&#8217; flag is very important! Without it, the container may not boot because the uid/gids get mangled in the extracted filesystem**
@@ -18,7 +18,7 @@ $ sudo lxc-stop -n &lt;container&gt;
 ```bash
 $ sudo - su
 
-$ cd /var/lib/lxc/&lt;container&gt;/
+$ cd /var/lib/lxc/<container>/
 
 $ tar --numeric-owner -czvf container_fs.tar.gz ./*
 ```
@@ -29,9 +29,9 @@ $ tar --numeric-owner -czvf container_fs.tar.gz ./*
 ```bash
 $ sudo su -
 
-$ mkdir /var/lib/lxc/&lt;container&gt;/
+$ mkdir /var/lib/lxc/<container>/
 
-$ cd /var/lib/lxc/&lt;container&gt;/
+$ cd /var/lib/lxc/<container>/
 
 $ tar --numeric-owner -xzvf container_fs.tar.gz 
 ```

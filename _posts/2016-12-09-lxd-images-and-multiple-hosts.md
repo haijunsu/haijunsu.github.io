@@ -16,7 +16,7 @@ lxc config set core.trust_password some-password
 Add a remote server:
 
 ```bash
-lxc remote add &lt;server alias&gt; &lt;ip address or DNS&gt;
+lxc remote add <server alias> <ip address or DNS>
 ```
 
 And after that, use all the same command as above but prefixing the container and images name with the remote host like:
@@ -31,7 +31,7 @@ Manually import images example:
 ```bash
 lxc image copy images:gentoo/current/amd64 local: --alias gentoo --auto-update
 
-lxc image import &lt;tarball&gt; --alias random-image
+lxc image import <tarball> --alias random-image
 
 lxc image import https://dl.stgraber.org/lxd --alias busybox-amd64
 ```
@@ -41,19 +41,19 @@ List images:
 ```bash
 lxc image list
 
-lxc image list &lt;remote server alias&gt;:
+lxc image list <remote server alias>:
 ```
 
 Editing image:
 
 ```bash
-lxc image edit &lt;alias or fingerprint&gt;
+lxc image edit <alias or fingerprint>
 ```
 
 Deleting image:
 
 ```bash
-lxc image delete &lt;alias or fingerprint&gt;
+lxc image delete <alias or fingerprint>
 ```
 
 Create you own image from a container:

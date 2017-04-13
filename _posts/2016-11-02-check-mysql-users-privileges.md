@@ -8,7 +8,7 @@ layout: post
 Show root user&#8217;s privileges:
 
 ```bash
-mysql&gt; SHOW GRANTS FOR 'root'@'localhost';
+mysql> SHOW GRANTS FOR 'root'@'localhost';
 
 +---------------------------------------------------------------------+
 
@@ -25,7 +25,7 @@ Show current user&#8217;s privileges:
   
 
 ```bash
-mysql&gt; show grants;
+mysql> show grants;
 
 +---------------------------------------------------------------------+
 
@@ -41,7 +41,7 @@ mysql&gt; show grants;
 
 2 rows in set (0.00 sec)
 
-mysql&gt; show grants for current_user;
+mysql> show grants for current_user;
 
 +---------------------------------------------------------------------+
 
@@ -57,7 +57,7 @@ mysql&gt; show grants for current_user;
 
 2 rows in set (0.00 sec)
 
-mysql&gt; show grants for current_user();
+mysql> show grants for current_user();
 
 +---------------------------------------------------------------------+
 

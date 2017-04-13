@@ -12,7 +12,7 @@ firewall-cmd --get-zones
 
 firewall-cmd --list-interfaces
 
-firewall-cmd --add-interface=&lt;interface&gt;
+firewall-cmd --add-interface=<interface>
 
 firewall-cmd --add-service=http
 

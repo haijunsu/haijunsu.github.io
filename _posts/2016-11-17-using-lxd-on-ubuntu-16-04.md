@@ -94,7 +94,7 @@ $ lxc list
 
 $ lxc list --fast
 
-$ lxc info &lt;container&gt;
+$ lxc info <container>
 
 ```
 
@@ -104,15 +104,15 @@ $ lxc info &lt;container&gt;
 ```bash
 $ lxc start 
 
-$ lxc stop &lt;container&gt;
+$ lxc stop <container>
 
-$ lxc stop  &lt;container&gt; --force
+$ lxc stop  <container> --force
 
-$ lxc restart &lt;containter&gt;
+$ lxc restart <containter>
 
-$ lxc restart &lt;container&gt; --force
+$ lxc restart <container> --force
 
-$ lxc pause &lt;container&gt;
+$ lxc pause <container>
 
 ```
 
@@ -122,11 +122,11 @@ $ lxc pause &lt;container&gt;
 ```bash
 $ lxc profile list
 
-$ lxc profile show &lt;profile&gt;
+$ lxc profile show <profile>
 
-$ lxc profile edit &lt;profile&gt;
+$ lxc profile edit <profile>
 
-$ lxc profile apply &lt;container&gt; &lt;profile1&gt;,&lt;profile2&gt;,...
+$ lxc profile apply <container> <profile1>,<profile2>,...
 
 ```
 
@@ -134,11 +134,11 @@ $ lxc profile apply &lt;container&gt; &lt;profile1&gt;,&lt;profile2&gt;,...
   
 
 ```bash
-$ lxc exec &lt;container&gt; bash
+$ lxc exec <container> bash
 
-$ lxc exec &lt;container&gt; -- ls -lh /
+$ lxc exec <container> -- ls -lh /
 
-$ lxc exec &lt;container&gt; --env mykey=myvalue
+$ lxc exec <container> --env mykey=myvalue
 
 ```
 
@@ -146,13 +146,13 @@ $ lxc exec &lt;container&gt; --env mykey=myvalue
   
 
 ```bash
-$ lxc file pull &lt;container&gt;/&lt;path&gt; &lt;dest&gt;
+$ lxc file pull <container>/<path> <dest>
 
-$ lxc file pull &lt;container&gt;/&lt;path&gt; - //read file to standard output
+$ lxc file pull <container>/<path> - //read file to standard output
 
-$ lxc file push &lt;source&gt; &lt;container&gt;/&lt;path&gt;
+$ lxc file push <source> <container>/<path>
 
-$ lxc file edit &lt;container&gt;/&lt;path&gt;
+$ lxc file edit <container>/<path>
 
 ```
 
@@ -160,17 +160,17 @@ $ lxc file edit &lt;container&gt;/&lt;path&gt;
   
 
 ```bash
-$ lxc snapshot &lt;container&gt;
+$ lxc snapshot <container>
 
-$ lxc snapshot &lt;container&gt; &lt;snapshot name&gt;
+$ lxc snapshot <container> <snapshot name>
 
-$ lxc info &lt;container&gt; //see snapshot
+$ lxc info <container> //see snapshot
 
-$ lxc restore &lt;container&gt; &lt;snapshot name&gt;
+$ lxc restore <container> <snapshot name>
 
-$ lxc move &lt;container&gt;/&lt;snapshot name&gt; &lt;container&gt;/&lt;new snapshot name&gt;
+$ lxc move <container>/<snapshot name> <container>/<new snapshot name>
 
-$ lxc delete &lt;container&gt;/&lt;snapshot name&gt;
+$ lxc delete <container>/<snapshot name>
 
 ```
 
@@ -178,11 +178,11 @@ $ lxc delete &lt;container&gt;/&lt;snapshot name&gt;
   
 
 ```bash
-$ lxc copy &lt;source container&gt; &lt;destination container&gt; 
+$ lxc copy <source container> <destination container> 
 
-$ lxc move &lt;old name&gt; &lt;new name&gt;  
+$ lxc move <old name> <new name>  
 
-$ lxc delete &lt;container&gt;
+$ lxc delete <container>
 
 ```
 

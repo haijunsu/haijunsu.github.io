@@ -64,11 +64,11 @@ Group=testgroup
 
 Type=forking
 
-ExecStart=&lt;path&gt;/myservice.sh start
+ExecStart=<path>/myservice.sh start
 
-ExecStop=&lt;path&gt;myservice.sh stop
+ExecStop=<path>myservice.sh stop
 
-ExecReload=&lt;path&gt;myservice.sh restart
+ExecReload=<path>myservice.sh restart
 
 [Install]
 
