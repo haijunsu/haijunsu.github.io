@@ -14,7 +14,6 @@ For default virbr0, it provides a way to help guest to access host (VM<&#8211;>
 The best way is to create another bridge for guest.
 
 1. create new bridge xml file (routeNetwork.xml)
-
 ```xml
 <network>
   <name>examplenetwork</name>
@@ -30,8 +29,10 @@ The best way is to create another bridge for guest.
 ```
 
 3. edit the bridge to enable dhcp (I think if we define DHCP at the first step, no need this one. If we don't do this step, the persistent state is no. Not sure what the impact is.)
-```xml
+```bash
 # virsh net-edit routenetwork
+```
+```xml
 <network>
   <name>routenetwork</name>
   <uuid>62b9b9a9-2865-466c-9a3d-ab003441bc8b</uuid>
@@ -46,14 +47,12 @@ The best way is to create another bridge for guest.
 </network>
 ```
 
-  4. Set the bridge autostart
-    
+4. Set the bridge autostart
 ```bash
 # virsh net-autostart routenetwork
 ```
 
-  5. Check virtual networks
-    
+5. Check virtual networks
 ```bash
 # virsh net-list
 
@@ -63,27 +62,27 @@ The best way is to create another bridge for guest.
  routenetwork         active     yes           yes
 ```
 
-  6. add masquerade to firewalld
+6. add masquerade to firewalld
 ```bash
 # firewall-cmd --permanent --add-masquerade
 ```
 
-  7. change guest network type 
-```xml
+7. change guest network type 
+```bash
 # virsh --connect qemu:///system
 virsh # edit <VM's name>
-...
+```
+```xml
 <interface type='bridge'>
   <mac address='52:54:00:ea:98:1a'/>
   <source bridge='virbr100'/>
   <model type='e1000'/>
   <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
 </interface>
-...
 ```
 
-  8. shutdown and start the guest again
-  9. add route on your router
+8. shutdown and start the guest again
+9. add route on your router
 ```bash
 # sudo route -n add 10.10.120.0/24 <host ip>
 ```
