@@ -6,8 +6,6 @@ author: Navy Su
 layout: post
 ---
 For default virbr0, it provides a way to help guest to access host (VM<&#8211;>host). But the guest cannot be accessed from outside host. But we can use the following commands to enable it temporally.
-  
-
 ```bash
 # iptables -D  FORWARD -o virbr0 -j REJECT --reject-with icmp-port-unreachable
 # iptables -D  FORWARD -i virbr0 -j REJECT --reject-with icmp-port-unreachable
@@ -15,8 +13,9 @@ For default virbr0, it provides a way to help guest to access host (VM<&#8211;>
 
 The best way is to create another bridge for guest.
 
-  1. create new bridge xml file (routeNetwork.xml)
-```bash
+1. create new bridge xml file (routeNetwork.xml)
+
+```xml
 <network>
   <name>examplenetwork</name>
   <bridge name="virbr100" />
@@ -25,13 +24,13 @@ The best way is to create another bridge for guest.
 </network>
 ```
 
-  2. create new bridge
+2. create new bridge
 ```bash
 # virsh net-create routeNetwork.xml
 ```
 
-  3. edit the bridge to enable dhcp (I think if we define DHCP at the first step, no need this one. If we don&#8217;t do this step, the persistent state is no. Not sure what the impact is.)
-```bash
+3. edit the bridge to enable dhcp (I think if we define DHCP at the first step, no need this one. If we don't do this step, the persistent state is no. Not sure what the impact is.)
+```xml
 # virsh net-edit routenetwork
 <network>
   <name>routenetwork</name>
@@ -70,7 +69,7 @@ The best way is to create another bridge for guest.
 ```
 
   7. change guest network type 
-```bash
+```xml
 # virsh --connect qemu:///system
 virsh # edit <VM's name>
 ...
@@ -88,10 +87,9 @@ virsh # edit <VM's name>
 ```bash
 # sudo route -n add 10.10.120.0/24 <host ip>
 ```
-    
-    Now the guest can access from your network via it ip 10.10.120.x.
-    
-    Other **virsh** commands used in managing virtual networks are:
+Now the guest can access from your network via it ip 10.10.120.x.
+
+Other **virsh** commands used in managing virtual networks are:
         
  * virsh net-list — list virtual networks
  * virsh net-autostart [network name] — Autostart a network specified as [network name]
