@@ -86,4 +86,3 @@ man &lt;command&gt;
 google
 ```
 
-&nbsp;

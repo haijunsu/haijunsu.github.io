@@ -62,10 +62,6 @@ Create you own image from a container:
 lxc publish my-container/some-snapshot --alias some-image
 ```
 
-&nbsp;
-
-&nbsp;
-
 Reference:
   
 <a href="https://linuxcontainers.org/lxd/getting-started-cli/" target="_blank">Installing LXD and the command line tool</a>

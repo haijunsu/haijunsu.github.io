@@ -49,6 +49,4 @@ Click **Save Config**
 
 **Clean those tables manually with Mysql client or phpMyAdmin **(NOT recommend)
 
-&nbsp;
-
 Source: <https://docs.nexcess.net/article/how-to-perform-magento-database-maintenance.html>

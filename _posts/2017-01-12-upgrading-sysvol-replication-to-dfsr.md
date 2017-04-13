@@ -39,6 +39,4 @@ layout: post
 
 <img src="https://i1.wp.com/www.rebeladmin.com/wp-content/uploads/2015/04/dfrs9.png?w=840" data-recalc-dims="1" />
 
-&nbsp;
-
 Reference: <http://www.rebeladmin.com/2015/04/step-by-step-guide-for-upgrading-sysvol-replication-to-dfsr-distributed-file-system-replication/>

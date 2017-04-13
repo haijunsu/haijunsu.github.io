@@ -107,8 +107,6 @@ sudo vi /etc/nsswitch.conf
 
 ```
 
-&nbsp;
-
 ```bash
 passwd:         compat winbind
 
@@ -148,8 +146,6 @@ Add sudo users
 sudo vi /etc/sudoers.d/MYDOMAIN
 
 ```
-
-&nbsp;
 
 ```bash
 # replace adgroup as real domain group name

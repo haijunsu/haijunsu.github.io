@@ -99,4 +99,3 @@ reference:
 
 <http://stackoverflow.com/questions/8235282/magento-display-request-url>
 
-&nbsp;

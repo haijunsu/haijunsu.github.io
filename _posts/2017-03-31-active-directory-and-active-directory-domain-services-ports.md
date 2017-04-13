@@ -5,7 +5,6 @@ date: 2017-03-31T11:23:09+00:00
 author: Navy Su
 layout: post
 ---
-&nbsp;
 
 <table summary="table">
   <tr>

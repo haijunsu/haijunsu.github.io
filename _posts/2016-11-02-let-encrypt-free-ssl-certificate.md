@@ -11,6 +11,3 @@ Website: <https://letsencrypt.org/>
 
 Guide: <https://certbot.eff.org/docs/using.html>
 
-&nbsp;
-
-&nbsp;

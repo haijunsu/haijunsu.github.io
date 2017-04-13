@@ -15,10 +15,7 @@ Reference:
   
 <a href="http://stackoverflow.com/questions/2689629/how-do-i-solve-ldap-start-tls-unable-to-start-tls-connect-error-in-php" target="_blank">http://stackoverflow.com/questions/2689629/how-do-i-solve-ldap-start-tls-unable-to-start-tls-connect-error-in-php</a>
 
-&nbsp;
-
 http://docs.ansible.com/ansible/intro_installation.html
 
 https://startbootstrap.com/template-overviews/sb-admin-2/
 
-&nbsp;

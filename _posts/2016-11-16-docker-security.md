@@ -104,6 +104,4 @@ $ clair
 
 ```
 
-&nbsp;
-
 Reference: <a href="https://www.youtube.com/watch?v=A32Yjizt2_s" target="_blank">https://www.youtube.com/watch?v=A32Yjizt2_s</a>

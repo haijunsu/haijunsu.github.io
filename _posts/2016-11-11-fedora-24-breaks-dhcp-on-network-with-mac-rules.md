@@ -18,4 +18,3 @@ send dhcp-client-identifier = hardware;
 
 ```
 
-&nbsp;

@@ -66,6 +66,3 @@ Add port-forwarding arguments before tag </domain>
 &lt;/qemu:commandline&gt;
 ```
 
-&nbsp;
-
-&nbsp;

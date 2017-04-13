@@ -19,4 +19,3 @@ Product image location:
 media/catalog/product
 ```
 
-&nbsp;

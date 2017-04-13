@@ -58,7 +58,6 @@ Alias=test_quota-db.service
 
 ```
     
-    &nbsp;
     
 ```bash
 sudo systemctl enable test_quota-db.service
@@ -74,7 +73,6 @@ docker run --name test_quota-phpmyadmin --link test_quota-db:db -e MYSQL_ROOT_PA
 
 ```
     
-    &nbsp;
     
 ```bash
 [Unit]
@@ -105,7 +103,6 @@ Alias=test_quota-phpmyadmin.service
 
 ```
     
-    &nbsp;
     
 ```bash
 sudo systemctl enable test_quota-phpmyadmin.service

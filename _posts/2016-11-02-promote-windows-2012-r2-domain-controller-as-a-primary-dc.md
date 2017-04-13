@@ -55,4 +55,3 @@ RID pool manager			CC-DC2.cc01.adlan
 Infrastructure master		        CC-DC2.cc01.adlan
 ```
 
-&nbsp;
