@@ -19,4 +19,4 @@ ftp_proxy=ftp://username:password@host:port/
 https_proxy=https://username:password@host:port/
 ```
 
-Source: https://askubuntu.com/questions/664777/systemwide-proxy-settings-in-ubuntu
+Source: <https://askubuntu.com/questions/664777/systemwide-proxy-settings-in-ubuntu>
