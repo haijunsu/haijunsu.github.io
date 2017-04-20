@@ -50,9 +50,14 @@ fi
 ```bash
 pip3 install powerline-status
 ```
+* Installing macvim (For Mac OS X only)
+```bash
+brew install macvim --env-std --with-override-system-vim
+```
 * Editing .vimrc and add the following lines
 ```bash
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 ```
+Note: The vim plugin requires a vim version with Python support compiled in. Presense of Python support in Vim can be checked by running **vim --version | grep +python**
