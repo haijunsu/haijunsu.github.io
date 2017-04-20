@@ -34,8 +34,7 @@ vi config.py # edit it before running install.py. if it is changed later, you ne
 cd ~/
 ln -s ~/powerline-shell/powerline-shell.py # powerline-shell repository folder is ~/powerline-shell
 ```
-* Editing .bashrc and add the following lines
-
+* Editing .bashrc or .bash_profile or .profile and add the following lines
 ```bash
 function _update_ps1() {
     PS1="$(~/powerline-shell.py --cwd-max-depth 3 --colorize-hostname $? 2> /dev/null)"
@@ -49,16 +48,28 @@ fi
 ## Installing Powerline for Vim
 * Installing powerline
 ```bash
-pip3 install powerline-status
+pip install powerline-status #for python2
+pip3 install powerline-status #for python3
 ```
 * Installing macvim (For Mac OS X only)
 ```bash
 brew install macvim --env-std --with-override-system-vim
 ```
+* Checking python version supported by Vim. If no python, it won't work for next step
+```bash
+vim --version | grep +python
+```
 * Editing .vimrc and add the following lines
 ```bash
+# for python2
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+```
+..*or
+```bash
+# for python3
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
 ```
-Note: The vim plugin requires a vim version with Python support compiled in. Presense of Python support in Vim can be checked by running **vim --version | grep +python**
