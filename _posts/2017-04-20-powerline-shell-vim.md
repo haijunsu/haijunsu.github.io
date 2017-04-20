@@ -11,14 +11,14 @@ layout: post
 ```bash
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 ```
-..* Open Finder and double click the font file to open preview window
-..* Click button "Install Font" to install font to user folder
-..* Changing font for iTerm2 or Terminal (Preferences --> Profile --> Text --> Non-AsCII Font)
+Open Finder and double click the font file to open preview window
+Click button "Install Font" to install font to user folder
+Changing font for iTerm2 or Terminal (Preferences --> Profile --> Text --> Non-AsCII Font)
 
 * Installing fonts on Windows
-..* Download font from [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans/releases/latest)
-..* Unzip the font file and click all ttf font files to install
-..* Change font for Putty or other terminal tools
+Download font from [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans/releases/latest)
+Unzip the font file and click all ttf font files to install
+Change font for Putty or other terminal tools
 
 ## Installing Powerline-shell
 * Clone powerline-shell repository and install it
