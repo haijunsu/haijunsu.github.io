@@ -35,6 +35,7 @@ cd ~/
 ln -s ~/powerline-shell/powerline-shell.py # powerline-shell repository folder is ~/powerline-shell
 ```
 * Editing .bashrc and add the following lines
+
 ```bash
 function _update_ps1() {
     PS1="$(~/powerline-shell.py --cwd-max-depth 3 --colorize-hostname $? 2> /dev/null)"
