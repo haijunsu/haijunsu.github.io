@@ -35,6 +35,7 @@ cd ~/
 ln -s ~/powerline-shell/powerline-shell.py # powerline-shell repository folder is ~/powerline-shell
 ```
 * Editing .bashrc or .bash_profile or .profile and add the following lines
+..*  
 ```bash
 function _update_ps1() {
     PS1="$(~/powerline-shell.py --cwd-max-depth 3 --colorize-hostname $? 2> /dev/null)"
@@ -66,7 +67,7 @@ python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 ```
-..*or
+..* or
 ```bash
 # for python3
 python3 from powerline.vim import setup as powerline_setup
