@@ -7,18 +7,18 @@ layout: post
 
 ## Installing fonts
 * Installing font on Mac
-..* Download font file form github
+1. Download font file form github
 ```bash
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 ```
-Open Finder and double click the font file to open preview window
-Click button "Install Font" to install font to user folder
-Changing font for iTerm2 or Terminal (Preferences --> Profile --> Text --> Non-AsCII Font)
+2. Open Finder and double click the font file to open preview window
+3. Click button "Install Font" to install font to user folder
+4. Changing font for iTerm2 or Terminal (Preferences --> Profile --> Text --> Non-AsCII Font)
 
 * Installing fonts on Windows
-Download font from [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans/releases/latest)
-Unzip the font file and click all ttf font files to install
-Change font for Putty or other terminal tools
+1. Download font from [Fantasque Sans Mono](https://github.com/belluzj/fantasque-sans/releases/latest)
+2. Unzip the font file and click all ttf font files to install
+3. Change font for Putty or other terminal tools
 
 ## Installing Powerline-shell
 * Clone powerline-shell repository and install it
