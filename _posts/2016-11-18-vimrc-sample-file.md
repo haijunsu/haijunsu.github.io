@@ -6,6 +6,8 @@ author: Navy Su
 layout: post
 ---
 
+[download](https://raw.githubusercontent.com/haijunsu/haijunsu.github.io/master/.vimrc.sample) Sample file
+
 ```bash
 " Don't try to be vi compatible
 
