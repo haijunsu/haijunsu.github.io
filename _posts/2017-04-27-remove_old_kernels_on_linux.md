@@ -3,12 +3,12 @@ title: Remove old kernels on Linux
 author: Navy Su
 layout: post
 ---
-=== Display current kernel
+### Display current kernel
 ```
   $ uname -r
   $ uname -mrs
 ```
-=== On ubuntu
+### On ubuntu
 * List all installed kernels
 ```
   $ dpkg --list | grep linux-image
@@ -18,7 +18,7 @@ layout: post
   $ sudo apt-get autoremove
 ```
 
-=== On RedHat, CentOS, and Fedora
+### On RedHat, CentOS, and Fedora
 * list all installed kernels
 ```
   $ rpm -qa kernel
