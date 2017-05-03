@@ -67,7 +67,7 @@ kramdown:
   syntax_highlighter_opts:
     # Use existing pygments syntax highlighting css
     css_class: 'highlight'
-
+  hard_wrap: true
 # Set the Sass partials directory, as we're using @imports
 sass:
   style: :expanded # You might prefer to minify using :compressed
@@ -76,6 +76,8 @@ sass:
 gems:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
+  - jekyll-coffeescript
+  - jekyll-paginate
 
 # Exclude these files from your production _site
 exclude:
@@ -84,6 +86,7 @@ exclude:
   - LICENSE
   - README.md
   - CNAME
+  - preview.sh
 
 theme: jekyll-theme-cayman
 

@@ -298,3 +298,18 @@ footer {
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start
 @import "highlights";
 @import "svg-icons";
+
+// table properties.
+tr:nth-child(even) {background: #FFF};
+tr:nth-child(odd) {background: #CCC};
+table {
+  border-collapse: collapse;
+}
+td, th {
+  border: 1px solid #999;
+  padding: 0.5rem;
+  text-align: left;
+}
+th {
+  background: #FF9800;
+}
