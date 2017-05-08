@@ -9,16 +9,16 @@ Assume catalog needs be protected for register customer and there is an url &#82
 
 *  Modify templete &#8216;page/html/head.phtml&#8217; and add following code
     
-```php
+~~~php
 <?php
     //check security contents
     echo $this->getLayout()->createBlock('core/template')->setTemplate('page/html/security.phtml')->toHtml();
 ?>
-```
+~~~
 
 * Create a new file &#8216;page/html/security.phtml&#8217; with the following contents
 
-```php
+~~~php
 <?php
     // check security content
     if (("catalog" === Mage::app()->getRequest()->getModuleName()) || (0 === strpos(Mage::app()->getRequest()->getRequestUri(), '/secure/url'))) {
@@ -32,11 +32,11 @@ Assume catalog needs be protected for register customer and there is an url &#82
         }
     }
 ?>
-```
+~~~
 
 Get request information for test purpose:
 
-```php
+~~~php
 <?php
     echo Mage::app()->getRequest()->getModuleName();
     echo "<br />";
@@ -48,7 +48,7 @@ Get request information for test purpose:
     echo "<br />";
 ?>
 
-```
+~~~
 
 reference:
 

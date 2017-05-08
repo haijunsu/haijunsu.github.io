@@ -8,7 +8,7 @@ layout: post
 1. Add docker yum repository
   
 
-```bash
+~~~bash
 $ sudo yum update
 
 $ sudo tee /etc/yum.repos.d/docker.repo <<-'EOF'
@@ -27,36 +27,36 @@ gpgkey=https://yum.dockerproject.org/gpg
 
 EOF
 
-```
+~~~
 
 2. Install docker package
   
 
-```bash
+~~~bash
 $ sudo yum install docker-engine
 
-```
+~~~
 
 3. Enable docker service
   
 
-```bash
+~~~bash
 $ sudo systemctl enable docker.service
 
-```
+~~~
 
 4. Start docker deamon
   
 
-```bash
+~~~bash
 $ sudo systemctl start docker
 
-```
+~~~
 
 5. Verify docker installation
   
 
-```bash
+~~~bash
 $ sudo docker run --rm hello-world
 
  Unable to find image 'hello-world:latest' locally
@@ -99,12 +99,12 @@ $ sudo docker run --rm hello-world
 
   https://docs.docker.com/engine/userguide/
 
-```
+~~~
 
 6. Try ubuntu bash
   
 
-```bash
+~~~bash
 $ docker run -it ubuntu bash
 
 root@118120c1d392:/# df -h
@@ -123,22 +123,22 @@ shm                                                                             
 
 root@118120c1d392:/# exit (exit ubuntu and stop the container, # Ctrl+p, Ctrl+q key to back to Host's console)
 
-```
+~~~
 
 7. Add user to docker group
   
 
-```bash
+~~~bash
 $ sudo usermod -aG docker `whoami`
 
-```
+~~~
 
 8. logout and logon again. Now you can run docker without root privilege.
   
 9. cleanup test code
   
 
-```bash
+~~~bash
 $ docker ps -all
 
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
@@ -177,12 +177,12 @@ Deleted: sha256:dafccc932aece6c4914ca049df6539b75145ee2cf51f76e8d129aade450c87c3
 
 Deleted: sha256:c854e44a1a5a22c9344c90f68ef6e07fd479e8ce1030fe141e3236887f1a4920
 
-```
+~~~
 
 10. Configure zfs for Docker
   
 
-```bash
+~~~bash
 $ sudo zpool create -f zpool-docker /dev/xvdb
 
 $ sudo zfs list
@@ -205,15 +205,15 @@ $ sudo zfs list -t -all
 
  zpool-docker/docker  19K    3.84G    19K  /var/lib/docker
 
-```
+~~~
 
 11. Configure docker storage driver
   
 
-```bash
+~~~bash
 sudo vi /etc/default/docker
 
-```
+~~~
 
 `<em><br />
 DOCKER_OPTS="-D --storage-driver=zfs"<br />
@@ -222,15 +222,15 @@ DOCKER_OPTS="-D --storage-driver=zfs"<br />
 12. Restart docker
   
 
-```bash
+~~~bash
 $ sudo systemctl restart docker
 
-```
+~~~
 
 13. Check docker info
   
 
-```bash
+~~~bash
 $ docker info
 
 Containers: 0
@@ -311,4 +311,4 @@ Insecure Registries:
 
  127.0.0.0/8
 
-```
+~~~

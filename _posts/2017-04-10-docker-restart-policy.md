@@ -9,13 +9,13 @@ title: Docker restart policies.
 * always - Always keep the container running
 
 ## Setting restart policy using docker run
-```bash
+~~~bash
 docker run -d --name container_name --restart always image_name
 docker run -d --name container_name --restart on-failure:5 image_name
-```
+~~~
 
 ## Updating exist contianer
-```bash
+~~~bash
 docker update --restart=always container_name
-```
+~~~
 Reference: [Ensuring Containers Are Always Running with Docker’s Restart Policy](https://blog.codeship.com/ensuring-containers-are-always-running-with-dockers-restart-policy/)

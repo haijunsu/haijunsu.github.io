@@ -5,7 +5,7 @@ date: 2016-11-09T16:25:03+00:00
 author: Navy Su
 layout: post
 ---
-```bash
+~~~bash
 firewall-cmd --get-default-zone
 
 firewall-cmd --get-zones
@@ -28,4 +28,4 @@ firewall-cmd --runtime-to-permanent
 
 firewall-cmd --permanent --direct --get-all-rules
 
-```
+~~~

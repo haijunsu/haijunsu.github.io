@@ -7,15 +7,15 @@ layout: post
 ---
 Product image information tables:
 
-```bash
+~~~bash
 catalog_product_entity_media_gallery
 
 catalog_product_entity_media_gallery_value
-```
+~~~
 
 Product image location:
 
-```bash
+~~~bash
 media/catalog/product
-```
+~~~
 

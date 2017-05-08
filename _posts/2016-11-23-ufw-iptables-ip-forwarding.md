@@ -7,40 +7,40 @@ layout: post
 ---
 BY Default, UFW blocks IP Forwarding. To enable packet forwarding, two configuration files will need to be adjusted, in /etc/default/ufw change the DEFAULT\_FORWARD\_POLICY to &#8220;ACCEPT&#8221;:
 
-```bash
+~~~bash
 DEFAULT_FORWARD_POLICY="ACCEPT"
-```
+~~~
 
 Then edit /etc/ufw/sysctl.conf and uncomment:
 
-```bash
+~~~bash
 net/ipv4/ip_forward=1
 
 #for IPv6 forwarding uncomment:
 
 net/ipv6/conf/default/forwarding=1
-```
+~~~
 
 To enable IPv4 packet forwarding by editing /etc/sysctl.conf and uncomment the following line:
 
-```bash
+~~~bash
 net.ipv4.ip_forward=1
 
 # If you wish to enable IPv6 forwarding also uncomment:
 
 net.ipv6.conf.default.forwarding=1
 
-```
+~~~
 
 Execute the sysctl command to enable the new settings in the configuration file:
 
-```bash
+~~~bash
 sudo sysctl -p
-```
+~~~
 
 Create my-iptables-rules:
 
-```bash
+~~~bash
 $ sudo vi /etc/network/if-up.d/my-iptables-rules
 
 #!/bin/bash
@@ -62,6 +62,6 @@ iptables -t nat -A POSTROUTING -s 192.168.0.0/16 -o ppp0 -j MASQUERADE
 touch ${FLAG}
 
 exit 0
-```
+~~~
 
 Reference:<a href="https://help.ubuntu.com/lts/serverguide/firewall.html" target="_blank">https://help.ubuntu.com/lts/serverguide/firewall.html</a>

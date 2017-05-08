@@ -9,7 +9,7 @@ Guacamole website: <https://guacamole.incubator.apache.org/>
 
 Create database for Guacamole: (DB name is **guacamole_db**)
 
-```bash
+~~~bash
 $ mysql -u root -p
 
 mysql> create database <strong>guacamole_db</strong>;
@@ -17,25 +17,25 @@ mysql> create database <strong>guacamole_db</strong>;
 mysql> grant all privileges on <strong>guacamole_db</strong>.* to guacamole_user@localhost identified by 'secure password';
 
 mysql> flush  privileges;
-```
+~~~
 
 Initializing the MySQL database
 
-```bash
+~~~bash
 $ docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --mysql > initdb.sql
 
 $ mysql -u guacamole_user -p <strong>guacamole_db</strong> < initdb.sql
-```
+~~~
 
 Create my-guacd docker container
 
-```bash
+~~~bash
 $ docker run --name my-guacd -d guacamole/guacd
-```
+~~~
 
 Create my-guacamole docker container
 
-```bash
+~~~bash
 docker run --name my-guacamole \
 
   --link my-guacd:guacd \
@@ -51,23 +51,23 @@ docker run --name my-guacamole \
   -e MYSQL_PASSWORD=${DB_PASS} \
 
   -d -p 8080:8080 guacamole/guacamole
-```
+~~~
 
 Test:
 
-```bash
+~~~bash
 http://<server ip>:8080/guacamole/
-```
+~~~
 
 Logs:
 
-```bash
+~~~bash
 $ docker logs my-guacamole
-```
+~~~
 
 Behind apache proxy:
 
-```bash
+~~~bash
 <Location /guacamole/>
 
     Order allow,deny
@@ -92,4 +92,4 @@ Behind apache proxy:
 
 </Location>
 
-```
+~~~

@@ -10,7 +10,7 @@ Assume we have done <a href="http://navysu.x10host.com/2016/11/05/move-mysql-dat
 Follow steps to create mysql database (run as root). (database files locate at /mysqldata)
   
 
-```bash
+~~~bash
 // add fcontext for database storage folder. Only needs running once
 
 semanage fcontext -a -t mysqld_db_t "/mysqldata(/.*)?"
@@ -37,14 +37,14 @@ ln -s /mysqldata/test_quota /var/lib/mysql
 
 restorecon -R -v /mysqldata
 
-```
+~~~
 
 Now the database space is only 1GB.
   
 To delete mysql database
   
 
-```bash
+~~~bash
 cd /var/lib/mysql
 
 TABLES=$(mysql test_quota -e 'show tables' | awk '{ print $1}' | grep -v '^Tables' )
@@ -72,4 +72,4 @@ mysql -e "drop database test_quota"
 zfs destroy mysqldata/test_quota
 
 rm -rf /mysqldata/test_quota
-```
+~~~

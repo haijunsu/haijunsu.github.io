@@ -7,7 +7,7 @@ layout: post
 ---
 Edit /etc/postfix/main.cf
 
-```bash
+~~~bash
 ...
 
 myorigin = /etc/mailname
@@ -31,11 +31,11 @@ smtpd_recipient_restrictions =
 transport_maps = hash:/etc/postfix/transport
 
 ...
-```
+~~~
 
 Edit /etc/postfix/master.cf to comment local engine
 
-```bash
+~~~bash
 ...
 
 retry     unix  -       -       y       -       -       error
@@ -49,36 +49,36 @@ virtual   unix  -       n       n       -       -       virtual
 lmtp      unix  -       -       y       -       -       lmtp
 
 ...
-```
+~~~
 
 Create file /etc/postfix/virtual
 
-```bash
+~~~bash
 postmaster     postmaster@domain1.com
 
 abuse          abuse@domain1.com
-```
+~~~
 
 Create file /etc/postfix/transport
 
-```bash
+~~~bash
 domain1.com       smtp:10.0.224.10
 
 domain2.com       smtp:10.0.218.11
-```
+~~~
 
 Run postmap
 
-```bash
+~~~bash
 sudo postmap /etc/postfix/virtual
 
 sudo postmap /etc/postfix/transport
-```
+~~~
 
 Restore Postfix
 
-```bash
+~~~bash
 sudo systemctl restart postfix
-```
+~~~
 
 Reference:<a href="http://www.postfix.org/STANDARD_CONFIGURATION_README.html" target="_blank">http://www.postfix.org/STANDARD_CONFIGURATION_README.html</a>

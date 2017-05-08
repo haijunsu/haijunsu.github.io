@@ -7,7 +7,7 @@ layout: post
 ---
 Log tables:
 
-```bash
+~~~bash
 log_customer
 
 log_visitor
@@ -27,13 +27,13 @@ report_compared_product_index
 report_event
 
 catalog_compare_item
-```
+~~~
 
 **Cleaned by script:**
 
-```bash
+~~~bash
 php -f shell/log.php clean
-```
+~~~
 
 **Cleaned by Magento Admin (By default, it is disabled.):**
 

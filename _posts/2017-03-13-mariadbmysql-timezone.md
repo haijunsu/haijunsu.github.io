@@ -7,19 +7,19 @@ layout: post
 ---
 By default, mysql timezone value is system. It causes Python application error. After changed timezone to UTC, problem is solved.
 
-```bash
+~~~bash
 mysql_tzinfo_to_sql /usr/share/zoneinfo | mysql -u root mysql
 
-```
+~~~
 
 Change my.cnf
 
-```bash
+~~~bash
 [mysqld] 
 
 default_time_zone=UTC
 
-```
+~~~
 
 Restart Mysql
 

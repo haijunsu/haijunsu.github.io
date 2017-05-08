@@ -7,7 +7,7 @@ layout: post
 ---
 Create /etc/apache2/sites-available/000-security.conf
 
-```bash
+~~~bash
 $ sudo vi /etc/apache2/sites-available/000-security.conf
 
 # Secure apache website
@@ -43,11 +43,11 @@ Options all -Indexes
 # Disable x-powered by
 
 Header always unset X-Powered-By
-```
+~~~
 
-```bash
+~~~bash
 $ sudo a2ensite 000-security.conf
-```
+~~~
 
 On ubuntu 16.04. The default php settings is good. Please make sure settings in php.ini
 
@@ -55,10 +55,10 @@ On ubuntu 16.04. The default php settings is good. Please make sure settings in 
 
 /etc/php/7.0/apache2/php.ini
 
-```bash
+~~~bash
 expose_php = Off
 
 display_errors = Off
-```
+~~~
 
 Reference: <a href="https://www.unixmen.com/ways-to-secure-your-ubuntu-14-04-server-running-lamp/" target="_blank">https://www.unixmen.com/ways-to-secure-your-ubuntu-14-04-server-running-lamp/</a>

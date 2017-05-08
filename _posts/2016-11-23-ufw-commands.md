@@ -5,7 +5,7 @@ date: 2016-11-23T11:56:54+00:00
 author: Navy Su
 layout: post
 ---
-```bash
+~~~bash
 sudo ufw status
 
 sudo ufw status verbose
@@ -37,4 +37,4 @@ sudo ufw delete allow from 192.168.0.5 to any port 2345
 sudo ufw allow from 192.168.0.0/24 to any port 2345
 
 sudo ufw delete allow from 192.168.0.0/24 to any port 2345
-```
+~~~

@@ -22,7 +22,7 @@ Proxy Modules:
 
 Enable proxy:
 
-```bash
+~~~bash
 sudo a2enmod proxy
 
 sudo a2enmod proxy_http
@@ -32,11 +32,11 @@ sudo a2enmod proxy_html
 sudo a2enmod xml2enc
 
 sudo systemctl restart apache2
-```
+~~~
 
 Example virtual host #1
 
-```bash
+~~~bash
 <VirtualHost *:80>
 
     ServerName localhost
@@ -48,11 +48,11 @@ Example virtual host #1
     ProxyPassReverse "/" "http://192.168.0.1:8080/"
 
 </VirtualHost>
-```
+~~~
 
 Example virtual host #2
 
-```bash
+~~~bash
 <VirtualHost *:80>
 
     ServerName localhost
@@ -72,11 +72,11 @@ Example virtual host #2
      </Location>
 
 </VirtualHost>
-```
+~~~
 
 Example virtual host #3 (Don&#8217;t proxy /static)
 
-```bash
+~~~bash
 <VirtualHost *:80>
 
     ServerName localhost
@@ -102,21 +102,21 @@ Example virtual host #3 (Don&#8217;t proxy /static)
     </Location>
 
 </VirtualHost>
-```
+~~~
 
 Enable load balancing:
 
-```bash
+~~~bash
 sudo a2enmod proxy_balancer
 
 sudo a2enmod proxy_hcheck
 
 sudo systemctl restart apache2
-```
+~~~
 
 Example load balancing #1
 
-```bash
+~~~bash
 <Proxy balancer://myset>
 
     BalancerMember http://www2.example.com:8080
@@ -130,11 +130,11 @@ Example load balancing #1
 ProxyPass "/images/"  "balancer://myset/"
 
 ProxyPassReverse "/images/"  "balancer://myset/"
-```
+~~~
 
 Example load balancing #2 (www3 handles 3 times traffic and timeout is 1)
 
-```bash
+~~~bash
 <Proxy balancer://myset>
 
     BalancerMember http://www2.example.com:8080
@@ -148,7 +148,7 @@ Example load balancing #2 (www3 handles 3 times traffic and timeout is 1)
 ProxyPass "/images"  "balancer://myset/"
 
 ProxyPassReverse "/images"  "balancer://myset/"
-```
+~~~
 
 Example failove
 
@@ -171,7 +171,7 @@ Example failove
 <span class="kwd">ProxyPass</span> <span class="str">"/images/"</span>  <span class="str">"balancer://myset/"</span>
 
 <span class="kwd">ProxyPassReverse</span> <span class="str">"/images/"</span>  <span class="str">"balancer://myset/"</span>
-```
+~~~
 
 Balancer Manager (Don&#8217;t enable it in production)
 
@@ -182,17 +182,17 @@ Balancer Manager (Don&#8217;t enable it in production)
     </span><span class="kwd">Require</span><span class="pln"> host localhost
 
 </span><span class="pun"></</span><span class="tag">Location</span><span class="pun">></span>
-```
+~~~
 
 Controlling access proxy
 
-```bash
+~~~bash
 <Proxy "*">
 
   Require ip 192.168.0
 
 </Proxy>
-```
+~~~
 
 Reference:
 

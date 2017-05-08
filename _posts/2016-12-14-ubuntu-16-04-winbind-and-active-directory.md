@@ -9,19 +9,19 @@ layout: post
 
 Installation:
 
-```bash
+~~~bash
 sudo apt install winbind samba
 
 sudo apt install cups-common python-crypto-dbg python-crypto-doc bind9 bind9utils ctdb ldb-tools ntp smbldap-tools heimdal-clients libnss-winbind libpam-winbind
-```
+~~~
 
 Configuration:
 
-```bash
+~~~bash
 sudo vi /etc/samba/smb.conf
-```
+~~~
 
-```bash
+~~~bash
 [global]
 
 ## Browsing/Identification ###
@@ -69,21 +69,21 @@ sudo vi /etc/samba/smb.conf
         winbind use default domain = yes
 
         restrict anonymous = 2
-```
+~~~
 
 Restart services:
 
-```bash
+~~~bash
 sudo service winbind stop
 
 sudo service samba-ad-dc restart
 
 sudo service winbind start
-```
+~~~
 
 Join the AD (see &#8220;net ads help&#8221;):
 
-```bash
+~~~bash
 sudo kinit Admin@MYDOMAIN.COM
 
 # check klist
@@ -97,71 +97,71 @@ sudo net ads join -k
 OR
 
 sudo net ads join -U Admin@MYDOMAIN.COM
-```
+~~~
 
 Setup Authentication
   
 
-```bash
+~~~bash
 sudo vi /etc/nsswitch.conf
 
-```
+~~~
 
-```bash
+~~~bash
 passwd:         compat winbind
 
 group:          compat winbind
 
 shadow:         compat
 
-```
+~~~
 
 Restart Winbind
 
-```bash
+~~~bash
 sudo service winbind restart
 
-```
+~~~
 
 PAM Configuration
   
 
-```bash
+~~~bash
 sudo pam-auth-update
 
-```
+~~~
 
 Create Home directory
   
 
-```bash
+~~~bash
 sudo mkdir /home/MYDOMAIN
 
-```
+~~~
 
 Add sudo users
   
 
-```bash
+~~~bash
 sudo vi /etc/sudoers.d/MYDOMAIN
 
-```
+~~~
 
-```bash
+~~~bash
 # replace adgroup as real domain group name
 
 %adgroup        ALL=(ALL) NOPASSWD: ALL
 
-```
+~~~
 
 Test
   
 
-```bash
+~~~bash
 wbinfo -u
 
 wbinfo -g
 
-```
+~~~
 
 Login as a domain user and enjoy&#8230;

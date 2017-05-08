@@ -6,34 +6,34 @@ author: Navy Su
 layout: post
 ---
 For default virbr0, it provides a way to help guest to access host (VM<-->host). But the guest cannot be accessed from outside host. But we can use the following commands to enable it temporally.
-```bash
+~~~bash
 # iptables -D  FORWARD -o virbr0 -j REJECT --reject-with icmp-port-unreachable
 # iptables -D  FORWARD -i virbr0 -j REJECT --reject-with icmp-port-unreachable
-```
+~~~
 
 The best way is to create another bridge for guest.
 
 * create new bridge xml file (routeNetwork.xml)
 
-```xml
+~~~xml
 <network>
   <name>examplenetwork</name>
   <bridge name="virbr100" />
   <forward mode="route" />
   <ip address="10.10.120.1" netmask="255.255.255.0" />
 </network>
-```
+~~~
 * create new bridge
 
-```bash
+~~~bash
 # virsh net-create routeNetwork.xml
-```
+~~~
 * edit the bridge to enable dhcp (I think if we define DHCP at the first step, no need this one. If we don't do this step, the persistent state is no. Not sure what the impact is.)
 
-```bash
+~~~bash
 # virsh net-edit routenetwork
-```
-```xml
+~~~
+~~~xml
 <network>
   <name>routenetwork</name>
   <uuid>62b9b9a9-2865-466c-9a3d-ab003441bc8b</uuid>
@@ -46,47 +46,47 @@ The best way is to create another bridge for guest.
     </dhcp>
   </ip>
 </network>
-```
+~~~
 * Set the bridge autostart
 
-```bash
+~~~bash
 # virsh net-autostart routenetwork
-```
+~~~
 * Check virtual networks
 
-```bash
+~~~bash
 # virsh net-list
 
  Name                 State      Autostart     Persistent
 ----------------------------------------------------------
  default              active     yes           yes
  routenetwork         active     yes           yes
-```
+~~~
 * add masquerade to firewalld
 
-```bash
+~~~bash
 # firewall-cmd --permanent --add-masquerade
-```
+~~~
 * change guest network type 
 
-```bash
+~~~bash
 # virsh --connect qemu:///system
 virsh # edit <VM's name>
-```
-```xml
+~~~
+~~~xml
 <interface type='bridge'>
   <mac address='52:54:00:ea:98:1a'/>
   <source bridge='virbr100'/>
   <model type='e1000'/>
   <address type='pci' domain='0x0000' bus='0x00' slot='0x03' function='0x0'/>
 </interface>
-```
+~~~
 * shutdown and start the guest again
 * add route on your router
 
-```bash
+~~~bash
 # sudo route -n add 10.10.120.0/24 <host ip>
-```
+~~~
 Now the guest can access from your network via it ip 10.10.120.x.
 
 Other **virsh** commands used in managing virtual networks are:

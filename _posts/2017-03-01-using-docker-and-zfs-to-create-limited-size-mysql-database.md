@@ -11,25 +11,25 @@ Idea: Docker is run mysql server. Mysql data is stored on zfs volume and set the
   
      
     
-```bash
+~~~bash
 sudo zfs create -o quota=1.4gb -o mountpoint=/mysqldata/test_quota zpool-mysql/test_quota
 
-```
+~~~
 
   2. Create mysql instance. Port forwarding is from host 8306 to guest 3306. User can access database using host port 8306.
   
      
     
-```bash
+~~~bash
 docker run --name test_quota-db -e MYSQL_ROOT_PASSWORD=rootpassword -e MYSQL_DATABASE=my_test_quota -e MYSQL_USER=dbusername -e MYSQL_PASSWORD=dbuserpassword -v /mysqldata/test_quota:/var/lib/mysql -d  -p 8306:3306 mysql:latest
 
-```
+~~~
 
   3. Create systemd service for the container (test_quota-db.service)
   
      
     
-```bash
+~~~bash
 [Unit]
 
 Description=Mysql with quota setting
@@ -56,25 +56,25 @@ WantedBy=multi-user.target
 
 Alias=test_quota-db.service
 
-```
+~~~
     
     
-```bash
+~~~bash
 sudo systemctl enable test_quota-db.service
 
-```
+~~~
 
   4. Using phpMyAdmin to manage database
   
      
     
-```bash
+~~~bash
 docker run --name test_quota-phpmyadmin --link test_quota-db:db -e MYSQL_ROOT_PASSWORD=rootpassword -d -p 8080:80 phpmyadmin/phpmyadmin:latest
 
-```
+~~~
     
     
-```bash
+~~~bash
 [Unit]
 
 Description=phpMyAdmin for test_quota-db service
@@ -101,10 +101,10 @@ WantedBy=multi-user.target
 
 Alias=test_quota-phpmyadmin.service
 
-```
+~~~
     
     
-```bash
+~~~bash
 sudo systemctl enable test_quota-phpmyadmin.service
 
-```
+~~~

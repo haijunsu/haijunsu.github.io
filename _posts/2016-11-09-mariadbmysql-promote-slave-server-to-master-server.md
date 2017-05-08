@@ -17,7 +17,7 @@ After:
 
 One all slave servers,  see message &#8220;Slave has read all relay log&#8221;.
 
-```bash
+~~~bash
 $ mysql -u root -p
 
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -49,23 +49,23 @@ MariaDB [(none)]> SHOW PROCESSLIST;
 +----+-------------+-----------+------+---------+------+-----------------------------------------------------------------------------+------------------+----------+
 
 2 rows in set (0.00 sec)
-```
+~~~
 
 On all slave servers
 
-```bash
+~~~bash
 MariaDB [(none)]> STOP SLAVE;
-```
+~~~
 
 On Slave 1
 
-```bash
+~~~bash
 MariaDB [(none)]> RESET MASTER;
-```
+~~~
 
 On other slave servers
 
-```bash
+~~~bash
 MariaDB [(none)]> change master to 
 
     -> master_host='10.0.0.31',     # IP of Slave 1
@@ -77,6 +77,6 @@ MariaDB [(none)]> change master to
 MariaDB [(none)]> start slave;
 
 MariaDB [(none)]> show slave status\G
-```
+~~~
 
 Reference: <a href="https://dev.mysql.com/doc/refman/5.7/en/replication-solutions-switch.html" target="_blank">https://dev.mysql.com/doc/refman/5.7/en/replication-solutions-switch.html</a>

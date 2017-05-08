@@ -11,61 +11,61 @@ layout: post
 
 The Virtualization Host doesn&#8217;t install the virt-install and virt-manager. Run the following command to install them.
 
-```bash
+~~~bash
 $ sudo yum install virt-install virt-manager
-```
+~~~
 
 Also you can install KVM by following command if you didn&#8217;t install Virtualization Host feature.
 
-```bash
+~~~bash
 $ sudo yum install kvm virt-manager libvirt virt-install qemu-kvm xauth dejavu-lgc-sans-fonts
 
-```
+~~~
 
 2. check kvm module installation
 
-```bash
+~~~bash
 $ lsmod|grep kvm
 
 kvm_intel             162153  110
 
 kvm                   525409  1 kvm_intel
-```
+~~~
 
 3. Setup X server and run virt-manager
 
-```bash
+~~~bash
 $ DISPLAY=149.4.68.230:0.0
 
 $ export DISPLAY
 
 $ sudo virt-manager
-```
+~~~
 
 5. KVM cli examples
 
-```bash
+~~~bash
 // check cpu info
 
 $ egrep -c '(vmx|svm)' /proc/cpuinfo
-```
+~~~
 
-```bash
+~~~bash
 // list templates
 
 $ osinfo-query os
-```
+~~~
 
-```bash
+~~~bash
 // list VMs
 
 $ sudo virsh --connect qemu:///system list
 
 $ sudo virsh --connect qemu:///system list --all
 
-```
+~~~
 
-```bash
+~~~bash
 // show guest infomration
 
 $ sudo virsh dominfo Fedora24
@@ -96,9 +96,9 @@ Security model: selinux
 
 Security DOI:   0
 
-```
+~~~
 
-```bash
+~~~bash
 // shutdown
 
 $ sudo virsh --connect qemu:///system shutdown Fedora24
@@ -111,9 +111,9 @@ $ sudo virsh --connect qemu:///system destroy Fedora24
 
 $ sudo virsh --connect qemu:///system start Fedora24
 
-```
+~~~
 
-```bash
+~~~bash
 // delete guest
 
 $ sudo virsh --connect qemu:///system destroy Fedora24
@@ -124,18 +124,18 @@ $ sudo rm -f /var/lib/libvirt/images/Fedora24.img
 
 $ sudo virsh pool-refresh default
 
-```
+~~~
 
 6. Autostart guest
 
-```bash
+~~~bash
 // autostart guest
 
 $ sudo virsh --connect qemu:///system autostart Fedora24
 
 $ sudo virsh --connect qemu:///system dominfo Fedora24|grep Auto
 
-```
+~~~
 
 Set auto start from GUI
 

@@ -7,15 +7,15 @@ layout: post
 ---
 List all drives
 
-```bash
+~~~bash
 ls /dev/sd*
 
 /dev/sda  /dev/sda1  /dev/sda2  /dev/sdb
-```
+~~~
 
 Create Linux partitions
 
-```bash
+~~~bash
 $ sudo fdisk /dev/sdb
 
 Welcome to fdisk (util-linux 2.23.2).
@@ -80,19 +80,19 @@ Calling ioctl() to re-read partition table.
 
 Syncing disks.
 
-```
+~~~
 
 Check result:
 
-```bash
+~~~bash
 $ ls /dev/sd*
 
 /dev/sda  /dev/sda1  /dev/sda2  /dev/sdb  /dev/sdb1
-```
+~~~
 
 Create a file system
 
-```bash
+~~~bash
 $ sudo mkfs.ext4 -L /data /dev/sdb1
 
 mke2fs 1.42.9 (28-Dec-2013)
@@ -136,27 +136,27 @@ Writing inode tables: done
 Creating journal (32768 blocks): done
 
 Writing superblocks and filesystem accounting information: done
-```
+~~~
 
 Create mount point
 
-```bash
+~~~bash
 sudo mkdir /data
-```
+~~~
 
 Modify fstab file to automatically mount the file system
 
-```bash
+~~~bash
 $ sudo vi /etc/fstab
 
 # add the following line at the end
 
 LABEL=/data /data ext4 defaults 1 2
-```
+~~~
 
 Mount filesystem
 
-```bash
+~~~bash
 $ sudo mount -a
 
 $ df -h
@@ -164,4 +164,4 @@ $ df -h
 ....
 
 /dev/sdb1                    33T   20K   31T   1% /data
-```
+~~~

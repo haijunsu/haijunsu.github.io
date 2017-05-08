@@ -41,7 +41,7 @@ Click right button on Root (Active Directory Domains and Trusts [win2012 server 
 
 <span style="font-weight: 400;">Check status in command prompt window (example output. Win2012 server name is CC-DC2.cc01.adlan):</span>
 
-```bash
+~~~bash
 > netdom query fsmo
 
 Schema master				CC-DC2.cc01.adlan
@@ -53,5 +53,5 @@ PDC					CC-DC2.cc01.adlan
 RID pool manager			CC-DC2.cc01.adlan
 
 Infrastructure master		        CC-DC2.cc01.adlan
-```
+~~~
 

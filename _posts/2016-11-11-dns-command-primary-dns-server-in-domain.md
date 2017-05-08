@@ -9,21 +9,21 @@ To change DNS from command line: **_dnscmd_**
 
 List all A type records:
 
-```bash
+~~~bash
 > dnscmd <dns-server> /EnumRecords <your domain> . /type A
-```
+~~~
 
 Add a A type record:
 
-```bash
+~~~bash
 > dnscmd <dns-server> /RecordAdd <your domain> docker01 A 192.168.1.235
-```
+~~~
 
 More information for dnscmd:
 
-```bash
+~~~bash
 > dnscmd /help
-```
+~~~
 
 Set the primary DNS server in domain and auto update other DNS servers. Assume the primary DNS server is dns.my.ads.
 

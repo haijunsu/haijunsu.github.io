@@ -7,32 +7,32 @@ layout: post
 ---
 View mail queue
 
-```bash
+~~~bash
 sudo mailq
-```
+~~~
 
 Flush mail queue method1
 
-```bash
+~~~bash
 sudo postfix flush
-```
+~~~
 
 Flush mail queue method2
 
-```bash
+~~~bash
 sudo postfix -f
-```
+~~~
 
 Remove all mails in the deferred queue
 
-```bash
+~~~bash
 sudo postsuper -d ALL deferred
-```
+~~~
 
 Remove all mails from queue
 
-```bash
+~~~bash
 sudo postsuper -d ALL
-```
+~~~
 
 Reference: https://www.cyberciti.biz/tips/howto-postfix-flush-mail-queue.html

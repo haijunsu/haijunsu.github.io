@@ -7,7 +7,7 @@ layout: post
 ---
 After clone Fedora 24 VM, the is a network issue:
 
-```bash
+~~~bash
 $ sudo systemctl restart network
 
 Job for network.service failed because the control process exited with error code. See "systemctl status network.service" and "journalctl -xe" for details.
@@ -24,7 +24,7 @@ Nov 14 15:59:07 localhost network[1389]: [FAILED]
 
 ...
 
-```
+~~~
 
 Root cause: The old network device doesn&#8217;t exist anymore. During clone, a new network device is added.
 
@@ -34,9 +34,9 @@ Delete old network profile. (ex. old interface is ens3)
   
 <?prettify linenums=true?>
 
-```bash
+~~~bash
 $ sudo rm /etc/sysconfig/network-scripts/ifcfg-ens3
 
-```
+~~~
 
 Using Network Manger tool (nmcli, nmtui) to config network again.

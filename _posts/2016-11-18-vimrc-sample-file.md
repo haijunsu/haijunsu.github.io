@@ -8,7 +8,7 @@ layout: post
 
 [download](https://raw.githubusercontent.com/haijunsu/haijunsu.github.io/master/.vimrc.sample) Sample file
 
-```bash
+~~~bash
 " Don't try to be vi compatible
 
 set nocompatible
@@ -166,6 +166,6 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 " python mode plugin
 
 " https://github.com/davidhalter/jedi-vim/
-```
+~~~
 
 Reference: <a href="https://gist.github.com/simonista/8703722" target="_blank">https://gist.github.com/simonista/8703722</a>

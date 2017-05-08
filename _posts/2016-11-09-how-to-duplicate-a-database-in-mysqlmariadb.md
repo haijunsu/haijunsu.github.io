@@ -7,10 +7,10 @@ layout: post
 ---
 When backup database, don&#8217;t use option &#8211;databases. It will create use database command.
 
-```bash
+~~~bash
 mysqldump -u root -p oldDB > oldDB.sql
 
 mysql -u root -p --execute="create database newDB;"
 
 mysql -u root -p newDB < oldDB.sql
-```
+~~~

@@ -7,38 +7,38 @@ layout: post
 ---
 On Mac OSX
 
-```bash
+~~~bash
 sudo killall -HUP mDNSResponder
-```
+~~~
 
 On Mac OSX 10.10.0 – 10.10.3
   
 
-```bash
+~~~bash
 sudo discoveryutil mdnsflushcache
-```
+~~~
 
 On Mac OSX 10.5 – 10.6
   
 
-```bash
+~~~bash
 sudo dscacheutil -flushcache
-```
+~~~
 
 On Windows
   
 
-```bash
+~~~bash
 ipconfig /flushdns
-```
+~~~
 
 On Linux
   
 
-```bash
+~~~bash
 /etc/init.d/named restart
 
 /etc/init.d/nscd restart
-```
+~~~
 
 Reference: <a href="https://coolestguidesontheplanet.com/clear-the-local-dns-cache-in-osx/" target="_blank">https://coolestguidesontheplanet.com/clear-the-local-dns-cache-in-osx/</a>

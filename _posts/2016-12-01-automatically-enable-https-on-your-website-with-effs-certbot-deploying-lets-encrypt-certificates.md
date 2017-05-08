@@ -9,15 +9,15 @@ Website: <a href="https://certbot.eff.org/" target="_blank">https://certbot.eff
 
 For Apache on Ubuntu 16.04
 
-```bash
+~~~bash
 $ sudo apt-get install python-letsencrypt-apache 
 
 $ sudo letsencrypt --apache
-```
+~~~
 
 Add cornjob
 
-```bash
+~~~bash
 $ sudo vi /etc/crontab
 
 # renew domain certificate
@@ -26,4 +26,4 @@ $ sudo vi /etc/crontab
 
 00 19  * * * root letsencrypt renew
 
-```
+~~~

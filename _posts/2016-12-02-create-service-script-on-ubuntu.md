@@ -7,7 +7,7 @@ layout: post
 ---
 Creating service script
 
-```bash
+~~~bash
 $ vi myservice.sh
 
 #!/bin/bash
@@ -45,11 +45,11 @@ case "$1" in
 esac
 
 exit 0
-```
+~~~
 
 Creating server configuration file
 
-```bash
+~~~bash
 $ sudo vi /etc/systemd/myservice.service
 
 [Unit]
@@ -74,21 +74,21 @@ ExecReload=<path>myservice.sh restart
 
 WantedBy=multi-user.target
 
-```
+~~~
 
 Testing your service
 
-```bash
+~~~bash
 $ sudo systemctl start myservice
 
 $ sudo systemctl status myservice
-```
+~~~
 
 Enable your service
 
-```bash
+~~~bash
 $ sudo systemctl enable myservice
-```
+~~~
 
 Reference:
   
