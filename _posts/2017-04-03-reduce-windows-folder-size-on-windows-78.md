@@ -24,9 +24,4 @@ DISM.exe /online /Cleanup-Image /StartComponentCleanup /ResetBase
 ~~~
 
 Source:[ https://superuser.com/questions/669193/why-is-windows-folder-so-big-in-windows-8-1](https://superuser.com/questions/669193/why-is-windows-folder-so-big-in-windows-8-1)
-
-<blockquote data-secret="SGsxa19CVd" class="wp-embedded-content">
-  <p>
-    <a href="https://www.howtogeek.com/174705/how-to-reduce-the-size-of-your-winsxs-folder-on-windows-7-or-8/">How to Reduce the Size of Your WinSXS Folder on Windows 7 or 8</a>
-  
-</blockquote>
+<a href="https://www.howtogeek.com/174705/how-to-reduce-the-size-of-your-winsxs-folder-on-windows-7-or-8/">How to Reduce the Size of Your WinSXS Folder on Windows 7 or 8</a>
