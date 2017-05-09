@@ -1,7 +1,7 @@
 ---
 title: Docker
 author: Haijun (Navy) Su
-layout: post
+layout: page
 permalink: /cheatsheets/docker
 ---
 Docker Cheat Sheet:
