@@ -40,10 +40,4 @@ layout: default
       {% endif %}
     </div>
     {% endif %}
-    {% for mysheet in site.cheatsheets limit:3 %}
-      <li>
-        <a href="{{ mysheet.url }}">{{ mysheet.title }}</a>
-        <p>{{ mysheet.short-description }}</p>
-      </li>
-{% endfor %}
 </div>
