@@ -13,9 +13,13 @@ if [ "$1" == "post" ]; then
     TODAY="$(date +%Y-%m-%d)"
     FILE_NAME=${TODAY}
     DOC_LAYOUT="post"
-else
+elif [ "$1" == "page" ]; then
     FILE_NAME=$1
-    DOC_LAYOUT="post"
+    DOC_LAYOUT="page"
+else
+    echo "Unsupport document type: $1"
+    echo "${USAGE}"
+    exit 1
 fi
 shift
 TITLE=$*

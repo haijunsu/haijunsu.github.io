@@ -1,5 +1,5 @@
 ---
-title: to Create Bootable USB Key CentOS7
+title: How to Create Bootable USB Key CentOS7
 author: Haijun (Navy) Su
 layout: post
 ---
