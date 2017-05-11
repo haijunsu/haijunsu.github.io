@@ -94,3 +94,8 @@ theme: jekyll-theme-cayman
 # Enable pagination
 paginate: 10
 paginate_path: "/page:num/"
+
+# my collections
+collections:
+  cheatsheets:
+    output: true

@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+<div class="posts">
+    {% for mysheet in site.cheatsheets %}
+      <li>
+        <a href="{{ mysheet.url }}">{{ mysheet.title }}</a>
+      </li>
+    {% endfor %}
+</div>
