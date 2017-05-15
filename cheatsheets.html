@@ -3,9 +3,12 @@ layout: default
 ---
 
 <div class="posts">
+    <h1>My Cheatsheets</h1>
+    <ul>
     {% for mysheet in site.cheatsheets %}
       <li>
         <a href="{{ mysheet.url }}">{{ mysheet.title }}</a>
       </li>
     {% endfor %}
+    </ul>
 </div>

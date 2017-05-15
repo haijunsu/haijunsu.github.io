@@ -11,10 +11,10 @@ fi
 # File name prefix
 if [ "$1" == "post" ]; then
     TODAY="$(date +%Y-%m-%d)"
-    FILE_NAME=${TODAY}
+    FILE_NAME="${TODAY}"
     DOC_LAYOUT="post"
 elif [ "$1" == "page" ]; then
-    FILE_NAME=$1
+    FILE_NAME=""
     DOC_LAYOUT="page"
 else
     echo "Unsupport document type: $1"
@@ -25,7 +25,11 @@ shift
 TITLE=$*
 while (( "$#" )); do 
     lcword=`echo "$1" | awk '{print tolower($0)}'`
-    FILE_NAME="${FILE_NAME}-${lcword}"
+    if [ "X${FILE_NAME}" == "X" ]; then
+        FILE_NAME=${lcword}
+    else
+        FILE_NAME="${FILE_NAME}-${lcword}"
+    fi
     shift
 done
 FILE_NAME="${FILE_NAME}.md"
