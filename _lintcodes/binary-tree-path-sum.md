@@ -29,7 +29,6 @@ Binary tree has three traversal methods.(refer: <http://javabeat.net/binary-sear
 * Inorder Traversal
 * Preorder Traversal
 * Postorder Traversal
-None of them can be used for this question.
 
 **Path definition:** root to leaf
 **Accepted path:** Summary all node values in the path equals the given number
