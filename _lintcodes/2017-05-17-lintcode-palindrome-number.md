@@ -1,7 +1,7 @@
 ---
-title: Lintcode Palindrome Number
+title: Palindrome Number
 author: Haijun (Navy) Su
-layout: post
+layout: page
 ---
 ### Question
 Check a positive number is a palindrome or not.

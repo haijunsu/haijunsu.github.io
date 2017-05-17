@@ -1,7 +1,7 @@
 ---
-title: Lintcode Binary Tree Path Sum
+title: Binary Tree Path Sum
 author: Haijun (Navy) Su
-layout: post
+layout: page
 ---
 ### Question
 Given a binary tree, find all paths that sum of the nodes in the path equals to a given number **target**.

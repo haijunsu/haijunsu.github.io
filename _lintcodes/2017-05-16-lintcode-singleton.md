@@ -1,7 +1,7 @@
 ---
-title: Lintcode Singleton
+title: Singleton
 author: Haijun (Navy) Su
-layout: post
+layout: page
 ---
 ### Question
 *Singleton* is a most widely used design pattern. If a class has and only has one instance at every moment, we call this design as singleton. For example, for class Mouse (not a animal mouse), we should design it in singleton.  

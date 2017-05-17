@@ -1,7 +1,7 @@
 ---
-title: Lintcode String Permutation
+title: String Permutation
 author: Haijun (Navy) Su
-layout: post
+layout: page
 ---
 ### Question
 Given two strings, write a method to decide if one is a permutation of the other.
