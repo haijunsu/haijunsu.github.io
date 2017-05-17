@@ -100,3 +100,5 @@ paginate_path: "/page:num/"
 collections:
   cheatsheets:
     output: true
+  lintcodes:
+    output: true
