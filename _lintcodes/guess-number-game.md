@@ -52,9 +52,9 @@ public class Solution extends GuessGame {
             mid = start + (end - start) / 2;
             result = guess(mid);
             if (result == 1) {
-                start = mid;
+                start = mid + 1;
             } else if (result == -1) {
-                end = mid;
+                end = mid - 1;
             } else {
                 return mid;
             }
