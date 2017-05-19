@@ -64,7 +64,7 @@ public class Solution extends GuessGame {
 }
 ~~~
 
-Java (Fibonacci Search)
+### Java (Fibonacci Search)
 
 <i class="fa fa-info" aria-hidden="true"></i> Note: This is not a solution. It runs timeout for input (2147483647, 2147483647) 
 {: .note}
