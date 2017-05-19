@@ -6,7 +6,7 @@ layout: page
 ### Question
 Given two non-negative integers <font style="color: #C72541; background: #F9F2F4;">num1</font> and <font style="color: #C72541; background: #F9F2F4;">num2</font> represented as string, return the sum of <font style="color: #C72541; background: #F9F2F4;">num1</font> and <font style="color: #C72541; background: #F9F2F4;">num2</font>.
 
-<i class="fa fa-info" aria-hidden="true"></i> Notice 
+<i class="fa fa-info-circle" aria-hidden="true"></i> Notice 
 {: .note}
 * The length of both num1 and num2 is < 5100.
 * Both num1 and num2 contains only digits 0-9.

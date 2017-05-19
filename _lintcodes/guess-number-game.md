@@ -24,7 +24,7 @@ Fibonacci search also ran timeout.
 
 ### Java (Binary Search)
 
-<i class="fa fa-info" aria-hidden="true"></i> Note: This is not a solution. It runs timeout for input (2147483647, 2147483647) 
+<i class="fa fa-info-circle" aria-hidden="true"></i> Note: This is not a solution. It runs timeout for input (2147483647, 2147483647) 
 **Workaround:** check guess(n) first and then the timeout is gone.
 {: .note}
 
@@ -66,7 +66,7 @@ public class Solution extends GuessGame {
 
 ### Java (Fibonacci Search)
 
-<i class="fa fa-info" aria-hidden="true"></i> Note: This is not a solution. It runs timeout for input (2147483647, 2147483647) 
+<i class="fa fa-info-circle" aria-hidden="true"></i> Note: This is not a solution. It runs timeout for input (2147483647, 2147483647) 
 {: .note}
 
 ~~~ java
