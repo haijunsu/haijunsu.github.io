@@ -7,7 +7,7 @@ layout: page
 Check a positive number is a palindrome or not.
 A palindrome number is that if you reverse the whole number you will get exactly the same number.
 
-<i class="fa fa-info-circle" aria-hidden="true"></i>**Notice**
+<i class="fa fa-info-circle" aria-hidden="true"></i> **Notice**
 It's guaranteed the input number is a 32-bit integer, but after reversion, the number may exceed the 32-bit integer.
 {: .note}
 
