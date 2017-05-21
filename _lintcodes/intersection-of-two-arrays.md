@@ -11,6 +11,9 @@ a) Each element in the result must be unique.
 b) The result can be in any order.
 {: .note}
 
+**Example**
+Given *nums1* = <font style="color: #C72541; background: #F9F2F4;">[1, 2, 2, 1]</font>, *nums2* = <font style="color: #C72541; background: #F9F2F4;">>[2, 2]</font>, return <font style="color: #C72541; background: #F9F2F4;">[2]</font>.
+
 ### Thinking
 * Convert nums1 to hashmap
 * Check nums2 values. If the value is a hashmap key, save it to a Set
