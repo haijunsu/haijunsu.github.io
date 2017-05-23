@@ -23,6 +23,16 @@ Given <font style="color: #C72541; background: #F9F2F4;">[3, 2, 1, 4, 5] </font>
   * Increment the index of the smaller element.
   * By this method, we continually select the next smallest element from the two arrays and merge the into sorted array.
 
+* Heap Sort begins by building a heap out of the data set, and then removing the largest item and placing it at the end of the partially sorted array.
+  * After removeing the largest item, it reconstructs the heap, removes the largest remaining item, and places it in the next open position from the end of the partially sorted array. This is repeaded until there are no items left in the heap and the sorted array is full.
+  * Elementary implementations require two arrays - one to hold the heap and the
+    other to hold the sorted elements.
+  * The heap sort algorithm consists of two primary steps:
+    * First, we construct a heap from the elements.
+    * Second, we repeatedly take the largest element of the heap and swap it
+      with the end until we fully sort the array
+
+
 
 ### Solution
 #### Java (Quick sort)
@@ -138,5 +148,59 @@ public class Solution {
             }
         }
     }
+}
+~~~
+
+### Java (Heap Sort)
+~~~ java
+public class Solution {
+    /**
+     * @param A an integer array
+     * @return void
+     */
+    public void sortIntegers2(int[] A) {
+        // Write your code here
+        if (A == null || A.length < 2) {
+            return;
+        }
+        int size = A.length;
+        int index = 0;
+        int[] heap = buildHeap(A);
+        for (int i = size; i > 0; i--) {
+            A[index++] = heap[1];
+            heap[1] = heap[i];
+            precolatingDown(heap, 1, --size);
+        }
+     }
+    
+    // An array is already a heap. For node i, the left node is i * 2 and 
+    // the right node is i * 2 + 1
+    private int[] buildHeap(int[] A) {
+        int[] heap = new int[A.length + 1]; // heap start at index 1 instead of 0
+        System.arraycopy(A, 0, heap, 1, A.length);
+        for (int i = heap.length / 2; i > 0; i--) { // from the last one node
+            precolatingDown(heap, i, A.length);
+        }
+        return heap;
+    }
+    
+    private void precolatingDown(int[] heap, int index, int size) {
+        int value = heap[index];
+        int child = 0;
+        while (2 * index <= size) {
+            child = 2 * index;
+            if (child != size && heap[child] > heap[child + 1]) {
+                ++child;
+            }
+            if (value > heap[child]) {
+                heap[index] = heap[child];
+                index = child;
+            } else {
+                break;
+            }
+        }
+        heap[index] = value;
+    }
+    
 }
 ~~~
