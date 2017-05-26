@@ -30,38 +30,38 @@ public class Solution {
      */
     public String addStrings(String num1, String num2) {
         // Write your code here
+        if (num1 == null && num2 == null) {
+            return null;
+        }
         if (num1 == null) {
             return num2;
         }
         if (num2 == null) {
             return num1;
         }
-        int len1 = num1.length();
-        int len2 = num2.length();
-        int maxLen = Math.max(len1, len2);
-        int tensValue = 0;
         StringBuilder sb = new StringBuilder();
-        int n1 = 0;
-        int n2 = 0;
-        int sum = 0;
-        for (int i = 0; i < maxLen; i++) {
-            if (i < len1 && i < len2) {
-                n1 = Integer.valueOf(String.valueOf(num1.charAt(len1 - i - 1)));
-                n2 = Integer.valueOf(String.valueOf(num2.charAt(len2 - i - 1)));
-             } else if (i < len1 && i >= len2) {
-                n1 = Integer.valueOf(String.valueOf(num1.charAt(len1 - i - 1)));
-             } else if (i >= len1 && i < len2) {
-                n2 = Integer.valueOf(String.valueOf(num2.charAt(len2 - i - 1)));
-             } 
-            sum = tensValue + n1 + n2;
-            sb.insert(0, sum % 10);
-            tensValue = sum / 10;
-            n1 = 0;
-            n2 = 0;
-            sum = 0;
+        int index1 = num1.length() - 1;
+        int index2 = num2.length() - 1;
+        int carry = 0;
+        int value = 0;
+        while (index1 >= 0 || index2 >= 0) {
+            if (index1 >= 0 && index2 >=0) {
+                value = carry + Character.getNumericValue(num1.charAt(index1)) 
+                            + Character.getNumericValue(num2.charAt(index2));
+            } else if (index1 >= 0 && index2 < 0) {
+                value = carry + Character.getNumericValue(num1.charAt(index1));
+            } else if (index1 < 0 && index2 >= 0) {
+                value = carry + Character.getNumericValue(num2.charAt(index2));
+            } else {
+                // noop
+            }
+            carry = value / 10;
+            sb.insert(0, value % 10);
+            --index1;
+            --index2;
         }
-        if (tensValue > 0) {
-            sb.insert(0, tensValue);
+        if (carry > 0) {
+            sb.insert(0, carry);
         }
         return sb.toString();
     }

@@ -1,0 +1,110 @@
+    <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width" />
+            <title>Htmlbase questions</title>
+        </head>
+        <body>
+            <h1>HTML/Javascript Questions</h1>
+            <h3>1. Write html code to show the following talbe</h3>
+            <table border="1">
+                <tr><th>header 1</th><th>header 2</th><th>header 3</th><th>header 4</th></tr>
+                <tr><td>rc11</td><td>rc12</td><td>rc13</td><td>rc14</td></tr>
+                <tr><td colspan="2">rc21</td><td>rc23</td><td>rc24</td></tr>
+                <tr><td>rc31</td><td>rc32</td><td rowspan="2">rc33</td><td>rc34</td></tr>
+                <tr><td>rc41</td><td>rc42</td><td>rc44</td></tr>
+            </table>
+            <h3>2. Write html code to show the given text with a list</h3>
+            Given text:
+            <table border="1">
+                <tr>
+                    <td width="150px">
+                        line 1<br/>
+                        line 2<br />
+                        line 3<br />
+                    </td>
+                </tr>
+            </table>
+
+            Excepted:
+            <ol>
+                <li> line 1 </li>
+                <li> line 2 </li>
+                <li> line 3 </li>
+            </ol>
+            <h3>3. Write html code to change word color</h3>
+            I have <span style="color: red">red</span> color.
+
+            <h3>4. Write html code to show the following form</h3>
+            <form action="#" method="post" name="testform" id="testform"> 
+                User name:
+                <input type="text" name="username" id="username" value="" size="50" /><span style="color: red"> * </span><br />
+                <input type="file" name="filename" id="filename" value="" /><br />
+                <input type="submit" name="submit" id="submit" value="Submit" />
+            </form>
+            <h3>5. Write javascript code to change User name value as <i>Superman</i></h3>
+            <input type="button" name="chgname" id="chgname" value="Change User name" onclick="javascript: changeName()"/>
+    <script language="javascript">
+        function changeName() {
+            var myform  = document.getElementById("testform");
+            myform.username.value = "Superman";
+        }
+    </script>
+            <h3>6. Explain how form validation works</h3>
+            <h3>7. What is different form method "get" and "post"? Explain when we should use post method?</h3>
+            <h3>8. Change text content</h3>
+            Given: I am old content. <br />
+            Expected: This is awesome! <br />
+            The following content will be changed by click button "Change content"<br/><br />
+            <span id="changeme">I am old content</span><br/>
+            <input type="button" name="changeContent" id="changeContent" value="Change content" onclick="javascript: changeContent()" />
+    <script language="javascript">
+      function changeContent() {
+          document.getElementById("changeme").innerText = "This is awesome!";
+      }
+    </script>
+          <h1>PHP Questions</h1>
+          <h3>1. How to declare an array?</h3>
+          $season=array("summer","winter","spring","autumn");  <br />
+          $salary=array("Sonoo"=&gt;"350000","John"=&gt;"450000","Kartik"=&gt;"200000");
+          <h3>2. What is isset() function?</h3>
+          The isset() function checks if the variable is defined and not null.
+          <h3>3. How to get the length of string</h3>
+          The strlen() function is used to get the length of string.
+          <h3>4. What is the difference between session and cookie?</h3>
+          <ol>
+              <li>cookies are stored on user's computer in the text file format while sessions are stored on the server side.</li>
+              <li>Cookies can't hold multiple variables on the other hand Session can hold multiple variables.</li>
+              <li>You can manually set an expiry for a cookie, while session only remains active as long as browser is open.</li>
+          </ol>
+          <h3>5. How can we get IP address of a client in PHP?</h3>
+          $_SERVER["REMOTE_ADDR"];
+          <h3>6. Differentiate between require and include?  </h3>
+          Require and include both are used to include a file, but if file is not found include sends warning whereas require sends Fatal error.
+          <h1>WordPress Questions</h1>
+          <h3>1. What is the difference between WordPress posts and pages?</h3>
+          <ul>
+              <li>WordPress posts are content published on a site with an exact date and time. They can be categorized in a systematic way on the basis of category and tags. They are listed in a reverse chronological order on a site.</li>
+              <li>WordPress pages are static and does not change frequently such as contact us, about us, privacy policy, etc. They don?t have date and time published, however, database stores their published date and time.  </li>
+          </ul>
+          <h3>2. How can you disable WordPress comment?</h3>
+          You can disable the WordPress comment on dashboard. On the dashboard, under the options- discussion you will find "Allow people to post comment". Uncheck this to disable comment.
+          <h3>3. How to allow only registered users to comment in WordPress?  </h3>
+          If you don't want a comment from a new user on your blog, check the option "Users must be registered and logged in to comment" from Discussions under the Settings option.
+          <h3>4. How can you handle the situation if your WordPress site	is hacked?  </h3>
+          You should follow these steps:
+          <ul>
+              <li>Install security plug-ins like WP security</li>
+              <li>Re-install the latest version of WordPress</li>
+              <li>Change password and user-ids for all your users </li>
+              <li>Check your themes and plug-ins are up to date</li>
+          </ul>
+          <h3>5. Explain moderate comment in WordPress.</h3>
+          Comments by visitors on a post are not published directly unless it is approved by the admin. This is called moderation. To change comment moderation setting, select Settings option from the dashboard and check the option "Comment must be manually approved".
+
+
+
+
+        </body>
+    </html>
