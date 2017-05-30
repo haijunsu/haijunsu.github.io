@@ -51,7 +51,7 @@
             myform.username.value = "Superman";
         }
     </script>
-            <h3>6. Explain how form validation works</h3>
+            <h3>6. Explain how form validation works?</h3>
             <h3>7. What is different form method "get" and "post"? Explain when we should use post method?</h3>
             <h3>8. Change text content</h3>
             Given: I am old content. <br />
@@ -64,6 +64,51 @@
           document.getElementById("changeme").innerText = "This is awesome!";
       }
     </script>
+          <h3>9. How many ways to create object in javascript? Give an example for each way.</h3>
+          There are three ways to create object in javascript.
+          <ol>
+              <li>Using an Object Literal
+                  <pre>
+var person = {
+    firstName:"John",
+    lastName:"Doe",
+    age:50,
+    eyeColor:"blue",
+    sayHello: function() {
+      console.log("Hello!");
+    }
+};
+                  </pre>
+              </li>
+              <li>
+                  Using the JavaScript Keyword name="viewport"
+                  <pre>
+var person = new Object();
+person.firstName = "John";
+person.lastName = "Doe";
+person.age = 50;
+person.eyeColor = "blue";
+                  </pre>
+              </li>
+              <li>
+                  Using an Object Constructor
+                  <pre>
+function person(first, last, age, eye) {
+    this.firstName = first;
+    this.lastName = last;
+    this.age = age;
+    this.eyeColor = eye;
+    this.sayHello = function() {
+      console.log("Hello.";
+    }
+}
+var myFather = new person("John", "Doe", 50, "blue");
+var myMother = new person("Sally", "Rally", 48, "green");
+                  </pre>
+              </li>
+          </ol>
+          <h3>10. Write an object with method sayHello. The message print "Hello" on javascript console. </h3>
+          see examples in previous quesiton.
           <h1>PHP Questions</h1>
           <h3>1. How to declare an array?</h3>
           $season=array("summer","winter","spring","autumn");  <br />
@@ -102,9 +147,92 @@
           </ul>
           <h3>5. Explain moderate comment in WordPress.</h3>
           Comments by visitors on a post are not published directly unless it is approved by the admin. This is called moderation. To change comment moderation setting, select Settings option from the dashboard and check the option "Comment must be manually approved".
+          <h1>Drupal</h1>
+          <h3>1. What are system requirements for Drupal installation?</h3>
+          System requirements for Drupal 8:<br />
+          <ol>
+              <li>Web server: Apache, Nginx, or Microsoft IIS</li>
+              <li>Database: MySQL 5.5.3/MariaDB 5.5.20/Percona Server 5.5.8 or higher with PDO and an InnoDB-compatible primary storage engine, PostgreSQL 9.1.2 or higher with PDO, SQLite 3.6.8 or higher</li>
+              <li>PHP 5.5.9 or higher</li>
+              <li>PHP Memory: 60 MB</li>
+          </ol>
+          <h3>2. What does PDO mean in Drupal?</h3>
+          PDO stands for PHP Data Object. It is a lean and consistent way to access databases. It facilitates developers to write portable codes easily. PDO is not an abstraction layer. It is more like a data access layer which uses a unified API.
+          <h3>3. What is DRUSH in Drupal?</h3>
+          DRUSH is a command line shell and UNIX scripting interface for Drupal.
+          <h3>4. How will you add custom PHP codes in Drupal pages or blocks?  </h3>
+          Be default, Drupal doesn't allow the insertion of PHP codes in its pages. To embed PHP codes, you need to activate a Drupal module called PHP filter. By default, this module remains disabled.
+          <h3>How to interact with Drupal search systems?</h3>
+          There are three ways to interact with Drupal search system by implementing:
+          <ol>
+              <li>nodeapi (update index)</li>
+              <li>hook_search()</li>
+              <li>hook_update_index()</li>
+          </ol>
+          <h3>5. Explain hooks in Drupal.</h3>
+          Drupal integrates well with external search engines such as Xapian, Apache solr if the built-in search engine does not meet your needs properly.
+          <h3>6. What is node in Drupal?</h3>
+          Drupal treats all the stored content on its web site as nodes. Any piece of content like blog, article, page, etc is considered as node. Although, the comments are not stored as nodes but they are always connected to a node.
+          <h1>Data Structure</h1>
+          <h3>1. What are Binary trees?</h3>
+          A Binary Tree is a type of data structure that has two nodes: A left node and a right node. In programming, binary trees are actually an extension of the linked list structures.
+          <h3>2. What is a Stack?</h3>
+          A stack is a data structure in which only the top element can be accessed. As data is stored in the stack, each data is pushed downward, leaving the most recently added data on top.
+          <h3>3. What is a linked list in data structure?</h3>
+          A linked list is a sequence of nodes in which each node is connected to the node following it. It makes a chain like link of data storage.
+          <h3>4. When should you use binary search engine?</h3>
+          A binary search algorithm is used to search a list when the elements are already in order or sorted. The list starts searching in the middle, if the middle value is not the target search key, it will check to see if it will continue the search on the lower half of the list or the higher half. The split and search will then continue in the same manner.
+          <h3>5. What is the difference between PUSH and POP?</h3>
+          PUSH and POP operations specify how data is stored and retrieved in a stack.<br />
+          PUSH: PUSH specifies that data is being "pushed" into the stack.  <br />
+          POP: POP specifies data retrieval, and in particular refers to the topmost data being accessed.
 
-
-
-
+          <h1>SQL</h1>
+          <h3>1. What are the different types of joins in SQL?</h3>
+          Joins are used to merge two tables or retrieve data from tables. It depends on the relationship between tables.
+          <br />
+          Following are the most commonly used joins in SQL:
+          <ul>
+              <li>Inner Join</li>
+              <li>Right Join</li>
+              <li>Left Join</li>
+              <li>Full Join</li>
+          </ul>
+          <h3>2. What is Inner Join in SQL?</h3>
+          Inner join returns rows when there is at least one match of rows between the tables.
+          <h3>3. What is Right Join in SQL?</h3>
+          Right join is used to retrieve rows which are common between the tables and all rows of Right hand side table. It returns all the rows from the right hand side table even though there are no matches in the left hand side table.
+          <h3>4. What is Left Join in SQL?</h3>
+          Left join is used to retrieve rows which are common between the tables and all rows of Left hand side table. It returns all the rows from Left hand side table even though there are no matches in the Right hand side table.
+          <h3>5. What is Full Join in SQL?</h3>
+          Full join return rows when there are matching rows in any one of the tables. This means, it returns all the rows from the left hand side table and all the rows from the right hand side table.
+          <h3>6. Write an SQL query to find names of employee start with 'A'?  </h3>
+          SELECT * FROM Employees WHERE EmpName like 'A%'
+          <h3>7. What is the difference between DELETE and TRUNCATE statement in SQL?</h3>
+          1)	DELETE is a DML command.	TRUNCATE is a DDL command.<br />
+          2)	We can use WHERE clause in DELETE command.	We cannot use WHERE clause with TRUNCATE<br />
+          3)	DELETE statement is used to delete a row from a table	TRUNCATE statement is used to remove all the rows from a table.<br />
+          4)	DELETE is slower than TRUNCATE statement.	TRUNCATE statement is faster than DELETE statement.<br />
+          5)	You can rollback data after using DELETE statement.	It is not possible to rollback after using TRUNCATE statement.<br />
+          <h3>8. What are the subsets of SQL?</h3>
+          <ol>
+              <li>Data definition language (DDL)</li>
+              <li>Data manipulation language (DML)</li>
+              <li>Data control language (DCL)</li>
+          </ol>
+          <h3>9. What is data definition language?</h3>
+          Data definition language(DDL) allows you to CREATE, ALTER and DELETE database objects such as schema, tables, view, sequence etc.
+          <h3>10. What is data manipulation language?</h3>
+          Data manipulation language makes user able to access and manipulate data. It is used to perform following operations.
+          <ul>
+              <li>Insert data into database</li>
+              <li>Retrieve data from the database</li>
+              <li>Update data in the database</li>
+              <li>Delete data from the database</li>
+          </ul>
+          <h3>11. What is data control language?</h3>
+          Data control language allows you to control access to the database. It includes two commands GRANT and REVOKE.<br />
+          GRANT: to grant specific user to perform specific task.<br />
+          REVOKE: to cancel previously denied or granted permissions.
         </body>
     </html>
