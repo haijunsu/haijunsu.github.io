@@ -3,7 +3,7 @@ title: Anagrams
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given an array of strings, return all groups of strings that are anagrams.
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice
@@ -14,17 +14,17 @@ All inputs will be in lower-case
 Given <font style="color: #C72541; background: #F9F2F4;">["lint", "intl", "inlt", "code"] </font>, return <font style="color: #C72541; background: #F9F2F4;">["lint", "inlt", "intl"] </font>.
 Given <font style="color: #C72541; background: #F9F2F4;">["ab", "ba", "cd", "dc", "e"] </font>, return <font style="color: #C72541; background: #F9F2F4;">["ab", "ba", "cd", "dc"] </font>.
 
-### Challenge
+## Challenge
 What is Anagram?
 - Two strings are anagram if they can be the same after change the order of characters.
 
-### Thinking
+## Thinking
 * Are there some duplicate items in the array?
 * Create a method to check whether two strings are anagram.
 * Using map to reduce time complexity.
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 public class Solution {
     /**

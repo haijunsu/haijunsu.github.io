@@ -3,7 +3,7 @@ title: Longest Words
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a dictionary, find all of the longest words in the dictionary.
 
 **Example**
@@ -30,8 +30,8 @@ Given
 ~~~
 the longest words are <font style="color: #C72541; background: #F9F2F4;">["like", "love", "hate"] </font>.
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 class Solution {
     /**

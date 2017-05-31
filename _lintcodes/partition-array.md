@@ -3,7 +3,7 @@ title: Partition Array
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given an array <font style="color: #C72541; background: #F9F2F4;">nums </font> of integers and an int <font style="color: #C72541; background: #F9F2F4;">k </font>, partition the array (i.e move the elements in "nums") such that:
 
 * All elements < *k* are moved to the *left*
@@ -18,7 +18,7 @@ If all elements in *nums* are smaller than *k*, then return *nums.length*
 **Example**
 If nums = <font style="color: #C72541; background: #F9F2F4;">[3,2,2,1] </font>and <font style="color: #C72541; background: #F9F2F4;">k=2 </font>, a valid answer is <font style="color: #C72541; background: #F9F2F4;">1 </font>.
 
-### Thinking
+## Thinking
 * The array is not ordered. At the end, it still not ordered but all emelents which is less than k are moved to the left.
 * Inspace exchange
 * Have a value 'pos' to save the first element which is greater or equals k.
@@ -28,8 +28,8 @@ If nums = <font style="color: #C72541; background: #F9F2F4;">[3,2,2,1] </font>an
   * pre >=k and cur < k; switch pos and cur, pos ++; // Note: at this time, pos may less than pre
   * pre >=k and cur >=K; no action needed.
 
-### Solution
-### Java
+## Solution
+## Java
 ~~~ java
 public class Solution {
 	/** 

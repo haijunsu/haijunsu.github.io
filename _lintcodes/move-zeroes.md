@@ -3,7 +3,7 @@ title: Move Zeroes
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given an array <font style="color: #C72541; background: #F9F2F4;">nums</font>, write a function to move all <font style="color: #C72541; background: #F9F2F4;">0</font>'s to the end of it while maintaining the relative order of the non-zero elements.
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice
@@ -14,12 +14,12 @@ b) Minimize the total number of operations.
 **Example**
 Given <font style="color: #C72541; background: #F9F2F4;">nums = [0, 1, 0, 3, 12]</font>, after calling your function, <font style="color: #C72541; background: #F9F2F4;">nums</font> should be <font style="color: #C72541; background: #F9F2F4;">[1, 3, 12, 0, 0]</font>.
 
-### Thinking
+## Thinking
 * 0 always be moved to the last position
 * Shift all elements
 * Make sure to check current element again.
 
-### Java
+## Java
 ~~~ java
 public class Solution {
     /**

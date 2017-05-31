@@ -3,7 +3,7 @@ title: Substring Anagrams
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a string *s* and a **non-empty** string *p*, find all the start indices of *p*'s anagrams in *s*.
 Strings consists of lowercase English letters only and the length of both strings *s* and *p* will not be larger than 40,000.
 The order of output does not matter.
@@ -16,12 +16,12 @@ return **[0, 6]**
   The substring with start index = 6 is "bac", which is an anagram of "abc".
 ~~~
 
-### Thinking
+## Thinking
 * Substring for each step
 * check whether anagrams is
 * Pay attention about time complexity
 
-### Java
+## Java
 ~~~ java
 public class Solution {
     /**

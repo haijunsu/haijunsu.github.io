@@ -3,13 +3,13 @@ title: Sort Integers II
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given an integer array, sort it in ascending order. Use quick sort, merge sort, heap sort or any O(nlogn) algorithm.
 
 **Example**
 Given <font style="color: #C72541; background: #F9F2F4;">[3, 2, 1, 4, 5] </font>, return <font style="color: #C72541; background: #F9F2F4;">[1, 2, 3, 4, 5] </font>.
 
-### Thinking
+## Thinking
 <https://www.slideshare.net/MohammedHussein8/quick-sort-merge-sort-heap-sort>
 * Quick sort is a divide and conquer algorithm. Quick soft first divides a large list into two smaller sub-lists: the low elements and the high elements.
   * Select an element, called a *pivot*, from the list.
@@ -35,8 +35,8 @@ Given <font style="color: #C72541; background: #F9F2F4;">[3, 2, 1, 4, 5] </font>
 
 
 
-### Solution
-#### Java (Quick sort)
+## Solution
+### Java (Quick sort)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice: Sometimes it may run time exceed limited because the worst case is O(n2).
 {: .note}
@@ -96,7 +96,7 @@ public class Solution {
 }
 ~~~
 
-#### Java (merge sort)
+### Java (merge sort)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice: Sometimes it may run time exceed limited because the worst case is O(nlogn). The verifing argrithem may be quick sort.
 {: .note}
@@ -152,7 +152,7 @@ public class Solution {
 }
 ~~~
 
-### Java (Heap Sort)
+## Java (Heap Sort)
 ~~~ java
 public class Solution {
     /**
@@ -206,7 +206,7 @@ public class Solution {
 }
 ~~~
 
-### Heap sort example source code
+## Heap sort example source code
 ~~~ java
 /****************************************************************************
  *       This demonstrates binary heap operations along with the heapSort.

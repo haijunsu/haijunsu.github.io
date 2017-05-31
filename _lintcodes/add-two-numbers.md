@@ -3,7 +3,7 @@ title: Add Two Numbers
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in <font style="color: #C72541; background: #F9F2F4;">reverse </font> order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.
 
 **Example**
@@ -11,7 +11,7 @@ Given <font style="color: #C72541; background: #F9F2F4;">7->1->6 + 5->9->2 </fon
 Return <font style="color: #C72541; background: #F9F2F4;">2->1->9 </font>. That is <font style="color: #C72541; background: #F9F2F4;">912 </font>.
 Given <font style="color: #C72541; background: #F9F2F4;">3->1->5 </font> and <font style="color: #C72541; background: #F9F2F4;">5->9->2 </font>, return <font style="color: #C72541; background: #F9F2F4;">8->0->8 </font>.
 
-### Thinking
+## Thinking
 This question should test knowledge of linked list. But it also need to consider BigInteger. If we can use BigInteger, it is easy. If we cannot use it, it is hard because we neeed to implement addition of two BigInteger.
 Before coding, we need clearfy the following things:
 * Is the result list reversed too?
@@ -19,8 +19,8 @@ Before coding, we need clearfy the following things:
 * If previous question is no, is the long longer enough to represent the result?
 * If previous question is also no, can we use BigInteger?
 
-### Solution
-#### Java (Add big integer by my own method)
+## Solution
+### Java (Add big integer by my own method)
 ~~~ java
 /**
  * Definition for singly-linked list.
@@ -117,7 +117,7 @@ public class Solution {
     }
 }
 ~~~
-#### Java (BigInteger)
+### Java (BigInteger)
 ~~~ java
 /**
  * Definition for singly-linked list.
@@ -176,7 +176,7 @@ public class Solution {
 }
 ~~~
 
-#### Java (long)
+### Java (long)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice
 This is not a solution. It just demonstrates another way to solve the problem.

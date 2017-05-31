@@ -3,7 +3,7 @@ title: Invert Binary Tree
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Invert a binary tree.
 
 **Example**
@@ -15,8 +15,8 @@ Invert a binary tree.
   4         4
 ~~~
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 /**
  * Definition of TreeNode:

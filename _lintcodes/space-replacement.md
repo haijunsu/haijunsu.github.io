@@ -4,7 +4,7 @@ author: Haijun (Navy) Su
 layout: page
 ---
 
-### Question
+## Question
 Write a method to replace all spaces in a string with <font style="color: #C72541; background: #F9F2F4;">%20 </font>. The string is given in a characters array, you can assume it has enough space for replacement and you are given the true length of the string.
 
 You code should also return the new length of the string after replacement.
@@ -18,13 +18,13 @@ Given <font style="color: #C72541; background: #F9F2F4;">"Mr John Smith" </font>
 
 The string after replacement should be <font style="color: #C72541; background: #F9F2F4;">"Mr%20John%20Smith" </font>, you need to change the string in-place and return the new length <font style="color: #C72541; background: #F9F2F4;">17 </font>.
 
-### Thinking
+## Thinking
 * The array length is not the string length.
 * Create a new array and copy all emelments back to origin array.
 * Using original array. (assume the array is long enought to shift all elements to right)
 
-### Solution
-#### Java (Shift elements)
+## Solution
+### Java (Shift elements)
 ~~~ java
 public class Solution {
     /**
@@ -60,7 +60,7 @@ public class Solution {
     }
 }
 ~~~
-#### Java (Creating a new array)
+### Java (Creating a new array)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Note
 Since the method has no return type, the input array length must be long enough for new string. Even though this solution works, it may not the right solution.

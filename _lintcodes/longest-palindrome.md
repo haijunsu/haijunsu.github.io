@@ -3,7 +3,7 @@ title: Longest Palindrome
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a string which consists of lowercase or uppercase letters, find the length of the longest palindromes that can be built with those letters.
 This is case sensitive, for example *"Aa"* is not considered a palindrome here.
 **Note** Assume the length of given string will not exceed **1010**.
@@ -12,11 +12,11 @@ This is case sensitive, for example *"Aa"* is not considered a palindrome here.
 Given s = *"abccccdd"* return *7*
 One longest palindrome that can be built is *"dccaccd"*, whose length is *7*.
 
-### Thinking
+## Thinking
 * All charactors with even count number should be counted.
 * Only one odd count number only can be used and only once.
 
-### Java
+## Java
 ~~~ java
 public class Solution {
     /**

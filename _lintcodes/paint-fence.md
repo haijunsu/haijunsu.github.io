@@ -3,7 +3,7 @@ title: Paint Fence
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 There is a fence with <font style="color: #C72541; background: #F9F2F4;">n</font> posts, each post can be painted with one of the <font style="color: #C72541; background: #F9F2F4;">k</font> colors.
 You have to paint all the posts such that no more than two adjacent fence posts have the same color.
 Return the total number of ways you can paint the fence.
@@ -24,7 +24,7 @@ way5    1         0       1
 way6    1         1       0
 ~~~
 
-### Thinking
+## Thinking
 This is a dynamic programming. [Dynamic programming : paint fence algorithm](https://stackoverflow.com/questions/32444278/dynamic-programming-paint-fence-algorithm)
 diff - number of combinations with different colors,
 same - number of combinations with same colors.
@@ -58,8 +58,8 @@ total[n] = diff[n] + same[n]
          = (tatal[n - 1] + total[n - 2]) * (k - 1)
 ~~~
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 public class Solution {
     /**

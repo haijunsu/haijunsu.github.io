@@ -3,7 +3,7 @@ title: Longest Increasing Continuous Subsequence
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Give an integer array，find the longest increasing continuous subsequence in this array.
 
 An increasing continuous subsequence:
@@ -18,12 +18,12 @@ O(n) time and O(1) extra space.
 For <font style="color: #C72541; background: #F9F2F4;">[5, 4, 2, 1, 3] </font>, the LICS is <font style="color: #C72541; background: #F9F2F4;">[5, 4, 2, 1] </font>, return <font style="color: #C72541; background: #F9F2F4;">4 </font>.
 For <font style="color: #C72541; background: #F9F2F4;">[5, 1, 2, 3, 4] </font>, the LICS is <font style="color: #C72541; background: #F9F2F4;">[1, 2, 3, 4] </font>, return <font style="color: #C72541; background: #F9F2F4;">4 </font>.
 
-### Thinking
+## Thinking
 * Using two array to save sequences.
 * Return the longest
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 public class Solution {
     /**

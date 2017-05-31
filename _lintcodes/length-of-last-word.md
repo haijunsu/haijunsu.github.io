@@ -3,7 +3,7 @@ title: Length of Last Word
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a string s consists of upper/lower-case alphabets and empty space characters <font style="color: #C72541; background: #F9F2F4;">' ' </font>, return the length of last word in the string.
 
 If the last word does not exist, return <font style="color: #C72541; background: #F9F2F4;">0 </font>.
@@ -15,8 +15,8 @@ A word is defined as a character sequence consists of non-space characters only.
 **Example**
 Given s = <font style="color: #C72541; background: #F9F2F4;">"Hello World" </font>, return <font style="color: #C72541; background: #F9F2F4;">5 </font>.
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 public class Solution {
     /**

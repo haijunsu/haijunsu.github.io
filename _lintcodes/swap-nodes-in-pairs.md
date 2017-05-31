@@ -3,14 +3,14 @@ title: Swap Nodes in Pairs
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a linked list, swap every two adjacent nodes and return its head.
 
 **Example**
 Given <font style="color: #C72541; background: #F9F2F4;">1->2->3->4 </font>, you should return the list as <font style="color: #C72541; background: #F9F2F4;">2->1->4->3 </font>.
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 /**
  * Definition for singly-linked list.

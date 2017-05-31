@@ -3,7 +3,7 @@ title: Connecting Graph
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given <font style="color: #C72541; background: #F9F2F4;">n </font> nodes in a graph labeled from <font style="color: #C72541; background: #F9F2F4;">1 </font>to <font style="color: #C72541; background: #F9F2F4;">n </font>. There is no edges in the graph at beginning.
 
 You need to support the following method:
@@ -20,13 +20,13 @@ connect(2, 4)
 query(1, 4) return true
 ~~~
 
-### Thinking
+## Thinking
 <font style="color: #C72541; background: #F9F2F4;">Add an edge to connect node a and node b DOES NOT mean the edge from node a to node b. The edge maybe between some nodes which are A parent and B parent.</font>
 
-### Solution
+## Solution
 In this solution, we use root of each nodes to connect two nodes.
 
-#### Java
+### Java
 ~~~ java
 public class ConnectingGraph { 
     

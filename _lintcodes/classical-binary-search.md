@@ -3,7 +3,7 @@ title: Classical Binary Search
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Find any position of a target number in a sorted array. Return -1 if target does not exist.
 
 **Example**
@@ -12,8 +12,8 @@ For target = <font style="color: #C72541; background: #F9F2F4;"> 2 </font>, retu
 For target = <font style="color: #C72541; background: #F9F2F4;"> 5 </font>, return 4 or 5.
 For target = <font style="color: #C72541; background: #F9F2F4;"> 6 </font>, return -1.
 
-### Solution
-#### Java (Binary search)
+## Solution
+### Java (Binary search)
 ~~~ java
 public class Solution {
     /**
@@ -49,7 +49,7 @@ public class Solution {
 }
 ~~~
 
-#### Java (Interpolation search)
+### Java (Interpolation search)
 ~~~ java
 public class Solution {
     /**

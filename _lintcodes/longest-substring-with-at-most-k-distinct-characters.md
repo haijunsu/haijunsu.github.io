@@ -3,21 +3,21 @@ title: Longest Substring with At Most K Distinct Characters
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a string s, find the length of the longest substring T that contains at most k distinct characters.
 
 **Example**
 For example, Given s = <font style="color: #C72541; background: #F9F2F4;"> "eceba", k = 3 </font>,
 T is <font style="color: #C72541; background: #F9F2F4;">"eceb" </font>which its length is <font style="color: #C72541; background: #F9F2F4;">4 </font>.
 
-### Thinking
+## Thinking
 I was confused by the question because the example doesn't give me enough information. After test, the result should be followiings.
 * If s length is less than k, return s length
 * The substring can be started from any postion of the string. I used two for loops to implement it.
 * For performance, if found the longest substring, the main loop need be stoped. I check the set size at the end of main loop.
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 public class Solution {
     /**

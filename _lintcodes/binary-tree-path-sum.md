@@ -3,7 +3,7 @@ title: Binary Tree Path Sum
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a binary tree, find all paths that sum of the nodes in the path equals to a given number **target**.
 A valid path is **from root node to any of the leaf nodes**.
 
@@ -24,7 +24,7 @@ Expected result
 ]
 ~~~
 
-### Thinking
+## Thinking
 Binary tree has three traversal methods.(refer: <http://javabeat.net/binary-search-tree-traversal-java/>) 
 * Inorder Traversal
 * Preorder Traversal
@@ -37,7 +37,7 @@ Binary tree has three traversal methods.(refer: <http://javabeat.net/binary-sear
 
 **Note:** Don't forget checking null node value
 
-### Java
+## Java
 ~~~ java
 /**
  * Definition of TreeNode:

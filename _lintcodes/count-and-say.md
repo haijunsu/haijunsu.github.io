@@ -3,7 +3,7 @@ title: Count and Say
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 The count-and-say sequence is the sequence of integers beginning as follows:
 <pre>
 <font style="color: #C72541; background: #F9F2F4;">1, 11, 21, 1211, 111221, ... </font>
@@ -23,8 +23,8 @@ The sequence of integers will be represented as a string.
 **Example**
 Given n = <font style="color: #C72541; background: #F9F2F4;">5 </font>, return <font style="color: #C72541; background: #F9F2F4;">"111221" </font>.
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 public class Solution {
     /**

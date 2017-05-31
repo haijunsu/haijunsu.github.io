@@ -3,7 +3,7 @@ title: Strings Homomorphism
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given two strings s and t, determine if they are isomorphic.
 Two strings are isomorphic if the characters in s can be replaced to get t.
 All occurrences of a character must be replaced with another character while preserving the order of characters. No two characters may map to the same character but a character may map to itself.
@@ -16,13 +16,13 @@ Given s = *"egg"*, t = *"add"*, return *true*.
 Given s = *"foo"*, t = *"bar"*, return *false*.
 Given s = *"paper"*, t = *"title"*, return *true*.
 
-### Thinking
+## Thinking
 * same length (not null)
 * one array save charactor's int value
 * another array save charactor's postions in the string
 * check each charactor's postion values
 
-### Java
+## Java
 ~~~ java
 public class Solution {
     /**

@@ -3,7 +3,7 @@ title: Valid Palindrome
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a string, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice
@@ -15,12 +15,12 @@ Given a string, determine if it is a palindrome, considering only alphanumeric c
 <font style="color: #C72541; background: #F9F2F4;">"A man, a plan, a canal: Panama" </font>is a palindrome.
 <font style="color: #C72541; background: #F9F2F4;">"race a car" </font>is not a palindrome.
 
-### Thinking
+## Thinking
 Checking not valid characters is not very clear.
 Another solution is build new string with valid characters only.
 
-### Solution
-#### Java (remove invalid characters first)
+## Solution
+### Java (remove invalid characters first)
 ~~~ java
 public class Solution {
     /**
@@ -58,7 +58,7 @@ public class Solution {
     }
 }
 ~~~
-#### Java (keep invalid characters)
+### Java (keep invalid characters)
 ~~~ java
 public class Solution {
     /**

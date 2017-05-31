@@ -3,7 +3,7 @@ title: Big Integer Addition
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given two non-negative integers <font style="color: #C72541; background: #F9F2F4;">num1</font> and <font style="color: #C72541; background: #F9F2F4;">num2</font> represented as string, return the sum of <font style="color: #C72541; background: #F9F2F4;">num1</font> and <font style="color: #C72541; background: #F9F2F4;">num2</font>.
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice 
@@ -17,10 +17,10 @@ Given two non-negative integers <font style="color: #C72541; background: #F9F2F4
 Given num1 = <font style="color: #C72541; background: #F9F2F4;">"123"</font>, num2 = <font style="color: #C72541; background: #F9F2F4;">"45"</font>
 return <font style="color: #C72541; background: #F9F2F4;">"168"</font>
 
-### Thinking
+## Thinking
 Just think about human addition method. 
 
-### Java
+## Java
 ~~~ java
 public class Solution {
     /**

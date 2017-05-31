@@ -3,18 +3,18 @@ title: Add Two Numbers II
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in <font style="color: #C72541; background: #F9F2F4;">forward </font>order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.
 
 **Example**
 Given <font style="color: #C72541; background: #F9F2F4;">6->1->7 + 2->9->5 </font>. That is, <font style="color: #C72541; background: #F9F2F4;">617 + 295 </font>.
 Return <font style="color: #C72541; background: #F9F2F4;">9->1->2 </font>. That is, <font style="color: #C72541; background: #F9F2F4;">912 </font>.
 
-### Thinking
+## Thinking
 Similar question: [Add Tow Numbers](/lintcodes/add-two-numbers/);
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 /**
  * Definition for singly-linked list.

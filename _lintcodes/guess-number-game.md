@@ -3,7 +3,7 @@ title: Guess Number Game
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 We are playing the Guess Game. The game is as follows:
 I pick a number from 1 to n. You have to guess which number I picked.
 Every time you guess wrong, I'll tell you whether the number is higher or lower.
@@ -13,7 +13,7 @@ You call a pre-defined API <font style="color: #C72541; background: #F9F2F4;">gu
 n = 10, I pick 4 (but you don't know)
 Return 4. Correct !
 
-### Thinking
+## Thinking
 Recursion causes overflow.
 Binary search is not good for long array. Timeout for this question.
 Interpolation search is difficulty since we don't know the value we are looking for. Guess position is (key - low)/(high - low). [mid] = [low] + (key - low)/(high - low) * ([high] - [low]). [low] means position in an array. If we know the key, the key will be the position in this problem.
@@ -22,7 +22,7 @@ Fibonacci search also ran timeout.
 <https://en.wikipedia.org/wiki/Binary_search_algorithm>
 <http://www.geeksforgeeks.org/fibonacci-search/>
 
-### Java (Binary Search)
+## Java (Binary Search)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Note: This is not a solution. It runs timeout for input (2147483647, 2147483647) 
 **Workaround:** check guess(n) first and then the timeout is gone.
@@ -64,7 +64,7 @@ public class Solution extends GuessGame {
 }
 ~~~
 
-### Java (Fibonacci Search)
+## Java (Fibonacci Search)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Note: This is not a solution. It runs timeout for input (2147483647, 2147483647) 
 {: .note}

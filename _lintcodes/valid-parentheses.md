@@ -3,14 +3,14 @@ title: Valid Parentheses
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a string containing just the characters <font style="color: #C72541; background: #F9F2F4;">'(', ')', '{', '}', '[' </font>and <font style="color: #C72541; background: #F9F2F4;">']' </font>, determine if the input string is valid.
 
 **Example**
 The brackets must close in the correct order, <font style="color: #C72541; background: #F9F2F4;">"()" </font>and <font style="color: #C72541; background: #F9F2F4;">"()[]{}" </font>are all valid but <font style="color: #C72541; background: #F9F2F4;">"(]" </font>and <font style="color: #C72541; background: #F9F2F4;">"([)]" </font>are not.
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 public class Solution {
     /**

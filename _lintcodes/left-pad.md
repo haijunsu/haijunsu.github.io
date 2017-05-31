@@ -3,7 +3,7 @@ title: Left Pad
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 You know what, left pad is javascript package and referenced by React: 
 Github link
 
@@ -25,8 +25,8 @@ leftpad("1", 2, "0")
 >> "01"
 ~~~
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 public class StringUtils {
     /**

@@ -3,7 +3,7 @@ title: Toy Factory
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Factory is a design pattern in common usage. Please implement a <font style="color: #C72541; background: #F9F2F4;">ToyFactory</font> which can generate proper toy based on the given type.
 
 **Example**
@@ -18,7 +18,7 @@ toy.talk();
 >> Meow
 ~~~
 
-### Solution
+## Solution
 **Java**
 ~~~ java
 /**

@@ -3,7 +3,7 @@ title: Identical Binary Tree
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Check if two binary trees are identical. Identical means the two binary trees have the same structure and every identical position has the same value.
 
 **Example**
@@ -24,11 +24,11 @@ are identical.
 ~~~
 are not identical.
 
-### Thinking
+## Thinking
 Convert all node as string and compare string values.
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 /**
  * Definition of TreeNode:

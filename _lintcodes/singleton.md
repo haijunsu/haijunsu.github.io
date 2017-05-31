@@ -3,7 +3,7 @@ title: Singleton
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 *Singleton* is a most widely used design pattern. If a class has and only has one instance at every moment, we call this design as singleton. For example, for class Mouse (not a animal mouse), we should design it in singleton.  
 Your job is to implement a getInstance method for given class, return the same instance of this class every time you call this method.
 
@@ -19,7 +19,7 @@ a should equal to b.
 If we call getInstance concurrently, can you make sure your code could run correctly?
 (In java solution, it is thread safe. Other language solutions are not thread safe)
 
-### Java
+## Java
 In java, class constructor method is private.
 ~~~ java
 class Solution {
@@ -61,7 +61,7 @@ class Solution {
 };
 ~~~
 
-### Python
+## Python
 In python, we can use *\_\_new\_\_* method to customize creating new class instance. Singleton is not populor in python because a module with functions would serve well as a singleton.
 see: <http://stackoverflow.com/questions/31875/is-there-a-simple-elegant-way-to-define-singletons/31887#31887>
 <http://stackoverflow.com/questions/6841853/python-accessing-module-scope-vars/6842257#6842257>
@@ -81,7 +81,7 @@ class Solution(object):
         return Solution()
 ~~~
 
-### C++
+## C++
 ~~~ java 
 class Solution {
     protected:
@@ -104,7 +104,7 @@ class Solution {
 Solution *Solution::instance = 0; //Don't forget define the instance in global scope
 ~~~
 
-### PHP
+## PHP
 ~~~ php
 <?php
 class Solution {

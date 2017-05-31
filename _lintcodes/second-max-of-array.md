@@ -3,7 +3,7 @@ title: Second Max of Array
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Find the second max number in a given array.
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice
@@ -14,11 +14,11 @@ You can assume the array contains at least two numbers.
 Given <font style="color: #C72541; background: #F9F2F4;">[1, 3, 2, 4] </font>, return <font style="color: #C72541; background: #F9F2F4;">3 </font>.
 Given <font style="color: #C72541; background: #F9F2F4;">[1, 2] </font>, return <font style="color: #C72541; background: #F9F2F4;">1 </font>.
 
-### Thinking
+## Thinking
 * Max value can be duplicate values
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 public class Solution {
     /**

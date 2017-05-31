@@ -3,7 +3,7 @@ title: Convert BST to Greater Tree
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.
 
 **Example**
@@ -20,14 +20,14 @@ Return the root of new tree
           20     13
 ~~~
 
-### Thinking
+## Thinking
 1. Each node new value is current value plus sum(other greater node values)
 2. Right node is visited first
 3. Current node value equals current node value plus right node value
 4. Left node value is harder. Left node is not the next node to be added. It may has a lot of right children.
 5. Make sure curent always get the sum of other greater node values (store the sum in a globe varilabe)
 
-### Java
+## Java
 ~~~ java
 /**
  * Definition of TreeNode:

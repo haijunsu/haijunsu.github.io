@@ -3,18 +3,18 @@ title: Add Digits
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a non-negative integer <font style="color: #C72541; background: #F9F2F4;">num</font>, repeatedly add all its digits until the result has only one digit.
 
 **Example**
 Given <font style="color: #C72541; background: #F9F2F4;">num</font> = 38.
 The process is like: <font style="color: #C72541; background: #F9F2F4;">3 + 8 = 11</font>, <font style="color: #C72541; background: #F9F2F4;">1 + 1 = 2</font>. Since <font style="color: #C72541; background: #F9F2F4;">2</font> has only one digit, return <font style="color: #C72541; background: #F9F2F4;">2</font>.
 
-### Thinking
+## Thinking
 Using mod(%) get first digit
 Using divid(/) get other digits until digit is less than 10
 
-### Java
+## Java
 ~~~ java
 public class Solution {
     /**

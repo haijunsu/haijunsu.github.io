@@ -3,7 +3,7 @@ title: Palindrome Number
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Check a positive number is a palindrome or not.
 A palindrome number is that if you reverse the whole number you will get exactly the same number.
 
@@ -15,11 +15,11 @@ It's guaranteed the input number is a 32-bit integer, but after reversion, the n
 *11, 121, 1, 12321* are palindrome numbers.
 *23, 32, 1232* are not palindrome numbers.
 
-### Thinking
+## Thinking
 * Resverse number and compare them (Math)
 * Convert number to string and compare first half part with last half part (Greed)
 
-### Java (Math)
+## Java (Math)
 ~~~ java
 public class Solution {
     /**
@@ -42,7 +42,7 @@ public class Solution {
 }
 ~~~
 
-### Java (Greed)
+## Java (Greed)
 ~~~ java
 public class Solution {
     /**

@@ -3,7 +3,7 @@ title: Intersection of Two Arrays II
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given two arrays, write a function to compute their intersection.
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice
@@ -14,17 +14,17 @@ b) The result can be in any order.
 **Example**
 Given nums1 = <font style="color: #C72541; background: #F9F2F4;">[1,2,9,2,1]</font>, nums2 = <font style="color: #C72541; background: #F9F2F4;">[2,8,2,3,1]</font>, return <font style="color: #C72541; background: #F9F2F4;">[1,2,2]</font>.
 
-### Thinking
+## Thinking
 
-#### Method 1 (time complexity is O(n<sup>2</sup>))
+### Method 1 (time complexity is O(n<sup>2</sup>))
 * Using a temp array to store postion which has been found.
 * Create an array with marked elements
 
-#### Method 2 (time complexity is O(n))
+### Method 2 (time complexity is O(n))
 * Using map to store each element counts 
 * Check element in another array and save element whose value greater than 0;
 
-### Java (method 2)
+## Java (method 2)
 ~~~ java
 public class Solution {
     /**
@@ -66,7 +66,7 @@ public class Solution {
 }
 ~~~
 
-### Java (method 1)
+## Java (method 1)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> **Notice**
 This is not a good solution since the case was run timeout.

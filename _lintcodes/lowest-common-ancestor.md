@@ -24,12 +24,12 @@ LCA(3, 5) = <font style="color: #C72541; background: #F9F2F4;">4 </font>
 LCA(5, 6) = <font style="color: #C72541; background: #F9F2F4;">7 </font>
 LCA(6, 7) = <font style="color: #C72541; background: #F9F2F4;">7 </font>
 
-### Thinking
+## Thinking
 * Find path for each node and save the path
 * Compare those paths
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 /**
  * Definition of TreeNode:

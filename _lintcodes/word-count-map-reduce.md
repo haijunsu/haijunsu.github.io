@@ -3,7 +3,7 @@ title: Word Count (Map Reduce)
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Using map reduce to count word frequency.
 <https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html#Example%3A+WordCount+v1.0>
 
@@ -22,8 +22,8 @@ Get MapReduce result:
     lintcode: 1
 ~~~
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 /**
  * Definition of OutputCollector:

@@ -3,7 +3,7 @@ title: Intersection of Two Arrays
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given two arrays, write a function to compute their intersection.
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice
@@ -14,12 +14,12 @@ b) The result can be in any order.
 **Example**
 Given *nums1* = <font style="color: #C72541; background: #F9F2F4;">[1, 2, 2, 1]</font>, *nums2* = <font style="color: #C72541; background: #F9F2F4;">>[2, 2]</font>, return <font style="color: #C72541; background: #F9F2F4;">[2]</font>.
 
-### Thinking
+## Thinking
 * Convert nums1 to hashmap
 * Check nums2 values. If the value is a hashmap key, save it to a Set
 * Convert Set to array 
 
-### Java
+## Java
 
 ~~~ java
 public class Solution {

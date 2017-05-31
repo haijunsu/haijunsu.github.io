@@ -3,17 +3,17 @@ title: First Position Unique Character
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a string, find the first non-repeating character in it and return it's index. If it doesn't exist, return -1.
 **Example**
 Given s = *"lintcode"*, return *0*.
 Given s = *"lovelintcode"*, return *2*.
 
-### Thinking
+## Thinking
 * Convert character as int and store them in an array with original order
 * Count array is using character's int value as index.
 
-### Java
+## Java
 ~~~ java
 public class Solution {
     /**

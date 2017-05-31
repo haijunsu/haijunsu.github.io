@@ -3,7 +3,7 @@ title: Binary Tree Paths
 author: Haijun (Navy) Su
 layout: page
 ---
-### Question
+## Question
 Given a binary tree, return all root-to-leaf paths.
 
 **Example**
@@ -23,8 +23,8 @@ All root-to-leaf paths are:
 ]
 ~~~
 
-### Solution
-#### Java
+## Solution
+### Java
 ~~~ java
 /**
  * Definition of TreeNode:
