@@ -22,7 +22,7 @@ What is *Anagram*?
 
 ### Solution
 #### Java
-~~~
+~~~ java
 public class Solution {
     /**
      * @param s: The first string
