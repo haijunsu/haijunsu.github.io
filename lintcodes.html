@@ -3,10 +3,25 @@ layout: default
 ---
 
 <div class="posts">
-    <a href="http://www.cnblogs.com/grandyang/p/4606334.html">Leetcode all in one</a>
-  <ol>
+  <a href="http://www.cnblogs.com/grandyang/p/4606334.html">Leetcode all in one</a>
+  <table>
+      <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Difficulty</th>
+            <th>Original Link</th>
+      </tr>
   {% for post in site.lintcodes %}
-    <li><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+    <tr>
+        <td>{{ post.number }}</td>
+        <td><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></td>
+        <td>{{ post.difficulty }}</td>
+        <td>
+        {% if post.original_link != null %}
+        <a href="{{ post.original_link }}" target="_blank">link</a>
+        {% endif %}
+        </td>
+    </tr>      
   {% endfor %}
-  </ol>
+  </table>
 </div>
