@@ -102,3 +102,7 @@ collections:
     output: true
   lintcodes:
     output: true
+
+# tags link
+lintcode_tag_page: /lintcode-tags/
+post_tag_page: /post-tags/

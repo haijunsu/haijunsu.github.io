@@ -318,3 +318,100 @@ th {
   background: #D9EDF7;
   padding: 10px 10px 10px 10px;
 }
+
+.diffilculty {
+    min-width: 65px;
+    color: #fff;
+    max-width: 100%;
+    overflow-x: auto;
+    vertical-align: middle;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+	padding: 0 0.5em;
+	width: 100%;
+}
+.Easy, .Naive {
+    background-color: #5DCFF3;
+}
+.Medium {
+    background-color: #92CF5C;
+}
+.Hard, .Super {
+    background-color: #FB6B5B;
+}
+.post-tag {
+    display: inline-block;
+    background: rgba(106,159,181,0.15);
+    padding: 0 .5rem;
+    margin-right: .5rem;
+    border-radius: 4px;
+    color: #6a9fb5;
+    font-family: "PT Sans",Helvetica,Arial,sans-serif;
+    font-size: 90%;
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+.post-tag:before {
+    content: "\f02b";
+    font-family: FontAwesome;
+    padding-right: .5em;
+}
+
+/* Category List */
+/*.related {
+padding-top: 2rem;
+padding-bottom: 2rem;
+border-top: 1px solid #eee;
+}*/
+.codinfox-category-list {
+    padding-left: 1rem;
+    list-style: none;
+}
+.codinfox-category-list h3 {
+    font-size: 1rem;
+    margin-top: 0;
+}
+.codinfox-category-list li small {
+    font-size: 75%;
+    color: #999;
+}
+.codinfox-category-list li a:hover {
+    color: #6a9fb5;
+    text-decoration: none;
+}
+.codinfox-category-list li a:hover small {
+    color: inherit;
+}
+
+.codinfox-category-mark {
+    padding: 0 .5rem 0 .5rem;
+    border-radius: 5px;
+    background: #f0f0f0;
+    color: #999;
+    text-decoration: none;
+    margin-bottom: .75rem;
+}
+
+.codinfox-category-mark:hover {
+    font-weight: bold;
+}
+
+.codinfox-tag-mark{
+    font-size: 75%;
+    padding: 0 .5rem 0 .5rem;
+    border-radius: 5px;
+    background: #e7f2f7;
+    color: #6a9fb5;
+}
+
+.codinfox-tag-mark:before {
+    content: "\f02b";
+    font-family: FontAwesome;
+    padding-right: .5em;
+}
+.clickable-row:hover {
+    background: #F3F5F9; 
+    cursor: pointer;
+}

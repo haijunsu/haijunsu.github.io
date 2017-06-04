@@ -4,23 +4,19 @@ layout: default
 
 <div class="posts">
   <a href="http://www.cnblogs.com/grandyang/p/4606334.html">Leetcode all in one</a>
-  <table>
+  <br />
+  Total <i>{{ site.lintcodes | size }}</i> problems.
+  <table width="100%">
       <tr>
             <th>#</th>
             <th>Title</th>
             <th>Difficulty</th>
-            <th>Original Link</th>
       </tr>
   {% for post in site.lintcodes %}
-    <tr>
+	  <tr class="clickable-row" data-href="{{ site.baseurl }}{{ post.url }}">
         <td>{{ post.number }}</td>
         <td><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></td>
-        <td>{{ post.difficulty }}</td>
-        <td>
-        {% if post.original_link != null %}
-        <a href="{{ post.original_link }}" target="_blank">link</a>
-        {% endif %}
-        </td>
+        <td><span class="diffilculty {{post.difficulty}}">{{ post.difficulty }}</span></td>
     </tr>      
   {% endfor %}
   </table>

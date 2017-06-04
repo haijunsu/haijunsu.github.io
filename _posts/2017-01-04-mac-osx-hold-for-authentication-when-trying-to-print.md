@@ -4,6 +4,7 @@ title: 'Mac OSX &#8220;Hold for authentication&#8221; when trying to print'
 date: 2017-01-04T13:53:07+00:00
 author: Navy Su
 layout: post
+tags: [mac,osx]
 ---
 Fix steps:
 

@@ -5,7 +5,14 @@ layout: default
 <article class="page">
 
   <h1>{{ page.title }}</h1>
-
+  {% if page.tags %}  
+  {% for tag in page.tags %}
+    <a href="{{ site.baseurl }}/lintcode-tags/#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+  {% endfor %}
+  {% endif %}
+  {% if page.original_link %}  
+   <p>Source: <a href="{{ page.original_link }}">{{ page.original_link }}</a></p>
+  {% endif %}
   <div class="entry">
     {{ content }}
   </div>

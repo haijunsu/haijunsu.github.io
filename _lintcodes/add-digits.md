@@ -5,7 +5,7 @@ layout: page
 original_link: http://www.lintcode.com/en/problem/add-digits/
 difficulty: Easy
 number: 586
-categories: Mathematics
+tags: [Mathematics]
 ---
 ## Question
 Given a non-negative integer <font style="color: #C72541; background: #F9F2F4;">num</font>, repeatedly add all its digits until the result has only one digit.
@@ -45,8 +45,8 @@ public class Solution {
     }
 }
 ~~~
-#### Java (Challenge solution)
-~~~ java (Normal solution)
+#### Java (Normal solution)
+~~~ java
 public class Solution {
     /**
      * @param num a non-negative integer
