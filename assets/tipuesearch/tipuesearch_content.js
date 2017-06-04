@@ -30,6 +30,25 @@
     {% endunless %}
   {% endunless %}
 {% endfor %}
+{% for post in site.lintcodes %}
+  {% unless post.exclude_from_search == true or excluded_files contains post.path %}
+    {% assign has_excluded_taxonomy = false %}
+    {% for tag in post.tags %}
+      {% if excluded_taxonomies contains tag %}
+        {% assign has_excluded_taxonomy = true %}
+      {% endif %}
+    {% endfor %}
+    {% for category in post.categories %}
+      {% if excluded_taxonomies contains category %}
+        {% assign has_excluded_taxonomy = true %}
+      {% endif %}
+    {% endfor %}
+    {% unless has_excluded_taxonomy == true %}
+      {% assign index = index | push: post | uniq %}
+    {% endunless %}
+  {% endunless %}
+{% endfor %}
+
 {% if site.tipue_search.include.pages == true %}
   {% for page in site.html_pages %}
     {% unless page.exclude_from_search == true or excluded_files contains page.path %}
