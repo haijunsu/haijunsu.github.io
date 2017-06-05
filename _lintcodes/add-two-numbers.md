@@ -49,20 +49,15 @@ public class Solution {
      */
     public ListNode addLists(ListNode l1, ListNode l2) {
         // write your code here
-        if (l1 == null && l2 == null) {
-            return null;
-        }
-        // short return if one parameter is null.
         if (l1 == null) {
             return l2;
         }
         if (l2 == null) {
             return l1;
         }
-        ListNode sumList = null;
-        ListNode tmpList = null;
+        ListNode sumList = new ListNode(-1);
+        ListNode tmpList = sumList;
         int carry = 0;
-        int sum  = 0;
         while (l1 != null || l2 != null) {
             int val1 = 0;
             int val2 = 0;
@@ -72,14 +67,9 @@ public class Solution {
             if (l2 != null) {
                 val2 = l2.val;
             }
-            sum = carry + val1 + val2;
-            if (sumList == null) {
-                sumList = new ListNode(sum % 10);
-                tmpList = sumList;
-            } else {
-                tmpList.next = new ListNode(sum % 10);
-                tmpList = tmpList.next;
-            }
+            int sum = carry + val1 + val2;
+            tmpList.next = new ListNode(sum % 10);
+            tmpList = tmpList.next;
             carry = sum / 10;
             if (l1 != null) {
                 l1 = l1.next;
@@ -91,7 +81,7 @@ public class Solution {
         if (carry > 0) {
             tmpList.next = new ListNode(carry);
         }
-        return sumList;
+        return sumList.next;
     }
 }
 ~~~

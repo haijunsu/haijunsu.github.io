@@ -2,7 +2,6 @@
 title: Add Two Numbers II
 author: Haijun (Navy) Su
 layout: page
-number: 221
 lintcode_link: https://www.lintcode.com/en/problem/add-two-numbers-ii/
 leetcode_link: https://leetcode.com/problems/add-two-numbers-ii/#/description
 difficulty: Medium
@@ -15,8 +14,15 @@ You have two numbers represented by a linked list, where each node contains a si
 Given <font style="color: #C72541; background: #F9F2F4;">6->1->7 + 2->9->5 </font>. That is, <font style="color: #C72541; background: #F9F2F4;">617 + 295 </font>.
 Return <font style="color: #C72541; background: #F9F2F4;">9->1->2 </font>. That is, <font style="color: #C72541; background: #F9F2F4;">912 </font>.
 
+**Follow up:**
+What if you cannot modify the input lists? In other words, reversing the lists is not allowed.
+
 ## Thinking
 Similar question: [Add Tow Numbers](/lintcodes/add-two-numbers/);
+
+## Review
+We can refer to [Add Tow Numbers](/lintcodes/add-two-numbers/) but the challenge is reversing the lists or using stack.
+On leetcode, reversing is not allowed. We can use offset variable help to add two different length lists and recursive method.
 
 ## Solution
 ### Java
