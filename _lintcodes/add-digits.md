@@ -2,10 +2,10 @@
 title: Add Digits
 author: Haijun (Navy) Su
 layout: page
-original_link: http://www.lintcode.com/en/problem/add-digits/
+lintcode_link: http://www.lintcode.com/en/problem/add-digits/
+leetcode_link: https://leetcode.com/problems/add-digits/#/description
 difficulty: Easy
-number: 586
-tags: [Mathematics]
+tags: [Mathematics,Math]
 ---
 ## Question
 Given a non-negative integer <font style="color: #C72541; background: #F9F2F4;">num</font>, repeatedly add all its digits until the result has only one digit.

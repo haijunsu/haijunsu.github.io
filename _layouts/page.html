@@ -10,8 +10,11 @@ layout: default
     <a href="{{ site.baseurl }}/lintcode-tags/#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
   {% endfor %}
   {% endif %}
-  {% if page.original_link %}  
-   <p>Source: <a href="{{ page.original_link }}">{{ page.original_link }}</a></p>
+  {% if page.lintcode_link %}  
+   <p>LintCode: <a href="{{ page.lintcode_link }}">{{ page.lintcode_link }}</a></p>
+  {% endif %}
+  {% if page.leetcode_link %}  
+   <p>LeetCode: <a href="{{ page.leetcode_link }}">{{ page.leetcode_link }}</a></p>
   {% endif %}
   <div class="entry">
     {{ content }}

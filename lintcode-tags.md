@@ -1,6 +1,6 @@
 ---
 layout:   page
-title:    LintCode Tags
+title:    Lint/LeetCode Tags
 ---
 {% comment%}
 Here we generate all the tags.
@@ -43,11 +43,12 @@ Here we generate all the tags.
             <th>Title</th>
             <th>Difficulty</th>
       </tr>
- 
+  {% assign myindex = 0 %}
   {% for post in site.lintcodes %}
   {% if post.tags contains tag %}
+  {% assign myindex = myindex | plus: 1 %}
   <tr class="clickable-row" data-href="{{ site.baseurl }}{{ post.url }}">
-        <td>{{ post.number }}</td>
+        <td>{{ myindex }}</td>
         <td><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></td>
         <td><span class="diffilculty {{post.difficulty}}">{{ post.difficulty }}</span></td>
    </tr> 

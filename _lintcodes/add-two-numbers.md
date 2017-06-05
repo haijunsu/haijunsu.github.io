@@ -2,6 +2,10 @@
 title: Add Two Numbers
 author: Haijun (Navy) Su
 layout: page
+difficulty: Easy
+lintcode_link: https://www.lintcode.com/en/problem/add-two-numbers/
+leetcode_link: https://leetcode.com/problems/add-two-numbers/#/description
+tags: [racking The Coding Interview, Linked List, High Precision, Math]
 ---
 ## Question
 You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in <font style="color: #C72541; background: #F9F2F4;">reverse </font> order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.
@@ -19,7 +23,79 @@ Before coding, we need clearfy the following things:
 * If previous question is no, is the long longer enough to represent the result?
 * If previous question is also no, can we use BigInteger?
 
+## Review
+The thinking is not good. We can just add first node first and handle carry value. There is NO BigInteger issue.
+
 ## Solution
+
+#### Java (Review Solution)
+~~~ java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    /**
+     * @param l1: the first list
+     * @param l2: the second list
+     * @return: the sum list of l1 and l2
+     */
+    public ListNode addLists(ListNode l1, ListNode l2) {
+        // write your code here
+        if (l1 == null && l2 == null) {
+            return null;
+        }
+        // short return if one parameter is null.
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        ListNode sumList = null;
+        ListNode tmpList = null;
+        int carry = 0;
+        int sum  = 0;
+        while (l1 != null || l2 != null) {
+            int val1 = 0;
+            int val2 = 0;
+            if (l1 != null) {
+                val1 = l1.val;
+            }
+            if (l2 != null) {
+                val2 = l2.val;
+            }
+            sum = carry + val1 + val2;
+            if (sumList == null) {
+                sumList = new ListNode(sum % 10);
+                tmpList = sumList;
+            } else {
+                tmpList.next = new ListNode(sum % 10);
+                tmpList = tmpList.next;
+            }
+            carry = sum / 10;
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+        if (carry > 0) {
+            tmpList.next = new ListNode(carry);
+        }
+        return sumList;
+    }
+}
+~~~
+
 ### Java (Add big integer by my own method)
 ~~~ java
 /**
