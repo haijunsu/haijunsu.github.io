@@ -2,6 +2,10 @@
 title: Substring Anagrams
 author: Haijun (Navy) Su
 layout: page
+lintcode_link: https://www.lintcode.com/en/problem/substring-anagrams/
+leetcode_link: https://leetcode.com/problems/find-all-anagrams-in-a-string/#/description
+difficulty: Easy
+tags: [Hash Table,Amazon]
 ---
 ## Question
 Given a string *s* and a **non-empty** string *p*, find all the start indices of *p*'s anagrams in *s*.
@@ -21,7 +25,58 @@ return **[0, 6]**
 * check whether anagrams is
 * Pay attention about time complexity
 
-## Java
+## Review
+There is a way to re-use the compare results to shift every step. Samilar as old solution, all p's characters are always increase in the character array and all s's characters are always decrease. We use a variable count to check how many characters match each other in p's length. If count is zero, we find a anagrams.
+
+## Solution
+#### Java (new solution)
+~~~ java
+public class Solution {
+    /**
+     * @param s a string
+     * @param p a non-empty string
+     * @return a list of index
+     */
+    public List<Integer> findAnagrams(String s, String p) {
+        // Write your code here
+        List<Integer> anagrams = new ArrayList<Integer>();
+        // check null values
+        if (s == null || p == null) {
+            return anagrams;
+        }
+        // no anagrams if s length is less than p.length
+        if (s.length() < p.length()) {
+            return anagrams;
+        }
+        int[] pchars = new int[26];
+        int count = p.length();
+        for (int i = 0; i < p.length(); i++) {
+            pchars[p.charAt(i) - 'a']++; // always increase
+        }
+        int start = 0;
+        for (int i = 0; i < s.length(); i++) {
+            pchars[s.charAt(i) - 'a']--; // always decrease
+            if (pchars[s.charAt(i) - 'a'] >= 0) {
+                --count; //found char
+            }
+            if (count == 0) { // match
+                anagrams.add(start);
+            }
+            if (p.length() == (i - start + 1)) {
+                if (pchars[s.charAt(start) - 'a'] >= 0) {
+                    ++count; // resotre count
+                }
+                //after comare the substring, we need restore the value to avoid below zero.
+                pchars[s.charAt(start) - 'a']++; //restore value
+                ++start; // shift right
+            }
+        }
+        return anagrams;
+    }
+}
+~~~
+
+#### Java (substring)
 ~~~ java
 public class Solution {
     /**
