@@ -25,7 +25,169 @@ We can refer to [Add Tow Numbers](/lintcodes/add-two-numbers/) but the challenge
 On leetcode, reversing is not allowed. We can use offset variable help to add two different length lists and recursive method.
 
 ## Solution
-### Java
+#### Java (Without reversing list)
+~~~ java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;      
+ *     }
+ * }
+ */
+public class Solution {
+    /**
+     * @param l1: the first list
+     * @param l2: the second list
+     * @return: the sum list of l1 and l2 
+     */
+    public ListNode addLists2(ListNode l1, ListNode l2) {
+        // write your code here
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        int length1 = getLength(l1);
+        int length2 = getLength(l2);
+        int offset = 0;
+        ListNode node = null;
+        if (length1 > length2) {
+            offset = length1 - length2;
+            node = addList(l1, l2, offset);
+        } else {
+            offset = length2 - length1;
+            node = addList(l2, l1, offset);
+        }
+        if (node.val > 9) {
+            ListNode tmpNode = new ListNode(node.val / 10);
+            node.val = node.val % 10;
+            tmpNode.next = node;
+            node = tmpNode;
+        }
+        return node;
+    } 
+    
+    private int getLength(ListNode list) {
+        if (list == null) {
+            return 0;
+        }
+        int size = 0;
+        ListNode tmp = list;
+        while (tmp != null) {
+            ++size;
+            tmp = tmp.next;
+        }
+        return size;
+    }
+    
+    private ListNode addList(ListNode list1, ListNode list2, int offset) {
+        if (list2 == null) {
+            return list1;
+        }
+        int sum = 0;
+        ListNode nextNode = null;
+        if (offset > 0) {
+            sum = list1.val;
+            nextNode = addList(list1.next, list2, --offset);
+        } else {
+            sum = list1.val + list2.val;
+            nextNode = addList(list1.next, list2.next, --offset);
+        }
+        if (nextNode != null && nextNode.val > 9) {
+            sum = sum + nextNode.val / 10;
+            nextNode.val = nextNode.val % 10;
+        }
+        ListNode node = new ListNode(sum);
+        node.next = nextNode;
+        return node;
+    }
+}
+~~~
+#### Java (reversing list)
+~~~ java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;      
+ *     }
+ * }
+ */
+public class Solution {
+    /**
+     * @param l1: the first list
+     * @param l2: the second list
+     * @return: the sum list of l1 and l2 
+     */
+    public ListNode addLists2(ListNode l1, ListNode l2) {
+        // write your code here
+        if (l1 == null) {
+            return l2;
+        }
+        if (l2 == null) {
+            return l1;
+        }
+        l1 = reverseList(l1);
+        l2 = reverseList(l2);
+        ListNode dummy = new ListNode(-1);
+        ListNode tmpNode = null;
+        int carry = 0;
+        while (l1 != null || l2 != null) {
+            int val1 = 0;
+            int val2 = 0;
+            if (l1 != null) {
+                val1 = l1.val;
+            }
+            if (l2 != null) {
+                val2 = l2.val;
+            }
+            int sum = carry + val1 + val2;
+            tmpNode = new ListNode(sum % 10);
+            tmpNode.next = dummy.next;
+            dummy.next = tmpNode;
+            carry = sum / 10;
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
+        }
+        if (carry > 0) {
+            tmpNode = new ListNode(carry);
+            tmpNode.next = dummy.next;
+            dummy.next = tmpNode;
+        }
+        return dummy.next;
+    } 
+    
+    private ListNode reverseList(ListNode list) {
+        if (list == null || list.next == null) {
+            return list;
+        }
+        ListNode dummy = new ListNode(-1);
+        dummy.next = list;
+        ListNode curr = list;
+        while (list.next != null) {
+            ListNode popNode = curr.next;
+            curr.next = popNode.next;
+            popNode.next = dummy.next;
+            dummy.next = popNode;
+        }
+        return dummy.next;
+    }
+}
+~~~
+
+#### Java
 ~~~ java
 /**
  * Definition for singly-linked list.
