@@ -50,7 +50,7 @@ Here we generate all the tags.
   <tr class="clickable-row" data-href="{{ site.baseurl }}{{ post.url }}">
         <td>{{ myindex }}</td>
         <td><a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></td>
-        <td><span class="diffilculty {{post.difficulty}}">{{ post.difficulty }}</span></td>
+        <td><span class="difficulty {{post.difficulty}}">{{ post.difficulty }}</span></td>
    </tr> 
   {% endif %}
   {% endfor %}
