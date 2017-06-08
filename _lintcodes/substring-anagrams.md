@@ -5,7 +5,7 @@ layout: page
 lintcode_link: https://www.lintcode.com/en/problem/substring-anagrams/
 leetcode_link: https://leetcode.com/problems/find-all-anagrams-in-a-string/#/description
 difficulty: Easy
-tags: [Hash Table,Amazon]
+tags: [Hash Table,Amazon,Anagrams]
 ---
 ## Question
 Given a string *s* and a **non-empty** string *p*, find all the start indices of *p*'s anagrams in *s*.

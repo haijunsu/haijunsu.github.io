@@ -2,6 +2,9 @@
 title: Big Integer Addition
 author: Haijun (Navy) Su
 layout: page
+difficulty: Easy
+lintcode_link: https://www.lintcode.com/en/problem/big-integer-addition/
+tags: [Mathematics,Airbnb,Google]
 ---
 ## Question
 Given two non-negative integers <font style="color: #C72541; background: #F9F2F4;">num1</font> and <font style="color: #C72541; background: #F9F2F4;">num2</font> represented as string, return the sum of <font style="color: #C72541; background: #F9F2F4;">num1</font> and <font style="color: #C72541; background: #F9F2F4;">num2</font>.
@@ -20,7 +23,50 @@ return <font style="color: #C72541; background: #F9F2F4;">"168"</font>
 ## Thinking
 Just think about human addition method. 
 
-## Java
+## Review
+Since input are all numbers, we can use (char - '0') to get int value of char
+
+## Solution
+#### Java (using (char - '0'))
+~~~ java
+public class Solution {
+    /**
+     * @param num1 a non-negative integers
+     * @param num2 a non-negative integers
+     * @return return sum of num1 and num2
+     */
+    public String addStrings(String num1, String num2) {
+        // Write your code here
+        if (num1 == null || num1.length() == 0) {
+            return num2;
+        } 
+        if (num2 == null || num2.length() == 0) {
+            return num1;
+        }
+        int index1 = num1.length() - 1;
+        int index2 = num2.length() - 1;
+        int carry = 0;
+        StringBuilder sb = new StringBuilder();
+        while (index1 >= 0 || index2 >= 0) {
+            if (index1 >= 0) {
+                carry = carry + (num1.charAt(index1) - '0');
+            }
+            if (index2 >= 0) {
+                carry = carry + (num2.charAt(index2) - '0');
+            }
+            sb.insert(0, carry % 10);
+            carry = carry / 10;
+            --index1;
+            --index2;
+        }
+        if (carry > 0) {
+            sb.insert(0, carry);
+        }
+        return sb.toString();
+    }
+}
+~~~
+#### Java (first solution)
 ~~~ java
 public class Solution {
     /**
