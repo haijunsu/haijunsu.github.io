@@ -2,6 +2,10 @@
 title: Convert BST to Greater Tree
 author: Haijun (Navy) Su
 layout: page
+lintcode_link: https://www.lintcode.com/en/problem/convert-bst-to-greater-tree/
+leetcode_link: https://leetcode.com/problems/convert-bst-to-greater-tree/#/description
+difficulty: Easy
+tags: [Tree,Binary Search Tree,Binary Tree,Amazon]
 ---
 ## Question
 Given a Binary Search Tree (BST), convert it to a Greater Tree such that every key of the original BST is changed to the original key plus sum of all keys greater than the original key in BST.
@@ -27,7 +31,8 @@ Return the root of new tree
 4. Left node value is harder. Left node is not the next node to be added. It may has a lot of right children.
 5. Make sure curent always get the sum of other greater node values (store the sum in a globe varilabe)
 
-## Java
+## Solution
+#### Java
 ~~~ java
 /**
  * Definition of TreeNode:

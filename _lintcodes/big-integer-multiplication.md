@@ -2,6 +2,9 @@
 title: Big Integer multiplication
 author: Haijun (Navy) Su
 layout: page
+lintcode_link: https://www.lintcode.com/en/problem/big-integer-multiplication/
+difficulty: Medium
+tags: [Mathematics,String,Twitter,Facebook]
 ---
 ## Question
 Given two non-negative integers <font style="color: #C72541; background: #F9F2F4;">num1 </font>and <font style="color: #C72541; background: #F9F2F4;">num2 </font>represented as strings, return the product of <font style="color: #C72541; background: #F9F2F4;">num1 </font>and <font style="color: #C72541; background: #F9F2F4;">num2 </font>
@@ -15,9 +18,80 @@ Given two non-negative integers <font style="color: #C72541; background: #F9F2F4
 ## Thinking
 Multipling tow numbers can be done with two steps:
 * Using first number multiples every single digits in the second number sub results.
-* Sum sub results (Big number addition)
+* Sum sub results ([Big number addition](http://dev.blog.happynavy.tk/lintcodes/big-integer-addition/))
 
 ## Solution
+#### Java (Using (char - '0') to find char number value)
+~~~ java
+public class Solution {
+    /**
+     * @param num1 a non-negative integers
+     * @param num2 a non-negative integers
+     * @return return product of num1 and num2
+     */
+    public String multiply(String num1, String num2) {
+        // Write your code here
+        if (num1 == null || num2 == null || num1.length() == 0 || num2.length() == 0) {
+            return null;
+        }
+        if (num1.equals("0") || num2.equals("0")) {
+            return "0";
+        }
+        List<String> multiOneDigits = new ArrayList<String>();
+        for (int i = num1.length() - 1; i >= 0; i--) {
+            StringBuilder sb = new StringBuilder();
+            int carry = 0;
+            for (int j = num2.length() - 1; j >=0; j--) {
+                carry = carry + (num1.charAt(i) - '0') * (num2.charAt(j) - '0');
+                sb.insert(0, carry % 10);
+                carry = carry / 10;
+            }
+            if (carry > 0) {
+                sb.insert(0, carry);
+            }
+            for (int k = 0; k < (num1.length() - i - 1); k++) {
+                sb.append("0");
+            }
+            multiOneDigits.add(sb.toString());
+        }
+        String result = "";
+        for (String value : multiOneDigits) {
+            result = addStrings(result, value);
+        }
+        return result;
+    }
+    
+    private String addStrings(String str1, String str2) {
+        if (str1 == null || str1.length() == 0) {
+            return str2;
+        }
+        if (str2 == null || str2.length() == 0) {
+            return str1;
+        }
+        StringBuilder sb = new StringBuilder();
+        int carry = 0;
+        int len1 = str1.length() - 1;
+        int len2 = str2.length() - 1;
+        while (len1 >= 0 || len2 >= 0) {
+            if (len1 >= 0) {
+                carry = carry + (str1.charAt(len1) - '0');
+            }
+            if (len2 >= 0) {
+                carry = carry + (str2.charAt(len2) - '0');
+            }
+            sb.insert(0, carry % 10);
+            carry = carry / 10;
+            --len1;
+            --len2;
+        }
+        if (carry > 0) {
+            sb.insert(0, carry);
+        }
+        return sb.toString();
+    }
+}
+~~~
+
 #### Java
 ~~~ java
 public class Solution {
