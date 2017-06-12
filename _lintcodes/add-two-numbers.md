@@ -5,7 +5,7 @@ layout: page
 difficulty: Easy
 lintcode_link: https://www.lintcode.com/en/problem/add-two-numbers/
 leetcode_link: https://leetcode.com/problems/add-two-numbers/#/description
-tags: [racking The Coding Interview, Linked List, High Precision, Math]
+tags: [Cracking The Coding Interview, Linked List, High Precision, Math]
 ---
 ## Question
 You have two numbers represented by a linked list, where each node contains a single digit. The digits are stored in <font style="color: #C72541; background: #F9F2F4;">reverse </font> order, such that the 1's digit is at the head of the list. Write a function that adds the two numbers and returns the sum as a linked list.

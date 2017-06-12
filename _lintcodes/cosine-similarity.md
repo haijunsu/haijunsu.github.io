@@ -2,11 +2,14 @@
 title: Cosine Similarity
 author: Haijun (Navy) Su
 layout: page
+lintcode_link: https://www.lintcode.com/en/problem/cosine-similarity/
+difficulty: Easy
+tags: [Mathematics]
 ---
 ## Question
 Cosine similarity is a measure of similarity between two vectors of an inner product space that measures the cosine of the angle between them. The cosine of 0° is 1, and it is less than 1 for any other angle.
 
-See wiki: Cosine Similarity
+See wiki: [Cosine Similarity](https://en.wikipedia.org/wiki/Cosine_similarity)
 
 Here is the formula:
 ![Cosine similarity formula](/images/Lintcode/cosine-similarity.png)
@@ -24,7 +27,7 @@ Given A = <font style="color: #C72541; background: #F9F2F4;">[0] </font>, B = <f
 Return <font style="color: #C72541; background: #F9F2F4;">2.0000 </font>.
 
 ## Solution
-### Java
+#### Java
 ~~~ java
 class Solution {
     /**
