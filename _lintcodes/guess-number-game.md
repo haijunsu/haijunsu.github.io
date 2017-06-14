@@ -2,6 +2,9 @@
 title: Guess Number Game
 author: Haijun (Navy) Su
 layout: page
+lintcode_link: https://www.lintcode.com/en/problem/guess-number-game/
+difficulty: Easy
+tags: [Binary Search,Google]
 ---
 ## Question
 We are playing the Guess Game. The game is as follows:
@@ -22,7 +25,8 @@ Fibonacci search also ran timeout.
 <https://en.wikipedia.org/wiki/Binary_search_algorithm>
 <http://www.geeksforgeeks.org/fibonacci-search/>
 
-## Java (Binary Search)
+## Solution
+#### Java (Binary Search)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Note: This is not a solution. It runs timeout for input (2147483647, 2147483647) 
 **Workaround:** check guess(n) first and then the timeout is gone.
@@ -64,7 +68,7 @@ public class Solution extends GuessGame {
 }
 ~~~
 
-## Java (Fibonacci Search)
+#### Java (Fibonacci Search)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Note: This is not a solution. It runs timeout for input (2147483647, 2147483647) 
 {: .note}

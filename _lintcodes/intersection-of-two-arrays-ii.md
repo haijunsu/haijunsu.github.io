@@ -2,6 +2,10 @@
 title: Intersection of Two Arrays II
 author: Haijun (Navy) Su
 layout: page
+lintcode_link: https://www.lintcode.com/en/problem/intersection-of-two-arrays-ii/
+leetcode_link: https://leetcode.com/problems/intersection-of-two-arrays-ii/#/description
+difficulty: Easy
+tags: [Binary Search,Hash Table,Two Pointers,Sort]
 ---
 ## Question
 Given two arrays, write a function to compute their intersection.
@@ -14,6 +18,16 @@ b) The result can be in any order.
 **Example**
 Given nums1 = <font style="color: #C72541; background: #F9F2F4;">[1,2,9,2,1]</font>, nums2 = <font style="color: #C72541; background: #F9F2F4;">[2,8,2,3,1]</font>, return <font style="color: #C72541; background: #F9F2F4;">[1,2,2]</font>.
 
+## Challenge
+* What if the given array is already sorted? How would you optimize your algorithm?
+Using two pointers for two arrays. If elements are equal, all pointer move 1. Else only move the smaller one.
+* What if nums1's size is small compared to num2's size? Which algorithm is better?
+Putting smaller array elements in hashMap is better.
+* What if elements of nums2 are stored on disk, and the memory is limited such that you cannot load all elements into the memory at once?
+1. Store the two strings in distributed system(whether self designed or not), then using MapReduce technique to solve the problem;
+2. Processing the Strings by chunk, which fits the memory, then deal with each chunk of data at a time;
+3. Processing the Strings by streaming, then check.
+
 ## Thinking
 
 ### Method 1 (time complexity is O(n<sup>2</sup>))
@@ -24,7 +38,51 @@ Given nums1 = <font style="color: #C72541; background: #F9F2F4;">[1,2,9,2,1]</fo
 * Using map to store each element counts 
 * Check element in another array and save element whose value greater than 0;
 
-## Java (method 2)
+## Review
+Method2 and Two pointer are good solutions.
+[Other solutions](http://www.cnblogs.com/grandyang/p/5533305.html)
+
+## Solution
+#### Java (Review, putting small array into hashmap, passed on leetcode)
+~~~ java
+public class Solution {
+    public int[] intersect(int[] nums1, int[] nums2) {
+        if (nums1 == null || nums2 ==null) {
+            return new int[0];
+        }
+        Map<Integer, Integer> elsmap = new HashMap<Integer, Integer>();
+        // put small array in hashmap.
+        int[] tmpArray = nums1;
+        if (nums1.length > nums2.length) {
+            nums1 = nums2;
+            nums2 = tmpArray;
+        }
+        for(int el : nums1) {
+            Integer val = elsmap.get(el);
+            if (val == null) {
+                elsmap.put(el, 1);
+            } else {
+                elsmap.put(el, val + 1);
+            }
+        }
+        List<Integer> inters = new ArrayList<Integer>();
+        for(int el : nums2) {
+           Integer val = elsmap.get(el) ;
+           if (val != null && val > 0) {
+               inters.add(el);
+               elsmap.put(el, val - 1);
+           }
+        }
+        int[] rtns = new int[inters.size()];
+        int index = 0;
+        for (int el : inters) {
+            rtns[index++] = el;
+        }
+        return rtns;
+    }
+}
+~~~
+#### Java (method 2)
 ~~~ java
 public class Solution {
     /**
@@ -66,7 +124,7 @@ public class Solution {
 }
 ~~~
 
-## Java (method 1)
+#### Java (method 1)
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> **Notice**
 This is not a good solution since the case was run timeout.

@@ -2,6 +2,9 @@
 title: Identical Binary Tree
 author: Haijun (Navy) Su
 layout: page
+difficulty: Easy
+lintcode_link: https://www.lintcode.com/en/problem/identical-binary-tree/
+tags: [Binary Tree]
 ---
 ## Question
 Check if two binary trees are identical. Identical means the two binary trees have the same structure and every identical position has the same value.
@@ -28,7 +31,7 @@ are not identical.
 Convert all node as string and compare string values.
 
 ## Solution
-### Java
+#### Java
 ~~~ java
 /**
  * Definition of TreeNode:

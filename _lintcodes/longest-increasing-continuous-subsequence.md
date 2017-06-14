@@ -2,6 +2,9 @@
 title: Longest Increasing Continuous Subsequence
 author: Haijun (Navy) Su
 layout: page
+difficulty: Easy
+lintcode_link: https://www.lintcode.com/en/problem/longest-increasing-continuous-subsequence/
+tags: [Enumeration,Dynamic Programming,Array]
 ---
 ## Question
 Give an integer array，find the longest increasing continuous subsequence in this array.
@@ -22,8 +25,56 @@ For <font style="color: #C72541; background: #F9F2F4;">[5, 1, 2, 3, 4] </font>, 
 * Using two array to save sequences.
 * Return the longest
 
+## Review
+Since we don't care about the real sequences, we can just use two integers to save the longest value.
+
 ## Solution
-### Java
+#### Java (Using two integers)
+~~~ java
+public class Solution {
+    /**
+     * @param A an array of Integer
+     * @return  an integer
+     */
+    public int longestIncreasingContinuousSubsequence(int[] A) {
+        // Write your code here
+        if (A == null || A.length == 0) {
+            return 0;
+        } 
+        if (A.length == 1) {
+            return 1;
+        }
+        int longest = 0;
+        int tmpLen = 1; // A[0]
+        boolean isIncreasing = (A[0] <= A[1]);
+        for (int i = 1; i < A.length; i++) {
+            if (A[i-1] <= A[i]) {
+                if (isIncreasing) {
+                    ++tmpLen;
+                } else {
+                    if (tmpLen > longest) {
+                        longest = tmpLen;
+                    }
+                    tmpLen = 2; // A[i-1], A[i]
+                    isIncreasing = true;
+                }
+            } else {
+                if (!isIncreasing) {
+                    ++tmpLen;
+                } else {
+                    if (tmpLen > longest) {
+                        longest = tmpLen;
+                    }
+                    tmpLen = 2;
+                    isIncreasing = false;
+                }
+            }
+        }
+        return tmpLen > longest ? tmpLen : longest;
+    }
+}
+~~~
+#### Java
 ~~~ java
 public class Solution {
     /**
@@ -49,10 +100,9 @@ public class Solution {
                     tmplics.add(tmp);
                 } else {
                     if (tmplics.size() > lics.size()) {
-                        lics.clear();
-                        lics.addAll(tmplics);
+                        lics = tmplics;
                     }
-                    tmplics.clear();
+                    tmplics = new ArrayList<Integer>();
                     tmplics.add(A[i -  1]);
                     tmplics.add(A[i]);
                     isIncreasing = true;
@@ -62,10 +112,9 @@ public class Solution {
                     tmplics.add(tmp);
                 } else {
                     if (tmplics.size() > lics.size()) {
-                        lics.clear();
-                        lics.addAll(tmplics);
+                        lics = tmplics;
                     }
-                    tmplics.clear();
+                    tmplics = new ArrayList<Integer>();
                     tmplics.add(A[i -  1]);
                     tmplics.add(A[i]);
                     isIncreasing = false;

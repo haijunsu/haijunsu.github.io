@@ -2,6 +2,10 @@
 title: Happy Number
 author: Haijun (Navy) Su
 layout: page
+leetcode_link: https://leetcode.com/problems/happy-number/#/description
+lintcode_link: https://www.lintcode.com/en/problem/happy-number/
+tags: [Mathematics,Hash Table, Math]
+difficulty: Easy
 ---
 ## Question
 Write an algorithm to determine if a number is happy.
@@ -21,9 +25,63 @@ A happy number is a number defined by the following process: Starting with any p
 * All negative and zero are not happy number.
 * One is a happy number.
 * Using % and / to get each number by postion.
+* Check whether there is a cycle of calculation. (Result appears before)
+
+## Review
+If any result is 4, then the number is not a happy number.
+[Happy number wiki](https://en.wikipedia.org/wiki/Happy_number)
+[Other solutions](http://www.cnblogs.com/grandyang/p/4447233.html)
 
 ## Solution
-### java
+#### Java (Review, passed on leetcode)
+~~~ java
+public class Solution {
+    public boolean isHappy(int n) {
+        if (n < 0) {
+            return false;
+        }
+        Set<Integer> results = new HashSet<Integer>();
+        results.add(n);
+        while (n != 1) {
+            int sum = 0;
+            while (n != 0) {
+                sum += (n % 10) * (n % 10);
+                n = n / 10;
+            }
+            n = sum;
+            if (results.contains(n)) {
+                return false;
+            } else {
+                results.add(n);
+            }
+        }
+        return true;
+    }
+}
+~~~
+#### Java (Review, check sum == 4, passed on leetcode)
+~~~ java
+public class Solution {
+    public boolean isHappy(int n) {
+        if (n < 0) {
+            return false;
+        }
+        while (n != 1) {
+            int sum = 0;
+            while (n != 0) {
+                sum += (n % 10) * (n % 10);
+                n = n / 10;
+            }
+            n = sum;
+            if (n == 4) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+~~~
+#### java
 ~~~ java
 public class Solution {
     /**

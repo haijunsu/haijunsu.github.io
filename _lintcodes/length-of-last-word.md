@@ -2,6 +2,10 @@
 title: Length of Last Word
 author: Haijun (Navy) Su
 layout: page
+leetcode_link: https://leetcode.com/problems/length-of-last-word/#/description
+lintcode_link: https://www.lintcode.com/en/problem/length-of-last-word/
+difficulty: Easy
+tags: [String]
 ---
 ## Question
 Given a string s consists of upper/lower-case alphabets and empty space characters <font style="color: #C72541; background: #F9F2F4;">' ' </font>, return the length of last word in the string.
@@ -14,6 +18,9 @@ A word is defined as a character sequence consists of non-space characters only.
 
 **Example**
 Given s = <font style="color: #C72541; background: #F9F2F4;">"Hello World" </font>, return <font style="color: #C72541; background: #F9F2F4;">5 </font>.
+
+## Review
+Calcuate from the end to begin.
 
 ## Solution
 ### Java

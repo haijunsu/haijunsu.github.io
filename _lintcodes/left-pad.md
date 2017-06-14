@@ -2,10 +2,13 @@
 title: Left Pad
 author: Haijun (Navy) Su
 layout: page
+lintcode_link: https://www.lintcode.com/en/problem/left-pad/
+difficulty: Easy
+tags: [String]
 ---
 ## Question
 You know what, left pad is javascript package and referenced by React: 
-Github link
+[Github link](https://github.com/azer/left-pad)
 
 One day his author unpublished it, then a lot of javascript projects in the world broken.
 
