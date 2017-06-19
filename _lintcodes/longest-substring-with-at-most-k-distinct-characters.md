@@ -2,6 +2,10 @@
 title: Longest Substring with At Most K Distinct Characters
 author: Haijun (Navy) Su
 layout: page
+lintcode_link: http://www.lintcode.com/en/problem/longest-substring-with-at-most-k-distinct-characters/
+leetcode_link: /lintcode-tags/#Paid
+difficulty: Medium
+tags: [String,Hash Table,Two Pointers,Paid]
 ---
 ## Question
 Given a string s, find the length of the longest substring T that contains at most k distinct characters.
@@ -16,8 +20,102 @@ I was confused by the question because the example doesn't give me enough inform
 * The substring can be started from any postion of the string. I used two for loops to implement it.
 * For performance, if found the longest substring, the main loop need be stoped. I check the set size at the end of main loop.
 
+## Review
+Using a map to save all characters happened times. A left variable helps remember's left postion. If the keys number is greater than k, we remove the keys value is zero character from map.
+Another is saving character's position. Each time we update the character's position, only remove the postion equals left value.
+![longest-substring-with-at-most-k-distinct-characters](/images/Lintcode/longest-substring-with-k-distinct-characters.png)
+
+Other solution:
+<http://www.cnblogs.com/grandyang/p/5351347.html>
+<http://www.cnblogs.com/grandyang/p/5185561.html>
+
 ## Solution
-### Java
+#### Java (Review, using map, saving position, passed on lintcodes)
+~~~ java
+public class Solution {
+    /**
+     * @param s : A string
+     * @return : The length of the longest substring 
+     *           that contains at most k distinct characters.
+     */
+    public int lengthOfLongestSubstringKDistinct(String s, int k) {
+        // write your code here
+        if (s == null) {
+            return 0;
+        }
+        if (k > s.length()) {
+            return s.length();
+        }
+        int len = 0;
+        int left = 0;
+        Map<Character, Integer> cMap = new HashMap<Character, Integer>();
+        for (int i = 0; i < s.length(); i++) {
+            char key = s.charAt(i);
+            cMap.put(key, i);
+            if (cMap.keySet().size() > k) {
+                char key2 = s.charAt(left);
+                int value2 = cMap.get(key2);
+                if (value2 == left) {
+                    cMap.remove(key2);
+                }
+                ++left;
+            }
+            if (len < (i - left + 1)) {
+                len = i - left + 1;
+            }
+        }
+        return len;
+    }
+}
+~~~
+
+#### Java (Review, using map, passed on lintcodes)
+~~~ java
+public class Solution {
+    /**
+     * @param s : A string
+     * @return : The length of the longest substring 
+     *           that contains at most k distinct characters.
+     */
+    public int lengthOfLongestSubstringKDistinct(String s, int k) {
+        // write your code here
+        if (s == null) {
+            return 0;
+        }
+        if (k > s.length()) {
+            return s.length();
+        }
+        int len = 0;
+        int left = 0;
+        Map<Character, Integer> cMap = new HashMap<Character, Integer>();
+        for (int i = 0; i < s.length(); i++) {
+            char key = s.charAt(i);
+            Integer value = cMap.get(key);
+            if (value == null) {
+                cMap.put(key, 1);
+            } else {
+                cMap.put(key, value + 1);
+            }
+            if (cMap.keySet().size() > k) {
+                char key2 = s.charAt(left);
+                int value2 = cMap.get(key2);
+                if (value2 == 1) {
+                    cMap.remove(key2);
+                } else {
+                    cMap.put(key2, value2 - 1);
+                }
+                ++left;
+            }
+            if (len < (i - left + 1)) {
+                len = i - left + 1;
+            }
+        }
+        return len;
+    }
+}
+~~~
+
+#### Java
 ~~~ java
 public class Solution {
     /**
