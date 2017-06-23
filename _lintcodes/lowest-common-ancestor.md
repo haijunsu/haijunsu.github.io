@@ -2,6 +2,10 @@
 title: Lowest Common Ancestor
 author: Haijun (Navy) Su
 layout: page
+lintcode_link: http://www.lintcode.com/en/problem/lowest-common-ancestor/
+leetcode_link: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/#/description
+difficulty: Medium
+tags: [Tree,LinkedIn,Binary Tree,Facebook]
 ---
 Given the root and two nodes in a Binary Tree. Find the lowest common ancestor(LCA) of the two nodes.
 
@@ -28,8 +32,64 @@ LCA(6, 7) = <font style="color: #C72541; background: #F9F2F4;">7 </font>
 * Find path for each node and save the path
 * Compare those paths
 
+## Review
+
+<i class="fa fa-info-circle" aria-hidden="true"></i> Note:
+According test result, we can just using *==* to check whether two nodes equals. If we use *node.val*, some results are wrong since there are some nodes have same val.
+{: .note}
+
+The previous Solution using two recursions to find all paths of both nodes. Is there a way to only using only one recursion?
+Idea: 
+Assume two nodes are exist in tree. Checking left and right recursion result (trying to find both node at same time. if find one, other one can be ignored in one side):
+* if left != right, return current node
+* if left but right is null, return left node
+* if rigth but left is null, return right node
+
+If nodes doesn't exist in tree (not implemented)
+Actually, the previous implementation doesn't has this issue. For the using one recursion version, we need two helper methods: One run solution and another one is make sure a node exist. If the solution is equals A or B, it also needs to check another node using a recursion.
+![lowest-common-ancestor](/images/Lintcode/lowest-common-ancestor.png)
+
+
 ## Solution
-### Java
+#### Java (Using one recursion, passed on lintcodes)
+~~~ java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode A, TreeNode B) {
+        if (root == null || A == null | B == null) {
+            return null;
+        }
+        if (root == A || root == B) {
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor(root.left, A, B);
+        if (left != null && left != A && left != B) {
+            return left; // left is already the LCA. No need to check right.
+        }
+        TreeNode right = lowestCommonAncestor(root.right, A, B);
+        if (right != null && right != A && right != B) {
+            return right; // right is already the LCA
+        }
+        if (left != null && right != null) {
+            return root;
+        } else if (left != null) {
+            return left;
+        } else {
+            return right;
+        }
+    }
+}
+~~~
+
+#### Java (Using two recursions)
 ~~~ java
 /**
  * Definition of TreeNode:
