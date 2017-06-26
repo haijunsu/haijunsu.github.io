@@ -101,6 +101,10 @@ Pressing PREFIX [ places us in Copy mode. We can then use our movement keys to m
     setw -g mode-keys vi
 
 With this option set, we can use h, j, k, and l to move around our buffer.
+    Space: start hight
+    V: hight line
+    Enter: copy and exit copy modeline
+    PREFIX ]: paste
 
 To get out of Copy mode, we just press the ENTER key. Moving around one character at a time isn’t very efficient. Since we enabled vi mode, we can also use some other visible shortcuts to move around the buffer.
 
