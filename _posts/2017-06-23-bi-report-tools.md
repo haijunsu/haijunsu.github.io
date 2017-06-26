@@ -3,7 +3,7 @@ title: BI Report Tools
 author: Haijun (Navy) Su
 layout: post
 ---
-Our database has more then 42 millions records. We need to create report for differnt roles.
+Our database has more then 42 millions records. We need to create reports for different roles.
 I prefer opensource BI since we can build the website on our own server and access data directly.
 
 ## Excel Pivot Table
@@ -33,12 +33,25 @@ I prefer opensource BI since we can build the website on our own server and acce
 * Prop:
   * Opensource
   * Suppor J2EE application
-  * We have an issue to access 
+  * BIRT iHub F-Type is powerful to support BIRT Report
+
+* Cons:
+  * Need a lot of codes
 
 ## [Jaspersoft Community](http://blog.capterra.com/top-8-free-and-open-source-business-intelligence-software/)
+* Cons:
+  * No dashboard
 
 ## [Pentaho](http://www.pentaho.com/)
+* Cons:
+  * No dashboard
+  * No interactive reporting
+  * No bigdata application & support
 
 ## [Report Server Community Edition](https://reportserver.net/en/documentation/)
+* Cons:
+  * NO scripting supports for community edition. 
 
 ## [SpagoBI](https://www.spagobi.org/)
+* Cons:
+  * Register website is not secure. NO download link on website.
