@@ -2,6 +2,10 @@
 title: Move Zeroes
 author: Haijun (Navy) Su
 layout: page
+difficulty: Easy
+lintcode_link: http://www.lintcode.com/en/problem/move-zeroes/
+leetcode_link: https://leetcode.com/problems/move-zeroes/#/description
+tags: [Array,Two Pointers]
 ---
 ## Question
 Given an array <font style="color: #C72541; background: #F9F2F4;">nums</font>, write a function to move all <font style="color: #C72541; background: #F9F2F4;">0</font>'s to the end of it while maintaining the relative order of the non-zero elements.
@@ -19,7 +23,31 @@ Given <font style="color: #C72541; background: #F9F2F4;">nums = [0, 1, 0, 3, 12]
 * Shift all elements
 * Make sure to check current element again.
 
-## Java
+## Review
+* Using Two Pointers
+![Move Zeros](/images/Lintcode/MoveZeros.png)
+
+## Solution
+#### Java (Two pointers)
+~~~ java
+public class Solution {
+    public void moveZeroes(int[] nums) {
+        if (nums == null || nums.length <= 1) {
+            return;
+        }
+        for (int i = 0, j = 0; i < nums.length; i++) {
+            if (nums[i] != 0) {
+                int tmp = nums[j];
+                nums[j++] = nums[i];
+                nums[i] = tmp;
+            }
+        }
+        
+    }
+}
+~~~
+
+#### Java (Two for loop. Not good)
 ~~~ java
 public class Solution {
     /**

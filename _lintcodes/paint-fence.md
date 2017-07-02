@@ -2,6 +2,10 @@
 title: Paint Fence
 author: Haijun (Navy) Su
 layout: page
+difficulty: Easy
+lintcode_link: http://www.lintcode.com/en/problem/paint-fence/
+leetcode_link: /lintcode-tags/#Paid
+tags: [Paid,Dynamic Programming]
 ---
 ## Question
 There is a fence with <font style="color: #C72541; background: #F9F2F4;">n</font> posts, each post can be painted with one of the <font style="color: #C72541; background: #F9F2F4;">k</font> colors.
@@ -9,7 +13,7 @@ You have to paint all the posts such that no more than two adjacent fence posts 
 Return the total number of ways you can paint the fence.
 
 <i class="fa fa-info-circle" aria-hidden="true"></i> Notice
-<font style="color: #C72541; background: #F9F2F4;">n</font> and <font style="color: #C72541; background: #F9F2F4;">k</font> are non-negative integers. 
+*n* and *k* are non-negative integers. 
 {: .note}
 
 **Example**

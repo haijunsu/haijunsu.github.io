@@ -2,6 +2,9 @@
 title: Partition Array
 author: Haijun (Navy) Su
 layout: page
+difficulty: Medium
+lintcode_link: http://www.lintcode.com/en/problem/partition-array/
+tags: [Array,Sort,Two Pointers]
 ---
 ## Question
 Given an array <font style="color: #C72541; background: #F9F2F4;">nums </font> of integers and an int <font style="color: #C72541; background: #F9F2F4;">k </font>, partition the array (i.e move the elements in "nums") such that:
@@ -28,8 +31,44 @@ If nums = <font style="color: #C72541; background: #F9F2F4;">[3,2,2,1] </font>an
   * pre >=k and cur < k; switch pos and cur, pos ++; // Note: at this time, pos may less than pre
   * pre >=k and cur >=K; no action needed.
 
+## Review
+* First solution is ok to find the position but the array of result is not partition.
+* Using two pointers to solve problem 
+![Partition Array](/images/Lintcode/partition_array.png)
+
 ## Solution
-## Java
+#### Java (Review)
+~~~ java
+public class Solution {
+	/** 
+     *@param nums: The integer array you should partition
+     *@param k: As description
+     *return: The index after partition
+     */
+    public int partitionArray(int[] nums, int k) {
+	    //write your code here
+	    if (nums == null || nums.length == 0) {
+	        return 0;
+	    }
+        int pos = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] < k && nums[pos] >= k) {
+                int tmp = nums[pos];
+                nums[pos] = nums[i];
+                nums[i] = tmp;
+                ++pos;
+            } else if (nums[i] < k && nums[pos] < k) {
+                pos = i + 1;
+            } else if (nums[i] >= k && nums[pos] < k) {
+                ++pos;
+            }
+        }
+        return pos;
+    }
+}
+~~~
+
+#### Java (Array of result is not correct)
 ~~~ java
 public class Solution {
 	/** 
