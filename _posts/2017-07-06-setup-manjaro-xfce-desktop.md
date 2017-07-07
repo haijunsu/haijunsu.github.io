@@ -58,7 +58,7 @@ Device 'SynPS/2 Synaptics TouchPad':
 ~~~
 4. Enable tap to click
 ~~~
-xinput set-prop 14 295 1
+xinput set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
 ~~~
 5. Add command in step 4 to *.xsession* file to make sure enable tape to click after reboot
 
