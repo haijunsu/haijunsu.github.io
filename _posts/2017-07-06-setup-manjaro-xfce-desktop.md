@@ -60,6 +60,7 @@ Device 'SynPS/2 Synaptics TouchPad':
 ~~~
 xinput set-prop 14 295 1
 ~~~
+5. Add command in step 4 to *.xsession* file to make sure enable tape to click after reboot
 
 ### Setup powerline bash and vim
 1. Clone resources from github
