@@ -98,8 +98,14 @@ ul ul, ol ul {
   list-style-type: circle;
 }
 
-em, i {
+i {
   font-style: italic;
+}
+
+em {
+  font-style: italic;
+  color: #C72541; 
+  background: #F9F2F4;
 }
 
 strong, b {
@@ -415,3 +421,4 @@ border-top: 1px solid #eee;
     background: #F3F5F9; 
     cursor: pointer;
 }
+
