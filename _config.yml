@@ -18,7 +18,7 @@ avatar: https://lh3.googleusercontent.com/-YgWKcxV8WQI/T0L6ovg9jkE/AAAAAAAAAII/e
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email: 
+  email:
   facebook: haijun.su.5
   flickr:
   github: haijunsu
@@ -26,7 +26,7 @@ footer-links:
   linkedin: navysu
   pinterest:
   rss: # just type anything here for a working RSS icon
-  twitter: navysu1 
+  twitter: navysu1
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
@@ -73,7 +73,7 @@ sass:
   style: :expanded # You might prefer to minify using :compressed
 
 # Use the following plug-ins
-gems:
+plugins:
   - jekyll-sitemap # Create a sitemap using the official Jekyll sitemap gem
   - jekyll-feed # Create an Atom feed using the official Jekyll feed gem
   - jekyll-coffeescript
