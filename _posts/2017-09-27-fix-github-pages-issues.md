@@ -14,3 +14,6 @@ tags: [github,pages,blog,jekyll]
     ~~~
     . ~/.bash_profile
     ~~~
+
+* Error: Deprecation: The 'gems' configuration option has been renamed to 'plugins'. Please update your config file accordingly.
+    * Edit _config.yml file and change 'gems:' to 'plugins'
