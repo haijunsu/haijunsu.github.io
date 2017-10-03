@@ -23,7 +23,7 @@ else
 fi
 shift
 TITLE=$*
-while (( "$#" )); do 
+while (( "$#" )); do
     lcword=`echo "$1" | awk '{print tolower($0)}'`
     if [ "X${FILE_NAME}" == "X" ]; then
         FILE_NAME=${lcword}
@@ -39,4 +39,8 @@ echo "title: ${TITLE}" >> ${FILE_NAME}
 echo "author: Haijun (Navy) Su" >> ${FILE_NAME}
 echo "layout: ${DOC_LAYOUT}" >> ${FILE_NAME}
 echo "---" >> ${FILE_NAME}
-vi ${FILE_NAME}
+if [ -f /usr/local/bin/nvim ]; then
+    /usr/local/bin/nvim ${FILE_NAME}
+else
+    vi ${FILE_NAME}
+fi
