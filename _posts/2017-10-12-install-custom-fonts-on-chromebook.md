@@ -4,7 +4,7 @@ author: Haijun (Navy) Su
 layout: post
 tags: [chromebook, fonts]
 ---
-Chrome can use fonts over internet. There are a lot fonts we can use. The reason I wanted to install custom fonts because I couldn't find a way let chrome to use [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) over internet.
+Chrome can use fonts over internet. There are a lot fonts we can use. I installed custom fonts because I couldn't find a way let chrome to use [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) over internet.
 
 Assume the chromebook has already enabled developer mode.
 
@@ -23,4 +23,4 @@ localhost$ cd /usr/share/fonts/croscore
 localhost$ fc-cache -f .
 ```
 
-Now Click CTRL+ALT+BACKWARD(<-) to chrome browser and choose your font.
+Now Click CTRL+ALT+BACK(<-) to chrome browser and choose your font.

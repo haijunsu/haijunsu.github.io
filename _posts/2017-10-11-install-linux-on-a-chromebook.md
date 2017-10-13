@@ -19,8 +19,9 @@ You can find the ID when you hold ESC+Refresh and power button to restart chrome
 3. Confirm turn OS verification OFF
 4. Reboot again and prepare system for developer mode.
 5. Reboot again and logon with google account
-6. Install *crouton integration extension* for chrome. It will provide download link for *crouton installer*.
+6. Install *crouton integration extension* for chrome. It will provide download link for [crouton installer](https://goo.gl/fd3zc).
 7. Start chronos by click CTRL+ALT+T
+
 ```bash
 crosh> shell
 
@@ -39,4 +40,9 @@ $ sudo sh -e ~/Downloads/crouton -t xfce,xiwi,extension -r xenial
 $ sudo startxfce4 -X xiwi
 # or
 $ sudo enter-chroot startxfce4 -X xiwi
+```
+If use cli only, using the following commands.
+```bash
+$ sudo sh -e ~/Downloads/crouton -r xenial -t cli-extra
+$ sudo startcli
 ```
