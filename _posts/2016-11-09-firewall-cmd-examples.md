@@ -6,9 +6,23 @@ author: Navy Su
 layout: post
 ---
 ~~~bash
+systemctl status firewalld
+
+firewall-cmd --state
+
 firewall-cmd --get-default-zone
 
+firewall-cmd --get-active-zones
+
 firewall-cmd --get-zones
+
+firewall-cmd --set-default-zone=home
+
+firewall-cmd --permanent --zone=internal --change-interface=eth0
+
+firewall-cmd --list-all
+
+firewall-cmd --reload
 
 firewall-cmd --list-interfaces
 
