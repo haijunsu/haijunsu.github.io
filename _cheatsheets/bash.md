@@ -3,14 +3,30 @@ title: Bash
 author: Haijun (Navy) Su
 layout: page
 ---
-### Control Characters on the command-line
-**CTRL-A**: Moves cursor to beginning of line of text
-**CTRL-E**: Moves cursor to end of line of text
-**CTRL-D**: Log out from a shell (similar to **exit**). **EOF** (end-of-file). This also terminates input form **stdin**.
-**CTRL-L**: clear the terminal screen
-**CTRL-z**: Pauses a foreground job
+### Some useful terminal commands
 
-Remove bed file name: ```rm -- -badfilename```
+| Command/Key | Description |
+| --- | --- |
+| grep -i | Case insensitive search |
+| grep -r | Recursive search |
+| grep -v | Inverted search |
+| grep -C &lt;num&gt; | print &lt;num&gt; lines before and after the match line |
+| cmd 1>&2 | stdout to same place as stderr |
+| cmd 2>&1 | stderr to same place as stdout |
+| !! | Repeat last command |
+| !abc | Run last command starting with *abc* |
+| head -n1 /etc/issue | Show distribution |
+| CTRL-a | Go to the start of line |
+| CTRL-e | Go the the end of line |
+| CTRL-u | Cut from start of line |
+| CTRL-k | Cut to end of line |
+| CTRL-d | Log out from a shell (similar to **exit**). **EOF** (end-of-file). This also terminates input form **stdin**.|
+| CTRL-l | clear the terminal screen |
+| CTRL-z | Sleep program |
+| bg | Run the sleep program at background |
+| fg | Bring the program from background to foreground |
+
+Remove bed file name: *rm -- -badfilename*
 
 [Reference Cards](http://tldp.org/LDP/abs/html/refcards.html)
 
