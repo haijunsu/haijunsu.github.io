@@ -6,12 +6,12 @@ permalink: /cheatsheets/docker
 ---
 Docker Cheat Sheet:
 ### Exit Docker console
-```
+```bash
 ^p + ^q
 ```
 
 ### Copy files between Docker container and host
-```
+```bash
 docker cp <containerId>:/file/path/within/container /host/path/target
 ```
 
