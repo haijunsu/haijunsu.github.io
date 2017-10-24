@@ -29,6 +29,7 @@ To keep lambda expression simple and shorter, the general practice is keeping va
 **Only predefined Functional interface using @Functional annotation or method with one abstract method or SAM (Single Abstract Method) type can be used inside lambda expressions. Example: Runnable, Comparable, Callable, Predicate, Function, Consumer, or Supplier.**
 
 * Implementing Runnable using Lambda expression.
+
 ```java
 //Before Java 8:
 new Thread(new Runnable() {
@@ -49,6 +50,7 @@ In Java8, Lambda expression rocks !!
 ```
 
 * Event handling using Java 8 Lambda expressions
+
 ```java
 // Before Java 8:
 JButton show = new JButton("Show");
@@ -66,7 +68,9 @@ show.addActionListener((e) -> {
     }
 );
 ```
+
 * Using Lambda expression and Functional interface Predicate
+
 ```java
 public static void filter(List names, Predicate condition) {
     for (String name: names) {
@@ -91,6 +95,7 @@ public static void main(args[]){
     filter(languages, (str)->str.endsWith("a"))
 }
 ```
+
 * How to combine Predicate in Lambda Expressions
 ```java
 //We can even combine Predicate using and(), or() And xor() logical functions
@@ -104,6 +109,7 @@ names.stream()
 ```
 
 **You can use method reference inside lambda expression if method is not modifying the parameter supplied by lambda expression.**
+
 * Iterating over List using Lambda expressions
 ```java
 //Prior Java 8 :
@@ -121,6 +127,7 @@ features.forEach(System.out::println);
 
 * Map example using lambda expressions
 Map allows you to transform your oublect.
+
 ```java
 // applying 12% VAT on each purchase
 // Without lambda expressions:
