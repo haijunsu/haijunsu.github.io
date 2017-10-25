@@ -1,5 +1,5 @@
 ---
-title: Why Sting is immutable in Java
+title: Why String is immutable in Java
 author: Haijun (Navy) Su
 layout: post
 tags: [Java, String, immutable]
