@@ -253,7 +253,7 @@ db.mycol.save(
 ~~~
 db.mycol.remove({'title':'MongoDB Overview'})
 db.mycol.remove({'title':'MongoDB Overview'}, 1) # remove only one
-db.mycol.remove() # remove all
+db.mycol.remove({}) # remove all
 ~~~
 ### Projection
 ~~~

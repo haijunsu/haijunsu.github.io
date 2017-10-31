@@ -181,7 +181,26 @@ with mongo as db:
                 return_document=ReturnDocument.AFTER)
     print(result)
 ```
-
+* Sorting
+```python
+mongo = MongoDB()
+with mongo as db:
+    result = db.test.find().sort({"serialNumber":1})
+    for row in result:
+        print(row)
+    # sort multiple attributes
+    result = db.test.find().sort((("serialNumber"),1,("Name",1)))
+    for row in result:
+        print(row)
+```
+* Find by ObjectId
+```python
+from bson.objectid import ObjectId
+mongo = MongoDB()
+with mongo as db:
+    result = db.test.find_one("_id": ObjectId("59a86292134a7100144992c1"))
+    print(result)
+```
 
 **Reference:**
 [Collection level operations](http://api.mongodb.com/python/current/api/pymongo/collection.html)
