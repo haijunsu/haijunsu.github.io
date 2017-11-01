@@ -152,52 +152,39 @@ ProxyPassReverse "/images"  "balancer://myset/"
 
 Example failove
 
-<pre class="prettyprint lang-config prettyprinted"><span class="pun"><</span><span class="tag">Proxy</span><span class="pln"> balancer</span><span class="pun">://</span><span class="pln">myset</span><span class="pun">></span>
-
-    <span class="kwd">BalancerMember</span><span class="pln"> http</span><span class="pun">://</span><span class="pln">www2</span><span class="pun">.</span><span class="pln">example</span><span class="pun">.</span><span class="pln">com</span><span class="pun">:</span><span class="lit">8080</span>
-
-    <span class="kwd">BalancerMember</span><span class="pln"> http</span><span class="pun">://</span><span class="pln">www3</span><span class="pun">.</span><span class="pln">example</span><span class="pun">.</span><span class="pln">com</span><span class="pun">:</span><span class="lit">8080</span><span class="pln"> loadfactor</span><span class="pun">=</span><span class="lit">3</span><span class="pln"> timeout</span><span class="pun">=</span><span class="lit">1</span>
-
-    <span class="kwd">BalancerMember</span><span class="pln"> http</span><span class="pun">://</span><span class="pln">hstandby</span><span class="pun">.</span><span class="pln">example</span><span class="pun">.</span><span class="pln">com</span><span class="pun">:</span><span class="lit">8080</span><span class="pln"> status</span><span class="pun">=+</span><span class="pln">H
-
-    </span><span class="kwd">BalancerMember</span><span class="pln"> http</span><span class="pun">://</span><span class="pln">bkup1</span><span class="pun">.</span><span class="pln">example</span><span class="pun">.</span><span class="pln">com</span><span class="pun">:</span><span class="lit">8080</span><span class="pln"> lbset</span><span class="pun">=</span><span class="lit">1</span>
-
-    <span class="kwd">BalancerMember</span><span class="pln"> http</span><span class="pun">://</span><span class="pln">bkup2</span><span class="pun">.</span><span class="pln">example</span><span class="pun">.</span><span class="pln">com</span><span class="pun">:</span><span class="lit">8080</span><span class="pln"> lbset</span><span class="pun">=</span><span class="lit">1</span>
-
-    <span class="kwd">ProxySet</span><span class="pln"> lbmethod</span><span class="pun">=</span><span class="pln">byrequests
-
-</span><span class="pun"></</span><span class="tag">Proxy</span><span class="pun">></span>
-
-<span class="kwd">ProxyPass</span> <span class="str">"/images/"</span>  <span class="str">"balancer://myset/"</span>
-
-<span class="kwd">ProxyPassReverse</span> <span class="str">"/images/"</span>  <span class="str">"balancer://myset/"</span>
+~~~
+<Proxy balancer://myset>
+    BalancerMember http://www2.example.com:8080
+    BalancerMember http://www3.example.com:8080 loadfactor=3 timeout=1
+    BalancerMember http://hstandby.example.com:8080 status=+H
+    BalancerMember http://bkup1.example.com:8080 lbset=1
+    BalancerMember http://bkup2.example.com:8080 lbset=1
+    ProxySet lbmethod=byrequests
+</Proxy>
+ProxyPass "/images/"  "balancer://myset/"
+ProxyPassReverse "/images/"  "balancer://myset/"
 ~~~
 
-Balancer Manager (Don&#8217;t enable it in production)
-
-<pre class="prettyprint lang-config prettyprinted"><span class="pun"><</span><span class="tag">Location</span> <span class="str">"/balancer-manager"</span><span class="pun">></span>
-
-    <span class="kwd">SetHandler</span><span class="pln"> balancer-manager
-
-    </span><span class="kwd">Require</span><span class="pln"> host localhost
-
-</span><span class="pun"></</span><span class="tag">Location</span><span class="pun">></span>
+Balancer Manager (Don't enable it in production)
+~~~
+<Location "/balancer-manager">
+    SetHandler balancer-manager
+    Require host localhost
+</Location>
 ~~~
 
 Controlling access proxy
 
 ~~~bash
 <Proxy "*">
-
   Require ip 192.168.0
-
 </Proxy>
 ~~~
 
 Reference:
 
 <a href="https://www.digitalocean.com/community/tutorials/how-to-use-apache-http-server-as-reverse-proxy-using-mod_proxy-extension" target="_blank">https://www.digitalocean.com/community/tutorials/how-to-use-apache-http-server-as-reverse-proxy-using-mod_proxy-extension</a>
-  
+
 <a href="https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html" target="_blank">https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html</a>
-  
+
 <a href="https://httpd.apache.org/docs/2.4/mod/mod_proxy.html" target="_blank">https://httpd.apache.org/docs/2.4/mod/mod_proxy.html</a>
