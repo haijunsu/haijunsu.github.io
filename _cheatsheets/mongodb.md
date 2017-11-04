@@ -299,3 +299,8 @@ db.mycol.aggregate([{$group : {_id : "$by_user", first_url : {$first : "$url"}}}
 db.mycol.aggregate([{$group : {_id : "$by_user", last_url : {$last : "$url"}}}])
 ~~~
 
+### Enable rest api
+Add a line in /etc/mongodb.conf
+```
+rest = true
+```

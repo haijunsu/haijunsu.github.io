@@ -185,11 +185,11 @@ with mongo as db:
 ```python
 mongo = MongoDB()
 with mongo as db:
-    result = db.test.find().sort({"serialNumber":1})
+    result = db.test.find().sort("serialNumber",1)
     for row in result:
         print(row)
     # sort multiple attributes
-    result = db.test.find().sort((("serialNumber"),1,("Name",1)))
+    result = db.test.find().sort((("serialNumber",1),("Name",1)))
     for row in result:
         print(row)
 ```
