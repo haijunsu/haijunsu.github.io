@@ -1,5 +1,5 @@
 ---
-title: Fix Docker Exception: Credentials store error on MacOS
+title: Fix Docker Exception - Credentials store error on MacOS
 author: Haijun (Navy) Su
 layout: post
 tags: [macos, osx, docker, credentions, error]
