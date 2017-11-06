@@ -58,6 +58,7 @@ Example virtual host #2
     ServerName localhost
 
     ProxyPreserveHost On
+    ProxyHTMLEnable On
 
     ProxyPass "/subdir/" "http://192.168.0.221:8000/"
 
