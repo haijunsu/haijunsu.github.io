@@ -7,7 +7,7 @@ layout: post
 ---
   1. How can you see which kernel version a system is currently running?
 
-~~~bash
+~~~shell
 uname -a  // Show hostname, current version, current release
 
 uname -v  //Show current version
@@ -18,7 +18,7 @@ uname -r  // Show current release
 2.How can you check a system&#8217;s current IP address?
   
 
-~~~bash
+~~~shell
 ifconfig
 
 ip addr show
@@ -28,13 +28,13 @@ ip addr show eth0
 
 3. How do you check for free disk space?
 
-~~~bash
+~~~shell
 df -ah
 ~~~
 
 4. How dow you manage services on a system?
 
-~~~bash
+~~~shell
 service <service name> status
 
 systemctl status <service name>
@@ -42,13 +42,13 @@ systemctl status <service name>
 
 5. How would you check the size of a directory&#8217;s contents on disk?
 
-~~~bash
+~~~shell
 du -sh <directory name>
 ~~~
 
 6. How would you check for open ports on a Linux machine?
 
-~~~bash
+~~~shell
 netstat
 
 sudo netstat  -tulpn
@@ -56,7 +56,7 @@ sudo netstat  -tulpn
 
 7. How do you check CPU usage for a process?
 
-~~~bash
+~~~shell
 ps aux |grep <process name> 
 
 top
@@ -67,7 +67,7 @@ htop
 
 8. Dealing with Mounts
 
-~~~bash
+~~~shell
 ls /mnt
 
 mount <device/network drive> <mount point>
@@ -78,7 +78,7 @@ mount <device/network drive> <mount point>
 
 9. How do you look up something you don&#8217;t know?
 
-~~~bash
+~~~shell
 man <command>
 
 <command> --h

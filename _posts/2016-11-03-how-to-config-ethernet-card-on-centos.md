@@ -7,13 +7,13 @@ layout: post
 ---
 Using network manager to config network
 
-~~~bash
+~~~shell
 sudo nmtui
 ~~~
 
 After modify items, restart the network service
 
-~~~bash
+~~~shell
 sudo service network restart
 
 ~~~

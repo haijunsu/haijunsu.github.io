@@ -22,7 +22,7 @@ Proxy Modules:
 
 Enable proxy:
 
-~~~bash
+~~~shell
 sudo a2enmod proxy
 
 sudo a2enmod proxy_http
@@ -36,7 +36,7 @@ sudo systemctl restart apache2
 
 Example virtual host #1
 
-~~~bash
+~~~shell
 <VirtualHost *:80>
 
     ServerName localhost
@@ -52,7 +52,7 @@ Example virtual host #1
 
 Example virtual host #2
 
-~~~bash
+~~~shell
 <VirtualHost *:80>
 
     ServerName localhost
@@ -77,7 +77,7 @@ Example virtual host #2
 
 Example virtual host #3 (Don&#8217;t proxy /static)
 
-~~~bash
+~~~shell
 <VirtualHost *:80>
 
     ServerName localhost
@@ -107,7 +107,7 @@ Example virtual host #3 (Don&#8217;t proxy /static)
 
 Enable load balancing:
 
-~~~bash
+~~~shell
 sudo a2enmod proxy_balancer
 
 sudo a2enmod proxy_hcheck
@@ -117,7 +117,7 @@ sudo systemctl restart apache2
 
 Example load balancing #1
 
-~~~bash
+~~~shell
 <Proxy balancer://myset>
 
     BalancerMember http://www2.example.com:8080
@@ -135,7 +135,7 @@ ProxyPassReverse "/images/"  "balancer://myset/"
 
 Example load balancing #2 (www3 handles 3 times traffic and timeout is 1)
 
-~~~bash
+~~~shell
 <Proxy balancer://myset>
 
     BalancerMember http://www2.example.com:8080
@@ -176,7 +176,7 @@ Balancer Manager (Don't enable it in production)
 
 Controlling access proxy
 
-~~~bash
+~~~shell
 <Proxy "*">
   Require ip 192.168.0
 </Proxy>

@@ -4,7 +4,7 @@ author: Haijun (Navy) Su
 layout: post
 ---
 * Requirements: 
-~~~bash
+~~~shell
 sudo apt install ruby ruby2.3-dev zlib1g-dev build-essential
 sudo gem install bundler
 ~~~
@@ -18,11 +18,11 @@ gem 'therubyracer', :platforms => :ruby
 ~~~
 
 * Installing
-~~~ bash
+~~~shell
 sudo bundle install
 ~~~
 
 * Runing server (default host is 127.0.0.1)
-~~~ bash
+~~~shell
 bundle exec jekyll serve --host=0.0.0.0
 ~~~

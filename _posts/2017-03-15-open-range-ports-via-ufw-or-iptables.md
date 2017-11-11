@@ -7,13 +7,13 @@ layout: post
 ---
 For UFW
 
-~~~bash
+~~~shell
 ufw allow from any to any port 4000:4020 proto tcp
 ~~~
 
 For iptables
 
-~~~bash
+~~~shell
 iptables -A tableName -p tcp  --match multiport --dports port1,port2 -j ACCEPT
 
 iptables -A tableName -p udp  --match multiport --dports port1,port2 -j DROP
@@ -22,7 +22,7 @@ iptables -A tableName -p protocol  --match multiport --dports portRange1:PortRan
 
 ~~~
 
-~~~bash
+~~~shell
 iptables -A tableName -p tcp  --match multiport --sports port1,port2 -j ACCEPT
 
 iptables -A tableName -p udp  --match multiport --sports port1,port2 -j DROP

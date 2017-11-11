@@ -10,11 +10,11 @@ HOSTNAME=servername.domain.com
 ~~~
 * Add the servername in /etc/hosts file
 * Run hostname command
-~~~bash
+~~~shell
 sudo hostname servername.domain.com
 ~~~
 * Restart network service
-~~~bash
+~~~shell
 sudo /etc/init.d/network restart
 ~~~
 
@@ -31,6 +31,6 @@ DOMAIN=domain.com
 ~~~
 
 * Restart network service
-~~~bash
+~~~shell
 sudo /etc/init.d/network restart
 ~~~

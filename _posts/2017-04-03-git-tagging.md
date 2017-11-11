@@ -7,7 +7,7 @@ layout: post
 ---
 List available tags:
 
-~~~bash
+~~~shell
 $ git tag
 
 $ git tag -l <tag name>
@@ -15,20 +15,20 @@ $ git tag -l <tag name>
 
 Creating tags:
 
-~~~bash
+~~~shell
 $ git tag -a <tag name> -m <comment>
 ~~~
 
 Show tag data:
 
-~~~bash
+~~~shell
 $ git show <tab name>
 ~~~
 
 Sharing Tags:
   
 
-~~~bash
+~~~shell
 $ git push origin <tag name>
 
 $ git push origin --tags  // share all tags
@@ -36,6 +36,6 @@ $ git push origin --tags  // share all tags
 
 Checking out tags:
 
-~~~bash
+~~~shell
 $ git checkout -b <branchname> <tag name>
 ~~~

@@ -5,20 +5,20 @@ layout: post
 tags: [python,python3,ubuntu,pip]
 ---
 1. Upgrade packages to the latest version
-~~~ bash
+~~~shell
 sudo apt-get update && sudo apt-get -y upgrade
 ~~~
 2. Install python-pip
-~~~ bash
+~~~shell
 sudo apt-get install python-pip
 ~~~
 3. Check version
-~~~ bash
+~~~shell
 pip -V
 ~~~
 
 ## Install pip3
-~~~ bash
+~~~shell
 sudo get-apt install python3
 sudo apt-get install python3-pip
 python3 -m pip -V
@@ -31,15 +31,15 @@ sudo -H pip install --upgrade pip
 
 ## Others
 * Searching a pacakage
-~~~ bash
+~~~shell
 pip search package_name
 ~~~
 * Installing a package
-~~~ bash
+~~~shell
 pip install package_name
 ~~~
 * uninstalling a package
-~~~ bash
+~~~shell
 pip uninstall package_name
 ~~~
 

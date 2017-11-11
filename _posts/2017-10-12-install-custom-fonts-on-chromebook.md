@@ -9,7 +9,7 @@ Chrome can use fonts over internet. There are a lot fonts we can use. I installe
 Assume the chromebook has already enabled developer mode.
 
 Click CTRL+ALT+FROWARD(->) to enter console and login as root
-```bash
+```shell
 localhost$ chromeos-firmwareupdate --mode=todev
 localhost$ cd /usr/share/vboot/bin
 localhost$ ./make_dev_ssh.sh # see the partition number in output. Mine is 2
@@ -17,7 +17,7 @@ localhost$ ./make_dev_ssh.sh --remove_rootfs_verification --partitions 2 # the n
 localhost$ reboot
 ```
 After reboot, re-enter console
-```bash
+```shell
 localhost$ cd /usr/share/fonts/croscore
 # copy your fonts here then run the following command
 localhost$ fc-cache -f .

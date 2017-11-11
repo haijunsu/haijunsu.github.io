@@ -11,7 +11,7 @@ Root cause: After fresh install Fedora 24, there is no /etc/dhcp/dhclient.conf. 
 
 Solution: Create /etc/dhcp/dhclient.conf
 
-~~~bash
+~~~shell
 $ sudo vi /etc/dhcp/dhclient.conf
 
 send dhcp-client-identifier = hardware;

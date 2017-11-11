@@ -7,27 +7,27 @@ layout: post
 ---
 Virt-manager hides some functions such as port-forwarding. We can edit the VM profile form terminal.
 
-~~~bash
+~~~shell
 # virsh --connect qemu:///system
 ~~~
 
 List all VMs in virsh envrionment
   
 
-~~~bash
+~~~shell
 virsh # list --all
 ~~~
 
 Edit VM&#8217;s profile
   
 
-~~~bash
+~~~shell
 virsh # edit <VM's name>
 ~~~
 
 Add qemu namespace 
 
-~~~bash
+~~~shell
 old:
 <domain type='kvm'>
 new:
@@ -37,7 +37,7 @@ new:
 
 Change network type from network to user
 
-~~~bash
+~~~shell
 old:
    <interface type='network'>
       <mac address='xx:xx:xx:xx:xx:xx'/>
@@ -57,7 +57,7 @@ new:
 Add port-forwarding arguments before tag </domain>
   
 
-~~~bash
+~~~shell
 <qemu:commandline>
     <qemu:arg value='-redir'/>
     <qemu:arg value='tcp:2001::3389'/>

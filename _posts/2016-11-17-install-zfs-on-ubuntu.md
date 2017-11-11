@@ -7,12 +7,12 @@ layout: post
 ---
 ZFS is only fully supported on 64 bit architectures from Ubuntu Xenial 16.04. ZFS is only supported for data storage, not the root system.
 
-~~~bash
+~~~shell
 sudo apt install zfsutils-linux
 ~~~
 
 or
 
-~~~bash
+~~~shell
 sudo apt install zfs
 ~~~

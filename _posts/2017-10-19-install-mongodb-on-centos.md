@@ -26,13 +26,13 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 ```
 
 * Install the MongoDB packages and associated tools
-```bash
+```shell
 sudo yum install -y mongodb-org
 ```
 
 * Configure SELinux
 Method 1.
-```bash
+```shell
 sudo semanage port -a -t mongod_port_t -p tcp 27017
 ```
 method 2. Disable SELinux by setting the *SELINUX* setting to *disabled* in **/etc/selinux/config**.
@@ -47,25 +47,25 @@ SELINUX=permissive
 <i class="fa fa-info-circle" aria-hidden="true"></i> You must reboot the system for the changes to take effect.
 
 * Move data storage to ZFS
-```bash
+```shell
 sudo zfs create -o mountpoint=/var/lib/mongo/ <zpool name>/mongo
 sudo chown -R mongod:mongod /var/lib/mongo
 ```
 
 * install package *policycoreutils-python*
-```bash
+```shell
 sudo yum install policycoreutils-python
 ```
 
 * run semange fcontext and restorecon
-```bash
+```shell
 sudo semanage fcontext -a -t mongod_db_t "/mongo(/.*)?"
 sudo semanage fcontext -a -t mongod_var_lib_t "/mongo(/.*)?"
 sudo grep -i mongod /etc/selinux/targeted/contexts/files/file_contexts.local
 ```
 
 * Start MongoDB
-```bash
+```shell
 sudo systemctl start mongod
 ```
 You can verify that the mongod process has started successfully by checking the contents of the log file at /var/log/mongodb/mongod.log for a line reading

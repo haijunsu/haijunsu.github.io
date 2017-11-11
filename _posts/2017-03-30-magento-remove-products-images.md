@@ -7,7 +7,7 @@ layout: post
 ---
 Product image information tables:
 
-~~~bash
+~~~shell
 catalog_product_entity_media_gallery
 
 catalog_product_entity_media_gallery_value
@@ -15,7 +15,7 @@ catalog_product_entity_media_gallery_value
 
 Product image location:
 
-~~~bash
+~~~shell
 media/catalog/product
 ~~~
 

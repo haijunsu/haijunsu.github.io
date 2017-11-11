@@ -80,7 +80,7 @@ In python3
 21
 >>>
 ```
-This performs (((((1 + 2) + 3) + 4) + 5) + 6) = 21
+This performs `(((((1 + 2) + 3) + 4) + 5) + 6) = 21`
 
 Reference:
 <https://en.wikipedia.org/wiki/Anonymous_function>

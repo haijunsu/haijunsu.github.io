@@ -5,7 +5,7 @@ date: 2016-11-09T16:25:03+00:00
 author: Navy Su
 layout: post
 ---
-~~~bash
+~~~shell
 systemctl status firewalld
 
 firewall-cmd --state

@@ -7,14 +7,14 @@ layout: post
 ---
 1. install lxd
 
-~~~bash
+~~~shell
 $ sudo apt install lxd
 ~~~
 
 2. Enable swap accounting
   
 
-~~~bash
+~~~shell
 $ sudo vi /etc/default/grub
 
 GRUB_CMDLINE_LINUX_DEFAULT="swapaccount=1"
@@ -28,7 +28,7 @@ $ sudo shutdown -r now
 3. create lxd user
   
 
-~~~bash
+~~~shell
 $ sudo useradd -s /bin/bash -m lxdadm
 
 $ sudo passwd lxdadm
@@ -39,14 +39,14 @@ $ sudo adduser lxdadm lxd
 4. init lxd
   
 
-~~~bash
+~~~shell
 $ sudo lxd init
 ~~~
 
 5. Creating the first container
   
 
-~~~bash
+~~~shell
 $ sudo su - lxdadm
 
 $ newgrp lxd
@@ -70,14 +70,14 @@ $ lxc exec ubuntu16 bash
 6. Create container without starting it
   
 
-~~~bash
+~~~shell
 $ lxc init ubuntu:xenial ubuntu16
 ~~~
 
 6. List images
   
 
-~~~bash
+~~~shell
 $ lxc image list
 
 $ lxc image list images:
@@ -89,7 +89,7 @@ $ lxc image list ubuntu:
 7. List containers
   
 
-~~~bash
+~~~shell
 $ lxc list
 
 $ lxc list --fast
@@ -101,7 +101,7 @@ $ lxc info <container>
 8. Start/stop a container
   
 
-~~~bash
+~~~shell
 $ lxc start 
 
 $ lxc stop <container>
@@ -119,7 +119,7 @@ $ lxc pause <container>
 9. Profiles
   
 
-~~~bash
+~~~shell
 $ lxc profile list
 
 $ lxc profile show <profile>
@@ -133,7 +133,7 @@ $ lxc profile apply <container> <profile1>,<profile2>,...
 10. Shell
   
 
-~~~bash
+~~~shell
 $ lxc exec <container> bash
 
 $ lxc exec <container> -- ls -lh /
@@ -145,7 +145,7 @@ $ lxc exec <container> --env mykey=myvalue
 11. Files
   
 
-~~~bash
+~~~shell
 $ lxc file pull <container>/<path> <dest>
 
 $ lxc file pull <container>/<path> - //read file to standard output
@@ -159,7 +159,7 @@ $ lxc file edit <container>/<path>
 11. Snapshot
   
 
-~~~bash
+~~~shell
 $ lxc snapshot <container>
 
 $ lxc snapshot <container> <snapshot name>
@@ -177,7 +177,7 @@ $ lxc delete <container>/<snapshot name>
 12. Cloning/renaming/delting
   
 
-~~~bash
+~~~shell
 $ lxc copy <source container> <destination container> 
 
 $ lxc move <old name> <new name>  
@@ -188,7 +188,7 @@ $ lxc delete <container>
 
 13. CPU limit
 
-~~~bash
+~~~shell
 $ lxc config set my-container limits.cpu 2  //any 2 cpus
 
 $ lxc config set my-container limits.cpu 1,3 // cpu #2 #4
@@ -202,19 +202,19 @@ $ lxc config set my-container limits.cpu.priority 0
 
 14. Memory limit
 
-~~~bash
+~~~shell
 $ lxc config set my-container limits.memory 256MB
 ~~~
 
 15. Disk limit (requires btrfs or ZFS)
 
-~~~bash
+~~~shell
 $ lxc config device set my-container root size 20GB
 ~~~
 
 16. IO reading/writing limits
 
-~~~bash
+~~~shell
 $ lxc config device set my-container root limits.read 20Iops
 
 $ lxc config device set my-container root limits.write 10Iops
@@ -222,7 +222,7 @@ $ lxc config device set my-container root limits.write 10Iops
 
 17. Autostart container
 
-~~~bash
+~~~shell
 $ lxc config set container_name boot.autostart 1
 ~~~
 
@@ -230,6 +230,6 @@ $ lxc config set container_name boot.autostart 1
   
 <?prettify linenums=true?>
 
-~~~bash
+~~~shell
 $ lxc config device add container_name device_name disk source=host_directory path=guest_directory
 ~~~

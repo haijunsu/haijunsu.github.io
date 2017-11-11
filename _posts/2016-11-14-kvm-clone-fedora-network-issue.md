@@ -7,7 +7,7 @@ layout: post
 ---
 After clone Fedora 24 VM, the is a network issue:
 
-~~~bash
+~~~shell
 $ sudo systemctl restart network
 
 Job for network.service failed because the control process exited with error code. See "systemctl status network.service" and "journalctl -xe" for details.
@@ -34,7 +34,7 @@ Delete old network profile. (ex. old interface is ens3)
   
 <?prettify linenums=true?>
 
-~~~bash
+~~~shell
 $ sudo rm /etc/sysconfig/network-scripts/ifcfg-ens3
 
 ~~~

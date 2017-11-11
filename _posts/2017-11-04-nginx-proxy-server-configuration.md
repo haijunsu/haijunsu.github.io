@@ -5,7 +5,7 @@ layout: post
 tags: [ngnix, proxy]
 ---
 Example 1:
-```ini
+```shell
 server {
     listen 80;
     index index.html index.htm index.nginx-debian.html index.php;
@@ -20,7 +20,7 @@ server {
 ```
 
 Example 2:
-```ini
+```shell
     server {
          listen      80 default_server;
         listen      [::]:80 default_server;
@@ -38,7 +38,7 @@ Example 2:
 ```
 
 Example 3:
-```ini
+```shell
     server {
          listen      80 default_server;
         listen      [::]:80 default_server;
@@ -65,7 +65,7 @@ Example 3:
 ```
 
 Example 4:
-```ini
+```shell
 # add into http section
 # "backup" means this server is baranced only when other servers are down
 # "weight=*" means barancing weight

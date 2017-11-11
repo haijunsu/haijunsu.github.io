@@ -11,7 +11,7 @@ Slave node: db02
   
 1. On master node:
 
-~~~bash
+~~~shell
 sudo vi /etc/my.cnf.d/server.cnf
 ~~~
 
@@ -25,13 +25,13 @@ server-id=101<br />
 ` 
   
 
-~~~bash
+~~~shell
 sudo systemctl restart mariadb
 ~~~
 
 2. create user on master node:
 
-~~~bash
+~~~shell
 $> mysql -u root -p 
 
 Enter password:
@@ -63,7 +63,7 @@ Bye
 
 3. Change setting on slave node:
 
-~~~bash
+~~~shell
 sudo  vi /etc/my.cnf.d/server.cnf
 ~~~
 
@@ -79,13 +79,13 @@ read_only=1<br />
 report-host=db02<br />
 </em>`
 
-~~~bash
+~~~shell
 sudo systemctl restart mariadb
 ~~~
 
 4. Dump databases on master node:
 
-~~~bash
+~~~shell
 $> mysql -u root -p 
 
 Enter password:
@@ -147,14 +147,14 @@ $> scp mysql_dump.sql node01.srv.world:/tmp/
 5. Restore database on salve node
   
 
-~~~bash
+~~~shell
 mysql -u root -p < /tmp/mysql_dump.sql
 ~~~
 
 6. Configure replica information on slave node:
   
 
-~~~bash
+~~~shell
 mysql -u root -p 
 
 Enter password:
@@ -294,7 +294,7 @@ Master_SSL_Verify_Server_Cert: No
 
 7. Test your result on master node
 
-~~~bash
+~~~shell
 $> mysql -u root -p
 
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -340,7 +340,7 @@ MariaDB [testreplica]> select * from test_table;
 
 8. Test on salve node
 
-~~~bash
+~~~shell
 $> mysql
 
 Welcome to the MariaDB monitor.  Commands end with ; or \g.

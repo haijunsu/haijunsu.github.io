@@ -7,7 +7,7 @@ layout: post
 ---
 Edit /etc/postfix/main.cf
 
-~~~bash
+~~~shell
 ...
 
 myorigin = /etc/mailname
@@ -35,7 +35,7 @@ transport_maps = hash:/etc/postfix/transport
 
 Edit /etc/postfix/master.cf to comment local engine
 
-~~~bash
+~~~shell
 ...
 
 retry     unix  -       -       y       -       -       error
@@ -53,7 +53,7 @@ lmtp      unix  -       -       y       -       -       lmtp
 
 Create file /etc/postfix/virtual
 
-~~~bash
+~~~shell
 postmaster     postmaster@domain1.com
 
 abuse          abuse@domain1.com
@@ -61,7 +61,7 @@ abuse          abuse@domain1.com
 
 Create file /etc/postfix/transport
 
-~~~bash
+~~~shell
 domain1.com       smtp:10.0.224.10
 
 domain2.com       smtp:10.0.218.11
@@ -69,7 +69,7 @@ domain2.com       smtp:10.0.218.11
 
 Run postmap
 
-~~~bash
+~~~shell
 sudo postmap /etc/postfix/virtual
 
 sudo postmap /etc/postfix/transport
@@ -77,7 +77,7 @@ sudo postmap /etc/postfix/transport
 
 Restore Postfix
 
-~~~bash
+~~~shell
 sudo systemctl restart postfix
 ~~~
 

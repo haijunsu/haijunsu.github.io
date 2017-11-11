@@ -6,52 +6,52 @@ tags: [CentOS, Linux, yum]
 ---
 YUM: *Yellowdog Updater Modified*
 * Install a package with YUM:
-```bash
+```shell
 sudo yum install <package name>
 sudo yum -y install <package name>
 ```
 
 * Removing a package with YUM:
-```bash
+```shell
 sudo yum remove <package name>
 sudo yum -y remove <package name>
 ```
 
 * Updating a package using YUM
-```bash
+```shell
 sudo yum update [package name]
 ```
 <i class="fa fa-info-circle" aria-hidden="true"></i> Note: it will update all packages without package name.
 
 * Search for a package using YUM
-```bash
+```shell
 sudo yum search <package name>
 ```
 
 * Get information of a package using YUM
-```bash
+```shell
 sudo yum info <package name>
 ```
 
 * List all available packages in the YUM database using YUM
-```bash
+```shell
 sudo yum list | less
 ```
 
 * List all installed packages using YUM
-```bash
+```shell
 sudo yum list installed | less
 ```
 
 * List a package using YUM
-```bash
+```shell
 sudo yum list [package name]
 ```
 
 * Yum provides function
 Used to find which package a specific file belongs to. For example, the following command shows the package that has /etc/my.cnf.
 
-```bash
+```shell
 $ sudo yum provides /etc/my.cnf
 Loaded plugins: fastestmirror
 Loading mirror speeds from cached hostfile
@@ -87,53 +87,53 @@ Filename    : /etc/my.cnf
 ```
 
 * Check for available updates using YUM
-```bash
+```shell
 sudo yum check-update
 ```
 
 * Update System using YUM
-```bash
+```shell
 sudo yum update
 ```
 
 * List all available group packages
-```bash
+```shell
 sudo yum grouplist
 ```
 
 * Install a group packages
-```bash
+```shell
 sudo yum groupinstall <group name>
 ```
 
 * Update a group packages
-```bash
+```shell
 sudo yum groupupdate <group name>
 ```
 
 * Remove a group packages
-```bash
+```shell
 sudo yum groupremove
 ```
 
 * List enable YUM repositories on the system
-```bash
+```shell
 sudo yum repolist
 ```
 
 * List all enabled and disabled YUM repositories on the system
-```bash
+```shell
 sudo yum repolist all
 ```
 
 * Install a package from a specific repository
-```bash
+```shell
 sudo yum --enablerepo=epel install <package name>
 ```
 
 * Interactive YUM shell
 
-```bash
+```shell
 $ sudo yum shell
 Loaded plugins: fastestmirror
 > check-update
@@ -145,12 +145,12 @@ Loading mirror speeds from cached hostfile
 ```
 
 * Clean YUM cache
-```bash
+```shell
 sudo yum clean all
 ```
 
 * Vies history of YUM
-```bash
+```shell
 sudo yum history
 ```
 

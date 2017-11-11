@@ -7,35 +7,35 @@ layout: post
 ---
 On Mac OSX
 
-~~~bash
+~~~shell
 sudo killall -HUP mDNSResponder
 ~~~
 
 On Mac OSX 10.10.0 – 10.10.3
   
 
-~~~bash
+~~~shell
 sudo discoveryutil mdnsflushcache
 ~~~
 
 On Mac OSX 10.5 – 10.6
   
 
-~~~bash
+~~~shell
 sudo dscacheutil -flushcache
 ~~~
 
 On Windows
   
 
-~~~bash
+~~~shell
 ipconfig /flushdns
 ~~~
 
 On Linux
   
 
-~~~bash
+~~~shell
 /etc/init.d/named restart
 
 /etc/init.d/nscd restart

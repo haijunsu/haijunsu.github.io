@@ -7,7 +7,7 @@ layout: post
 ---
 Keep running after closed lid
 
-~~~bash
+~~~shell
 $ sudo vi /etc/systemd/logind.conf
 
 ...
@@ -23,7 +23,7 @@ The values of HandleLidSwitch are ignore, suspend, hibernate, and poweroff.
 
 Keep console screen always on:
 
-~~~bash
+~~~shell
 $ sudo vi /etc/default/grub
 
 ...
@@ -40,7 +40,7 @@ $ sudo shutdown -r now
 
 Turn off console screen after 1 minute:
 
-~~~bash
+~~~shell
 $ sudo vi /etc/default/grub
 
 ...

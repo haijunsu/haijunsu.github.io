@@ -5,22 +5,22 @@ author: Navy Su
 layout: post
 ---
 ### Checking service/process
-~~~bash
+~~~shell
 SERVICE=lighttpd
 if ps ax | grep -v grep | grep $SERVICE > /dev/null; then echo -n "\"$SERVICE\" : \"running\","; else echo -n "\"$SERVICE\" : \"not running\","; fi
 ~~~
 
 ### Checking disk usage
-~~~bash
+~~~shell
 df -h --total 
 ~~~
 
 ### Checking memory
-~~~bash
+~~~shell
 free -m
 ~~~
 
 ### Checking uptime, load
-~~~bash
+~~~shell
 uptime
 ~~~

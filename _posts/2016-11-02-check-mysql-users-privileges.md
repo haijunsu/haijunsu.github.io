@@ -7,7 +7,7 @@ layout: post
 ---
 Show root user&#8217;s privileges:
 
-~~~bash
+~~~shell
 mysql> SHOW GRANTS FOR 'root'@'localhost';
 
 +---------------------------------------------------------------------+
@@ -24,7 +24,7 @@ mysql> SHOW GRANTS FOR 'root'@'localhost';
 Show current user&#8217;s privileges:
   
 
-~~~bash
+~~~shell
 mysql> show grants;
 
 +---------------------------------------------------------------------+

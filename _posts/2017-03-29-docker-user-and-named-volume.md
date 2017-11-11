@@ -7,7 +7,7 @@ layout: post
 ---
 To secure docker, we use a specific user instead of root. We add the following code in Dockerfile.
 
-~~~bash
+~~~shell
 RUN useradd -u 2000 wwwuser
 
 USER wwwuser
@@ -18,14 +18,14 @@ Those code create user with uid=2000.
 Since host volume is mounted as root user, all files and folders is readonly for user wwwuser. If the wwwuser needs to write files to volume, we can create a **named volume** for it.
   
 
-~~~bash
+~~~shell
 docker volume create --driver local --opt type=tmpfs --opt device=tmpfs  --opt o=uid=2000,gid=2000,size=2g,mode=0750 myHomeVolume
 ~~~
 
 Use the following command to run container
   
 
-~~~bash
+~~~shell
 docker run -d -v myHomeVolume:/home/wwwuser --name myapps <image>
 ~~~
 

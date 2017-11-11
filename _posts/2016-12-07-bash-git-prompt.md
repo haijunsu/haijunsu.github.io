@@ -9,7 +9,7 @@ Change prompt when current folder is in git repository
   
 Installation:
 
-~~~bash
+~~~shell
 $ cd ~
 
 $ git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt --depth=1
@@ -17,7 +17,7 @@ $ git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt -
 
 Add to the ~/.bashrc
 
-~~~bash
+~~~shell
 $ vi ~/.bashrc
 
 ...

@@ -11,7 +11,7 @@ Fix steps:
   1. Print any document and the job is hold in queue with message &#8220;Hold for authentication&#8221;
   2. Open a terminal window and run the following commands
     
-~~~bash
+~~~shell
 $ lpstat -s
 
 ~~~
@@ -20,12 +20,12 @@ $ lpstat -s
   
     device for <printer name>: smb://<server>/<shared name>
     
-~~~bash
+~~~shell
 device for Canon_iR_ADV_4245: smb://my-windows-printer-server/Canon_iR_ADV_4245
 
 ~~~
     
-~~~bash
+~~~shell
 $ sudo lpadmin -p <printer name> -o auth-info-required=<Your username>,<Your password>
 
 ~~~

@@ -8,7 +8,7 @@ layout: post
 1. change origin data folder as mount point
   
 
-~~~bash
+~~~shell
 sudo systemctl stop mariadb.service
 
 cd /var/lib
@@ -24,7 +24,7 @@ sudo chown mysql:mysql mysql
 2. create zfs file system
   
 
-~~~bash
+~~~shell
 sudo zfs create -o mountpoint=/var/lib/mysql mysqldata/mysql
 
 ~~~
@@ -32,7 +32,7 @@ sudo zfs create -o mountpoint=/var/lib/mysql mysqldata/mysql
 3. mount zfs file system
   
 
-~~~bash
+~~~shell
 sudo zfs mount -a
 
 ~~~
@@ -40,7 +40,7 @@ sudo zfs mount -a
 4. change mount point owner as mysql and cp all data file to /var/lib/mysql
   
 
-~~~bash
+~~~shell
 sudo chown mysql:mysql mysql
 
 cd mysql.bak
@@ -54,7 +54,7 @@ cd ..
 5. install package _policycoreutils-python_
   
 
-~~~bash
+~~~shell
 sudo yum install policycoreutils-python
 
 ~~~
@@ -62,7 +62,7 @@ sudo yum install policycoreutils-python
 6. run semanage fcontext and restorecon
   
 
-~~~bash
+~~~shell
 sudo semanage fcontext -a -t mysqld_db_t "/mysql(/.*)?"
 
 sudo grep -i mysql /etc/selinux/targeted/contexts/files/file_contexts.local
@@ -74,7 +74,7 @@ sudo restorecon -R -v /var/lib/mysql
 7. start mysql
   
 
-~~~bash
+~~~shell
 sudo systemctl start mariadb.service
 
 ~~~

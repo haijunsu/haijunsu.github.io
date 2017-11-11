@@ -7,7 +7,7 @@ layout: post
 ---
 Log tables:
 
-~~~bash
+~~~shell
 log_customer
 
 log_visitor
@@ -31,7 +31,7 @@ catalog_compare_item
 
 **Cleaned by script:**
 
-~~~bash
+~~~shell
 php -f shell/log.php clean
 ~~~
 

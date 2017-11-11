@@ -7,7 +7,7 @@ layout: post
 ---
 Install postfix (config file is /etc/postfix/main.cf)
 
-~~~bash
+~~~shell
 $ sudo apt install postfix
 
 $ sudo dpkg-reconfigure postfix
@@ -18,7 +18,7 @@ $ sudo postconf -e 'home_mailbox = Maildir/'
 
 Test mail
 
-~~~bash
+~~~shell
 $ telnet mail.yourdomain.com 25
 
 ehlo yourdomain.com
@@ -49,19 +49,19 @@ Mail filtering
 
 Check your fqdn name
 
-~~~bash
+~~~shell
 $ hostname --fqdn
 ~~~
 
 If it return localhost, change the first line in /etc/hosts.
 
-~~~bash
+~~~shell
 $ sudo vi /etc/hosts
 
 127.0.0.1  servername.domain.com localhost
 ~~~
 
-~~~bash
+~~~shell
 $ sudo apt install amavisd-new spamassassin clamav-daemon
 
 $ sudo apt install opendkim postfix-policyd-spf-python
@@ -76,7 +76,7 @@ $ sudo adduser amavis clamav
 
 ~~~
 
-~~~bash
+~~~shell
 $ sudo vi /etc/default/spamassassin
 
 ...
@@ -87,7 +87,7 @@ ENABLED=1
 
 ~~~
 
-~~~bash
+~~~shell
 $ sudo systemctl start spamassassin.service
 
 use strict;
@@ -123,7 +123,7 @@ use strict;
 1;  # insure a defined return
 ~~~
 
-~~~bash
+~~~shell
 sudo vi /etc/amavis/conf.d/20-debian_defaults
 
 ...
@@ -156,7 +156,7 @@ $final_spam_destiny       = D_DISCARD;
 
 ~~~
 
-~~~bash
+~~~shell
 $ sudo vi /etc/amavis/conf.d/50-user
 
 ...
@@ -166,15 +166,15 @@ $ sudo vi /etc/amavis/conf.d/50-user
 ...
 ~~~
 
-~~~bash
+~~~shell
 sudo systemctl restart amavis.service
 ~~~
 
-~~~bash
+~~~shell
 sudo postconf -e 'content_filter = smtp-amavis:[127.0.0.1]:10024'
 ~~~
 
-~~~bash
+~~~shell
 sudo vi  /etc/postfix/master.cf
 
 # add to the end of the file
@@ -228,7 +228,7 @@ smtp-amavis     unix    -       -       -       -       2       smtp
         -o receive_override_options=no_header_body_checks,no_unknown_recipient_checks,no_milters
 ~~~
 
-~~~bash
+~~~shell
 ...
 
 #628       inet  n       -       y       -       -       qmqpd
@@ -257,7 +257,7 @@ cleanup   unix  n       -       y       -       0       cleanup
 
 ~~~
 
-~~~bash
+~~~shell
 sudo systemctl restart postfix.service
 
 ~~~
@@ -265,7 +265,7 @@ sudo systemctl restart postfix.service
 Testing
   
 
-~~~bash
+~~~shell
 $ telnet localhost 10024
 
 Trying 127.0.0.1...
@@ -281,7 +281,7 @@ Escape character is '^]'.
 Checked /var/log/mail.log and found errors
   
 
-~~~bash
+~~~shell
 Nov 21 14:26:36 mail-tiqc amavis[705]: (00705-01) (!)run_av (ClamAV-clamd) FAILED - unexpected , output="/var/lib/amavis/tmp/amavis-20161121T142636-00705-g5ZqbF_3/parts: lstat() failed: Permission denied. ERROR\n"
 
 Nov 21 14:26:36 mail-tiqc amavis[705]: (00705-01) (!)ClamAV-clamd av-scanner FAILED: CODE(0x4bde0d0) unexpected , output="/var/lib/amavis/tmp/amavis-20161121T142636-00705-g5ZqbF_3/parts: lstat() failed: Permission denied. ERROR\n" at (eval 100) line 905.
@@ -292,7 +292,7 @@ Nov 21 14:26:36 mail-tiqc amavis[705]: (00705-01) (!)WARN: all primary virus sca
 
 Fix error
 
-~~~bash
+~~~shell
 $ sudo vi /etc/clamav/clamd.conf
 
 ...
@@ -302,6 +302,6 @@ AllowSupplementaryGroups true
 ...
 ~~~
 
-~~~bash
+~~~shell
 $ sudo systemctl restart clamav-daemon
 ~~~

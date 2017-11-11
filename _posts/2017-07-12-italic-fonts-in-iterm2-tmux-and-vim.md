@@ -5,7 +5,7 @@ layout: post
 tags: [vim,iterm2,linux,MacOS]
 ---
 Run following command to fix italic fonts
-~~~ bash
+~~~shell
 { infocmp -1 xterm-256color ; echo -e "\tsitm=\\E[3m,\n\tritm=\\E[23m,"; } > xterm-256color.terminfo
 tic xterm-256color.terminfo
 rm xterm-256color.terminfo

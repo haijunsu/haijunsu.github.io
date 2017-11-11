@@ -5,7 +5,7 @@ date: 2016-11-23T11:56:54+00:00
 author: Navy Su
 layout: post
 ---
-~~~bash
+~~~shell
 sudo ufw status
 
 sudo ufw status verbose

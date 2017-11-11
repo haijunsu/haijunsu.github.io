@@ -7,7 +7,7 @@ tags: [Linux, ubuntu, centos]
 ## [NetData](https://github.com/firehol/netdata/)
 Easy to install:
 ~~~
-bash <(curl -Ss https://my-netdata.io/kickstart-static64.sh) 
+```shell <(curl -Ss https://my-netdata.io/kickstart-static64.sh) 
 ~~~
 WebGUI: http://servername:19999/
 

@@ -9,7 +9,7 @@ Original: http://www.sysadminlab.net/windows/configuring-ntp-on-windows-server-
 
 Run using PowerShell as Administrator:
 
-~~~bash
+~~~shell
 w32tm /config /manualpeerlist:pool.ntp.org /syncfromflags:MANUAL
 
 Stop-Service w32time
@@ -19,19 +19,19 @@ Start-Service w32time
 
 Check status:
 
-~~~bash
+~~~shell
 w32tm /query /status
 ~~~
 
 Force a resnyc
 
-~~~bash
+~~~shell
 w32tm /resync
 ~~~
 
 Start from scratch:
 
-~~~bash
+~~~shell
 Stop-Service w32time
 
 w32tm /unregister

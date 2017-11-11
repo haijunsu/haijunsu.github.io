@@ -5,7 +5,7 @@ date: 2016-11-11T00:34:19+00:00
 author: Navy Su
 layout: post
 ---
-~~~bash
+~~~shell
 $ sudo dnf install http://download.zfsonlinux.org/fedora/zfs-release$(rpm -E %dist).noarch.rpm
 
 $ gpg --quiet --with-fingerprint /etc/pki/rpm-gpg/RPM-GPG-KEY-zfsonlinux
@@ -21,7 +21,7 @@ $ sudo dnf install kernel-devel zfs
 
 Run in error with the command:
 
-~~~bash
+~~~shell
 $ sudo modprobe zfs
 
 modprobe: FATAL: Module zfs not found in directory /lib/modules/4.5.5-300.fc24.x86_64
@@ -30,7 +30,7 @@ modprobe: FATAL: Module zfs not found in directory /lib/modules/4.5.5-300.fc24.x
 
 Solution (Rootcause is the header version is 4.8.6 which is higher than $(uname -r)):
 
-~~~bash
+~~~shell
 $ dkms status
 
 spl, 0.6.5.8: added

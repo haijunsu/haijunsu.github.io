@@ -8,7 +8,7 @@ layout: post
 ## Installing fonts
 * Installing font on Mac
 1. Download font file form github
-~~~bash
+~~~shell
 wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
 ~~~
 2. Open Finder and double click the font file to open preview window
@@ -22,7 +22,7 @@ wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.ot
 
 ## Installing Powerline-shell
 * Clone powerline-shell repository and install it
-~~~bash
+~~~shell
 git clone git@github.com:banga/powerline-shell.git
 cd powerline-shell
 cp config.py.dist config.py
@@ -30,13 +30,13 @@ vi config.py # edit it before running install.py. if it is changed later, you ne
 ./install.py
 ~~~
 * Creating a powerline-shell.py link at home directory
-~~~ bash
+~~~shell
 cd ~/
 ln -s ~/powerline-shell/powerline-shell.py # powerline-shell repository folder is ~/powerline-shell
 ~~~
 * Editing .bashrc or .bash_profile or .profile and add the following lines
 
-~~~bash
+~~~shell
 function _update_ps1() {
     PS1="$(~/powerline-shell.py --cwd-max-depth 3 --colorize-hostname $? 2> /dev/null)"
 }
@@ -48,27 +48,27 @@ fi
 
 ## Installing Powerline for Vim
 * Installing powerline
-~~~bash
+~~~shell
 pip install powerline-status #for python2
 pip3 install powerline-status #for python3
 ~~~
 * Installing macvim (For Mac OS X only)
-~~~bash
+~~~shell
 brew install macvim --env-std --with-override-system-vim
 ~~~
 * Checking python version supported by Vim. If no python, it won't work for next step
-~~~bash
+~~~shell
 vim --version | grep +python
 ~~~
 * Editing .vimrc and add the following lines
-~~~bash
+~~~shell
 # for python2
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
 ~~~
 or
-~~~bash
+~~~shell
 # for python3
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()

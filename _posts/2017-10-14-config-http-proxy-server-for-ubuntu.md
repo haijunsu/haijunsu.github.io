@@ -10,7 +10,7 @@ http_proxy=http://yourproxyaddress:prosyport
 export http_proxy
 ```
 It the proxy server requires login, using the following configuration
-```bash
+```shell
 http_proxy=http://username:password@yourproxyaddress:proxyprot
 export http_proxy
 ```

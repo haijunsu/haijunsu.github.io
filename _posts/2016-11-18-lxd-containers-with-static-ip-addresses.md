@@ -8,7 +8,7 @@ layout: post
 1. Edit /etc/default/lxd-bridge and change the value of LXC_CONFILE
   
 
-~~~bash
+~~~shell
 $ sudo vi /etc/default/lxd-bridge
 
 ...
@@ -23,7 +23,7 @@ LXD_CONFILE="/etc/default/lxd_dnsmasq.conf"
 2. Edit /etc/default/lxd_dnsmasq.conf and add container ip setting
   
 
-~~~bash
+~~~shell
 $ sudo vi /etc/default/lxd_dnsmasq.conf
 
 # dhcp-host=containername,ipaddress
@@ -34,7 +34,7 @@ dhcp-host=myc1,10.0.3.10
 
 3. Stop container. restart lxd-bridge, start container
 
-~~~bash
+~~~shell
 $ sudo lxc stop myc1
 
 $ sudo service lxd-bridge stop && sudo service lxd-bridge start

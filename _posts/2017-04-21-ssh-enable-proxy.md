@@ -4,6 +4,6 @@ author: Navy Su
 layout: post
 ---
 The following command creates a proxy channel on linux server if logon success. The proxy server is localhost:1080.
-~~~bash
+~~~shell
 ssh -D 1080 -C -N yourname@yourLinuxServer
 ~~~

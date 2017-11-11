@@ -5,7 +5,7 @@ layout: post
 tags: [mongodb, mongo, python, pymongo]
 ---
 ### Install pymongo
-```bash
+```shell
 pip install pymongo
 ```
 

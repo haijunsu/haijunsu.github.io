@@ -7,7 +7,7 @@ layout: post
 ---
 List all drives
 
-~~~bash
+~~~shell
 ls /dev/sd*
 
 /dev/sda  /dev/sda1  /dev/sda2  /dev/sdb
@@ -15,7 +15,7 @@ ls /dev/sd*
 
 Create Linux partitions
 
-~~~bash
+~~~shell
 $ sudo fdisk /dev/sdb
 
 Welcome to fdisk (util-linux 2.23.2).
@@ -84,7 +84,7 @@ Syncing disks.
 
 Check result:
 
-~~~bash
+~~~shell
 $ ls /dev/sd*
 
 /dev/sda  /dev/sda1  /dev/sda2  /dev/sdb  /dev/sdb1
@@ -92,7 +92,7 @@ $ ls /dev/sd*
 
 Create a file system
 
-~~~bash
+~~~shell
 $ sudo mkfs.ext4 -L /data /dev/sdb1
 
 mke2fs 1.42.9 (28-Dec-2013)
@@ -140,13 +140,13 @@ Writing superblocks and filesystem accounting information: done
 
 Create mount point
 
-~~~bash
+~~~shell
 sudo mkdir /data
 ~~~
 
 Modify fstab file to automatically mount the file system
 
-~~~bash
+~~~shell
 $ sudo vi /etc/fstab
 
 # add the following line at the end
@@ -156,7 +156,7 @@ LABEL=/data /data ext4 defaults 1 2
 
 Mount filesystem
 
-~~~bash
+~~~shell
 $ sudo mount -a
 
 $ df -h

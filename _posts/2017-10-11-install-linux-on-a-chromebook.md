@@ -22,7 +22,7 @@ You can find the ID when you hold ESC+Refresh and power button to restart chrome
 6. Install *crouton integration extension* for chrome. It will provide download link for [crouton installer](https://goo.gl/fd3zc).
 7. Start chronos by click CTRL+ALT+T
 
-```bash
+```shell
 crosh> shell
 
 # List all recognized releases
@@ -36,13 +36,13 @@ $ sudo sh -e ~/Downloads/crouton -t xfce,xiwi,extension -r xenial
 ```
 8. Create primary user
 9. Start Linux
-```bash
+```shell
 $ sudo startxfce4 -X xiwi
 # or
 $ sudo enter-chroot startxfce4 -X xiwi
 ```
 If use cli only, using the following commands.
-```bash
+```shell
 $ sudo sh -e ~/Downloads/crouton -r xenial -t cli-extra
 $ sudo startcli
 ```

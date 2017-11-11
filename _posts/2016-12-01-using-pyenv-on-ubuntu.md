@@ -7,7 +7,7 @@ layout: post
 ---
 Installing pyenv
 
-~~~bash
+~~~shell
 $ sudo apt-get install -y --fix-missing make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils
 
 $ git clone https://github.com/yyuu/pyenv.git ~/.pyenv
@@ -25,13 +25,13 @@ $ . ~/.bash_profile
 
 Installing python
 
-~~~bash
+~~~shell
 $ pyenv install 3.5.2
 ~~~
 
 Setting python version
 
-~~~bash
+~~~shell
 $ pyenv versions
 
 $ pyenv global system
@@ -47,7 +47,7 @@ $ pyenv local 3.5.2
 
 Using virtualenv
 
-~~~bash
+~~~shell
 $ pyenv virtualenv 3.5.2 venv
 
 $ pyenv activate venv
@@ -57,6 +57,6 @@ $ pyenv deactivate venv
 
 Checking python version
 
-~~~bash
+~~~shell
 $ python -V
 ~~~

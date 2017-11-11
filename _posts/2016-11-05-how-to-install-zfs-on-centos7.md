@@ -7,7 +7,7 @@ layout: post
 ---
 1. Install epel-release and setup zfs repository.
 
-~~~bash
+~~~shell
 sudo yum -y install epel-release
 
 sudo yum localinstall --nogpgcheck http://archive.zfsonlinux.org/epel/zfs-release.el7.noarch.rpm
@@ -16,7 +16,7 @@ sudo yum localinstall --nogpgcheck http://archive.zfsonlinux.org/epel/zfs-releas
 
 2. update and reboot
 
-~~~bash
+~~~shell
 sudo yum -y update
 
 sudo shutdown -r now
@@ -26,7 +26,7 @@ sudo shutdown -r now
 3. install kernel-dev zfs
   
 
-~~~bash
+~~~shell
 $ sudo yum install kernel-devel zfs
 
 $ sudo modprobe zfs
@@ -49,7 +49,7 @@ spl 92223 3 zfs,zcommon,znvpair
 
 4. create a zpool
 
-~~~bash
+~~~shell
 $ ls /dev/vd*
 
 /dev/vda  /dev/vda1  /dev/vda2  /dev/vdb  /dev/vdb1  /dev/vdb9
@@ -60,7 +60,7 @@ $ sudo zpool create -f <pool name> /dev/vdb
 
 5. add a new disk to zpool (This disk cannot be removed after add. Only spare disk can be removed)
 
-~~~bash
+~~~shell
 $ ls /dev/vd*
 
 /dev/vda  /dev/vda1  /dev/vda2  /dev/vdb  /dev/vdb1  /dev/vdb9 /dev/vdc
@@ -71,6 +71,6 @@ $ sudo zpool add<pool name> /dev/vdc
 
 NOTE: if zpool cannot be mounted automatically after reboot, running the following command can fix it.
 
-~~~bash
+~~~shell
 sudo systemctl preset zfs-import-cache zfs-import-scan zfs-mount zfs-share zfs-zed zfs.target
 ~~~

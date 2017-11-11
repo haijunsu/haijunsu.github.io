@@ -5,7 +5,7 @@ layout: post
 tags: [MAC,OSX,User]
 ---
 To list accounts, run following commands.
-~~~ bash
+~~~shell
 dscacheutil -q user | grep -A 3 -B 2 -e uid:\ 5'[0-9][0-9]'
 dscl . list /Users | grep -v ^_.*
 ~~~

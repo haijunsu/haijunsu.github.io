@@ -7,7 +7,7 @@ layout: post
 ---
 Remote operations require the following two commands having been run on the remote server:
 
-~~~bash
+~~~shell
 lxc config set core.https_address "[::]:8443"
 
 lxc config set core.trust_password some-password
@@ -15,20 +15,20 @@ lxc config set core.trust_password some-password
 
 Add a remote server:
 
-~~~bash
+~~~shell
 lxc remote add <server alias> <ip address or DNS>
 ~~~
 
 And after that, use all the same command as above but prefixing the container and images name with the remote host like:
   
 
-~~~bash
+~~~shell
 lxc exec host-a:first -- apt-get update
 ~~~
 
 Manually import images example:
 
-~~~bash
+~~~shell
 lxc image copy images:gentoo/current/amd64 local: --alias gentoo --auto-update
 
 lxc image import <tarball> --alias random-image
@@ -38,7 +38,7 @@ lxc image import https://dl.stgraber.org/lxd --alias busybox-amd64
 
 List images:
 
-~~~bash
+~~~shell
 lxc image list
 
 lxc image list <remote server alias>:
@@ -46,19 +46,19 @@ lxc image list <remote server alias>:
 
 Editing image:
 
-~~~bash
+~~~shell
 lxc image edit <alias or fingerprint>
 ~~~
 
 Deleting image:
 
-~~~bash
+~~~shell
 lxc image delete <alias or fingerprint>
 ~~~
 
 Create you own image from a container:
 
-~~~bash
+~~~shell
 lxc publish my-container/some-snapshot --alias some-image
 ~~~
 

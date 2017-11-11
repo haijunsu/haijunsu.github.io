@@ -8,7 +8,7 @@ layout: post
 
 [download](https://raw.githubusercontent.com/haijunsu/haijunsu.github.io/master/.vimrc.sample) Sample file
 
-~~~bash
+~~~shell
 " Don't try to be vi compatible
 
 set nocompatible

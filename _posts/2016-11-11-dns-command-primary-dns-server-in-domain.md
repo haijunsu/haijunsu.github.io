@@ -9,19 +9,19 @@ To change DNS from command line: **_dnscmd_**
 
 List all A type records:
 
-~~~bash
+~~~shell
 > dnscmd <dns-server> /EnumRecords <your domain> . /type A
 ~~~
 
 Add a A type record:
 
-~~~bash
+~~~shell
 > dnscmd <dns-server> /RecordAdd <your domain> docker01 A 192.168.1.235
 ~~~
 
 More information for dnscmd:
 
-~~~bash
+~~~shell
 > dnscmd /help
 ~~~
 

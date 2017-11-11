@@ -7,7 +7,7 @@ layout: post
 ---
 Creating service script
 
-~~~bash
+~~~shell
 $ vi myservice.sh
 
 #!/bin/bash
@@ -49,7 +49,7 @@ exit 0
 
 Creating server configuration file
 
-~~~bash
+~~~shell
 $ sudo vi /etc/systemd/myservice.service
 
 [Unit]
@@ -78,7 +78,7 @@ WantedBy=multi-user.target
 
 Testing your service
 
-~~~bash
+~~~shell
 $ sudo systemctl start myservice
 
 $ sudo systemctl status myservice
@@ -86,7 +86,7 @@ $ sudo systemctl status myservice
 
 Enable your service
 
-~~~bash
+~~~shell
 $ sudo systemctl enable myservice
 ~~~
 

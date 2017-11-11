@@ -7,21 +7,21 @@ layout: post
 ---
 Install mysql-client
 
-~~~bash
+~~~shell
 sudo apt install mysql-client
 
 ~~~
 
 Install php7
 
-~~~bash
+~~~shell
 sudo apt install php php-xml php-gd php-curl php-mcrypt php-mbstring php7.0-mbstring php-gettext php-mysql
 
 ~~~
 
 Install apache2
 
-~~~bash
+~~~shell
 sudo apt install apache2 libapache2-mod-php mod_dbd
 
 sudo a2enmod rewrite
@@ -29,7 +29,7 @@ sudo a2enmod rewrite
 
 Install drush
 
-~~~bash
+~~~shell
 $ php -r "readfile('https://s3.amazonaws.com/files.drush.org/drush.phar');" > drush
 
 $ php drush core-status

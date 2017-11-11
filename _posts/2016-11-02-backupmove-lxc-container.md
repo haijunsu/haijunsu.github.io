@@ -7,7 +7,7 @@ layout: post
 ---
   1. Stop lxc container
     
-~~~bash
+~~~shell
 $ sudo lxc-stop -n <container>
 ~~~
 
@@ -15,7 +15,7 @@ $ sudo lxc-stop -n <container>
   
      
     
-~~~bash
+~~~shell
 $ sudo - su
 
 $ cd /var/lib/lxc/<container>/
@@ -26,7 +26,7 @@ $ tar --numeric-owner -czvf container_fs.tar.gz ./*
   3. Copy the archive file to another server (ftp, sftp, or scp)
   4. Extract files on the new server
     
-~~~bash
+~~~shell
 $ sudo su -
 
 $ mkdir /var/lib/lxc/<container>/

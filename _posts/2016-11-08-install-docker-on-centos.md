@@ -8,7 +8,7 @@ layout: post
 1. Add docker yum repository
   
 
-~~~bash
+~~~shell
 $ sudo yum update
 
 $ sudo tee /etc/yum.repos.d/docker.repo <<-'EOF'
@@ -32,7 +32,7 @@ EOF
 2. Install docker package
   
 
-~~~bash
+~~~shell
 $ sudo yum install docker-engine
 
 ~~~
@@ -40,7 +40,7 @@ $ sudo yum install docker-engine
 3. Enable docker service
   
 
-~~~bash
+~~~shell
 $ sudo systemctl enable docker.service
 
 ~~~
@@ -48,7 +48,7 @@ $ sudo systemctl enable docker.service
 4. Start docker deamon
   
 
-~~~bash
+~~~shell
 $ sudo systemctl start docker
 
 ~~~
@@ -56,7 +56,7 @@ $ sudo systemctl start docker
 5. Verify docker installation
   
 
-~~~bash
+~~~shell
 $ sudo docker run --rm hello-world
 
  Unable to find image 'hello-world:latest' locally
@@ -104,7 +104,7 @@ $ sudo docker run --rm hello-world
 6. Try ubuntu bash
   
 
-~~~bash
+~~~shell
 $ docker run -it ubuntu bash
 
 root@118120c1d392:/# df -h
@@ -128,7 +128,7 @@ root@118120c1d392:/# exit (exit ubuntu and stop the container, # Ctrl+p, Ctrl+q 
 7. Add user to docker group
   
 
-~~~bash
+~~~shell
 $ sudo usermod -aG docker `whoami`
 
 ~~~
@@ -138,7 +138,7 @@ $ sudo usermod -aG docker `whoami`
 9. cleanup test code
   
 
-~~~bash
+~~~shell
 $ docker ps -all
 
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
@@ -182,7 +182,7 @@ Deleted: sha256:c854e44a1a5a22c9344c90f68ef6e07fd479e8ce1030fe141e3236887f1a4920
 10. Configure zfs for Docker
   
 
-~~~bash
+~~~shell
 $ sudo zpool create -f zpool-docker /dev/xvdb
 
 $ sudo zfs list
@@ -210,7 +210,7 @@ $ sudo zfs list -t -all
 11. Configure docker storage driver
   
 
-~~~bash
+~~~shell
 sudo vi /etc/default/docker
 
 ~~~
@@ -222,7 +222,7 @@ DOCKER_OPTS="-D --storage-driver=zfs"<br />
 12. Restart docker
   
 
-~~~bash
+~~~shell
 $ sudo systemctl restart docker
 
 ~~~
@@ -230,7 +230,7 @@ $ sudo systemctl restart docker
 13. Check docker info
   
 
-~~~bash
+~~~shell
 $ docker info
 
 Containers: 0

@@ -6,7 +6,7 @@ author: Navy Su
 layout: post
 ---
 For default virbr0, it provides a way to help guest to access host (VM<-->host). But the guest cannot be accessed from outside host. But we can use the following commands to enable it temporally.
-~~~bash
+~~~shell
 # iptables -D  FORWARD -o virbr0 -j REJECT --reject-with icmp-port-unreachable
 # iptables -D  FORWARD -i virbr0 -j REJECT --reject-with icmp-port-unreachable
 ~~~
@@ -25,12 +25,12 @@ The best way is to create another bridge for guest.
 ~~~
 * create new bridge
 
-~~~bash
+~~~shell
 # virsh net-create routeNetwork.xml
 ~~~
 * edit the bridge to enable dhcp (I think if we define DHCP at the first step, no need this one. If we don't do this step, the persistent state is no. Not sure what the impact is.)
 
-~~~bash
+~~~shell
 # virsh net-edit routenetwork
 ~~~
 ~~~xml
@@ -49,12 +49,12 @@ The best way is to create another bridge for guest.
 ~~~
 * Set the bridge autostart
 
-~~~bash
+~~~shell
 # virsh net-autostart routenetwork
 ~~~
 * Check virtual networks
 
-~~~bash
+~~~shell
 # virsh net-list
 
  Name                 State      Autostart     Persistent
@@ -64,12 +64,12 @@ The best way is to create another bridge for guest.
 ~~~
 * add masquerade to firewalld
 
-~~~bash
+~~~shell
 # firewall-cmd --permanent --add-masquerade
 ~~~
 * change guest network type 
 
-~~~bash
+~~~shell
 # virsh --connect qemu:///system
 virsh # edit <VM's name>
 ~~~
@@ -84,7 +84,7 @@ virsh # edit <VM's name>
 * shutdown and start the guest again
 * add route on your router
 
-~~~bash
+~~~shell
 # sudo route -n add 10.10.120.0/24 <host ip>
 ~~~
 Now the guest can access from your network via it ip 10.10.120.x.

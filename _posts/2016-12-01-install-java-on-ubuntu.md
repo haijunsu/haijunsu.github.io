@@ -7,7 +7,7 @@ layout: post
 ---
 Installing default jre/jdk
 
-~~~bash
+~~~shell
 sudo apt update
 
 sudo apt install default-jre
@@ -17,7 +17,7 @@ sudo apt install default-jdk
 
 Installing openjre/jdk 7
 
-~~~bash
+~~~shell
 sudo apt-get install openjdk-7-jre 
 
 sudo apt-get install openjdk-7-jdk
@@ -25,7 +25,7 @@ sudo apt-get install openjdk-7-jdk
 
 Installing Oracle java
 
-~~~bash
+~~~shell
 sudo apt-get install python-software-properties
 
 sudo add-apt-repository ppa:webupd8team/java
@@ -41,7 +41,7 @@ sudo apt-get install oracle-java8-installer
 
 Managing java
 
-~~~bash
+~~~shell
 sudo update-alternatives --config java
 
 sudo update-alternatives --config javac
@@ -49,10 +49,10 @@ sudo update-alternatives --config javac
 
 Setting JAVA_HOME
 
-~~~bash
+~~~shell
 sudo vi /etc/environment
 ~~~
 
-~~~bash
+~~~shell
 JAVA_HOME="YOUR_PATH"
 ~~~

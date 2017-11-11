@@ -5,7 +5,7 @@ date: 2016-11-11T23:57:54+00:00
 author: Navy Su
 layout: post
 ---
-~~~bash
+~~~shell
 $ sudo vi /etc/ssh/sshd_config
 
 # Run ssh on a non-standard port:
@@ -33,6 +33,6 @@ PasswordAuthentication no
 
 How to generate your own private key
 
-~~~bash
+~~~shell
 $ ssh-keygen -t rsa
 ~~~

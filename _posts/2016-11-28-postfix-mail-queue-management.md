@@ -7,31 +7,31 @@ layout: post
 ---
 View mail queue
 
-~~~bash
+~~~shell
 sudo mailq
 ~~~
 
 Flush mail queue method1
 
-~~~bash
+~~~shell
 sudo postfix flush
 ~~~
 
 Flush mail queue method2
 
-~~~bash
+~~~shell
 sudo postfix -f
 ~~~
 
 Remove all mails in the deferred queue
 
-~~~bash
+~~~shell
 sudo postsuper -d ALL deferred
 ~~~
 
 Remove all mails from queue
 
-~~~bash
+~~~shell
 sudo postsuper -d ALL
 ~~~
 

@@ -7,7 +7,7 @@ layout: post
 ---
 Installing nodejs
 
-~~~bash
+~~~shell
 sudo apt install nodejs
 
 sudo apt-get install npm
@@ -15,7 +15,7 @@ sudo apt-get install npm
 
 Installing pm2
 
-~~~bash
+~~~shell
 sudo npm install pm2@latest -g
 
 cd /usr/bin
@@ -25,7 +25,7 @@ sudo ln -s nodejs node
 
 Create user to run nodejs
 
-~~~bash
+~~~shell
 sudo useradd nodeuser
 
 sudo passwd nodeuser
@@ -37,13 +37,13 @@ sudo adduser nodeuser nodejs
 
 Using pm2 to start nodejs app
 
-~~~bash
+~~~shell
 pm2 start hello.js
 ~~~
 
 Using pm2 to autostart nodejs apps
 
-~~~bash
+~~~shell
 sudo env PATH=$PATH:/usr/local/bin pm2 startup -u nodeuser
 
 sudo su -c "chmod +x /etc/init.d/pm2-init.sh && update-rc.d pm2-init.sh defaults"

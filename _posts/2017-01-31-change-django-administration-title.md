@@ -44,7 +44,7 @@ ADMIN_SITE_HEADER = "My shiny new administration"
 
 ~~~
         
-    ~~~bash
+    ~~~shell
 $ vi urls.py
 
 from django.conf import settings

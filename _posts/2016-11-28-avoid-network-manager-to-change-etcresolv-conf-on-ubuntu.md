@@ -7,13 +7,13 @@ layout: post
 ---
 By default, it links to ../run//resolvconf/resolv.conf
 
-~~~bash
+~~~shell
 $ sudo rm /etc/resolv.conf
 ~~~
 
 Create you own resolv.conf
 
-~~~bash
+~~~shell
 $ sudo vi /etc/resolv.conf
 
 nameserver 192.168.0.1
