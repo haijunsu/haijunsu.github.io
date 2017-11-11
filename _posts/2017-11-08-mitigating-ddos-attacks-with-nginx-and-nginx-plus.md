@@ -11,7 +11,7 @@ tags: [nginx, ddos, web, caching]
 * Limiting the Rate of Requests
 Example: Allow a single client IP address to attempt to login only every 2 seconds (equivalent to 30 requests per minute)
 
-```ini
+```shell
 limit_req_zone $binary_remote_addr zone=one:10m rate=30r/m;
 
 server {
@@ -26,7 +26,7 @@ server {
 * Limiting the Number of Connections
 Example: Allow each client IP address to open no more than 10 connections to the /store area of your website
 
-```ini
+```shell
 limit_conn_zone $binary_remote_addr zone=addr:10m;
 
 server {
@@ -40,7 +40,7 @@ server {
 
 * Closing Slow Connections
 Example: Wait no more than 5 seconds between writes from the client for either headers or body
-```ini
+```shell
 server {
     client_body_timeout 5s;
     client_header_timeout 5s;
@@ -50,14 +50,14 @@ server {
 
 * Blacklisting IP Addresses
 Example: Block IP from the address range 123.123.123.1 through 123.123.123.16
-```ini
+```shell
 location / {
     deny 123.123.123.0/28;
     # ...
 }
 ```
 Example: Block IP from the client IP address 123.123.123.3, 123.123.123.5, and 123.123.123.7
-```ini
+```shell
 location / {
     deny 123.123.123.3;
     deny 123.123.123.5;
@@ -68,7 +68,7 @@ location / {
 
 * Whitelisting IP Addresses
 Example: Restrict access to only addresses in a specific local network
-```ini
+```shell
 location / {
     allow 192.168.1.0/24;
     deny all;
@@ -82,13 +82,13 @@ location / {
 
 * Blocking Requests
 Example: Block all requests for /foo.php
-```ini
+```shell
 location /foo.php {
     deny all;
 }
 ```
 Example: Block requests have a **User-Agent** header value of *foo* or *bar*
-```ini
+```shell
 location / {
     if ($http_user_agent ~* foo|bar) {
         return 403;
@@ -99,7 +99,7 @@ location / {
 
 * Limiting the Connections to Backend Servers (Nginx Plus only)
 Example: Limit Nginx Plus to establishing no more than 200 connections to each of the two backend servers in the website upstream group
-```ini
+```shell
 upstream website {
     server 192.168.100.1:80 max_conns=200;
     server 192.168.100.2:80 max_conns=200;
