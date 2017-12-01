@@ -20,11 +20,25 @@ layout: page
 | CTRL-e | Go the the end of line |
 | CTRL-u | Cut from start of line |
 | CTRL-k | Cut to end of line |
+| Ctrl + w | delete from cursor to start of word (i.e. delete backwards one word)|
+| Ctrl + y | paste word or text that was cut using one of the deletion shortcuts (such as the one above) after the cursor|
+| Ctrl + xx | move between start of command line and current cursor position (and back again)|
+| Ctrl + r | search the history backwards|
+| Ctrl + g | escape from history searching mode|
+| Ctrl + p | previous command in history (i.e. walk back through the command history)|
+| Ctrl + n | next command in history (i.e. walk forward through the command history)|
 | CTRL-d | Log out from a shell (similar to **exit**). **EOF** (end-of-file). This also terminates input form **stdin**.|
 | CTRL-l | clear the terminal screen |
 | CTRL-z | Sleep program |
 | bg | Run the sleep program at background |
 | fg | Bring the program from background to foreground |
+! ! | run last command|
+| !blah | run the most recent command that starts with ‘blah’ (e.g. !ls)|
+| !blah:p | print out the command that !blah would run (also adds it as the latest command in the command history)|
+| !$ | the last word of the previous command (same as Alt + .)|
+| !$:p | print out the word that !$ would substitute|
+| !* | the previous command except for the last word (e.g. if you type ‘find some_file.txt /‘, then !* would give you ‘find some_file.txt‘)|
+| !*:p | print out what !* would substitute|
 
 Remove bed file name: *rm -- -badfilename*
 
