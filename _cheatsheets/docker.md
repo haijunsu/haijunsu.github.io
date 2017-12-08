@@ -17,6 +17,11 @@ docker cp <containerId>:/file/path/within/container /host/path/target
 
 <https://medium.com/towards-data-science/how-to-deploy-a-mongodb-replica-set-using-docker-6d0b9ac00e49>
 
+### Update docker images
+```shell
+docker images | grep -v REPOSITORY | awk '{printf("%s:%s\n", $1, $2)}' | xargs -L1 docker pull
+```
+
 ### Find the dependent child images on Docker
 {% assign strformat = '{{.Id}} {{.Parent}}' %}
 ```bash
