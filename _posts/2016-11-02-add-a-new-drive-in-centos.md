@@ -4,6 +4,7 @@ title: Add a new drive in CentOS
 date: 2016-11-02T15:44:08+00:00
 author: Navy Su
 layout: post
+tags: [disk, linux, gdisk, fdisk, drive]
 ---
 List all drives
 
@@ -13,7 +14,13 @@ ls /dev/sd*
 /dev/sda  /dev/sda1  /dev/sda2  /dev/sdb
 ~~~
 
+
 Create Linux partitions
+*Using gdisk to create GPT, fdisk is not recommended*
+```shell
+# Install gdisk
+$ sudo yum install gdisk
+```
 
 ~~~shell
 $ sudo fdisk /dev/sdb
@@ -90,8 +97,9 @@ $ ls /dev/sd*
 /dev/sda  /dev/sda1  /dev/sda2  /dev/sdb  /dev/sdb1
 ~~~
 
-Create a file system
+*Suggest using [LVM](/lvm-common-tasks)*
 
+Create a file system
 ~~~shell
 $ sudo mkfs.ext4 -L /data /dev/sdb1
 

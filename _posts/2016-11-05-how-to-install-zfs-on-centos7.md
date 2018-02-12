@@ -4,7 +4,9 @@ title: How to install zfs on CentOS7
 date: 2016-11-05T00:16:55+00:00
 author: Navy Su
 layout: post
+tags: [zfs, centos, linux]
 ---
+*WARN: ZFS module does NOT with new kernel. File system xfs is better. Using lvm is a good option.*
 1. Install epel-release and setup zfs repository.
 
 ~~~shell
@@ -24,7 +26,7 @@ sudo shutdown -r now
 ~~~
 
 3. install kernel-dev zfs
-  
+
 
 ~~~shell
 $ sudo yum install kernel-devel zfs
@@ -74,3 +76,14 @@ NOTE: if zpool cannot be mounted automatically after reboot, running the followi
 ~~~shell
 sudo systemctl preset zfs-import-cache zfs-import-scan zfs-mount zfs-share zfs-zed zfs.target
 ~~~
+
+6. Import existed pool.
+
+```shell
+\# show availabe zpool
+$ sudo zpool import
+
+\# import zpool
+$ sudo zpool import <zpool id>
+```
+
