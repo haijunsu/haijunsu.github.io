@@ -25,49 +25,28 @@ sudo vi /etc/samba/smb.conf
 [global]
 
 ## Browsing/Identification ###
-
 # Change this to the workgroup/NT-domain name your Samba server will part of
-
 #   workgroup = GROUP
-
 # server string is the equivalent of the NT Description field
-
   server string = %h server (Samba, Ubuntu)
-
         security = ads
-
         realm = MYDOMAIN.COM
 
 # If the system doesn't find the domain controller automatically, you may need the following line
-
 #        password server = 10.0.0.1
-
 # note that workgroup is the 'short' domain name
-
         workgroup = MYDOMAIN
-
 #       winbind separator = +
-
         idmap uid = 10000-20000
-
         idmap gid = 10000-20000
-
         winbind enum users = yes
-
         winbind enum groups = yes
-
         template homedir = /home/%D/%U
-
         template shell = /bin/bash
-
         client use spnego = yes
-
         client ntlmv2 auth = yes
-
         encrypt passwords = yes
-
         winbind use default domain = yes
-
         restrict anonymous = 2
 ~~~
 
@@ -84,23 +63,24 @@ sudo service winbind start
 Join the AD (see &#8220;net ads help&#8221;):
 
 ~~~shell
-sudo kinit Admin@MYDOMAIN.COM
-
+#sudo kinit Admin@MYDOMAIN.COM
 # check klist
-
-sudo klist
-
+#sudo klist
 # join (ignore the dns error messages)
-
-sudo net ads join -k
-
-OR
-
+# sudo net ads join -k
+# Don't know why join -k doesn't work.
+# Using join -U instead
 sudo net ads join -U Admin@MYDOMAIN.COM
 ~~~
 
+If have trouble, using folloing command leave the domain and rejoin it.
+
+```shell
+sudo net nds leave -U Admin@MYDOMAIN
+```
+
 Setup Authentication
-  
+
 
 ~~~shell
 sudo vi /etc/nsswitch.conf
@@ -124,7 +104,7 @@ sudo service winbind restart
 ~~~
 
 PAM Configuration
-  
+
 
 ~~~shell
 sudo pam-auth-update
@@ -132,7 +112,7 @@ sudo pam-auth-update
 ~~~
 
 Create Home directory
-  
+
 
 ~~~shell
 sudo mkdir /home/MYDOMAIN
@@ -140,7 +120,7 @@ sudo mkdir /home/MYDOMAIN
 ~~~
 
 Add sudo users
-  
+
 
 ~~~shell
 sudo vi /etc/sudoers.d/MYDOMAIN
@@ -155,7 +135,7 @@ sudo vi /etc/sudoers.d/MYDOMAIN
 ~~~
 
 Test
-  
+
 
 ~~~shell
 wbinfo -u
