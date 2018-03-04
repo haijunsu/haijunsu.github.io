@@ -18,4 +18,5 @@ tags: [java, thread, multi-thread, volatile]
 2. A signal to compiler and JIT to ensure that compiler does not change ordering or volatile variable and moves them out of synchronized context.
 3. You want to save the cost of synchronization as volatile variables are less expensive than synchronization.
 
+Source: <http://www.java67.com/2012/08/what-is-volatile-variable-in-java-when.html>
 
