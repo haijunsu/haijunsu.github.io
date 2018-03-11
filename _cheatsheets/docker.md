@@ -53,3 +53,20 @@ docker ps --before a1bz3768ez7g -q | xargs docker rm
 * Use *--rm* for docker build
 Use *--rm* together with *docker build* to remove intermediary images during the build process.
 
+### Docker logs
+* Clean container's log
+
+```bash
+sudo -i
+{% raw %}
+echo "" > $(docker inspect --format='{{.LogPath}}' <container_name_or_id>)
+{% endraw %}
+```
+
+* Setting docker daemon configuration file */etc/docker/daemon.json*
+```json
+{
+  "log-driver": "json-file",
+  "log-opts": {"max-size": "10m", "max-file": "3"}
+}
+```
