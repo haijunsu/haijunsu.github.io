@@ -30,6 +30,11 @@ gpgkey=https://www.mongodb.org/static/pgp/server-3.4.asc
 sudo yum install -y mongodb-org
 ```
 
+* install package *policycoreutils-python*
+```shell
+sudo yum install policycoreutils-python
+```
+
 * Configure SELinux
 Method 1.
 ```shell
@@ -46,20 +51,22 @@ SELINUX=permissive
 ```
 <i class="fa fa-info-circle" aria-hidden="true"></i> You must reboot the system for the changes to take effect.
 
-* Move data storage to ZFS
+* Move data storage to ZFS (optional)
 ```shell
 sudo zfs create -o mountpoint=/var/lib/mongo/ <zpool name>/mongo
 sudo chown -R mongod:mongod /var/lib/mongo
 ```
 
-* install package *policycoreutils-python*
+* Using another dictionary for database (ex. /home/mongo)
 ```shell
-sudo yum install policycoreutils-python
+sudo mkdir -p /home/mongo
+sudo chown mongod:mongod /home/mongo
+sudo chcon system_u:object_r:mongod_var_lib_t:s0 /home/mongo
 ```
 
 * run semange fcontext and restorecon
 ```shell
-sudo semanage fcontext -a -t mongod_db_t "/mongo(/.*)?"
+# sudo semanage fcontext -a -t mongod_db_t "/mongo(/.*)?" # mongod_db_t is not validate. why?
 sudo semanage fcontext -a -t mongod_var_lib_t "/mongo(/.*)?"
 sudo grep -i mongod /etc/selinux/targeted/contexts/files/file_contexts.local
 ```

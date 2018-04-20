@@ -50,7 +50,7 @@ net:
 
 security:
   authorization: enabled
-  keyFile: /opt/mongo/mongo-keyfile
+  keyFile: /opt/mongodb/mongo-keyfile
 
 replication:
   replSetName: rs0
