@@ -35,9 +35,9 @@ ENTRYPOINT ["/entrypoint.sh", "--"]
 # within a certain `CIDR` (default: `192.168.0.0/24`),
 # but blocks all other network traffic.
 #
-if [ ! -f "myenv/MAINTENANCE" ]
+if [ ! -f "/myenv/MAINTENANCE" ]
 then
-    ALLOW_IPS=$(cat myenv/allowIPs)
+    ALLOW_IPS=$(cat /myenv/allowIPs)
     for ACCEPT_CIDR in ${ALLOW_IPS}; do
         iptables -A INPUT -s ${ACCEPT_CIDR} -j ACCEPT
         iptables -A OUTPUT -d ${ACCEPT_CIDR} -j ACCEPT
@@ -53,10 +53,12 @@ fi
 sudo -u app sh -c "$@"<Paste>
 ```
 
-### myenv/allowIPs example
+### myenv/allowIPs example (allow all private addresses)
 ```
-192.168.0.0/24
-192.168.1.0/24
+127/8
+10/8
+172.16/12
+192.168/16
 ```
 
 ### Testing
