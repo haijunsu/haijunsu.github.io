@@ -36,10 +36,12 @@ docker ps --all
 ```
 * Remove stopped containers
 ```bash
+docker container prune
 docker ps -aq --no-trunc | xargs docker rm
 ```
 * Remove dangling/untagged images
 ```
+docker image prune
 docker images -q --filter dangling=true | xargs docker rmi
 ```
 * Remove containers created after a specific container
