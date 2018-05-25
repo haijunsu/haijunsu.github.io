@@ -72,3 +72,26 @@ echo "" > $(docker inspect --format='{{.LogPath}}' <container_name_or_id>)
   "log-opts": {"max-size": "10m", "max-file": "3"}
 }
 ```
+
+### Push image to Docker hub
+
+```
+docker logoin
+docker images
+docker tag <image id> <yourhubusername>/<imagename>[:image-tag]
+```
+
+Example:
+```
+$ docker images
+REPOSITORY              TAG       IMAGE ID         CREATED           SIZE
+verse_gapminder_gsl     latest    023ab91c6291     3 minutes ago     1.975 GB
+verse_gapminder         latest    bb38976d03cf     13 minutes ago    1.955 GB
+rocker/verse            latest    0168d115f220     3 days ago        1.954 GB
+
+$ docker tag bb38976d03cf yourhubusername/verse_gapminder:firsttry
+$ docker push yourhubusername/verse_gapminder
+```
+
+Source:
+<https://blog.octo.com/en/kubernetes-vs-swarm-volumes/>

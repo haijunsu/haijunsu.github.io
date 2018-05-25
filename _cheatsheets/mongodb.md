@@ -138,7 +138,7 @@ For roles detail: <https://docs.mongodb.com/manual/core/security-built-in-roles/
 ## Backup and Restore
 * Backup database (database name is reporting)
 ```shell
-mongodump -u backupUser -p <your secret> --authenticationDatabase admin --gzip --db reporting
+mongodump -u backupUser -p <your secret> --authenticationDatabase admin --gzip --db reporting --archive=<filename>
 ```
 * Restore database
 
