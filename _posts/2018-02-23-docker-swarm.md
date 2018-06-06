@@ -54,3 +54,14 @@ docker service scale <Service-id>=<number-of-task>
 docker service update --publish-add 80 my_web
 
 ```
+
+Command	| Description
+---|---
+docker node demote |	Demote one or more nodes from manager in the swarm
+docker node inspect |	Display detailed information on one or more nodes
+docker node ls |	List nodes in the swarm
+docker node promote	 |Promote one or more nodes to manager in the swarm
+docker node ps |	List tasks running on one or more nodes, defaults to current node
+docker node rm |	Remove one or more nodes from the swarm
+docker node update |	Update a node
+
