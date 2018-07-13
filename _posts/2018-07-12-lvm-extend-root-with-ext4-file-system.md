@@ -5,7 +5,7 @@ layout: post
 tags: [LVM Linux ext4]
 ---
 
-Problem: root partition was full.
+**Problem:** root partition was full.
 ```shell
 $ df -h
 Filesystem                         Size  Used Avail Use% Mounted on
@@ -13,10 +13,9 @@ udev                               3.9G     0  3.9G   0% /dev
 tmpfs                              799M   67M  732M   9% /run
 /dev/mapper/silver--vg-root         37G   36G     0 100% /
 ...
-
 ```
 
-Solution: Add a new disk and extend root partition
+**Solution:** Add a new disk and extend root partition
 * Check physical volume
 ```shell
 $ sudo pvdisplay
@@ -135,4 +134,4 @@ tmpfs                              799M   67M  732M   9% /run
 ...
 ```
 
-Other command: [LVM common tasks](/lvm-common-tasks)
+Other commands: [LVM common tasks](/lvm-common-tasks)
