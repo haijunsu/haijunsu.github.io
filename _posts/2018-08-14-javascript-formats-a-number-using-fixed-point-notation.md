@@ -5,11 +5,25 @@ layout: post
 tags: [javascript, format]
 ---
 Method: Number.toFixed()
-
 Example:
 ```javascript
 Number.parseFloat(x).toFixed(2);
 ```
+
+<i class="fa fa-info-circle" aria-hidden="true"></i>IE doesn't support Number.toFixed method. The following function works on all browsers
+{: .note}
+
+```javascript
+// format fractional part
+function formatFractional(num, len) {
+    if (isNaN(parseFloat(num))) {
+        return num;
+    }
+    return num.toFixed(len);
+}
+```
+
+// Add Array.from function for IE
 
 Other examples:
 ```javascript
