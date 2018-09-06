@@ -8,6 +8,7 @@ tags: [docker, sshfs, volume]
 **Using an ssh key**
 
 * Install plugin
+
 ```shell
 $ docker plugin install vieux/sshfs sshkey.source=/home/<user>/.ssh/
 
@@ -19,11 +20,13 @@ docker plugin install vieux/sshfs state.source=<any_folder> sshkey.source=/home/
 ```
 
 * Create docker volume
+
 ```shell
 docker volume create -d vieux/sshfs -o sshcmd=<user@host:path> [-o IdentityFile=/root/.ssh/<key>] [-o port=<port>] [-o <any_sshfs_-o_option> ] sshvolume
 ```
 
 * Use the volume
+
 ```shell
 $ docker run -it -v sshvolume:<path> busybox ls <Paste>
 ```
