@@ -12,6 +12,7 @@ curl -fsSL https://raw.githubusercontent.com/CWSpear/local-persist/master/script
 ```
 
 * Using with docker-compose
+
 ```
 version: '2'
 
