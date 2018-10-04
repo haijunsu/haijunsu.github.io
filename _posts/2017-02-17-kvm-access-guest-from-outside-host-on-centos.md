@@ -63,10 +63,19 @@ The best way is to create another bridge for guest.
  routenetwork         active     yes           yes
 ~~~
 * add masquerade to firewalld
+On CentOS
 
 ~~~shell
 # firewall-cmd --permanent --add-masquerade
 ~~~
+
+On Ubuntu
+
+```shell
+sudo iptables -t nat -A POSTROUTING -o enp2s0 -j MASQUERADE
+sudo iptables -A FORWARD -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i virbr101 -o enp2s0 -j ACCEPT
+```
 * change guest network type 
 
 ~~~shell
