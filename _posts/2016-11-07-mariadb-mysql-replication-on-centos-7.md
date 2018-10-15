@@ -6,33 +6,31 @@ author: Navy Su
 layout: post
 ---
 Master node: db01
-  
+
 Slave node: db02
-  
+
+** Suggestion: Create a seperate configure file and put it at /etc/my.cnf.d/. We don't have to modify server.cnf file. **
+
 1. On master node:
 
-~~~shell
+```shell
 sudo vi /etc/my.cnf.d/server.cnf
-~~~
 
-`<em><br />
-[server]<br />
-# add follows in [server] section : get binary logs<br />
-log-bin=mysql-bin<br />
-# define uniq server ID<br />
-server-id=101<br />
-</em><br />
-` 
-  
+[server]
+# add follows in [server] section : get binary logs
+log-bin=mysql-bin
+# define uniq server ID
+server-id=101
+```
 
-~~~shell
+```shell
 sudo systemctl restart mariadb
-~~~
+```
 
 2. create user on master node:
 
-~~~shell
-$> mysql -u root -p 
+```shell
+$> mysql -u root -p
 
 Enter password:
 
@@ -48,45 +46,43 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 # create user (set any password for 'password' section)
 
-MariaDB [(none)]> grant replication slave on *.* to replica@'%' identified by 'password'; 
+MariaDB [(none)]> grant replication slave on *.* to replica@'%' identified by 'password';
 
 Query OK, 0 rows affected (0.00 sec)
 
-MariaDB [(none)]> flush privileges; 
+MariaDB [(none)]> flush privileges;
 
 Query OK, 0 rows affected (0.00 sec)
 
 MariaDB [(none)]> exit
 
 Bye
-~~~
+```
 
 3. Change setting on slave node:
 
-~~~shell
+```shell
 sudo  vi /etc/my.cnf.d/server.cnf
-~~~
 
-`<em><br />
-[server]<br />
-# add follows in [server] section : get binary logs<br />
-log-bin=mysql-bin<br />
-# define server ID (different one from Master Host)<br />
-server-id=102<br />
-# read only<br />
-read_only=1<br />
-# define own hostname<br />
-report-host=db02<br />
-</em>`
+[server]
+# add follows in [server] section : get binary logs
+log-bin=mysql-bin
+# define server ID (different one from Master Host)
+server-id=102
+# read only
+read_only=1
+# define own hostname
+report-host=db02
+```
 
-~~~shell
+```shell
 sudo systemctl restart mariadb
-~~~
+```
 
 4. Dump databases on master node:
 
-~~~shell
-$> mysql -u root -p 
+```shell
+$> mysql -u root -p
 
 Enter password:
 
@@ -102,13 +98,13 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
 # lock all tables
 
-MariaDB [(none)]> flush tables with read lock; 
+MariaDB [(none)]> flush tables with read lock;
 
 Query OK, 0 rows affected (0.00 sec)
 
 # show status (remember File, Position value)
 
-MariaDB [(none)]> show master status; 
+MariaDB [(none)]> show master status;
 
 +------------------+----------+--------------+------------------+
 
@@ -121,16 +117,18 @@ MariaDB [(none)]> show master status;
 +------------------+----------+--------------+------------------+
 
 1 row in set (0.00 sec)
+```
 
 # remain the window above and open the another window and execute dump
 
-[root@www ~]# mysqldump -u root -p --all-databases --lock-all-tables --events > mysql_dump.sql 
+```shell
+[root@www ~]# mysqldump -u root -p --all-databases --lock-all-tables --events | gzip > mysql_dump.sql.gz
 
 Enter password:
 
 # back to the remained window and unlock
 
-MariaDB [(none)]> unlock tables; 
+MariaDB [(none)]> unlock tables;
 
 Query OK, 0 rows affected (0.00 sec)
 
@@ -140,22 +138,22 @@ Bye
 
 # transfer the dump to Slave Host
 
-$> scp mysql_dump.sql node01.srv.world:/tmp/ 
+$> scp mysql_dump.sql node01.srv.world:/tmp/
 
-~~~
+```
 
 5. Restore database on salve node
-  
 
-~~~shell
+
+```shell
 mysql -u root -p < /tmp/mysql_dump.sql
-~~~
+```
 
 6. Configure replica information on slave node:
-  
 
-~~~shell
-mysql -u root -p 
+
+```shell
+mysql -u root -p
 
 Enter password:
 
@@ -169,7 +167,10 @@ Copyright (c) 2000, 2015, Oracle, MariaDB Corporation Ab and others.
 
 Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-MariaDB [(none)]> change master to 
+-- MariaDB [(none)]> change master to  master_host='10.0.0.31', master_user='replica', master_password='password', master_log_file='mysql-bin.000002', master_log_pos=327;
+
+
+MariaDB [(none)]> change master to
 
     -> master_host='10.0.0.31',     # Master Hosts's IP
 
@@ -290,11 +291,11 @@ Master_SSL_Verify_Server_Cert: No
                 Parallel_Mode: conservative
 
 1 row in set (0.00 sec)
-~~~
+```
 
 7. Test your result on master node
 
-~~~shell
+```shell
 $> mysql -u root -p
 
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -336,11 +337,11 @@ MariaDB [testreplica]> select * from test_table;
 +------+-----------+
 
 1 row in set (0.00 sec)
-~~~
+```
 
 8. Test on salve node
 
-~~~shell
+```shell
 $> mysql
 
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
@@ -374,6 +375,6 @@ MariaDB [testreplica]> select * from test_table;
 +------+-----------+
 
 1 row in set (0.00 sec)
-~~~
+```
 
 Reference: <https://www.server-world.info/en/note?os=CentOS_7&p=mariadb101&f=3>
