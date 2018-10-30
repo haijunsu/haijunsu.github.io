@@ -7,6 +7,7 @@ tags: [ubuntu, dev]
 OS: Ubuntu 18.04 with xfce4 GUI
 ```shell
 sudo apt update
+sudo apt install build-essential
 
 # jdk
 sudo apt install default-jdk
@@ -26,6 +27,10 @@ sudo apt install mongodb-compass-community
 
 # php
 sudo apt install php php-dev
+
+# nvm/nodejs
+# https://github.com/creationix/nvm#install-script 
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 
 # python libs
 pip install --user -r requirment.txt
