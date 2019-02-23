@@ -31,3 +31,4 @@ WITH TOPTEN AS (
 )
 SELECT * FROM TOPTEN WHERE RowNo <= 10
 ```
+Source: <https://stackoverflow.com/questions/176964/select-top-10-records-for-each-category>
