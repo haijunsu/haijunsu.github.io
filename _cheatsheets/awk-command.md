@@ -6,6 +6,8 @@ tags: [awk, Linux]
 ---
 Source: <https://likegeeks.com/awk-command/>
 
+[Gawk User Manual](https://www.gnu.org/software/gawk/manual/html_node/index.html)
+
 ### Awk Options
 Awk can take the following options:
 **-F fs** To specify a file separator
@@ -233,6 +235,12 @@ The *ENVIRON* variable retreves the shell environment variables like this:
 ```shell
 $ awk 'BEGIN {print ENVIRON["PATH"]}'
 /home/testuser/bin:/home/testuser/.local/bin:/home/testuser/bin:/home/testuser/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+```
+
+### Remove duplicate lines
+
+```shell
+awk '!NF || !seen[$0]++'
 ```
 
 
