@@ -10,7 +10,7 @@ By default, the Windows server 2016 enables MapsBroker, OneSyncSvc and WbioSrvc 
 ```shell
 sc config "OneSyncSvc" start=disabled 
 sc config "MapsBroker" start=disabled
-sc config "WbioSvrc" start=disabled
+sc config "WbioSrvc" start=disabled
 
 sc stop "OneSyncSvc"
 sc stop "MapsBroker"
