@@ -28,6 +28,11 @@ docker images | grep -v REPOSITORY | awk '{printf("%s:%s\n", $1, $2)}' | xargs -
 docker inspect --format='{{ strformat }}' $(docker images --filter since=<image id> -q)
 ```
 
+### Check docker logs size
+```bash
+docker inspect --format='' $(docker ps -a -q) | grep "LogPath" | awk -F: '{gsub(/"/, "", $2); gsub(/ /, "", $2); print substr($2, 1, length($2)-1)}' | sudo xargs -n 1 du -ah
+```
+
 ### Removing Docker containers and images
 * List all exited containers
 ```bash
