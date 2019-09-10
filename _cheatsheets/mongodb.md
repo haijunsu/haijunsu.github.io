@@ -3,6 +3,34 @@ title: Mongodb
 author: Haijun (Navy) Su
 layout: page
 ---
+## Quick commands
+#### Show all databases
+```
+show dbs
+```
+
+#### Create a database
+```
+use <db name>
+```
+
+#### Add a collection
+```
+db.createCollection("<collection name>")
+```
+
+#### Show all collections in a database
+```
+show collections
+show tables
+db.getCollectionNames()
+```
+
+#### Show all users in a database
+```
+show users
+```
+
 ## Enable authenticaication and authorization
 * Create the user administrator (ex. userAdmin)
 ~~~
