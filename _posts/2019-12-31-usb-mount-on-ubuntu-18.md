@@ -1,9 +1,11 @@
 ---
 title: USB Mount on Ubuntu 18
 author: Haijun (Navy) Su
-layout: page
+layout: post
 tags: [ubuntu, usb]
 ---
+
+**NOTE:** To mount usb drive in fstab is better. See [Mount USB Drive Automatically on Ubuntu](/mount-usb-drive-automatically-on-ubuntu/)
 
 Install usbmount manually to support ubuntu 18.
 
