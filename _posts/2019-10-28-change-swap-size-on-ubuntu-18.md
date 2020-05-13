@@ -25,16 +25,17 @@ of = output file
 bs = block size
 count = multiplier of blocks
 
-##### Bake swap file
+#### Bake swap file
 
 ```
+# sudo chown 600 /swap.img
 # sudo mkswap /swap.img
 ```
 
 #### Activate the swap file
 
 ```
-# sudo swapon /swap.ime
+# sudo swapon /swap.img
 ```
 
 #### Check the amount of swap available
