@@ -28,7 +28,7 @@ count = multiplier of blocks
 #### Bake swap file
 
 ```
-# sudo chown 600 /swap.img
+# sudo chmod 600 /swap.img
 # sudo mkswap /swap.img
 ```
 
@@ -44,6 +44,11 @@ count = multiplier of blocks
 # grep 'Swap' /proc/meminfo
 
 # free
+```
+
+#### Update /etc/fstab
+```
+/swap.img    swap                    swap    defaults        0 0
 ```
 
 
