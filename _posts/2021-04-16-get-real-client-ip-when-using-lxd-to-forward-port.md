@@ -5,15 +5,15 @@ layout: post
 tags: [lxd, ubuntu, forward, port, ip]
 ---
 
-By default, the LXD port forwarding is non-nat mode. It will lost client ip information. In order to transmit client information, we need to add parameter `proxy_protocol=true` or `nat=true`.
+By default, the LXD port forwarding is non-nat mode. It will lost client ip information. In order to transmit client information, we need to add parameter `nat=true`. It requires the container has a static IP address.
 
 
 ```
-/snap/bin/lxc config device add "{ {container_name}}" http proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80 proxy_protocol=true
+/snap/bin/lxc config device add "{ {container_name}}" http proxy listen=tcp:0.0.0.0:80 connect=tcp:127.0.0.1:80 nat=true
 /snap/bin/lxc config device add "{ {container_name}}" https proxy listen=tcp:0.0.0.0:443 connect=tcp:127.0.0.1:443 nat=true
 ```
 
-If nat mode is true, it requires the container has a static IP address.
+If the parameter `proxy_protocol` is true, the traffice package may be modified by the proxy and cannot extablish a ssh connection.
 
 
 Reference:
