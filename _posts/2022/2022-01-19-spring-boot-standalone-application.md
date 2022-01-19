@@ -6,9 +6,7 @@ tags: [java, spring]
 ---
 
 ### Disable WebContainer
-
 Since Spring 2.0.0, Spring provides [WebApplicationType Enum](https://docs.spring.io/spring-boot/docs/current/api/org/springframework/boot/WebApplicationType.html) to give more controls of SpringApplication. Currently it supports the following types:
-
 - **None**: The application should not run as a web application and should not start an embedded web servicer.
 - **REACTIVE**: The application should run as a reactive web application and should start an embedded reactive web server.
 - **SERVLET**: THe application should run as a servlet-based web application and should start an embedded servlet web server.
