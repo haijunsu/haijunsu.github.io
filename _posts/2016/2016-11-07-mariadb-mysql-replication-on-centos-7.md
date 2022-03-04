@@ -9,7 +9,7 @@ Master node: db01
 
 Slave node: db02
 
-** Suggestion: Create a seperate configure file and put it at /etc/my.cnf.d/. We don't have to modify server.cnf file. **
+** Suggestion: Create a seperate configure file and put it at /etc/my.cnf.d/99-mysql-server.conf. We don't have to modify server.cnf file. **
 
 1. On master node:
 
@@ -122,7 +122,7 @@ MariaDB [(none)]> show master status;
 # remain the window above and open the another window and execute dump
 
 ```shell
-[root@www ~]# mysqldump -u root -p --all-databases --lock-all-tables --events | gzip > mysql_dump.sql.gz
+[root@www ~]# mysqldump -u root -p --all-databases --lock-all-tables --events --master-data| gzip > mysql_dump.sql.gz
 
 Enter password:
 
@@ -377,4 +377,6 @@ MariaDB [testreplica]> select * from test_table;
 1 row in set (0.00 sec)
 ```
 
-Reference: <https://www.server-world.info/en/note?os=CentOS_7&p=mariadb101&f=3>
+Reference: 
+- <https://www.server-world.info/en/note?os=CentOS_7&p=mariadb101&f=3>
+- <https://hevodata.com/learn/mysql-master-slave-replication/>
