@@ -9,7 +9,7 @@ tags: [linux, android, termux]
 
 - Run the following command to install zash and fonts
 
-```
+```shell
 pkg install root-repo x11-repo
 apt update
 apt upgrade

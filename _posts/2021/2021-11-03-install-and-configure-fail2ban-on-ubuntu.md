@@ -6,7 +6,8 @@ tags: [ubuntu, fail2ban]
 ---
 
 ## Install from the default Ubuntu repositories
-```
+
+```shell
 $ sudo apt update
 $ sudo apt install fail2ban
 $ sudo systemctl status fail2ban
@@ -14,14 +15,15 @@ $ sudo systemctl status fail2ban
 
 ## Fail2ban Configuration
 1. Create a `.local` configuration file from the default jail.conf
-```
+
+```shell
 $ cd /etc/fail2ban
 $ sudo cp jail.conf jail.local
 ```
 
 2. Modify `jail.local`
 
-```
+```ini
 ignoreip = 127.0.0.1/8 ::1 192.168.1.0/24
 
 # if it is a negative number, it will ban permanently.
@@ -46,7 +48,8 @@ ignoreip = 127.0.0.1/8 ::1 192.168.1.0/24
 ```
 
 ## Restart the fail2ban service
-```
+
+```shell
 $ sudo systemctl restart fail2ban
 $ sudo systemctl status fail2ban
 ```
@@ -54,17 +57,20 @@ $ sudo systemctl status fail2ban
 ## Check status from Fail2ban Client
 
 1. Check the jail status:
-```
+
+```shell
 $ sudo fail2ban-client status sshd
 ```
 
 2. Unban an IP:
-```
+
+```shell
 $ sudo fail2ban-client set sshd unbanip 123.12.3.123
 ```
 
 3. Ban an IP:
-```
+
+```shell
 $ sudo fail2ban-client set sshd banip 123.12.3.123
 ```
 

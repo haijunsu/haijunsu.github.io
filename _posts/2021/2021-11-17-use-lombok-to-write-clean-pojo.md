@@ -27,7 +27,7 @@ All together now: A shortcut for `@ToString`, `@EqualsAndHashCode`, `@Getter` on
 
 TO include lombok as 'provided' dependency, add it to `<dependencies>` block:
 
-```
+```xml
 <dependencies>
 	<dependency>
 		<groupId>org.projectlombok</groupId>

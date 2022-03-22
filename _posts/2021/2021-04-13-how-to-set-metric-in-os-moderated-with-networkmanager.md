@@ -9,45 +9,45 @@ Ubuntu 20.04 desktop is using NetworkManager. Here is how to change the metric o
 
 ### List connections
 
-```
+```shell
 ~  sudo nmcli connection                                                                                                                                                                                      
-NAME                UUID                                  TYPE      DEVICE                                                                                                                                            
-Wired connection 1  72375b91-f2de-3578-9d67-53a858274d98  ethernet  enp1s0                                                                                                                                            
-br-880ef0d795b5     8cc8bc46-b993-48fe-a0cd-fcd79d3d1219  bridge    br-880ef0d795b5                                                                                                                                   
-br-9d2f41504a75     5e5f7b3b-75a4-440f-b9b5-e7daf9654745  bridge    br-9d2f41504a75                                                                                                                                   
-Wired connection 2  fbe3615c-f9ab-3330-8f06-6e53a6cc8d25  ethernet  enp2s0                                                                                                                                            
-docker0             0d1615ea-e595-477c-b92d-584274f7df7e  bridge    docker0                                                                                                                                           
+NAME                UUID                                  TYPE      DEVICE
+Wired connection 1  72375b91-f2de-3578-9d67-53a858274d98  ethernet  enp1s0  
+br-880ef0d795b5     8cc8bc46-b993-48fe-a0cd-fcd79d3d1219  bridge    br-880ef0d795b5
+br-9d2f41504a75     5e5f7b3b-75a4-440f-b9b5-e7daf9654745  bridge    br-9d2f41504a75
+Wired connection 2  fbe3615c-f9ab-3330-8f06-6e53a6cc8d25  ethernet  enp2s0 
+docker0             0d1615ea-e595-477c-b92d-584274f7df7e  bridge    docker0  
 ```
 
 ### Edit connection by name
 
-```
-~  sudo nmcli connection edit "Wired connection 1"                                                                                                                                                            
-===| nmcli interactive connection editor |===                                                                                                                                                                         
-                                                                                                                                                                                               
-Editing existing '802-3-ethernet' connection: 'Wired connection 1'                                                                                                                                                    
-                                                                                                                                                                                               
-Type 'help' or '?' for available commands.                                                                                                                                                                            
-Type 'print' to show all the connection properties.                                                                                                                                                                   
-Type 'describe [<setting>.<prop>]' for detailed property description.                                                                                                                                                 
-                                                                                                                                                                                               
-You may edit the following settings: connection, 802-3-ethernet (ethernet), 802-1x, dcb, sriov, ethtool, match, ipv4, ipv6, tc, proxy                                                                                 
-nmcli> set ipv4.route-metric 500                                                                                                                                                                                      
-nmcli> save                                                                                                                                                                                                           
-Connection 'Wired connection 1' (72375b91-f2de-3578-9d67-53a858274d98) successfully updated.                                                                                                                          
-nmcli> quit                                                                                                                                                                                                           
+```shell
+~  sudo nmcli connection edit "Wired connection 1" 
+===| nmcli interactive connection editor |=== 
+
+Editing existing '802-3-ethernet' connection: 'Wired connection 1'
+
+Type 'help' or '?' for available commands. 
+Type 'print' to show all the connection properties. 
+Type 'describe [<setting>.<prop>]' for detailed property description.  
+    
+You may edit the following settings: connection, 802-3-ethernet (ethernet), 802-1x, dcb, sriov, ethtool, match, ipv4, ipv6, tc, proxy   
+nmcli> set ipv4.route-metric 500 
+nmcli> save   
+Connection 'Wired connection 1' (72375b91-f2de-3578-9d67-53a858274d98) successfully updated.  
+nmcli> quit    
 ```
 
 ### Restart NetworkManager
 
-```
-~  sudo systemctl restart NetworkManager                                                                                                                                                                     
+```shell
+~  sudo systemctl restart NetworkManager 
 ```
 
 ### Check results
 
-```
-~  ip r                                                                                                                                                                                                       
+```shell
+~  ip r 
 default via 192.168.122.1 dev enp1s0 proto dhcp metric 100                                                 
 default via 192.168.68.254 dev enp2s0 proto dhcp metric 101                                                  
 default via 192.168.122.1 dev enp1s0 proto dhcp metric 500                                                 

@@ -7,7 +7,7 @@ tags: [Java, Spring, security, web]
 
 #### Dependencies
 
-```
+```xml
 <dependency>
   <groupId>org.springframework.boot</groupId>
   <artifactId>spring-boot-starter-security</artifactId>
@@ -22,7 +22,7 @@ tags: [Java, Spring, security, web]
 
 #### Configuration Example
 
-```
+```java
 package com.example.securingweb;
 
 import org.springframework.context.annotation.Bean;

@@ -9,7 +9,7 @@ The problem is snaps packages is using the folders `/var/lib/snapd` and `/var/sn
 The original script is from <https://askubuntu.com/questions/1029562/move-snap-packages-to-another-location-directory>
 
 
-```
+```shell
 ##############################################################################
 # Take Care this section may break the System !!!
 ##############################################################################

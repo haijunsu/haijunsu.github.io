@@ -12,7 +12,7 @@ Since Spring 2.0.0, Spring provides [WebApplicationType Enum](https://docs.sprin
 - **SERVLET**: THe application should run as a servlet-based web application and should start an embedded servlet web server.
 
 
-```
+```ini
 spring.main.web-application-type=none
 ```
 
@@ -20,7 +20,7 @@ spring.main.web-application-type=none
 
 Here an example. For detail to check on the [github](https://github.com/haijunsu/GroupStudy/tree/master/haijun/java/JavaBasic).
 
-```
+```java
 package com.navysu.java.basic;
 
 import org.springframework.beans.factory.annotation.Autowired;
