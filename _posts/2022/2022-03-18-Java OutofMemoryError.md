@@ -50,7 +50,7 @@ tags: [java]
 	- JMX (Java Management Extensions)
 	VisualVM will automatically detect and connect to JVM applications that are running on version 6 of the JDK or that that have been started with the correct system properties on Version 5.0.
 
-```
+```shell
 # tools.policy
 grant {
 	permission java.security.AllPermission;
@@ -60,7 +60,7 @@ jstatd -p 1089 -J-Djava.security.policy=tools.policy
 ```
 
 
-```
+```shell
 java -Dcom.sun.management.jmxremote
      -Dcom.sun.management.jmxremote.port=1089 \
      -Dcom.sun.management.jmxremote.ssl=false \

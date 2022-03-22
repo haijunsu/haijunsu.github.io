@@ -25,7 +25,7 @@ body {
 
 .container {
   margin: 0 auto;
-  max-width: 740px;
+  max-width: 1024px;
   padding: 0 10px;
   width: 100%;
 }
@@ -422,15 +422,47 @@ border-top: 1px solid #eee;
     cursor: pointer;
 }
 
-// div .highlight {
-//    border: unset;
-//    -webkit-box-shadow: unset;
-//    box-shadow: unset;
-// }
+div .highlight {
+   //border: unset;
+   -webkit-box-shadow: unset;
+   box-shadow: unset;
+   overflow-x: auto;
+   overflow-y: hidden;
+   border-radius: 0.2rem;
+   position: relative;
+}
+
+.highlight, pre.highlight {
+  background-color: #EFEFEF;
+  //background-color: #282c34;
+  // background: #282c34;
+  //color: #abb2bf;
+}
+
+
+div.highlight button {
+  //color: #adb5bd;
+  box-sizing: border-box;
+  transition: 0.2s ease-out;
+  cursor: pointer;
+  user-select: none;
+  //background: rgba(0, 0, 0, 0.15);
+  background: #5DEFF3;
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: 5px 10px;
+  font-size: 0.8em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 0 0.15rem;
+}
 
 code {
+    //background-color: #282c34 ;
     background-color: #EFEFEF ;
+    // color: #abb2bf ;
 }
+
 
 .highlight .hll { background-color: #ffffcc }
 .highlight .c { color: #8f5902; font-style: italic } /* Comment */

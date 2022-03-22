@@ -8,7 +8,7 @@ tags: [kafka, java, python]
 
 ## Docker composefile for a single node
 
-```
+```yaml
 version: '2'
 services:
 
@@ -46,7 +46,7 @@ services:
 
 ## Docker composefile for a cluster
 
-```
+```yaml
 version: '2'
 services:
 
@@ -149,14 +149,19 @@ services:
 
 ## Logging into the Kafka Container
 
-        docker exec -it kafka-broker /bin/bash
+```shell
+docker exec -it kafka-broker /bin/bash
+```
 
 ## Navigate to the Kafka Scripts directory
 
-        cd /opt/bitnami/kafka/bin
+```shell
+   cd /opt/bitnami/kafka/bin
+```
 
 ## Creating new Topics
 
+```shell
         ./kafka-topics.sh \
             --bootstrap-server localhost:29092 \
             --create \
@@ -170,68 +175,83 @@ services:
             --topic kafka.learning.alerts \
             --partitions 1 \
             --replication-factor 1
+```
 
 ## Listing Topics
 
+```shell
         ./kafka-topics.sh \
             --bootstrap-server localhost:29092 \
             --list
+```
 
 ## Getting details about a Topic
 
+```shell
         ./kafka-topics.sh \
             --bootstrap-server localhost:29092 \
             --describe
-
+```
 
 ## Publishing Messages to Topics
 
+```shell
         ./kafka-console-producer.sh \
             --bootstrap-server localhost:29092 \
             --topic kafka.learning.tweets
+```
 
 ## Consuming Messages from Topics
 
+```shell
         ./kafka-console-consumer.sh \
             --bootstrap-server localhost:29092 \
             --topic kafka.learning.tweets \
             --from-beginning
+```
 
 ## Deleting Topics
 
+```shell
         ./kafka-topics.sh \
             --bootstrap-server localhost:29092 \
             --delete \
             --topic kafka.learning.alerts
-            
+```
             
 ## Create a Topic with multiple partitions
 
+```shell
         ./kafka-topics.sh \
             --bootstrap-server localhost:29092 \
             --create \
             --topic kafka.learning.orders \
             --partitions 3 \
             --replication-factor 1
-
+```
 
 ## Check topic partitioning
 
+```shell            
         ./kafka-topics.sh \
             --bootstrap-server localhost:29092 \
             --topic kafka.learning.orders \
             --describe
+```
 
 ## Publishing Messages to Topics with keys
 
+```shell
         ./kafka-console-producer.sh \
             --bootstrap-server localhost:29092 \
             --property "parse.key=true" \
             --property "key.separator=:" \
             --topic kafka.learning.orders
+```
 
 ## Consume messages using a consumer group
 
+```shell
         ./kafka-console-consumer.sh \
             --bootstrap-server localhost:29092 \
             --topic kafka.learning.orders \
@@ -239,12 +259,15 @@ services:
             --property print.key=true \
             --property key.separator=" = " \
             --from-beginning
+```
 
 ## Check current status of offsets
 
+```shell
         ./kafka-consumer-groups.sh \
             --bootstrap-server localhost:29092 \
             --describe \
             --all-groups
+```
 
 Another resource: <https://developer.confluent.io/quickstart/kafka-docker/>
