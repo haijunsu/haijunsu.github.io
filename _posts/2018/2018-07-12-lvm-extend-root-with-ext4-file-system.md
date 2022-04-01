@@ -16,7 +16,9 @@ tmpfs                              799M   67M  732M   9% /run
 ```
 
 **Solution:** Add a new disk and extend root partition
+
 * Check physical volume
+
 ```shell
 $ sudo pvdisplay
   --- Physical volume ---
@@ -30,17 +32,22 @@ $ sudo pvdisplay
   Allocated PE          10108
   PV UUID               ijgLbE-gtL8-MMyO-KamM-565M-2H0G-kulLHK
 ```
+
 * Check available disk (Because the machine is a VM, the disk device start with 'vd')
+
 ```shell
 $ ls /dev/vd*
 /dev/vda  /dev/vda1  /dev/vda2  /dev/vda5  /dev/vdb
 ```
+
 * Add /dev/vdb to volume group
+
 ```shell
 $ sudo vgextend silver-vg /dev/vdb
   Physical volume "/dev/vdb" successfully created
   Volume group "silver-vg" successfully extended
 ```
+
 ```shell
 $ sudo pvdisplay
   --- Physical volume ---
@@ -65,6 +72,7 @@ $ sudo pvdisplay
   Allocated PE          0
   PV UUID               2smifP-ZIqb-GbQI-EEmJ-LzaR-xvJs-kfV8AJ
 ```
+
 ```shell
 $ sudo vgdisplay silver-vg
   --- Volume group ---
@@ -88,11 +96,16 @@ $ sudo vgdisplay silver-vg
   Free  PE / Size       128008 / 500.03 GiB
   VG UUID               Z55Ym0-awj1-fkME-BK5O-k6Ab-xq4J-4RZ9yE
 ```
+
 * Extend logical volume
+
 ```shell
-$ sudo lvextend -L535G /dev/mapper/silver--vg-root
+#$ sudo lvextend -L535G /dev/mapper/silver--vg-root
+$ sudo lvextend -l+100FREE /dev/mapper/silver--vg-root
   Size of logical volume silver-vg/root changed from 530.00 GiB (135680 extents) to 535.00 GiB (136960 extents).
   Logical volume root successfully resized.
+
+
 ```
 ```shell
 $ sudo vgdisplay
