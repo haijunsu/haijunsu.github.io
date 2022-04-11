@@ -138,7 +138,7 @@ PS> Submit-Renewal -AllOrders
 or
 
 ```shell
-$ sudo pwsh Submit-Renewal -AllOrders
+$ sudo pwsh -Command Submit-Renewal -AllOrders
 ```
 
 
