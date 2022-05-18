@@ -3,3 +3,4 @@ gem 'github-pages', group: :jekyll_plugins
 gem 'jekyll-compose', group: [:jekyll_plugins]
 gem 'execjs'
 gem 'therubyracer', :platforms => :ruby
+gem "webrick", "~> 1.7"
