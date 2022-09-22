@@ -38,6 +38,7 @@ echo "---" >> ${FILE_NAME}
 echo "title: ${TITLE}" >> ${FILE_NAME}
 echo "author: Haijun (Navy) Su" >> ${FILE_NAME}
 echo "layout: ${DOC_LAYOUT}" >> ${FILE_NAME}
+echo "tags: []" >> ${FILE_NAME}
 echo "---" >> ${FILE_NAME}
 # NVIM=`which nvim`
 # if [ "x${NVIM}" != "x" ]; then
@@ -45,4 +46,4 @@ echo "---" >> ${FILE_NAME}
 # else
 #    vi ${FILE_NAME}
 # fi
-vi ${FILE_NAME}
+vim ${FILE_NAME}
