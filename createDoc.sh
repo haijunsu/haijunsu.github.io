@@ -11,8 +11,10 @@ fi
 # File name prefix
 if [ "$1" == "post" ]; then
     TODAY="$(date +%Y-%m-%d)"
-    FILE_NAME="${TODAY}"
+    YEAR="$(date +%Y)"
+    FILE_NAME="_posts/${YEAR}/${TODAY}"
     DOC_LAYOUT="post"
+    mkdir -p _posts/${YEAR}
 elif [ "$1" == "page" ]; then
     FILE_NAME=""
     DOC_LAYOUT="page"
@@ -26,7 +28,7 @@ TITLE=$*
 while (( "$#" )); do
     lcword=`echo "$1" | awk '{print tolower($0)}'`
     if [ "X${FILE_NAME}" == "X" ]; then
-        FILE_NAME=${lcword}
+        FILE_NAME="_cheatsheets/${lcword}"
     else
         FILE_NAME="${FILE_NAME}-${lcword}"
     fi
