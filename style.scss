@@ -432,7 +432,7 @@ div .highlight {
    position: relative;
 }
 
-.highlight, pre.highlight {
+pre.highlight {
   background-color: #EFEFEF;
   //background-color: #282c34;
   // background: #282c34;
@@ -457,10 +457,19 @@ div.highlight button {
   border-radius: 0 0.15rem;
 }
 
-code {
+.highlight {
     //background-color: #282c34 ;
-    background-color: #EFEFEF ;
+    //background-color: #EFEFEF ;
     // color: #abb2bf ;
+    background-color: #f6f8fa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 20px;
+    overflow-x: auto;
+    padding: 30px 10px 10px 10px; /* top, right, bottom, left */
+    white-space: pre-wrap;
+    word-wrap: break-word;
 }
 
 

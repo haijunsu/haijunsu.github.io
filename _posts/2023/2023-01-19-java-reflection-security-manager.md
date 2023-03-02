@@ -10,8 +10,6 @@ By default, the security manager is not loaded for an application. It allows to 
 Using the following code to check whether the security manager has been loadded or not.
 
 ```java
-
-
 SecurityManager smgr = System.getSecurityManager();
 if (smgr == null) {
   System.out.println("Security manager is not loaded.");
@@ -24,7 +22,6 @@ By passing the `-Djava.security.manager` option and `-Djava.security.policy` opt
 
 
 ```bash
-
 java -Djava.security.manager
     -Djava.security.policy=conf/myapp.policy
     com.myapp.Application
@@ -35,7 +32,6 @@ Example of `conf/myapp.policy`
 
 
 ```
-
 grant {
   // Grant permission to all programs to access inaccessible members
   permission java.lang.reflect.ReflectPermission "SuppressAccessChecks";
