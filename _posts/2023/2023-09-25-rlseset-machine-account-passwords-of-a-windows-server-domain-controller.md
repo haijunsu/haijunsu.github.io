@@ -40,10 +40,25 @@ Testing server: Default-First-Site-Name\server1
 
 ## Solution
 
-Reset the machine account password.
+* Reset the machine account password.
 
 ```bat
 netdom resetpwd /s:server2 /ud:mydomain\administrator /pd:*  
+```
+
+* Force sync all
+
+```bat
+repadmin /syncall /AeD
+repadmin /syncall /APeD
+
+```
+
+* Check DC status
+
+```
+dcdiag
+
 ```
 
 References:
