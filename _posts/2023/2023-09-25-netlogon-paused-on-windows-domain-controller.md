@@ -26,8 +26,8 @@ Here is another simple way:
 
 ```
 
-repadmin /options CCADNEW -DISABLE_INBOUND_REPL
-repadmin /options CCADNEW -DISABLE_OUTBOUND_REPL
+repadmin /options myserver -DISABLE_INBOUND_REPL
+repadmin /options myserver -DISABLE_OUTBOUND_REPL
 
 ```
 
