@@ -2,7 +2,7 @@
 title: Disable firewall on a network device
 author: Haijun (Navy) Su
 layout: post
-tags: [lxd lxc ufw]
+tags: [lxd, lxc, ufw]
 ---
 
 Firewall `ufw` block functional of `LXD` container. It needs to disable on the virtual network.

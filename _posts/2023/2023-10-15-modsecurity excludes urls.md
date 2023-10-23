@@ -2,7 +2,7 @@
 title: ModSecurity excludes urls
 author: Haijun (Navy) Su
 layout: post
-tags: [apache security mod security]
+tags: [apache, security, mod security]
 ---
 
 In the virtual host configuration file, add the following code.

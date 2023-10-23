@@ -2,7 +2,7 @@
 title: Limit docker log file size
 author: Haijun (Navy) Su
 layout: post
-tags: [Docker log]
+tags: [Docker, log]
 ---
 
 * Global
