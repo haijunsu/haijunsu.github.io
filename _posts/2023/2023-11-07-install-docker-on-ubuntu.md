@@ -88,8 +88,8 @@ sudo chmod +x /usr/bin/docker-compose
 * Verify Docker-compose
 
 ```bash
-
 docker-compose version
-
 ```
+
+If you want to run docker in lxd, please refer [Enalbe docker in LXD5](/enalbe-docker-in-lxd5/)
 
