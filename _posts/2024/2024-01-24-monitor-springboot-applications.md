@@ -23,3 +23,27 @@ Monitoring Spring Boot applications is essential for ensuring their health, perf
   * Prometheus is an open-source monitoring and alerting toolkit designed for reliability and scalability.
   * Integrating Spring Boot with Prometheus involves adding the `micrometer-registry-prometheus` dependency and configuring Prometheus properties.
   * Grafana can be used alongside Prometheus to visualize and analyze metrics data.
+
+* **ELK Stack (Elasticsearch, Logstash, Kibana)**
+  * THe ELK Stack is widely used for log monitoring and analysis.
+  * Spring Boot applications can be configured to send logs to Logstash, which then forwards them to Wlasticsearch for storage and indexing.
+  * Kibana is used for visualizing log data and creating dashboards.
+
+* **New Relic, AppDynamics, Dynatrace, etc.**
+  * Third-party APM (Application Performance Monitoring) tools like New Relic, AppDynamics, and Dynatrace provide comprehensive monitoring, tracing, and profiling capabilities.
+  * These tools often offer advanced features for identifying bottlenecks, analyzing performance, and detecting issues in your Spring Boot application.
+
+* **Custom Metrics with Micrometer**
+  * Micrometer is metrics collection facade that supports various monitoring system.
+  * You can use Micrometer to instrument your code and collect custom metrics.
+  Micrometer integrates with many monitoring systems, including Prometheus, Graphite, InfluxDB and more.
+
+* **Logging**
+  * Proper logging is crucial for monitoring and debugging applications.
+  * Configure logging in your Spring Boot application using frameworks like Logback or log4j.
+  * Utilize log levels and structured logging to provide detailed information about application behavior.
+
+* **Alerting**
+  * Set up alerting based on specific metrics or events using tools like Prometheus Alertmanager, Grafana alerts, or third-party APM alerting features.
+  * Receive notifications when predefined thresholds are exceeded or when critical issue are detected.
+
