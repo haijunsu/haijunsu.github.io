@@ -74,6 +74,12 @@ $ sudo fail2ban-client set sshd unbanip 123.12.3.123
 $ sudo fail2ban-client set sshd banip 123.12.3.123
 ```
 
+4. List all baned IPs
+
+```shell
+$ sudo zgrep 'Ban' /var/log/fail2ban.log*
+```
+
 Reference:
 <https://linuxize.com/post/install-configure-fail2ban-on-ubuntu-20-04/>
 
