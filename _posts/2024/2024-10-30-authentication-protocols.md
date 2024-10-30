@@ -1,5 +1,5 @@
 ---
-title: Types of Authentication Protocles
+title: Types of Authentication Protocols
 author: Haijun (Navy) Su
 layout: post
 tags: [sec security auth authentication protocol]
@@ -31,3 +31,11 @@ The message body will include the original message concatenated with the signatu
     * Signature components 's' and 'r'
     * Public key of the sender
     * Global public key
+
+## Authentication Methods
+
+* Certificate-based authentication
+* Kerberos-based authentication
+* OpenID-Oauth authentication
+* PAM_JAAS authentication
+* SMAL authentication
