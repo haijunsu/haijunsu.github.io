@@ -16,7 +16,7 @@ if [ "$1" == "post" ]; then
     DOC_LAYOUT="post"
     mkdir -p _posts/${YEAR}
 elif [ "$1" == "page" ]; then
-    FILE_NAME=""
+    FILE_NAME="_cheatsheets/${TODAY}"
     DOC_LAYOUT="page"
 else
     echo "Unsupport document type: $1"

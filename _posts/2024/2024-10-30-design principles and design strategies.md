@@ -2,7 +2,7 @@
 title: Design Principles and Design Strategies
 author: Haijun (Navy) Su
 layout: post
-tags: [design, software]
+tags: [design software]
 ---
 
 ## Design Principles
