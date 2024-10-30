@@ -37,11 +37,11 @@ BCNF is an advanced version of 3NF. A table is in BCNF if it is in 3NF and every
 
 Imagine a table storing information about employees and departments:
 
-EmployeeID|	EmployeeName|	Department	|DepartmentHead
----|---|---|---
-1|	Alice	|HR	|John
-2	|Bob	|IT	|Jane
-3	|Charlie	|IT	|Jane
+| EmployeeID | EmployeeName | Department | DepartmentHead |
+| ---------- | ------------ | ---------- | -------------- |
+| 1          | Alice        | HR         | John           |
+| 2          | Bob          | IT         | Jane           |
+| 3          | Charlie      | IT         | Jane           |
 
 **1NF:** The table is in 1NF because each cell contains a single value, and there are no repeating groups.
 
@@ -49,15 +49,15 @@ EmployeeID|	EmployeeName|	Department	|DepartmentHead
 
 **3NF:** The table is not in 3NF because DepartmentHead depends on Department, not just EmployeeID. To fix this, you split the table:
 
-EmployeeID	|EmployeeName	|Department
----|---|---
-1	|Alice	|HR
-2	|Bob	|IT
-3	|Charlie	|IT
+| EmployeeID | EmployeeName | Department |
+| ---------- | ------------ | ---------- |
+| 1          | Alice        | HR         |
+| 2          | Bob          | IT         |
+| 3          | Charlie      | IT         |
 
-Department|	DepartmentHead
----|---
-HR	|John
-IT	|Jane
+| Department | DepartmentHead |
+| ---------- | -------------- |
+| HR         | John           |
+| IT         | Jane           |
 
 BCNF: Both new tables are in BCNF because all determinants are candidate keys.
