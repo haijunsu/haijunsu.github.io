@@ -34,3 +34,4 @@ network:
     version: 2
 ```
 
+*For some reason, I have trouble with two network interfaces when I access the network from internet. I have to remove one interface*
