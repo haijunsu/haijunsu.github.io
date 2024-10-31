@@ -49,15 +49,19 @@ Imagine a table storing information about employees and departments:
 
 **3NF:** The table is not in 3NF because DepartmentHead depends on Department, not just EmployeeID. To fix this, you split the table:
 
+Employee Table:
+
 | EmployeeID | EmployeeName | Department |
 | ---------- | ------------ | ---------- |
 | 1          | Alice        | HR         |
 | 2          | Bob          | IT         |
 | 3          | Charlie      | IT         |
 
+Department Table:
+
 | Department | DepartmentHead |
 | ---------- | -------------- |
 | HR         | John           |
 | IT         | Jane           |
 
-BCNF: Both new tables are in BCNF because all determinants are candidate keys.
+**BCNF:** Both new tables are in BCNF because all determinants are candidate keys.
