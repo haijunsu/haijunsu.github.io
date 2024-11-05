@@ -2,7 +2,7 @@
 title: Imporve SQL Preformance
 author: Haijun (Navy) Su
 layout: post
-tags: [sql sqlserver]
+tags: [sql, sqlserver]
 ---
 
 * Avoid the use of `WHILE` loop
@@ -11,4 +11,4 @@ tags: [sql sqlserver]
 
 Reference:
 
-https://www.sqlshack.com/3-ways-to-improve-t-sql-performance/
+<https://www.sqlshack.com/3-ways-to-improve-t-sql-performance/>

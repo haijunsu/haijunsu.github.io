@@ -2,7 +2,7 @@
 title: SQL Command Category and Data Normalization
 author: Haijun (Navy) Su
 layout: post
-tags: [sql database]
+tags: [sql, database]
 ---
 
 ## Types of SQL Commands

@@ -2,7 +2,7 @@
 title: Apache Kafka Best Practices
 author: Haijun (Navy) Su
 layout: post
-tags: [Kafka message zookeeper mq]
+tags: [Kafka, message, zookeeper, mq]
 ---
 
 ## Managing Partition Counts
