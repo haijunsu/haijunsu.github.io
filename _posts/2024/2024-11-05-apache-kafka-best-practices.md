@@ -58,3 +58,7 @@ tags: [Kafka message zookeeper mq]
 * Configure multiple controllers (at least 3)
 * Use mirroring if geo-redundancy is required
 * Test resiliency use cases
+
+## References
+
+* Linkedin learning course "Apache Kafka Essential Training: Building Scalable Applications" by Kumaran Ponnambalam.
