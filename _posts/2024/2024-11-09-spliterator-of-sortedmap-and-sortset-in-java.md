@@ -1,5 +1,5 @@
 ---
-title: Spliterator of SortedMap and SortSet in Java
+title: Spliterator of SortedMap and SortedSet in Java
 author: Haijun (Navy) Su
 layout: post
 tags: [set, map, sort, sortedSet, sortedMap, spliterator, java]
