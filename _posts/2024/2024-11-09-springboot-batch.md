@@ -1,5 +1,5 @@
 ---
-title: Sprngboot Batch
+title: Springboot Batch
 author: Haijun (Navy) Su
 layout: post
 tags: [java, spring, springboot, batch]
