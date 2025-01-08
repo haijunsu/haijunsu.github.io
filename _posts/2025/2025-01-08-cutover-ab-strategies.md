@@ -1,5 +1,5 @@
 ---
-title: Cutover AB Strategies
+title: Cutover A/B Strategies
 author: Haijun (Navy) Su
 layout: post
 tags: [distributed, micro, services, migration]
