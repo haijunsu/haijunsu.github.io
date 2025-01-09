@@ -10,7 +10,10 @@ The GlobalProtect login page is using the embedded browser by default. Sometimes
 On Windows
 
 ```shell
+# 32 bit Windows
 msiexec.exe /i GlobalProtect.msi DEFAULTBROWSER=YES
+# 64 bit Windows
+msiexec.exe /i GlobalProtect64.msi DEFAULTBROWSER=YES
 ```
 
 On MacOS
