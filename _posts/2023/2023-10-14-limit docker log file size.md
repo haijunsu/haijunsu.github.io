@@ -5,6 +5,12 @@ layout: post
 tags: [Docker, log]
 ---
 
+* Check docker log file size
+
+```bash
+sudo du -h $(docker inspect --format='{{.LogPath}}' $(docker ps -qa))
+```
+
 * Global
 
 ```
@@ -19,7 +25,6 @@ sudo cat <<EOF > /etc/docker/daemon.json
 EOF
 sudo systemctl restart docker
 ```
-
 
 * Using Docker-compose
 
@@ -36,7 +41,7 @@ services:
       - 3000:3000
     networks:
       - main
-    command: "npm start" 
+    command: "npm start"
     logging:
       driver: "json-file"
       options:
@@ -53,7 +58,6 @@ services:
 
 ```
 
-
-Reference: 
+Reference:
 
 <https://stackoverflow.com/questions/57678774/is-there-a-way-to-specify-file-size-limit-for-docker-logs-on-google-container-op>
