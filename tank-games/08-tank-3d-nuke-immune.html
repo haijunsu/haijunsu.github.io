@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>3D Tank — Blast-Shielded Nukes</title><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#1a1a2e;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:sans-serif}</style></head><body>
+<div style="padding:.5rem;max-width:960px;width:100%">
+<div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;color:#aaa"><span id="sc" style="color:#fff;font-weight:500">Score: 0</span><span id="lv" style="color:#fff;font-weight:500">Lives: 3</span><span id="wv" style="color:#fff;font-weight:500">Wave: 1</span></div>
+<div style="position:relative;width:100%;background:#222;border-radius:12px;overflow:hidden;border:1px solid #333">
+<div id="gc" style="width:100%;height:540px"></div>
+<div id="fl" style="position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:1"></div>
+<div id="ov" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.6);color:#fff;text-align:center;padding:1rem;z-index:3">
+<div style="font-size:22px;font-weight:600;margin-bottom:8px">3D Tank — Blast-Shielded Nukes</div>
+<div style="font-size:13px;max-width:440px;line-height:1.7;margin-bottom:12px;opacity:.9">WASD drives. Mouse aims. Rapid-fire nukes that cannot hurt you. Green shield light. Walk through your own mushroom clouds.</div>
+<button id="sb" style="background:#fff;color:#222;border:none;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer">Start</button>
+</div></div></div>
+<script>window.GAME_CONFIG={"arena":160,"hasNuke":true,"blastImmune":true,"bulletSpeed":65,"fireCooldown":180,"blastRadius":22,"blastExpandSpeed":55,"blastDuration":3.5,"playerSpeed":16,"enemySpeed":6,"enemyFireRange":70,"enemyHp":3,"enemyBase":4,"enemyPerWave":3,"craterR":6,"whRadius":.5,"whLength":2.2,"bulletLife":3.5,"recoilAdd":.7,"shotShake":.5,"flashAdd":.5,"shakeAdd":2,"maxBlasts":6,"obsCount":18,"fogNear":80,"fogFar":220};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="engine3d.js"></script>
+</body></html>

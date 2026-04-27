@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>3D Tank — Nuclear Cannon</title><style>*{margin:0;padding:0;box-sizing:border-box}body{background:#1a1a2e;display:flex;justify-content:center;align-items:center;min-height:100vh;font-family:sans-serif}</style></head><body>
+<div style="padding:.5rem;max-width:960px;width:100%">
+<div style="display:flex;justify-content:space-between;margin-bottom:6px;font-size:13px;color:#aaa"><span id="sc" style="color:#fff;font-weight:500">Score: 0</span><span id="lv" style="color:#fff;font-weight:500">Lives: 3</span><span id="wv" style="color:#fff;font-weight:500">Wave: 1</span></div>
+<div style="position:relative;width:100%;background:#222;border-radius:12px;overflow:hidden;border:1px solid #333">
+<div id="gc" style="width:100%;height:540px"></div>
+<div id="fl" style="position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;z-index:1"></div>
+<div id="ov" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(0,0,0,.6);color:#fff;text-align:center;padding:1rem;z-index:3">
+<div style="font-size:22px;font-weight:600;margin-bottom:8px">3D Tank — Nuclear Cannon</div>
+<div style="font-size:13px;max-width:440px;line-height:1.7;margin-bottom:12px;opacity:.9">WASD drives. Mouse aims. Fires warheads with mushroom clouds, craters, shockwaves. Mind the blast!</div>
+<button id="sb" style="background:#fff;color:#222;border:none;padding:10px 24px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer">Start</button>
+</div></div></div>
+<script>window.GAME_CONFIG={"arena":140,"hasNuke":true,"bulletSpeed":50,"fireCooldown":1600,"blastRadius":28,"blastExpandSpeed":45,"blastDuration":4,"selfDamageR":14,"playerSpeed":14,"enemySpeed":6,"enemyFireRange":70,"enemyHp":3,"enemyBase":3,"enemyPerWave":2,"craterR":6,"whRadius":.5,"whLength":2.2,"bulletLife":4,"recoilAdd":1,"shotShake":.8,"flashAdd":.8,"shakeAdd":2.5,"obsCount":14,"fogNear":60,"fogFar":180};</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="engine3d.js"></script>
+</body></html>
