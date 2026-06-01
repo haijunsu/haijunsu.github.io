@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homing Rockets 3D — Many Targets</title>
+<style>
+  :root{
+    --color-background-secondary:#f0f0ee;
+    --color-border-tertiary:#d8d8d4;
+    --color-text-primary:#1a1a1a;
+    --color-text-secondary:#555;
+    --color-text-tertiary:#999;
+    --border-radius-lg:12px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#fafaf8;color:#1a1a1a;}
+  .wrap{max-width:1100px;margin:0 auto;}
+  h1{font-size:20px;font-weight:600;margin:0 0 4px;}
+  .sub{font-size:13px;color:#777;margin:0 0 18px;}
+  button{font-size:13px;padding:7px 14px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer;}
+  button:hover{background:#f2f2f2;}
+  input[type=range]{accent-color:#d85a30;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Homing Rockets 3D — Many Targets</h1>
+<p class="sub">Click to spawn rocket · Each rocket locks onto its nearest target</p>
+
+<h2 class="sr-only">Interactive 3D simulation where homing rockets pursue multiple wandering targets, each rocket locked onto its nearest target using pure pursuit guidance.</h2>
+
+<div style="margin: 0 0 12px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+  <button id="spawn-btn" style="font-size: 13px;">Launch rocket</button>
+  <button id="barrage-btn" style="font-size: 13px;">Barrage (10)</button>
+  <button id="add-target-btn" style="font-size: 13px;">Add target</button>
+  <button id="reset-btn" style="font-size: 13px;">Reset</button>
+  <button id="pause-btn" style="font-size: 13px;">Pause</button>
+</div>
+
+<div style="margin: 0 0 12px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--color-text-secondary);">
+  Targets: <span id="t-count" style="color: var(--color-text-primary); font-weight: 500;">0</span>
+  &nbsp;·&nbsp; Rockets: <span id="r-count" style="color: var(--color-text-primary); font-weight: 500;">0</span>
+  &nbsp;·&nbsp; Hits: <span id="hits" style="color: var(--color-text-primary); font-weight: 500;">0</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 12px; margin: 0 0 8px; font-size: 13px;">
+  <label style="color: var(--color-text-secondary); min-width: 90px;">Targets</label>
+  <input type="range" min="1" max="20" step="1" value="6" id="targets" style="flex: 1;">
+  <span id="targets-out" style="min-width: 40px; font-weight: 500;">6</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; margin: 0 0 8px; font-size: 13px;">
+  <label style="color: var(--color-text-secondary); min-width: 90px;">Turn rate</label>
+  <input type="range" min="0.5" max="6" step="0.1" value="2.2" id="turn" style="flex: 1;">
+  <span id="turn-out" style="min-width: 40px; font-weight: 500;">2.2</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; margin: 0 0 12px; font-size: 13px;">
+  <label style="color: var(--color-text-secondary); min-width: 90px;">Rocket speed</label>
+  <input type="range" min="3" max="20" step="0.5" value="9" id="speed" style="flex: 1;">
+  <span id="speed-out" style="min-width: 40px; font-weight: 500;">9</span>
+</div>
+
+<div id="stage" style="position: relative; width: 100%; aspect-ratio: 16/10; background: var(--color-background-secondary); border-radius: var(--border-radius-lg); border: 0.5px solid var(--color-border-tertiary); overflow: hidden; cursor: crosshair;">
+  <div id="hint" style="position: absolute; top: 12px; left: 14px; font-size: 12px; color: var(--color-text-tertiary); pointer-events: none; z-index: 2;">
+    Click to spawn rocket · Each rocket locks onto its nearest target
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const stage = document.getElementById('stage');
+  const tCountEl = document.getElementById('t-count');
+  const rCountEl = document.getElementById('r-count');
+  const hitsEl = document.getElementById('hits');
+  const targetsSlider = document.getElementById('targets');
+  const targetsOut = document.getElementById('targets-out');
+  const turnSlider = document.getElementById('turn');
+  const turnOut = document.getElementById('turn-out');
+  const speedSlider = document.getElementById('speed');
+  const speedOut = document.getElementById('speed-out');
+
+  const scene = new THREE.Scene();
+  scene.background = null;
+  scene.fog = new THREE.Fog(0xeeeeee, 70, 220);
+
+  const camera = new THREE.PerspectiveCamera(55, 16/10, 0.1, 600);
+  camera.position.set(0, 40, 70);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  const resize = () => {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h);
+    camera.aspect = w / h;
+    camera.updateProjectionMatrix();
+  };
+  stage.appendChild(renderer.domElement);
+  resize();
+  window.addEventListener('resize', resize);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.7));
+  const dir = new THREE.DirectionalLight(0xffffff, 0.6);
+  dir.position.set(20, 40, 15);
+  scene.add(dir);
+
+  const grid = new THREE.GridHelper(160, 32, 0x999999, 0xcccccc);
+  grid.position.y = -10;
+  scene.add(grid);
+
+  const targets = [];
+  const targetColors = [0x1d9e75, 0x378add, 0xd4537e, 0xbA7517, 0x639922, 0x7f77dd, 0xd85a30, 0x5dcaa5];
+
+  function makeTarget(){
+    const color = targetColors[targets.length % targetColors.length];
+    const mesh = new THREE.Mesh(
+      new THREE.IcosahedronGeometry(1.2, 0),
+      new THREE.MeshStandardMaterial({ color, flatShading: true })
+    );
+    const ring = new THREE.Mesh(
+      new THREE.RingGeometry(1.7, 2.0, 32),
+      new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide, transparent: true, opacity: 0.45 })
+    );
+    ring.rotation.x = Math.PI / 2;
+    mesh.add(ring);
+
+    mesh.position.set(
+      (Math.random() - 0.5) * 80,
+      Math.random() * 18 - 2,
+      (Math.random() - 0.5) * 80
+    );
+    mesh.userData.vel = new THREE.Vector3(
+      (Math.random() - 0.5) * 8,
+      (Math.random() - 0.5) * 2,
+      (Math.random() - 0.5) * 8
+    );
+    mesh.userData.alive = true;
+    mesh.userData.color = color;
+    mesh.userData.ring = ring;
+    scene.add(mesh);
+    targets.push(mesh);
+  }
+
+  function setTargetCount(n){
+    while (targets.length < n) makeTarget();
+    while (targets.length > n){
+      const t = targets.pop();
+      scene.remove(t);
+    }
+    tCountEl.textContent = targets.filter(t => t.userData.alive).length;
+  }
+
+  const rockets = [];
+  const trails = [];
+
+  function makeRocket() {
+    const group = new THREE.Group();
+    const body = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.25, 0.35, 1.6, 12),
+      new THREE.MeshStandardMaterial({ color: 0xd85a30, flatShading: true })
+    );
+    body.rotation.x = Math.PI / 2;
+    group.add(body);
+    const nose = new THREE.Mesh(
+      new THREE.ConeGeometry(0.25, 0.6, 12),
+      new THREE.MeshStandardMaterial({ color: 0x712b13, flatShading: true })
+    );
+    nose.rotation.x = Math.PI / 2;
+    nose.position.z = 1.0;
+    group.add(nose);
+    const finMat = new THREE.MeshStandardMaterial({ color: 0x3c3489, flatShading: true });
+    for (let i = 0; i < 4; i++) {
+      const fin = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.5, 0.5), finMat);
+      const a = (i * Math.PI) / 2;
+      fin.position.set(Math.cos(a) * 0.35, Math.sin(a) * 0.35, -0.6);
+      fin.rotation.z = a;
+      group.add(fin);
+    }
+    const flame = new THREE.Mesh(
+      new THREE.ConeGeometry(0.25, 0.9, 10),
+      new THREE.MeshBasicMaterial({ color: 0xef9f27, transparent: true, opacity: 0.85 })
+    );
+    flame.rotation.x = -Math.PI / 2;
+    flame.position.z = -1.1;
+    group.add(flame);
+    group.userData.flame = flame;
+    return group;
+  }
+
+  function spawnRocket(){
+    if (targets.filter(t => t.userData.alive).length === 0) return;
+    const r = makeRocket();
+    const theta = Math.random() * Math.PI * 2;
+    const dist = 50 + Math.random() * 15;
+    const pos = new THREE.Vector3(
+      Math.cos(theta) * dist,
+      8 + (Math.random() - 0.5) * 12,
+      Math.sin(theta) * dist
+    );
+    r.position.copy(pos);
+
+    let nearest = null, nd = Infinity;
+    for (const t of targets){
+      if (!t.userData.alive) continue;
+      const d = pos.distanceTo(t.position);
+      if (d < nd){ nd = d; nearest = t; }
+    }
+    if (!nearest) return;
+
+    const dirVec = new THREE.Vector3().subVectors(nearest.position, pos).normalize();
+    r.userData.vel = dirVec.clone().multiplyScalar(parseFloat(speedSlider.value));
+    r.userData.alive = true;
+    r.userData.target = nearest;
+    scene.add(r);
+    rockets.push(r);
+
+    const maxTrail = 35;
+    const positions = new Float32Array(maxTrail * 3);
+    const trailGeom = new THREE.BufferGeometry();
+    trailGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    trailGeom.setDrawRange(0, 0);
+    const trailMat = new THREE.LineBasicMaterial({ color: 0xd85a30, transparent: true, opacity: 0.5 });
+    const trail = new THREE.Line(trailGeom, trailMat);
+    scene.add(trail);
+    trails.push({ line: trail, positions, count: 0, max: maxTrail, rocket: r });
+
+    rCountEl.textContent = rockets.filter(x => x.userData.alive).length;
+  }
+
+  document.getElementById('spawn-btn').addEventListener('click', spawnRocket);
+  document.getElementById('barrage-btn').addEventListener('click', () => {
+    for (let i = 0; i < 10; i++) setTimeout(spawnRocket, i * 70);
+  });
+  document.getElementById('add-target-btn').addEventListener('click', () => {
+    const next = Math.min(20, targets.length + 1);
+    targetsSlider.value = next;
+    targetsOut.textContent = next;
+    setTargetCount(next);
+  });
+  stage.addEventListener('click', spawnRocket);
+
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    rockets.forEach(r => scene.remove(r));
+    trails.forEach(t => scene.remove(t.line));
+    rockets.length = 0;
+    trails.length = 0;
+    targets.forEach(t => scene.remove(t));
+    targets.length = 0;
+    hits = 0;
+    hitsEl.textContent = 0;
+    rCountEl.textContent = 0;
+    setTargetCount(parseInt(targetsSlider.value));
+  });
+
+  let paused = false;
+  const pauseBtn = document.getElementById('pause-btn');
+  pauseBtn.addEventListener('click', () => {
+    paused = !paused;
+    pauseBtn.textContent = paused ? 'Resume' : 'Pause';
+  });
+
+  targetsSlider.addEventListener('input', () => {
+    const n = parseInt(targetsSlider.value);
+    targetsOut.textContent = n;
+    setTargetCount(n);
+  });
+  turnSlider.addEventListener('input', () => turnOut.textContent = parseFloat(turnSlider.value).toFixed(1));
+  speedSlider.addEventListener('input', () => speedOut.textContent = parseFloat(speedSlider.value).toFixed(1));
+
+  const bursts = [];
+  function explode(pos, color){
+    const group = new THREE.Group();
+    const count = 14;
+    const dirs = [];
+    for (let i = 0; i < count; i++){
+      const m = new THREE.Mesh(
+        new THREE.SphereGeometry(0.18, 6, 6),
+        new THREE.MeshBasicMaterial({ color: color || 0xef9f27, transparent: true, opacity: 1 })
+      );
+      m.position.copy(pos);
+      group.add(m);
+      const d = new THREE.Vector3(Math.random()-0.5, Math.random()-0.5, Math.random()-0.5).normalize().multiplyScalar(8 + Math.random()*4);
+      dirs.push(d);
+    }
+    scene.add(group);
+    bursts.push({ group, dirs, life: 0, max: 0.6 });
+  }
+
+  setTargetCount(parseInt(targetsSlider.value));
+
+  let hits = 0;
+  let last = performance.now();
+  let camAngle = 0;
+  const BOUND = 50;
+
+  function tick(now){
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    if (!paused){
+      for (const t of targets){
+        if (!t.userData.alive) continue;
+        const v = t.userData.vel;
+        v.x += (Math.random() - 0.5) * dt * 4;
+        v.y += (Math.random() - 0.5) * dt * 1.2;
+        v.z += (Math.random() - 0.5) * dt * 4;
+        const sp = v.length();
+        const maxSp = 7;
+        if (sp > maxSp) v.multiplyScalar(maxSp / sp);
+        if (Math.abs(t.position.x) > BOUND) v.x -= Math.sign(t.position.x) * dt * 6;
+        if (Math.abs(t.position.z) > BOUND) v.z -= Math.sign(t.position.z) * dt * 6;
+        if (t.position.y > 22) v.y -= dt * 4;
+        if (t.position.y < -6) v.y += dt * 4;
+        t.position.addScaledVector(v, dt);
+        t.userData.ring.rotation.z += dt * 1.0;
+        t.rotation.x += dt * 0.4;
+        t.rotation.y += dt * 0.6;
+      }
+
+      const turnRate = parseFloat(turnSlider.value);
+      const speed = parseFloat(speedSlider.value);
+
+      for (const r of rockets){
+        if (!r.userData.alive) continue;
+        if (!r.userData.target || !r.userData.target.userData.alive){
+          let nearest = null, nd = Infinity;
+          for (const t of targets){
+            if (!t.userData.alive) continue;
+            const d = r.position.distanceTo(t.position);
+            if (d < nd){ nd = d; nearest = t; }
+          }
+          r.userData.target = nearest;
+          if (!nearest){
+            r.userData.alive = false;
+            scene.remove(r);
+            continue;
+          }
+        }
+
+        const tgt = r.userData.target;
+        const v = r.userData.vel;
+        const desired = new THREE.Vector3().subVectors(tgt.position, r.position).normalize();
+        const currentDir = v.clone().normalize();
+        const dot = Math.max(-1, Math.min(1, currentDir.dot(desired)));
+        const angle = Math.acos(dot);
+        const maxStep = turnRate * dt;
+        let newDir;
+        if (angle < 1e-4){
+          newDir = desired;
+        } else {
+          const t = Math.min(1, maxStep / angle);
+          const sinA = Math.sin(angle);
+          const a = Math.sin((1 - t) * angle) / sinA;
+          const b = Math.sin(t * angle) / sinA;
+          newDir = currentDir.multiplyScalar(a).add(desired.clone().multiplyScalar(b)).normalize();
+        }
+        v.copy(newDir.multiplyScalar(speed));
+        r.position.addScaledVector(v, dt);
+
+        const m = new THREE.Matrix4().lookAt(new THREE.Vector3(0,0,0), v.clone().negate(), new THREE.Vector3(0,1,0));
+        r.quaternion.setFromRotationMatrix(m);
+
+        const flame = r.userData.flame;
+        flame.scale.set(1, 0.7 + Math.random()*0.6, 1);
+
+        if (r.position.distanceTo(tgt.position) < 1.6){
+          r.userData.alive = false;
+          scene.remove(r);
+          tgt.userData.alive = false;
+          scene.remove(tgt);
+          explode(tgt.position.clone(), tgt.userData.color);
+          hits++;
+          hitsEl.textContent = hits;
+        }
+        if (r.position.length() > 250){
+          r.userData.alive = false;
+          scene.remove(r);
+        }
+      }
+
+      for (const t of trails){
+        if (!t.rocket.userData.alive){
+          t.line.material.opacity *= 0.9;
+          if (t.line.material.opacity < 0.05) scene.remove(t.line);
+          continue;
+        }
+        const positions = t.positions;
+        if (t.count < t.max){
+          const idx = t.count * 3;
+          positions[idx] = t.rocket.position.x;
+          positions[idx+1] = t.rocket.position.y;
+          positions[idx+2] = t.rocket.position.z;
+          t.count++;
+        } else {
+          positions.copyWithin(0, 3);
+          const idx = (t.max - 1) * 3;
+          positions[idx] = t.rocket.position.x;
+          positions[idx+1] = t.rocket.position.y;
+          positions[idx+2] = t.rocket.position.z;
+        }
+        t.line.geometry.attributes.position.needsUpdate = true;
+        t.line.geometry.setDrawRange(0, t.count);
+      }
+
+      for (let i = bursts.length - 1; i >= 0; i--){
+        const b = bursts[i];
+        b.life += dt;
+        const f = b.life / b.max;
+        b.group.children.forEach((c, idx) => {
+          c.position.addScaledVector(b.dirs[idx], dt);
+          c.material.opacity = 1 - f;
+        });
+        if (b.life >= b.max){
+          scene.remove(b.group);
+          bursts.splice(i, 1);
+        }
+      }
+
+      if (targets.filter(t => t.userData.alive).length === 0){
+        for (const t of targets) scene.remove(t);
+        targets.length = 0;
+        setTargetCount(parseInt(targetsSlider.value));
+      }
+
+      tCountEl.textContent = targets.filter(t => t.userData.alive).length;
+      rCountEl.textContent = rockets.filter(x => x.userData.alive).length;
+
+      camAngle += dt * 0.06;
+      camera.position.x = Math.sin(camAngle) * 75;
+      camera.position.z = Math.cos(camAngle) * 75;
+      camera.position.y = 38;
+      camera.lookAt(0, 4, 0);
+    }
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  setTimeout(() => { for (let i = 0; i < 5; i++) setTimeout(spawnRocket, i * 120); }, 400);
+})();
+</script>
+</body>
+</html>

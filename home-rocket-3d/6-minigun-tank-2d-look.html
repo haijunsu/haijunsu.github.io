@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Minigun Tank — 2D Look (Secretly 3D)</title>
+<style>
+  :root{
+    --color-text-primary:#1a1a1a;
+    --color-text-secondary:#555;
+    --border-radius-lg:12px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;padding:24px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:#fafaf8;color:#1a1a1a;}
+  .wrap{max-width:1100px;margin:0 auto;}
+  h1{font-size:20px;font-weight:600;margin:0 0 4px;}
+  .sub{font-size:13px;color:#777;margin:0 0 18px;}
+  button{font-size:13px;padding:7px 14px;border-radius:8px;border:1px solid #ccc;background:#fff;cursor:pointer;}
+  button:hover{background:#f2f2f2;}
+  input[type=range]{accent-color:#d85a30;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>Minigun Tank — 2D Look (Secretly 3D)</h1>
+<p class="sub">WASD/arrows to drive · Hold Space or Fire button · It's 3D — just lying about it</p>
+
+<h2 class="sr-only">Interactive 3D simulation rendered to look like a flat 2D cartoon: a tank with a rotary minigun-style launcher fires homing rockets at wandering targets, with toon shading and ink outlines.</h2>
+
+<div style="margin: 0 0 12px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+  <button id="fire-btn" style="font-size: 13px;">Hold to fire</button>
+  <button id="auto-btn" style="font-size: 13px;">Auto-fire: OFF</button>
+  <button id="reset-btn" style="font-size: 13px;">Reset</button>
+  <button id="pause-btn" style="font-size: 13px;">Pause</button>
+</div>
+
+<div style="margin: 0 0 12px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; font-size: 13px; color: var(--color-text-secondary);">
+  Targets: <span id="t-count" style="color: var(--color-text-primary); font-weight: 500;">0</span>
+  &nbsp;·&nbsp; Rockets: <span id="r-count" style="color: var(--color-text-primary); font-weight: 500;">0</span>
+  &nbsp;·&nbsp; Hits: <span id="hits" style="color: var(--color-text-primary); font-weight: 500;">0</span>
+  &nbsp;·&nbsp; RPM: <span id="rpm" style="color: var(--color-text-primary); font-weight: 500;">0</span>
+</div>
+
+<div style="display: flex; align-items: center; gap: 12px; margin: 0 0 8px; font-size: 13px;">
+  <label style="color: var(--color-text-secondary); min-width: 90px;">Targets</label>
+  <input type="range" min="3" max="60" step="1" value="20" id="targets" style="flex: 1;">
+  <span id="targets-out" style="min-width: 40px; font-weight: 500;">20</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; margin: 0 0 8px; font-size: 13px;">
+  <label style="color: var(--color-text-secondary); min-width: 90px;">Fire rate</label>
+  <input type="range" min="4" max="40" step="1" value="20" id="rate" style="flex: 1;">
+  <span id="rate-out" style="min-width: 40px; font-weight: 500;">20/s</span>
+</div>
+<div style="display: flex; align-items: center; gap: 12px; margin: 0 0 12px; font-size: 13px;">
+  <label style="color: var(--color-text-secondary); min-width: 90px;">Turn rate</label>
+  <input type="range" min="0.5" max="6" step="0.1" value="2.4" id="turn" style="flex: 1;">
+  <span id="turn-out" style="min-width: 40px; font-weight: 500;">2.4</span>
+</div>
+
+<div id="stage" style="position: relative; width: 100%; aspect-ratio: 16/10; border-radius: var(--border-radius-lg); border: 1.5px solid #1a1a1a; overflow: hidden; cursor: crosshair;
+  background-color: #f4ead6;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(0,0,0,0.04) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(0,0,0,0.05) 0%, transparent 50%),
+    repeating-linear-gradient(45deg, rgba(0,0,0,0.025) 0 1px, transparent 1px 7px),
+    repeating-linear-gradient(-45deg, rgba(0,0,0,0.025) 0 1px, transparent 1px 9px);
+">
+  <div id="hint" style="position: absolute; top: 12px; left: 14px; font-size: 12px; color: #555; pointer-events: none; z-index: 2; font-family: 'Courier New', monospace;">
+    WASD/arrows to drive · Hold Space or Fire button · It's 3D — just lying about it
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const stage = document.getElementById('stage');
+  const tCountEl = document.getElementById('t-count');
+  const rCountEl = document.getElementById('r-count');
+  const hitsEl = document.getElementById('hits');
+  const rpmEl = document.getElementById('rpm');
+  const targetsSlider = document.getElementById('targets');
+  const targetsOut = document.getElementById('targets-out');
+  const turnSlider = document.getElementById('turn');
+  const turnOut = document.getElementById('turn-out');
+  const rateSlider = document.getElementById('rate');
+  const rateOut = document.getElementById('rate-out');
+
+  const scene = new THREE.Scene();
+  scene.background = null;
+
+  const ORTHO_SIZE = 80;
+  const aspect0 = 16 / 10;
+  const camera = new THREE.OrthographicCamera(
+    -ORTHO_SIZE * aspect0, ORTHO_SIZE * aspect0,
+    ORTHO_SIZE, -ORTHO_SIZE, 0.1, 1000
+  );
+  camera.position.set(0, 60, 60);
+  camera.lookAt(0, 0, 0);
+
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
+  const resize = () => {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h);
+    const aspect = w / h;
+    camera.left = -ORTHO_SIZE * aspect;
+    camera.right = ORTHO_SIZE * aspect;
+    camera.top = ORTHO_SIZE;
+    camera.bottom = -ORTHO_SIZE;
+    camera.updateProjectionMatrix();
+  };
+  stage.appendChild(renderer.domElement);
+  resize();
+  window.addEventListener('resize', resize);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+
+  const toonGradient = (function(){
+    const data = new Uint8Array([60, 60, 60, 160, 160, 160, 255, 255, 255]);
+    const tex = new THREE.DataTexture(data, 3, 1, THREE.RGBFormat);
+    tex.minFilter = THREE.NearestFilter;
+    tex.magFilter = THREE.NearestFilter;
+    tex.needsUpdate = true;
+    return tex;
+  })();
+
+  function toonMat(color){
+    return new THREE.MeshToonMaterial({ color, gradientMap: toonGradient });
+  }
+  const outlineMat = new THREE.MeshBasicMaterial({ color: 0x101010, side: THREE.BackSide });
+
+  function makeOutlinedMesh(geom, color, outlineScale){
+    const inner = new THREE.Mesh(geom, toonMat(color));
+    const outline = new THREE.Mesh(geom, outlineMat);
+    outline.scale.setScalar(outlineScale || 1.08);
+    const g = new THREE.Group();
+    g.add(outline);
+    g.add(inner);
+    g.userData.inner = inner;
+    g.userData.outline = outline;
+    return g;
+  }
+
+  const BOUND = 60;
+  const fieldOutline = (function(){
+    const geom = new THREE.BufferGeometry();
+    const verts = new Float32Array([
+      -BOUND, -9.99, -BOUND,  BOUND, -9.99, -BOUND,
+       BOUND, -9.99, -BOUND,  BOUND, -9.99,  BOUND,
+       BOUND, -9.99,  BOUND, -BOUND, -9.99,  BOUND,
+      -BOUND, -9.99,  BOUND, -BOUND, -9.99, -BOUND
+    ]);
+    geom.setAttribute('position', new THREE.BufferAttribute(verts, 3));
+    const mat = new THREE.LineBasicMaterial({ color: 0x2a2a2a });
+    return new THREE.LineSegments(geom, mat);
+  })();
+  scene.add(fieldOutline);
+
+  const tank = new THREE.Group();
+  scene.add(tank);
+
+  function addPart(parent, geom, color, outlineScale, pos, rot){
+    const m = makeOutlinedMesh(geom, color, outlineScale);
+    if (pos) m.position.copy(pos);
+    if (rot) m.rotation.copy(rot);
+    parent.add(m);
+    return m;
+  }
+
+  const TANK_GREEN = 0x7ba35a;
+  const TANK_DARK = 0x4a6b3c;
+  const TRACK_COL = 0x2a2a2a;
+  const METAL_COL = 0x3a3a3a;
+
+  addPart(tank, new THREE.BoxGeometry(4, 1.2, 6), TANK_GREEN, 1.05, new THREE.Vector3(0, 0.4, 0));
+  addPart(tank, new THREE.BoxGeometry(3.6, 0.6, 5.4), TANK_DARK, 1.05, new THREE.Vector3(0, 1.3, 0));
+  addPart(tank, new THREE.BoxGeometry(1.0, 1.4, 6.4), TRACK_COL, 1.05, new THREE.Vector3(-2.3, 0.3, 0));
+  addPart(tank, new THREE.BoxGeometry(1.0, 1.4, 6.4), TRACK_COL, 1.05, new THREE.Vector3(2.3, 0.3, 0));
+
+  const wheelGeom = new THREE.CylinderGeometry(0.55, 0.55, 0.32, 14);
+  const leftWheels = [], rightWheels = [];
+  for (let i = -2; i <= 2; i++){
+    const wl = makeOutlinedMesh(wheelGeom, 0x1a1a1a, 1.1);
+    wl.userData.inner.rotation.z = Math.PI / 2;
+    wl.userData.outline.rotation.z = Math.PI / 2;
+    wl.position.set(-2.3, -0.05, i * 1.2);
+    tank.add(wl);
+    leftWheels.push(wl);
+    const wr = makeOutlinedMesh(wheelGeom, 0x1a1a1a, 1.1);
+    wr.userData.inner.rotation.z = Math.PI / 2;
+    wr.userData.outline.rotation.z = Math.PI / 2;
+    wr.position.set(2.3, -0.05, i * 1.2);
+    tank.add(wr);
+    rightWheels.push(wr);
+  }
+
+  const turret = new THREE.Group();
+  turret.position.y = 1.9;
+  tank.add(turret);
+
+  addPart(turret, new THREE.CylinderGeometry(1.4, 1.6, 0.7, 16), TANK_GREEN, 1.05);
+  addPart(turret, new THREE.BoxGeometry(2.0, 0.8, 2.6), TANK_GREEN, 1.05, new THREE.Vector3(0, 0.6, 0));
+
+  const gunMount = new THREE.Group();
+  gunMount.position.set(0, 0.5, 1.2);
+  turret.add(gunMount);
+
+  addPart(gunMount, new THREE.BoxGeometry(1.6, 0.9, 0.8), METAL_COL, 1.07);
+
+  const spinner = new THREE.Group();
+  spinner.position.set(0, 0, 0.5);
+  gunMount.add(spinner);
+
+  const axle = makeOutlinedMesh(new THREE.CylinderGeometry(0.2, 0.2, 2.0, 12), 0x555555, 1.12);
+  axle.userData.inner.rotation.x = Math.PI / 2;
+  axle.userData.outline.rotation.x = Math.PI / 2;
+  axle.position.z = 1.0;
+  spinner.add(axle);
+
+  const barrelGeom = new THREE.CylinderGeometry(0.16, 0.16, 2.4, 10);
+  const barrels = [];
+  const N_BARRELS = 6;
+  const BARREL_RADIUS = 0.42;
+  for (let i = 0; i < N_BARRELS; i++){
+    const b = makeOutlinedMesh(barrelGeom, 0x202020, 1.18);
+    b.userData.inner.rotation.x = Math.PI / 2;
+    b.userData.outline.rotation.x = Math.PI / 2;
+    const a = (i / N_BARRELS) * Math.PI * 2;
+    b.position.set(Math.cos(a) * BARREL_RADIUS, Math.sin(a) * BARREL_RADIUS, 1.2);
+    spinner.add(b);
+    barrels.push(b);
+  }
+
+  const shroud = makeOutlinedMesh(new THREE.CylinderGeometry(0.7, 0.7, 0.2, 16), 0x222222, 1.08);
+  shroud.userData.inner.rotation.x = Math.PI / 2;
+  shroud.userData.outline.rotation.x = Math.PI / 2;
+  shroud.position.z = 2.3;
+  spinner.add(shroud);
+
+  const backShroud = makeOutlinedMesh(new THREE.CylinderGeometry(0.65, 0.65, 0.18, 16), 0x2a2a2a, 1.08);
+  backShroud.userData.inner.rotation.x = Math.PI / 2;
+  backShroud.userData.outline.rotation.x = Math.PI / 2;
+  backShroud.position.z = 0.15;
+  spinner.add(backShroud);
+
+  const tankState = {
+    pos: new THREE.Vector3(0, 0, 0),
+    heading: 0,
+    speed: 0,
+    maxSpeed: 14,
+    accel: 18,
+    turnRate: 1.8,
+    turretYaw: 0,
+    spinSpeed: 0,
+    spinTarget: 0,
+    fireAccum: 0,
+    autoFire: false,
+    firing: false,
+    recoil: 0
+  };
+
+  const palette = [0x4ec07a, 0x4a90d9, 0xe06a8e, 0xd9a23a, 0x82b748, 0x9a8fe8, 0xe28140, 0x65cdab, 0xe85a59];
+  const targetGeom = new THREE.IcosahedronGeometry(1.3, 0);
+  const targets = [];
+
+  function makeTarget(){
+    const idx = targets.length % palette.length;
+    const color = palette[idx];
+    const g = makeOutlinedMesh(targetGeom, color, 1.12);
+    g.position.set(
+      (Math.random() - 0.5) * BOUND * 1.6,
+      Math.random() * 18 + 2,
+      (Math.random() - 0.5) * BOUND * 1.6
+    );
+    g.userData.vel = new THREE.Vector3(
+      (Math.random() - 0.5) * 6,
+      (Math.random() - 0.5) * 1.5,
+      (Math.random() - 0.5) * 6
+    );
+    g.userData.alive = true;
+    g.userData.color = color;
+    scene.add(g);
+    targets.push(g);
+  }
+
+  function setTargetCount(n){
+    while (targets.length < n) makeTarget();
+    while (targets.length > n){
+      const t = targets.pop();
+      scene.remove(t);
+    }
+  }
+
+  const rockets = [];
+  const trails = [];
+
+  const r_bodyGeom = new THREE.CylinderGeometry(0.16, 0.22, 1.0, 8);
+  const r_noseGeom = new THREE.ConeGeometry(0.16, 0.4, 8);
+  const r_finGeom = new THREE.BoxGeometry(0.04, 0.3, 0.3);
+  const r_flameGeom = new THREE.ConeGeometry(0.18, 0.7, 7);
+
+  function makeRocket(){
+    const group = new THREE.Group();
+
+    const body = makeOutlinedMesh(r_bodyGeom, 0xe07040, 1.18);
+    body.userData.inner.rotation.x = Math.PI / 2;
+    body.userData.outline.rotation.x = Math.PI / 2;
+    group.add(body);
+
+    const nose = makeOutlinedMesh(r_noseGeom, 0x712b13, 1.2);
+    nose.userData.inner.rotation.x = Math.PI / 2;
+    nose.userData.outline.rotation.x = Math.PI / 2;
+    nose.position.z = 0.65;
+    group.add(nose);
+
+    for (let i = 0; i < 4; i++){
+      const fin = makeOutlinedMesh(r_finGeom, 0x4c44a0, 1.25);
+      const a = (i * Math.PI) / 2;
+      fin.position.set(Math.cos(a) * 0.22, Math.sin(a) * 0.22, -0.38);
+      fin.userData.inner.rotation.z = a;
+      fin.userData.outline.rotation.z = a;
+      group.add(fin);
+    }
+
+    const flame = new THREE.Mesh(r_flameGeom, new THREE.MeshBasicMaterial({ color: 0xf6b53a, transparent: true, opacity: 0.95 }));
+    flame.rotation.x = -Math.PI / 2;
+    flame.position.z = -0.7;
+    group.add(flame);
+    group.userData.flame = flame;
+
+    return group;
+  }
+
+  function pickNearestLive(pos){
+    let best = null, bd = Infinity;
+    for (const t of targets){
+      if (!t.userData.alive) continue;
+      const d = pos.distanceTo(t.position);
+      if (d < bd){ bd = d; best = t; }
+    }
+    return best;
+  }
+
+  let muzzleBarrelIdx = 0;
+
+  function fireOneRocket(){
+    if (targets.filter(t => t.userData.alive).length === 0) return;
+    muzzleBarrelIdx = (muzzleBarrelIdx + 1) % N_BARRELS;
+    const b = barrels[muzzleBarrelIdx];
+
+    const localTip = new THREE.Vector3(0, 1.2, 0);
+    const startPos = new THREE.Vector3();
+    b.localToWorld(startPos.copy(localTip));
+
+    const fwd = new THREE.Vector3(0, 0, 1);
+    fwd.applyQuaternion(turret.getWorldQuaternion(new THREE.Quaternion()));
+    fwd.x += (Math.random() - 0.5) * 0.06;
+    fwd.y += 0.05 + (Math.random() - 0.5) * 0.05;
+    fwd.z += (Math.random() - 0.5) * 0.06;
+    fwd.normalize();
+
+    const r = makeRocket();
+    r.position.copy(startPos);
+    r.userData.vel = fwd.clone().multiplyScalar(22);
+    r.userData.alive = true;
+    r.userData.target = pickNearestLive(startPos);
+    r.userData.armTime = 0.08;
+    scene.add(r);
+    rockets.push(r);
+
+    const maxTrail = 18;
+    const positions = new Float32Array(maxTrail * 3);
+    const trailGeom = new THREE.BufferGeometry();
+    trailGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+    trailGeom.setDrawRange(0, 0);
+    const trailMat = new THREE.LineBasicMaterial({ color: 0x222222, transparent: true, opacity: 0.6 });
+    const trail = new THREE.Line(trailGeom, trailMat);
+    scene.add(trail);
+    trails.push({ line: trail, positions, count: 0, max: maxTrail, rocket: r });
+
+    cartoonPuff(startPos);
+    tankState.recoil = Math.min(1, tankState.recoil + 0.15);
+  }
+
+  const puffs = [];
+  function cartoonPuff(pos){
+    const group = new THREE.Group();
+    const cnt = 4;
+    const dirs = [];
+    for (let i = 0; i < cnt; i++){
+      const m = new THREE.Mesh(
+        new THREE.SphereGeometry(0.22, 6, 6),
+        new THREE.MeshBasicMaterial({ color: 0xfff2a8, transparent: true, opacity: 1 })
+      );
+      m.position.copy(pos);
+      group.add(m);
+      const d = new THREE.Vector3(Math.random()-0.5, Math.random()-0.5, Math.random()-0.5).normalize().multiplyScalar(3 + Math.random()*2);
+      dirs.push(d);
+    }
+    scene.add(group);
+    puffs.push({ group, dirs, life: 0, max: 0.18 });
+  }
+
+  const booms = [];
+  function cartoonBoom(pos, color){
+    const group = new THREE.Group();
+    const cnt = 7;
+    const dirs = [];
+    for (let i = 0; i < cnt; i++){
+      const star = makeOutlinedMesh(new THREE.BoxGeometry(0.6, 0.6, 0.6), color || 0xf6b53a, 1.18);
+      star.position.copy(pos);
+      group.add(star);
+      const d = new THREE.Vector3(Math.random()-0.5, Math.random()-0.5, Math.random()-0.5).normalize().multiplyScalar(8 + Math.random()*4);
+      dirs.push(d);
+    }
+    scene.add(group);
+    booms.push({ group, dirs, life: 0, max: 0.5 });
+  }
+
+  const keys = {};
+  function isTyping(){
+    const ae = document.activeElement;
+    return ae && (ae.tagName === 'INPUT' || ae.tagName === 'TEXTAREA');
+  }
+  window.addEventListener('keydown', e => {
+    if (isTyping()) return;
+    keys[e.key.toLowerCase()] = true;
+    if (e.key === ' '){ e.preventDefault(); tankState.firing = true; }
+  });
+  window.addEventListener('keyup', e => {
+    if (isTyping()) return;
+    keys[e.key.toLowerCase()] = false;
+    if (e.key === ' ') tankState.firing = false;
+  });
+
+  const fireBtn = document.getElementById('fire-btn');
+  fireBtn.addEventListener('mousedown', () => tankState.firing = true);
+  fireBtn.addEventListener('mouseup', () => tankState.firing = false);
+  fireBtn.addEventListener('mouseleave', () => tankState.firing = false);
+  fireBtn.addEventListener('touchstart', (e) => { e.preventDefault(); tankState.firing = true; }, { passive: false });
+  fireBtn.addEventListener('touchend', () => tankState.firing = false);
+
+  const autoBtn = document.getElementById('auto-btn');
+  autoBtn.addEventListener('click', () => {
+    tankState.autoFire = !tankState.autoFire;
+    autoBtn.textContent = 'Auto-fire: ' + (tankState.autoFire ? 'ON' : 'OFF');
+  });
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    rockets.forEach(r => scene.remove(r));
+    trails.forEach(t => scene.remove(t.line));
+    rockets.length = 0;
+    trails.length = 0;
+    targets.forEach(t => scene.remove(t));
+    targets.length = 0;
+    hits = 0;
+    hitsEl.textContent = 0;
+    setTargetCount(parseInt(targetsSlider.value));
+    tankState.pos.set(0,0,0);
+    tankState.heading = 0;
+    tankState.speed = 0;
+    tankState.turretYaw = 0;
+    tankState.spinSpeed = 0;
+  });
+  let paused = false;
+  const pauseBtn = document.getElementById('pause-btn');
+  pauseBtn.addEventListener('click', () => {
+    paused = !paused;
+    pauseBtn.textContent = paused ? 'Resume' : 'Pause';
+  });
+
+  targetsSlider.addEventListener('input', () => {
+    const n = parseInt(targetsSlider.value);
+    targetsOut.textContent = n;
+    setTargetCount(n);
+  });
+  turnSlider.addEventListener('input', () => turnOut.textContent = parseFloat(turnSlider.value).toFixed(1));
+  rateSlider.addEventListener('input', () => rateOut.textContent = parseInt(rateSlider.value) + '/s');
+
+  setTargetCount(parseInt(targetsSlider.value));
+
+  let hits = 0;
+  let last = performance.now();
+  let frameNo = 0;
+
+  function tick(now){
+    const dt = Math.min(0.05, (now - last) / 1000);
+    last = now;
+    frameNo++;
+
+    if (!paused){
+      const fwdInput = (keys['w'] || keys['arrowup']) ? 1 : (keys['s'] || keys['arrowdown']) ? -1 : 0;
+      const turnInput = (keys['a'] || keys['arrowleft']) ? 1 : (keys['d'] || keys['arrowright']) ? -1 : 0;
+      if (fwdInput !== 0){
+        tankState.speed += fwdInput * tankState.accel * dt;
+      } else {
+        tankState.speed *= Math.max(0, 1 - dt * 2.5);
+      }
+      tankState.speed = Math.max(-tankState.maxSpeed * 0.5, Math.min(tankState.maxSpeed, tankState.speed));
+      const turnEff = (Math.abs(tankState.speed) / tankState.maxSpeed) * 0.7 + 0.3;
+      tankState.heading += turnInput * tankState.turnRate * dt * turnEff;
+      const dirVec = new THREE.Vector3(Math.sin(tankState.heading), 0, Math.cos(tankState.heading));
+      tankState.pos.addScaledVector(dirVec, tankState.speed * dt);
+      tankState.pos.x = Math.max(-BOUND, Math.min(BOUND, tankState.pos.x));
+      tankState.pos.z = Math.max(-BOUND, Math.min(BOUND, tankState.pos.z));
+      tank.position.copy(tankState.pos);
+      tank.rotation.y = tankState.heading;
+      const wheelSpin = tankState.speed * dt * 1.6;
+      leftWheels.forEach(w => { w.userData.inner.rotation.x += wheelSpin; w.userData.outline.rotation.x += wheelSpin; });
+      rightWheels.forEach(w => { w.userData.inner.rotation.x += wheelSpin; w.userData.outline.rotation.x += wheelSpin; });
+
+      const tankWorld = tankState.pos.clone();
+      tankWorld.y = 1.9;
+      const aim = pickNearestLive(tankWorld);
+      if (aim){
+        const dx = aim.position.x - tankWorld.x;
+        const dz = aim.position.z - tankWorld.z;
+        const worldAngle = Math.atan2(dx, dz);
+        let desiredLocal = worldAngle - tankState.heading;
+        while (desiredLocal > Math.PI) desiredLocal -= Math.PI * 2;
+        while (desiredLocal < -Math.PI) desiredLocal += Math.PI * 2;
+        let delta = desiredLocal - tankState.turretYaw;
+        while (delta > Math.PI) delta -= Math.PI * 2;
+        while (delta < -Math.PI) delta += Math.PI * 2;
+        const maxTurretRate = 3.0;
+        const step = Math.max(-maxTurretRate * dt, Math.min(maxTurretRate * dt, delta));
+        tankState.turretYaw += step;
+      }
+      turret.rotation.y = tankState.turretYaw;
+
+      tankState.recoil = Math.max(0, tankState.recoil - dt * 4);
+      gunMount.position.z = 1.2 - tankState.recoil * 0.25;
+
+      const maxRate = parseInt(rateSlider.value);
+      const maxSpin = maxRate * 0.6 + 8;
+
+      const wantToFire = tankState.firing || tankState.autoFire;
+      tankState.spinTarget = wantToFire ? maxSpin : 0;
+      const spinAccel = (tankState.spinTarget > tankState.spinSpeed) ? 22 : 10;
+      tankState.spinSpeed += Math.sign(tankState.spinTarget - tankState.spinSpeed) * Math.min(Math.abs(tankState.spinTarget - tankState.spinSpeed), spinAccel * dt);
+      spinner.rotation.z += tankState.spinSpeed * dt;
+
+      const spinFraction = maxSpin > 0 ? tankState.spinSpeed / maxSpin : 0;
+      const effectiveRate = wantToFire ? maxRate * spinFraction : 0;
+
+      if (wantToFire && spinFraction > 0.3){
+        tankState.fireAccum += effectiveRate * dt;
+        const maxPerFrame = 4;
+        let fired = 0;
+        while (tankState.fireAccum >= 1 && fired < maxPerFrame){
+          fireOneRocket();
+          tankState.fireAccum -= 1;
+          fired++;
+        }
+      } else {
+        tankState.fireAccum = Math.min(tankState.fireAccum, 0.5);
+      }
+
+      const rpmNow = Math.round(effectiveRate * 60);
+      if (frameNo % 4 === 0) rpmEl.textContent = rpmNow;
+
+      for (const t of targets){
+        if (!t.userData.alive) continue;
+        const v = t.userData.vel;
+        v.x += (Math.random() - 0.5) * dt * 4;
+        v.y += (Math.random() - 0.5) * dt * 1.0;
+        v.z += (Math.random() - 0.5) * dt * 4;
+        const sp = v.length();
+        if (sp > 6) v.multiplyScalar(6 / sp);
+        if (Math.abs(t.position.x) > BOUND) v.x -= Math.sign(t.position.x) * dt * 6;
+        if (Math.abs(t.position.z) > BOUND) v.z -= Math.sign(t.position.z) * dt * 6;
+        if (t.position.y > 22) v.y -= dt * 4;
+        if (t.position.y < 2) v.y += dt * 4;
+        t.position.addScaledVector(v, dt);
+        t.rotation.x += dt * 0.4;
+        t.rotation.y += dt * 0.6;
+      }
+
+      const turnRate = parseFloat(turnSlider.value);
+      const speed = 18;
+      for (const r of rockets){
+        if (!r.userData.alive) continue;
+        if (r.userData.armTime > 0){
+          r.userData.armTime -= dt;
+          r.position.addScaledVector(r.userData.vel, dt);
+        } else {
+          if (!r.userData.target || !r.userData.target.userData.alive){
+            r.userData.target = pickNearestLive(r.position);
+            if (!r.userData.target){
+              r.userData.alive = false;
+              scene.remove(r);
+              continue;
+            }
+          }
+          const tgt = r.userData.target;
+          const v = r.userData.vel;
+          v.normalize().multiplyScalar(speed);
+          const desired = new THREE.Vector3().subVectors(tgt.position, r.position).normalize();
+          const currentDir = v.clone().normalize();
+          const dot = Math.max(-1, Math.min(1, currentDir.dot(desired)));
+          const angle = Math.acos(dot);
+          const maxStep = turnRate * dt;
+          let newDir;
+          if (angle < 1e-4){
+            newDir = desired;
+          } else {
+            const tt = Math.min(1, maxStep / angle);
+            const sinA = Math.sin(angle);
+            const a = Math.sin((1 - tt) * angle) / sinA;
+            const b = Math.sin(tt * angle) / sinA;
+            newDir = currentDir.multiplyScalar(a).add(desired.clone().multiplyScalar(b)).normalize();
+          }
+          v.copy(newDir.multiplyScalar(speed));
+          r.position.addScaledVector(v, dt);
+
+          if (r.position.distanceTo(tgt.position) < 1.5){
+            r.userData.alive = false;
+            scene.remove(r);
+            tgt.userData.alive = false;
+            scene.remove(tgt);
+            cartoonBoom(tgt.position.clone(), tgt.userData.color);
+            hits++;
+            hitsEl.textContent = hits;
+            continue;
+          }
+        }
+
+        const m = new THREE.Matrix4().lookAt(new THREE.Vector3(0,0,0), r.userData.vel.clone().negate(), new THREE.Vector3(0,1,0));
+        r.quaternion.setFromRotationMatrix(m);
+        const flame = r.userData.flame;
+        flame.scale.set(1, 0.6 + Math.random()*0.7, 1);
+
+        if (r.position.length() > 220 || r.position.y < -10){
+          r.userData.alive = false;
+          scene.remove(r);
+        }
+      }
+
+      if (frameNo % 2 === 0){
+        for (const t of trails){
+          if (!t.rocket.userData.alive){
+            t.line.material.opacity *= 0.85;
+            if (t.line.material.opacity < 0.05) scene.remove(t.line);
+            continue;
+          }
+          const positions = t.positions;
+          if (t.count < t.max){
+            const idx = t.count * 3;
+            positions[idx] = t.rocket.position.x;
+            positions[idx+1] = t.rocket.position.y;
+            positions[idx+2] = t.rocket.position.z;
+            t.count++;
+          } else {
+            positions.copyWithin(0, 3);
+            const idx = (t.max - 1) * 3;
+            positions[idx] = t.rocket.position.x;
+            positions[idx+1] = t.rocket.position.y;
+            positions[idx+2] = t.rocket.position.z;
+          }
+          t.line.geometry.attributes.position.needsUpdate = true;
+          t.line.geometry.setDrawRange(0, t.count);
+        }
+      }
+
+      for (let i = puffs.length - 1; i >= 0; i--){
+        const b = puffs[i];
+        b.life += dt;
+        const f = b.life / b.max;
+        b.group.children.forEach((c, idx) => {
+          c.position.addScaledVector(b.dirs[idx], dt);
+          c.scale.setScalar(1 + f * 0.6);
+          c.material.opacity = 1 - f;
+        });
+        if (b.life >= b.max){
+          scene.remove(b.group);
+          puffs.splice(i, 1);
+        }
+      }
+
+      for (let i = booms.length - 1; i >= 0; i--){
+        const b = booms[i];
+        b.life += dt;
+        const f = b.life / b.max;
+        b.group.children.forEach((c, idx) => {
+          c.position.addScaledVector(b.dirs[idx], dt);
+          const s = Math.max(0.05, 1 - f);
+          c.scale.setScalar(s);
+          c.rotation.x += dt * 6;
+          c.rotation.y += dt * 5;
+        });
+        if (b.life >= b.max){
+          scene.remove(b.group);
+          booms.splice(i, 1);
+        }
+      }
+
+      if (targets.filter(t => t.userData.alive).length === 0){
+        for (const t of targets) scene.remove(t);
+        targets.length = 0;
+        setTargetCount(parseInt(targetsSlider.value));
+      }
+
+      if (frameNo % 6 === 0){
+        tCountEl.textContent = targets.filter(t => t.userData.alive).length;
+        rCountEl.textContent = rockets.filter(x => x.userData.alive).length;
+      }
+    }
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+
+  stage.tabIndex = 0;
+})();
+</script>
+</body>
+</html>
